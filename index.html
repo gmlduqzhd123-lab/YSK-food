@@ -171,10 +171,11 @@
 
         // 필수: name, city / 선택: category, menu, lat, lng, link, hours(예: 11:00-21:00), closed(예: 월,화), price, phone, image, note
         // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
+        // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
         const FALLBACK_RESTAURANTS = [
             // 여수
-            { id: 1, name: "이순신수제버거", city: "여수", category: "버거", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, link: "https://place.map.kakao.com/26435345" },
-            { id: 4, name: "로타리식당", city: "여수", category: "백반", menu: "백반", lat: 34.739417, lng: 127.733285, link: "https://place.map.kakao.com/10904300" },
+            { id: 1, name: "이순신수제버거", city: "여수", category: "버거", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706 },
+            { id: 4, name: "로타리식당", city: "여수", category: "백반", menu: "백반", lat: 34.739417, lng: 127.733285 },
             { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집" },
             { id: 6, name: "황소식당", city: "여수", category: "게장", menu: "돌게장백반, 갈치조림", note: "봉산동 게장골목" },
             { id: 7, name: "구백식당", city: "여수", category: "생선", menu: "서대회, 금풍생이구이", note: "서대회는 여름이 제철" },
@@ -182,13 +183,13 @@
             { id: 9, name: "연이네식당", city: "여수", category: "장어", menu: "장어탕, 생선구이" },
             { id: 10, name: "어부사시사", city: "여수", category: "한정식", menu: "회 한정식" },
             // 순천
-            { id: 2, name: "건봉국밥", city: "순천", category: "국밥", menu: "국밥, 수육", lat: 34.950730, lng: 127.493822, link: "https://place.map.kakao.com/11105953" },
+            { id: 2, name: "건봉국밥", city: "순천", category: "국밥", menu: "국밥, 수육", lat: 34.950730, lng: 127.493822 },
             { id: 11, name: "대대선창집", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 꼬막정식", note: "순천만습지 근처" },
             { id: 12, name: "대원식당", city: "순천", category: "한정식", menu: "한정식", note: "60년 넘은 전통 한정식집" },
             { id: 13, name: "순천만갈대밭식당", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
             { id: 14, name: "순천만 전라도밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
             // 광양
-            { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348, link: "https://place.map.kakao.com/11267440" },
+            { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348 },
             { id: 15, name: "청룡식당", city: "광양", category: "재첩", menu: "재첩국, 재첩회", note: "섬진강변 진월면" },
             { id: 16, name: "망덕횟집", city: "광양", category: "생선", menu: "전어회", note: "망덕포구" }
         ];
@@ -311,7 +312,8 @@
             const now = Date.now(), day = 24 * 60 * 60 * 1000;
             const missing = [];
 
-            await Promise.all(places.filter(p => !hasCoords(p)).map(async p => {
+            // 좌표나 상세 링크가 없는 식당만 검색
+            await Promise.all(places.filter(p => !hasCoords(p) || !p.link).map(async p => {
                 const key = favKey(p);
                 let hit = cache[key];
                 const fresh = hit && now - hit.t < (hit.miss ? GEO_MISS_CACHE_DAYS : GEO_CACHE_DAYS) * day;
@@ -320,10 +322,16 @@
                     const found = await searchPlace(p);
                     hit = cache[key] = found ? { ...found, t: now } : { miss: true, t: now };
                 }
-                if (hit.miss) { missing.push(p.city + ' ' + p.name); return; }
-                p.lat = hit.lat;
-                p.lng = hit.lng;
-                if (!p.link) p.link = hit.link || '';
+                if (hit.miss) {
+                    // 좌표가 이미 있으면 지도에는 두고 상세보기는 카카오맵 검색으로 연결
+                    missing.push(p.city + ' ' + p.name + (hasCoords(p) ? ' (위치는 표시됨)' : ''));
+                    return;
+                }
+                if (!hasCoords(p)) {
+                    p.lat = hit.lat;
+                    p.lng = hit.lng;
+                }
+                if (!p.link) p.link = (hit.link || '').replace(/^http:/, 'https:');
                 if (!p.phone) p.phone = hit.phone || '';
             }));
             saveGeoCache(cache);
@@ -562,7 +570,9 @@
                 ? 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng
                 : 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name);
             addLink('link', routeUrl, hasCoords(place) ? '카카오맵 길찾기' : '카카오맵에서 찾기', true);
+            // 상세보기: 카카오맵 장소 페이지, 없으면 카카오맵 검색 결과 (좌표가 없을 땐 위 버튼이 이미 검색으로 연결)
             if (place.link) addLink('link sub', place.link, '상세보기', true);
+            else if (hasCoords(place)) addLink('link sub', 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name), '상세보기', true);
             if (place.phone) addLink('link sub', 'tel:' + place.phone.replace(/[^\d+]/g, ''), '📞 전화', false);
 
             const fav = addButton('link sub fav', '', () => toggleFavorite(place));
