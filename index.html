@@ -91,6 +91,9 @@
         .link.sub { background: #f1f1f1; }
         .link.fav.on { background: #fff8e1; color: #e65100; }
 
+        /* 저작권 표시 */
+        .site-footer { flex-shrink: 0; padding: 4px 16px; background: #fafafa; border-top: 1px solid #eee; color: #999; font-size: 11px; text-align: center; }
+
         /* 모바일: 지도 아래 접었다 펴는 목록 */
         @media (max-width: 767px) {
             main { flex-direction: column; }
@@ -163,6 +166,8 @@
             <div class="toast" id="toast" role="status" aria-live="polite"></div>
         </div>
     </main>
+
+    <footer class="site-footer">© 2026 엽쌤. All rights reserved.</footer>
 
     <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=services,clusterer"></script>

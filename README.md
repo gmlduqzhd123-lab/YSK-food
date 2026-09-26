@@ -58,3 +58,6 @@
 
 ## 사이트 파일을 수정했다면
 `sw.js`의 `CACHE_VERSION` 숫자를 올려 주세요 (예: `ysk-food-v1` → `ysk-food-v2`). 홈 화면에 설치한 사용자도 새 버전을 받게 됩니다.
+
+---
+© 2026 엽쌤. All rights reserved.
