@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여순광 맛집 지도</title>
     <meta name="description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
+    <meta name="theme-color" content="#ff5722">
     <meta property="og:title" content="여순광 맛집 지도">
     <meta property="og:description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <style>
         /* 기본 스타일 및 모바일 최적화 */
@@ -34,6 +37,7 @@
         .filter-btn { padding: 8px 16px; border: 1px solid #e0e0e0; background: white; color: #333; border-radius: 20px; font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
         .filter-btn.active { background-color: #ff5722; color: white; border-color: #ff5722; font-weight: bold; }
         .filter-btn.category.active { background-color: #333; border-color: #333; }
+        .filter-btn.toggle.active { background-color: #fff8e1; color: #e65100; border-color: #ffb300; }
 
         /* 본문: 목록 + 지도 */
         main { flex: 1; min-height: 0; display: flex; }
@@ -44,6 +48,10 @@
         .locate-btn { position: absolute; top: 12px; right: 12px; z-index: 5; padding: 8px 12px; border: 1px solid #ddd; border-radius: 20px; background: white; font-size: 13px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
         .locate-btn:disabled { opacity: 0.6; cursor: wait; }
         .my-pos { width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #1e88e5; border: 3px solid white; box-shadow: 0 0 0 6px rgba(30,136,229,0.25); }
+
+        /* 지역별 마커 색 안내 */
+        .legend { position: absolute; left: 12px; top: 12px; z-index: 5; display: flex; gap: 8px; padding: 6px 10px; border-radius: 16px; background: rgba(255,255,255,0.92); box-shadow: 0 1px 4px rgba(0,0,0,0.15); font-size: 12px; }
+        .legend span::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 4px; border-radius: 50%; background: var(--c); }
 
         /* 알림 메시지 */
         .toast { position: absolute; left: 50%; top: 60px; transform: translateX(-50%); z-index: 6; max-width: calc(100% - 32px); box-sizing: border-box; padding: 10px 16px; border-radius: 20px; background: rgba(0,0,0,0.8); color: white; font-size: 13px; text-align: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -64,15 +72,23 @@
         .place-list li.selected { background: #fff3ee; }
         .place-main { display: block; width: 100%; padding: 12px 16px 6px; border: none; background: none; text-align: left; cursor: pointer; color: inherit; }
         .place-name { font-size: 15px; font-weight: bold; }
+        .place-name::before { content: ''; display: inline-block; width: 8px; height: 8px; margin: 0 6px 2px 0; border-radius: 50%; background: var(--c, #999); }
         .place-dist { float: right; font-size: 12px; font-weight: bold; color: #1e88e5; }
         .place-meta { margin-top: 2px; font-size: 12px; color: #999; }
         .place-menu { margin-top: 4px; font-size: 13px; color: #666; }
-        .place-links { display: flex; gap: 6px; padding: 0 16px 12px; }
+        .place-hours { margin-top: 3px; font-size: 12px; color: #666; }
+        .place-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
         .empty { padding: 32px 16px; text-align: center; color: #999; font-size: 14px; }
 
-        /* 공통 링크 버튼 */
-        .link { display: inline-block; padding: 6px 12px; background: #fee500; color: #000; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        /* 영업 상태 표시 */
+        .badge { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; }
+        .badge.open { background: #e8f5e9; color: #2e7d32; }
+        .badge.closed { background: #f1f1f1; color: #999; }
+
+        /* 공통 링크·작은 버튼 */
+        .link { display: inline-block; padding: 6px 12px; border: none; background: #fee500; color: #000; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; }
         .link.sub { background: #f1f1f1; }
+        .link.fav.on { background: #fff8e1; color: #e65100; }
 
         /* 모바일: 지도 아래 접었다 펴는 목록 */
         @media (max-width: 767px) {
@@ -89,13 +105,16 @@
         }
 
         /* 커스텀 오버레이 (정보창) 스타일 */
-        .wrap { position: absolute; left: 0; bottom: 40px; width: 250px; margin-left: -125px; text-align: left; font-size: 14px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .wrap { position: absolute; left: 0; bottom: 40px; width: 260px; margin-left: -130px; text-align: left; font-size: 14px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .wrap .photo { display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 8px 8px 0 0; }
         .wrap .info { padding: 15px; position: relative; }
         .wrap .title { font-weight: bold; font-size: 16px; margin-bottom: 5px; padding-right: 24px; color: #333; }
         .wrap .close { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; padding: 0; border: none; background: none; cursor: pointer; color: #999; font-size: 16px; }
+        .wrap .photo + .info .close { top: -114px; border-radius: 50%; background: rgba(0,0,0,0.5); color: white; }
         .wrap .meta { color: #999; font-size: 12px; margin-bottom: 4px; }
-        .wrap .desc { color: #666; font-size: 13px; margin-bottom: 10px; }
-        .wrap .links { display: flex; gap: 6px; }
+        .wrap .desc { color: #666; font-size: 13px; margin-bottom: 4px; }
+        .wrap .hours, .wrap .note { color: #666; font-size: 12px; margin-bottom: 4px; }
+        .wrap .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
     </style>
 </head>
@@ -115,6 +134,12 @@
             <button class="filter-btn" data-city="광양" aria-pressed="false">☀️ 광양</button>
         </div>
         <span class="filter-divider" aria-hidden="true"></span>
+        <div class="filter-group" role="group" aria-label="추가 조건">
+            <button class="filter-btn toggle" id="fav-filter" aria-pressed="false">⭐ 즐겨찾기</button>
+            <!-- 영업시간 정보가 있는 식당이 있을 때만 표시 -->
+            <button class="filter-btn toggle" id="open-filter" aria-pressed="false" hidden>🕒 영업 중</button>
+        </div>
+        <span class="filter-divider" aria-hidden="true"></span>
         <!-- 종류 버튼은 데이터에 있는 종류로 자동 생성 -->
         <div class="filter-group" id="category-group" role="group" aria-label="종류 선택"></div>
     </div>
@@ -130,19 +155,21 @@
 
         <div class="map-wrap">
             <div id="map"></div>
+            <div class="legend" id="legend" aria-hidden="true"></div>
             <button type="button" class="locate-btn" id="locate-btn">📍 내 주변</button>
             <div class="toast" id="toast" role="status" aria-live="polite"></div>
         </div>
     </main>
 
-    <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 → Web]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa"></script>
+    <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=clusterer"></script>
     <script>
         // 1. 데이터 설정
         // 구글 시트 [파일 → 공유 → 웹에 게시 → CSV]로 받은 주소를 넣으면 시트 데이터를 사용합니다. (README.md 참고)
         // 비워두거나 불러오기에 실패하면 아래 기본 데이터를 사용합니다.
         const SHEET_CSV_URL = '';
 
+        // 필수: name, city, lat, lng / 선택: category, menu, link, hours(예: 11:00-21:00), closed(예: 월,화), price, phone, image, note
         const FALLBACK_RESTAURANTS = [
             { id: 1, name: "이순신수제버거", city: "여수", category: "버거", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, link: "https://place.map.kakao.com/26435345" },
             { id: 2, name: "건봉국밥", city: "순천", category: "국밥", menu: "국밥, 수육", lat: 34.950730, lng: 127.493822, link: "https://place.map.kakao.com/11105953" },
@@ -150,18 +177,26 @@
             { id: 4, name: "로타리식당", city: "여수", category: "백반", menu: "백반", lat: 34.739417, lng: 127.733285, link: "https://place.map.kakao.com/10904300" }
         ];
 
+        // 지역별 마커 색
+        const CITY_COLORS = { '여수': '#1e88e5', '순천': '#43a047', '광양': '#fb8c00' };
+        const OTHER_COLOR = '#757575';
+
         const DEFAULT_CENTER = { lat: 34.8500, lng: 127.6000 }; // 여순광 중심점 (율촌면 인근)
         const DEFAULT_LEVEL = 9;
         const SINGLE_PLACE_LEVEL = 5; // 식당이 1곳뿐일 때의 확대 레벨
         const MY_POS_LEVEL = 6;       // 내 위치로 이동할 때의 확대 레벨
+        const CLUSTER_MIN_LEVEL = 6;  // 이 레벨부터 가까운 마커를 묶어서 표시
+        const FAV_STORAGE_KEY = 'ysk-food-favorites';
 
         let restaurants = [];
-        const state = { city: 'all', category: 'all', query: '', myPos: null, selectedId: null };
+        const state = { city: 'all', category: 'all', query: '', favOnly: false, openOnly: false, myPos: null, selectedId: null };
 
         let map = null;
-        const entries = {};      // id → { place, marker, overlay }
+        let clusterer = null;
+        const entries = {};      // id → { place, marker, overlay, content }
         let currentOverlay = null;
         let myPosOverlay = null;
+        let favorites = loadFavorites();
 
         const mobileQuery = window.matchMedia('(max-width: 767px)');
 
@@ -200,7 +235,7 @@
             return rows;
         }
 
-        // 첫 줄(머리글): name, city, category, menu, lat, lng, link
+        // 첫 줄(머리글): name, city, category, menu, lat, lng, link (+ 선택 칸)
         function csvToPlaces(text) {
             const [header, ...rows] = parseCSV(text.replace(/^﻿/, ''));
             if (!header) return [];
@@ -211,7 +246,9 @@
                 return {
                     id: i + 1,
                     name: r.name, city: r.city, category: r.category || '기타', menu: r.menu || '',
-                    lat: parseFloat(r.lat), lng: parseFloat(r.lng), link: r.link || ''
+                    lat: parseFloat(r.lat), lng: parseFloat(r.lng), link: r.link || '',
+                    hours: r.hours || '', closed: r.closed || '', price: r.price || '',
+                    phone: r.phone || '', image: r.image || '', note: r.note || ''
                 };
             }).filter(p => p.name && p.city && isFinite(p.lat) && isFinite(p.lng));
         }
@@ -220,23 +257,35 @@
         window.onload = async function() {
             restaurants = await loadRestaurants();
             renderCategoryButtons();
+            renderLegend();
+            document.getElementById('open-filter').hidden = !restaurants.some(p => parseHours(p.hours));
 
             const mapContainer = document.getElementById('map');
             // SDK 로드 실패 (네트워크 오류, 광고 차단, 미등록 도메인 등) 시 안내. 목록은 계속 사용 가능
             if (typeof kakao === 'undefined' || !kakao.maps) {
                 showMapError(mapContainer);
                 document.getElementById('locate-btn').hidden = true;
+                document.getElementById('legend').hidden = true;
             } else {
                 map = new kakao.maps.Map(mapContainer, {
                     center: new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng),
                     level: DEFAULT_LEVEL
                 });
+                // 가까운 마커 묶어 표시 (클러스터 라이브러리를 못 받았으면 개별 마커로 표시)
+                if (kakao.maps.MarkerClusterer) {
+                    clusterer = new kakao.maps.MarkerClusterer({
+                        map: map,
+                        averageCenter: true,
+                        minLevel: CLUSTER_MIN_LEVEL
+                    });
+                }
                 // 지도 빈 곳을 누르면 열린 정보창 닫기
                 kakao.maps.event.addListener(map, 'click', closeOverlay);
                 createMarkers();
             }
 
             applyFilters(false);
+            openSharedPlace();
         };
 
         function showMapError(container) {
@@ -249,37 +298,216 @@
             `;
         }
 
-        // 링크 버튼 생성 (길찾기 + 상세보기)
-        function createLinks(place, className) {
-            const links = document.createElement('div');
-            links.className = className;
+        function cityColor(city) {
+            return CITY_COLORS[city] || OTHER_COLOR;
+        }
+
+        function renderLegend() {
+            const legend = document.getElementById('legend');
+            Object.entries(CITY_COLORS).forEach(([city, color]) => {
+                const span = document.createElement('span');
+                span.style.setProperty('--c', color);
+                span.textContent = city;
+                legend.appendChild(span);
+            });
+        }
+
+        // 지역 색 마커 이미지 (SVG)
+        const markerImageCache = {};
+        function markerImage(city) {
+            const color = cityColor(city);
+            if (!markerImageCache[color]) {
+                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">` +
+                    `<path d="M15 1C7.3 1 1 7.2 1 14.9 1 25.3 15 41 15 41s14-15.7 14-26.1C29 7.2 22.7 1 15 1z" fill="${color}" stroke="white" stroke-width="2"/>` +
+                    `<circle cx="15" cy="15" r="5.5" fill="white"/></svg>`;
+                markerImageCache[color] = new kakao.maps.MarkerImage(
+                    'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg),
+                    new kakao.maps.Size(30, 42),
+                    { offset: new kakao.maps.Point(15, 42) }
+                );
+            }
+            return markerImageCache[color];
+        }
+
+        // 4. 영업시간 ("11:00-21:00", 자정 넘김 "18:00-02:00" 지원) / 휴무일 ("월", "월,화", "매주 월요일")
+        function parseHours(text) {
+            const m = /(\d{1,2}):(\d{2})\s*[-~]\s*(\d{1,2}):(\d{2})/.exec(text || '');
+            if (!m) return null;
+            return { open: +m[1] * 60 + +m[2], close: +m[3] * 60 + +m[4] };
+        }
+
+        function isClosedDay(closed, day) {
+            if (!closed) return false;
+            const dayChar = '일월화수목금토'[day];
+            return closed.split(/[\s,/·]+/).some(token => token.charAt(0) === dayChar);
+        }
+
+        // true: 영업 중, false: 영업 종료, null: 정보 없음
+        function getOpenStatus(place, now = new Date()) {
+            const h = parseHours(place.hours);
+            if (!h) return null;
+            const minutes = now.getHours() * 60 + now.getMinutes();
+            const today = now.getDay(), yesterday = (today + 6) % 7;
+            if (h.close > h.open) {
+                return !isClosedDay(place.closed, today) && minutes >= h.open && minutes < h.close;
+            }
+            // 자정을 넘기는 영업: 오늘 저녁 영업 또는 어제 시작한 영업의 새벽 부분
+            if (minutes >= h.open) return !isClosedDay(place.closed, today);
+            if (minutes < h.close) return !isClosedDay(place.closed, yesterday);
+            return false;
+        }
+
+        function hoursText(place) {
+            if (!place.hours && !place.closed) return '';
+            let text = '🕒 ' + (place.hours || '영업시간 정보 없음');
+            if (place.closed) text += ' (' + place.closed + ' 휴무)';
+            return text;
+        }
+
+        function createBadge(place) {
+            const status = getOpenStatus(place);
+            if (status === null) return null;
+            const badge = document.createElement('span');
+            badge.className = 'badge ' + (status ? 'open' : 'closed');
+            badge.textContent = status ? '영업 중' : '영업 종료';
+            return badge;
+        }
+
+        // 5. 즐겨찾기 (이 브라우저에만 저장)
+        function favKey(place) {
+            return place.city + ':' + place.name;
+        }
+
+        function loadFavorites() {
+            try {
+                return new Set(JSON.parse(localStorage.getItem(FAV_STORAGE_KEY) || '[]'));
+            } catch (e) {
+                return new Set();
+            }
+        }
+
+        function saveFavorites() {
+            try {
+                localStorage.setItem(FAV_STORAGE_KEY, JSON.stringify([...favorites]));
+            } catch (e) { /* 저장이 막힌 브라우저: 이번 방문 동안만 유지 */ }
+        }
+
+        function toggleFavorite(place) {
+            const key = favKey(place);
+            const on = !favorites.has(key);
+            if (on) favorites.add(key); else favorites.delete(key);
+            saveFavorites();
+            showToast(on ? '즐겨찾기에 추가했어요.' : '즐겨찾기에서 뺐어요.');
+
+            // 정보창 버튼 갱신 후, 목록은 필터 결과가 달라질 수 있어 다시 그리기
+            const entry = entries[place.id];
+            if (entry) updateFavButton(entry.content.querySelector('.fav'), on);
+            applyFilters(false);
+        }
+
+        function updateFavButton(btn, on) {
+            if (!btn) return;
+            btn.classList.toggle('on', on);
+            btn.textContent = on ? '★ 저장됨' : '☆ 저장';
+            btn.setAttribute('aria-pressed', String(on));
+        }
+
+        // 6. 공유 (?place=식당이름 링크)
+        function shareUrl(place) {
+            return location.origin + location.pathname + '?place=' + encodeURIComponent(place.name);
+        }
+
+        async function sharePlace(place) {
+            const url = shareUrl(place);
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: place.name + ' - 여순광 맛집 지도', text: place.city + ' ' + place.name + ' (' + place.menu + ')', url });
+                    return;
+                } catch (e) {
+                    if (e.name === 'AbortError') return; // 사용자가 공유 창을 닫음
+                }
+            }
+            try {
+                await navigator.clipboard.writeText(url);
+                showToast('링크를 복사했어요. 원하는 곳에 붙여 넣어 공유하세요.');
+            } catch (e) {
+                prompt('아래 링크를 복사해 공유하세요.', url);
+            }
+        }
+
+        // 공유 링크로 들어온 경우 해당 식당 바로 열기
+        function openSharedPlace() {
+            const name = new URLSearchParams(location.search).get('place');
+            if (!name) return;
+            const place = restaurants.find(p => p.name === name);
+            if (!place) {
+                showToast('공유된 맛집을 찾지 못했어요.');
+                return;
+            }
+            selectPlace(place.id, true);
+        }
+
+        // 링크·버튼 묶음 (길찾기, 상세보기, 전화, 저장, 공유)
+        function createActions(place, className) {
+            const box = document.createElement('div');
+            box.className = className;
+
+            const addLink = (cls, href, text, newTab) => {
+                const a = document.createElement('a');
+                a.className = cls;
+                a.href = href;
+                if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
+                a.textContent = text;
+                box.appendChild(a);
+            };
+            const addButton = (cls, text, onClick) => {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.className = cls;
+                b.textContent = text;
+                b.addEventListener('click', e => { e.stopPropagation(); onClick(); });
+                box.appendChild(b);
+                return b;
+            };
 
             // 카카오맵 길찾기 (도착지 = 식당)
-            const route = document.createElement('a');
-            route.className = 'link';
-            route.href = 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng;
-            route.target = '_blank';
-            route.rel = 'noopener';
-            route.textContent = '카카오맵 길찾기';
-            links.appendChild(route);
+            addLink('link', 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng, '카카오맵 길찾기', true);
+            if (place.link) addLink('link sub', place.link, '상세보기', true);
+            if (place.phone) addLink('link sub', 'tel:' + place.phone.replace(/[^\d+]/g, ''), '📞 전화', false);
 
-            // 카카오맵 상세정보
-            if (place.link) {
-                const detail = document.createElement('a');
-                detail.className = 'link sub';
-                detail.href = place.link;
-                detail.target = '_blank';
-                detail.rel = 'noopener';
-                detail.textContent = '상세보기';
-                links.appendChild(detail);
-            }
-            return links;
+            const fav = addButton('link sub fav', '', () => toggleFavorite(place));
+            updateFavButton(fav, favorites.has(favKey(place)));
+            addButton('link sub', '공유', () => sharePlace(place));
+            return box;
+        }
+
+        function addText(parent, className, text) {
+            if (!text) return null;
+            const el = document.createElement('div');
+            el.className = className;
+            el.textContent = text;
+            parent.appendChild(el);
+            return el;
+        }
+
+        function metaText(place) {
+            return [place.city, place.category, place.price && '💰 ' + place.price].filter(Boolean).join(' · ');
         }
 
         // 정보창 DOM 생성 (textContent 사용으로 이름 등에 특수문자가 있어도 안전)
         function createOverlayContent(place) {
             const wrap = document.createElement('div');
             wrap.className = 'wrap';
+
+            if (place.image) {
+                const img = document.createElement('img');
+                img.className = 'photo';
+                img.src = place.image;
+                img.alt = place.name + ' 사진';
+                img.loading = 'lazy';
+                img.addEventListener('error', () => img.remove());
+                wrap.appendChild(img);
+            }
 
             const info = document.createElement('div');
             info.className = 'info';
@@ -291,47 +519,49 @@
             close.setAttribute('aria-label', '닫기');
             close.textContent = '✖';
             close.addEventListener('click', closeOverlay);
+            info.appendChild(close);
 
-            const title = document.createElement('div');
-            title.className = 'title';
-            title.textContent = place.name;
+            addText(info, 'title', place.name);
+            addText(info, 'meta', metaText(place));
+            addText(info, 'desc', place.menu && '추천: ' + place.menu);
+            const hours = addText(info, 'hours', hoursText(place));
+            if (hours) {
+                const badge = createBadge(place);
+                if (badge) hours.appendChild(badge);
+            }
+            addText(info, 'note', place.note && '💬 ' + place.note);
+            info.appendChild(createActions(place, 'links'));
 
-            const meta = document.createElement('div');
-            meta.className = 'meta';
-            meta.textContent = place.city + ' · ' + place.category;
-
-            const desc = document.createElement('div');
-            desc.className = 'desc';
-            desc.textContent = '추천: ' + place.menu;
-
-            info.append(close, title, meta, desc, createLinks(place, 'links'));
             wrap.appendChild(info);
             return wrap;
         }
 
-        // 4. 마커는 한 번만 만들고, 필터에 따라 보이기/숨기기
+        // 7. 마커는 한 번만 만들고, 필터에 따라 보이기/숨기기
         function createMarkers() {
             restaurants.forEach(place => {
                 const position = new kakao.maps.LatLng(place.lat, place.lng);
-                const marker = new kakao.maps.Marker({ position: position, title: place.name });
+                const marker = new kakao.maps.Marker({ position: position, title: place.name, image: markerImage(place.city) });
+                const content = createOverlayContent(place);
                 const overlay = new kakao.maps.CustomOverlay({
-                    content: createOverlayContent(place),
+                    content: content,
                     position: position,
                     clickable: true, // 정보창 클릭이 지도 클릭(닫기)으로 전달되지 않도록
                     zIndex: 3
                 });
                 kakao.maps.event.addListener(marker, 'click', () => selectPlace(place.id));
-                entries[place.id] = { place, marker, overlay };
+                entries[place.id] = { place, marker, overlay, content };
             });
         }
 
-        // 5. 필터 적용 (지역 + 종류 + 검색어, 내 위치가 있으면 가까운 순)
+        // 8. 필터 적용 (지역 + 종류 + 검색어 + 즐겨찾기 + 영업 중, 내 위치가 있으면 가까운 순)
         function getFilteredPlaces() {
             const q = state.query.trim().toLowerCase();
             const list = restaurants.filter(p =>
                 (state.city === 'all' || p.city === state.city) &&
                 (state.category === 'all' || p.category === state.category) &&
-                (!q || [p.name, p.menu, p.category, p.city].join(' ').toLowerCase().includes(q))
+                (!state.favOnly || favorites.has(favKey(p))) &&
+                (!state.openOnly || getOpenStatus(p) === true) &&
+                (!q || [p.name, p.menu, p.category, p.city, p.note].join(' ').toLowerCase().includes(q))
             );
             if (state.myPos) {
                 list.forEach(p => { p.distance = distanceKm(state.myPos, p); });
@@ -345,16 +575,24 @@
             const visibleIds = new Set(list.map(p => p.id));
 
             if (map) {
+                const visibleMarkers = [];
                 Object.values(entries).forEach(({ place, marker }) => {
-                    marker.setMap(visibleIds.has(place.id) ? map : null);
+                    if (visibleIds.has(place.id)) visibleMarkers.push(marker);
+                    else if (!clusterer) marker.setMap(null);
                 });
+                if (clusterer) {
+                    clusterer.clear();
+                    clusterer.addMarkers(visibleMarkers);
+                } else {
+                    visibleMarkers.forEach(marker => marker.setMap(map));
+                }
             }
             if (state.selectedId !== null && !visibleIds.has(state.selectedId)) closeOverlay();
 
             renderList(list);
 
             if (fit && map) {
-                const noFilter = state.city === 'all' && state.category === 'all' && !state.query.trim();
+                const noFilter = state.city === 'all' && state.category === 'all' && !state.favOnly && !state.openOnly && !state.query.trim();
                 if (noFilter) {
                     map.setLevel(DEFAULT_LEVEL);
                     map.setCenter(new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng));
@@ -377,7 +615,7 @@
             }
         }
 
-        // 6. 목록 그리기
+        // 9. 목록 그리기
         function renderList(list) {
             document.getElementById('panel-count').textContent = '맛집 ' + list.length + '곳';
             document.getElementById('sort-note').textContent = state.myPos ? '가까운 순' : '';
@@ -388,7 +626,9 @@
             if (list.length === 0) {
                 const li = document.createElement('li');
                 li.className = 'empty';
-                li.textContent = '조건에 맞는 맛집이 없어요. 검색어나 필터를 바꿔 보세요.';
+                li.textContent = state.favOnly && favorites.size === 0
+                    ? '아직 저장한 맛집이 없어요. 식당의 ☆ 저장 버튼을 눌러 보세요.'
+                    : '조건에 맞는 맛집이 없어요. 검색어나 필터를 바꿔 보세요.';
                 ul.appendChild(li);
                 return;
             }
@@ -408,24 +648,23 @@
                     dist.textContent = formatDistance(place.distance);
                     main.appendChild(dist);
                 }
-                const name = document.createElement('div');
-                name.className = 'place-name';
-                name.textContent = place.name;
-                const meta = document.createElement('div');
-                meta.className = 'place-meta';
-                meta.textContent = place.city + ' · ' + place.category;
-                const menu = document.createElement('div');
-                menu.className = 'place-menu';
-                menu.textContent = '추천: ' + place.menu;
-                main.append(name, meta, menu);
+                const name = addText(main, 'place-name', place.name);
+                name.style.setProperty('--c', cityColor(place.city));
+                addText(main, 'place-meta', metaText(place));
+                const hours = addText(main, 'place-hours', hoursText(place));
+                if (hours) {
+                    const badge = createBadge(place);
+                    if (badge) hours.appendChild(badge);
+                }
+                addText(main, 'place-menu', place.menu && '추천: ' + place.menu);
                 main.addEventListener('click', () => selectPlace(place.id, true));
 
-                li.append(main, createLinks(place, 'place-links'));
+                li.append(main, createActions(place, 'place-links'));
                 ul.appendChild(li);
             });
         }
 
-        // 7. 식당 선택 (마커 클릭 또는 목록 클릭)
+        // 10. 식당 선택 (마커 클릭 또는 목록 클릭)
         function selectPlace(id, fromList) {
             state.selectedId = id;
             document.querySelectorAll('.place-list li').forEach(li => {
@@ -433,7 +672,11 @@
             });
 
             const entry = entries[id];
-            if (!map || !entry) return;
+            if (!map || !entry) {
+                const li = document.querySelector(`.place-list li[data-id="${id}"]`);
+                if (li) li.scrollIntoView({ block: 'nearest' });
+                return;
+            }
 
             if (fromList && mobileQuery.matches) setPanelExpanded(false); // 모바일: 지도가 보이도록 목록 접기
 
@@ -463,7 +706,8 @@
             document.querySelectorAll('.place-list li.selected').forEach(li => li.classList.remove('selected'));
         }
 
-        // 8. 종류 버튼 (데이터에 있는 종류로 생성)
+        // 11. 필터 버튼
+        // 종류 버튼 (데이터에 있는 종류로 생성)
         function renderCategoryButtons() {
             const group = document.getElementById('category-group');
             const categories = [...new Set(restaurants.map(p => p.category))].sort((a, b) => a.localeCompare(b, 'ko'));
@@ -501,6 +745,16 @@
             });
         });
 
+        // 즐겨찾기만 / 영업 중만 켜고 끄기
+        [['fav-filter', 'favOnly'], ['open-filter', 'openOnly']].forEach(([id, key]) => {
+            document.getElementById(id).addEventListener('click', function() {
+                state[key] = !state[key];
+                this.classList.toggle('active', state[key]);
+                this.setAttribute('aria-pressed', String(state[key]));
+                applyFilters(true);
+            });
+        });
+
         // 검색 (입력이 멈춘 뒤 지도 범위 조정)
         let searchTimer = null;
         document.getElementById('search').addEventListener('input', function() {
@@ -510,7 +764,7 @@
             searchTimer = setTimeout(() => applyFilters(true), 400);
         });
 
-        // 9. 모바일 목록 접기/펴기
+        // 12. 모바일 목록 접기/펴기
         function setPanelExpanded(expanded) {
             const panel = document.getElementById('panel');
             if (panel.classList.contains('expanded') === expanded) return;
@@ -527,7 +781,7 @@
         });
         window.addEventListener('resize', () => { if (map) map.relayout(); });
 
-        // 10. 내 주변 맛집 (현재 위치)
+        // 13. 내 주변 맛집 (현재 위치)
         document.getElementById('locate-btn').addEventListener('click', function() {
             if (!navigator.geolocation) {
                 showToast('이 브라우저는 위치 기능을 지원하지 않아요.');
@@ -585,6 +839,13 @@
             toast.classList.add('show');
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // 14. 홈 화면 추가(PWA)용 서비스 워커
+        if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => { /* 설치 기능만 빠지고 사이트는 그대로 동작 */ });
+            });
         }
     </script>
 </body>
