@@ -91,6 +91,9 @@
         .link.sub { background: #f1f1f1; }
         .link.fav.on { background: #fff8e1; color: #e65100; }
 
+        /* 저작권 표시 */
+        .site-footer { flex-shrink: 0; padding: 4px 16px; background: #fafafa; border-top: 1px solid #eee; color: #999; font-size: 11px; text-align: center; }
+
         /* 모바일: 지도 아래 접었다 펴는 목록 */
         @media (max-width: 767px) {
             main { flex-direction: column; }
@@ -164,6 +167,8 @@
         </div>
     </main>
 
+    <footer class="site-footer">© 2026 엽쌤. All rights reserved.</footer>
+
     <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=services,clusterer"></script>
     <script>
@@ -176,7 +181,7 @@
         // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
         // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
         const FALLBACK_RESTAURANTS = [
-            // 여수 (49곳)
+            // 여수 (48곳)
             { id: 1, name: "이순신수제버거", city: "여수", category: "양식·일식", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, hours: "10:00-21:00" },
             { id: 4, name: "로타리식당", city: "여수", category: "백반·한식", menu: "백반", lat: 34.739417, lng: 127.733285, hours: "08:00-18:00", closed: "수" },
             { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집", hours: "09:00-20:00", closed: "연중무휴" },
@@ -220,7 +225,6 @@
             { id: 94, name: "41번포차", city: "여수", category: "포차·술집", menu: "선어회, 병어조림", note: "교동 포차거리", hours: "16:00-23:00", closed: "일" },
             { id: 95, name: "동서식당", city: "여수", category: "백반·한식", menu: "서대회무침", hours: "11:10-15:00, 17:00-20:00", closed: "수" },
             { id: 96, name: "진남식당", city: "여수", category: "백반·한식", menu: "꽃게탕정식", hours: "09:30-20:30", closed: "월" },
-            { id: 97, name: "여수1923", city: "여수", category: "백반·한식", menu: "여수정식", hours: "10:00-16:00", closed: "월" },
             { id: 98, name: "덕충식당", city: "여수", category: "백반·한식", menu: "백반", note: "가성비 백반", hours: "07:00-22:00" },
             { id: 99, name: "한일관", city: "여수", category: "한정식", menu: "해산물 코스 한정식", hours: "11:00-15:00, 17:00-21:30", closed: "명절" },
             { id: 100, name: "다다한정식", city: "여수", category: "한정식", menu: "한정식", note: "상견례 장소로 인기", hours: "12:00-15:00, 17:00-21:00", closed: "설·추석" },
