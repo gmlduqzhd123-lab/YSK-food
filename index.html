@@ -79,6 +79,7 @@
         .place-hours { margin-top: 3px; font-size: 12px; color: #666; }
         .place-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
         .empty { padding: 32px 16px; text-align: center; color: #999; font-size: 14px; }
+        .hours-note { padding: 14px 16px 18px; font-size: 12px; line-height: 1.5; color: #999; }
 
         /* 영업 상태 표시 */
         .badge { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; }
@@ -171,78 +172,78 @@
         // 비워두거나 불러오기에 실패하면 아래 기본 데이터를 사용합니다.
         const SHEET_CSV_URL = '';
 
-        // 필수: name, city / 선택: category, menu, lat, lng, link, hours(예: 11:00-21:00), closed(예: 월,화), price, phone, image, note
+        // 필수: name, city / 선택: category, menu, lat, lng, link, hours(예: 11:00-21:00, 브레이크타임은 "11:00-15:00, 17:00-21:00"), closed(예: 월 / 둘째·넷째 화 / 연중무휴), price, phone, image, note
         // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
         // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
         const FALLBACK_RESTAURANTS = [
             // 여수 (21곳)
-            { id: 1, name: "이순신수제버거", city: "여수", category: "양식·카페", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706 },
+            { id: 1, name: "이순신수제버거", city: "여수", category: "양식·카페", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, hours: "10:00-21:00" },
             { id: 4, name: "로타리식당", city: "여수", category: "백반·한식", menu: "백반", lat: 34.739417, lng: 127.733285 },
-            { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집" },
-            { id: 6, name: "황소식당", city: "여수", category: "게장", menu: "돌게장백반, 갈치조림", note: "봉산동 게장골목" },
-            { id: 17, name: "명동게장", city: "여수", category: "게장", menu: "간장게장, 돌산갓김치", note: "봉산동 게장골목" },
-            { id: 18, name: "꽃돌게장1번가", city: "여수", category: "게장", menu: "게장정식" },
-            { id: 7, name: "구백식당", city: "여수", category: "해산물", menu: "서대회, 금풍생이구이", note: "서대회는 여름이 제철" },
-            { id: 19, name: "갈치조림기똥차게맛있는집", city: "여수", category: "해산물", menu: "갈치조림, 간장게장", note: "향일암 가는 길" },
-            { id: 20, name: "여수밥상 갈치야", city: "여수", category: "해산물", menu: "갈치조림, 갈치구이" },
-            { id: 21, name: "당머리첫집", city: "여수", category: "해산물", menu: "하모(갯장어) 샤부샤부, 새조개 샤부샤부" },
-            { id: 22, name: "진남횟집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", note: "돌산공원 근처" },
-            { id: 23, name: "황가네하모", city: "여수", category: "해산물", menu: "하모 샤부샤부" },
-            { id: 24, name: "민들레집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회" },
-            { id: 25, name: "낭만해물삼합", city: "여수", category: "해산물", menu: "해물삼합" },
-            { id: 26, name: "교동포차 26번 해물삼합", city: "여수", category: "해산물", menu: "해물삼합", note: "교동 포차거리, 저녁 영업" },
-            { id: 8, name: "7공주식당", city: "여수", category: "장어", menu: "장어탕, 장어구이" },
-            { id: 9, name: "연이네식당", city: "여수", category: "장어", menu: "장어탕, 생선구이" },
-            { id: 10, name: "어부사시사", city: "여수", category: "한정식", menu: "회 한정식" },
-            { id: 27, name: "순이네밥상", city: "여수", category: "백반·한식", menu: "게장·생선 백반" },
+            { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집", hours: "09:00-20:00", closed: "연중무휴" },
+            { id: 6, name: "황소식당", city: "여수", category: "게장", menu: "돌게장백반, 갈치조림", note: "봉산동 게장골목", hours: "08:00-20:20" },
+            { id: 17, name: "명동게장", city: "여수", category: "게장", menu: "간장게장, 돌산갓김치", note: "봉산동 게장골목", hours: "07:00-21:00", closed: "연중무휴" },
+            { id: 18, name: "꽃돌게장1번가", city: "여수", category: "게장", menu: "게장정식", hours: "10:00-15:00, 17:00-20:30", closed: "명절" },
+            { id: 7, name: "구백식당", city: "여수", category: "해산물", menu: "서대회, 금풍생이구이", note: "서대회는 여름이 제철", hours: "평일 08:00-15:00 / 주말 08:00-18:00", closed: "둘째·넷째 화" },
+            { id: 19, name: "갈치조림기똥차게맛있는집", city: "여수", category: "해산물", menu: "갈치조림, 간장게장", note: "향일암 가는 길", hours: "08:00-19:00", closed: "연중무휴" },
+            { id: 20, name: "여수밥상 갈치야", city: "여수", category: "해산물", menu: "갈치조림, 갈치구이", hours: "07:30-20:00", closed: "수" },
+            { id: 21, name: "당머리첫집", city: "여수", category: "해산물", menu: "하모(갯장어) 샤부샤부, 새조개 샤부샤부", hours: "11:00-15:00, 17:00-21:00" },
+            { id: 22, name: "진남횟집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", note: "돌산공원 근처", hours: "10:30-23:00" },
+            { id: 23, name: "황가네하모", city: "여수", category: "해산물", menu: "하모 샤부샤부", hours: "평일 11:30-21:30 / 주말 11:30-15:00, 17:00-21:30" },
+            { id: 24, name: "민들레집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", hours: "09:00-24:00", closed: "연중무휴" },
+            { id: 25, name: "낭만해물삼합", city: "여수", category: "해산물", menu: "해물삼합", hours: "07:00-22:00", closed: "둘째·넷째 수" },
+            { id: 26, name: "교동포차 26번 해물삼합", city: "여수", category: "해산물", menu: "해물삼합", note: "교동 포차거리, 저녁 영업", hours: "16:00-02:00" },
+            { id: 8, name: "7공주식당", city: "여수", category: "장어", menu: "장어탕, 장어구이", hours: "11:00-14:30, 17:00-21:00", closed: "둘째·넷째 일" },
+            { id: 9, name: "연이네식당", city: "여수", category: "장어", menu: "장어탕, 생선구이", hours: "06:00-21:00", closed: "연중무휴" },
+            { id: 10, name: "어부사시사", city: "여수", category: "한정식", menu: "회 한정식", hours: "11:00-15:00, 17:00-22:00", closed: "연중무휴" },
+            { id: 27, name: "순이네밥상", city: "여수", category: "백반·한식", menu: "게장·생선 백반", hours: "09:30-15:30, 17:00-21:00", closed: "둘째·넷째 수" },
             { id: 28, name: "향일암쉼터", city: "여수", category: "백반·한식", menu: "파전" },
-            { id: 29, name: "여수당", city: "여수", category: "양식·카페", menu: "바게트버거, 쑥 아이스크림", note: "이순신광장" },
+            { id: 29, name: "여수당", city: "여수", category: "양식·카페", menu: "바게트버거, 쑥 아이스크림", note: "이순신광장", hours: "07:30-23:00" },
             // 순천 (22곳)
             { id: 2, name: "건봉국밥", city: "순천", category: "국밥·탕", menu: "국밥, 수육", lat: 34.95073, lng: 127.493822 },
-            { id: 64, name: "순복식당", city: "순천", category: "국밥·탕", menu: "국밥, 수육", note: "웃장 국밥골목" },
+            { id: 64, name: "순복식당", city: "순천", category: "국밥·탕", menu: "국밥, 수육", note: "웃장 국밥골목", hours: "평일 10:00-16:00 / 주말 08:00-14:00", closed: "화" },
             { id: 65, name: "내조국국밥 아랫장점", city: "순천", category: "국밥·탕", menu: "국밥", note: "아랫장 건너편" },
-            { id: 31, name: "금당골추어탕", city: "순천", category: "국밥·탕", menu: "추어탕" },
-            { id: 11, name: "대대선창집", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 꼬막정식", note: "순천만습지 근처" },
-            { id: 13, name: "순천만갈대밭식당", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
-            { id: 14, name: "순천만 전라도밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
-            { id: 32, name: "도원경", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
-            { id: 33, name: "남녘들밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식" },
+            { id: 31, name: "금당골추어탕", city: "순천", category: "국밥·탕", menu: "추어탕", hours: "09:30-20:30", closed: "일" },
+            { id: 11, name: "대대선창집", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 꼬막정식", note: "순천만습지 근처", hours: "08:30-21:00", closed: "연중무휴" },
+            { id: 13, name: "순천만갈대밭식당", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "08:00-21:00", closed: "연중무휴" },
+            { id: 14, name: "순천만 전라도밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "08:00-20:00", closed: "연중무휴" },
+            { id: 32, name: "도원경", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "10:00-21:00" },
+            { id: 33, name: "남녘들밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "11:00-14:30, 17:00-21:00" },
             { id: 12, name: "대원식당", city: "순천", category: "한정식", menu: "한정식", note: "60년 넘은 전통 한정식집" },
-            { id: 34, name: "명궁관", city: "순천", category: "한정식", menu: "한정식, 보리굴비, 떡갈비" },
-            { id: 35, name: "선비촌", city: "순천", category: "한정식", menu: "꼬막정식, 떡갈비", note: "낙안읍성 근처" },
-            { id: 36, name: "고향정가", city: "순천", category: "한정식", menu: "한정식", note: "낙안읍성 근처" },
-            { id: 37, name: "대숲골농원", city: "순천", category: "닭구이", menu: "닭숯불구이", note: "대나무숲 속 식당" },
-            { id: 38, name: "최가네흑두부", city: "순천", category: "백반·한식", menu: "흑두부, 삼겹살" },
+            { id: 34, name: "명궁관", city: "순천", category: "한정식", menu: "한정식, 보리굴비, 떡갈비", hours: "11:00-15:00, 17:00-21:30", closed: "월" },
+            { id: 35, name: "선비촌", city: "순천", category: "한정식", menu: "꼬막정식, 떡갈비", note: "낙안읍성 근처", hours: "09:00-21:00" },
+            { id: 36, name: "고향정가", city: "순천", category: "한정식", menu: "한정식", note: "낙안읍성 근처", hours: "09:00-20:00", closed: "부정기 일요일" },
+            { id: 37, name: "대숲골농원", city: "순천", category: "닭구이", menu: "닭숯불구이", note: "대나무숲 속 식당", hours: "11:30-21:30", closed: "연중무휴" },
+            { id: 38, name: "최가네흑두부", city: "순천", category: "백반·한식", menu: "흑두부, 삼겹살", hours: "17:00-22:00", closed: "토" },
             { id: 39, name: "열무밭애", city: "순천", category: "백반·한식", menu: "쌈밥정식" },
-            { id: 40, name: "광신식당", city: "순천", category: "백반·한식", menu: "산채비빔밥, 파전", note: "송광사 아래" },
-            { id: 41, name: "송광사식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "송광사 아래" },
+            { id: 40, name: "광신식당", city: "순천", category: "백반·한식", menu: "산채비빔밥, 파전", note: "송광사 아래", hours: "07:30-21:00" },
+            { id: 41, name: "송광사식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "송광사 아래", hours: "08:00-22:00" },
             { id: 42, name: "길상식당", city: "순천", category: "백반·한식", menu: "산채비빔밥, 산채정식", note: "송광사 아래" },
-            { id: 43, name: "선암식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "선암사 입구" },
-            { id: 44, name: "조계산보리밥", city: "순천", category: "백반·한식", menu: "보리밥", note: "조계산 굴목재 아래" },
+            { id: 43, name: "선암식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "선암사 입구", hours: "09:00-18:00" },
+            { id: 44, name: "조계산보리밥", city: "순천", category: "백반·한식", menu: "보리밥", note: "조계산 굴목재 아래", hours: "10:00-16:30" },
             { id: 45, name: "덕정가든", city: "순천", category: "백반·한식", menu: "순두부백반", note: "선암사 가는 길" },
             // 광양 (22곳)
-            { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348 },
-            { id: 46, name: "광양가본", city: "광양", category: "고기", menu: "광양불고기" },
-            { id: 47, name: "장원회관", city: "광양", category: "고기", menu: "광양불고기" },
+            { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348, hours: "11:00-21:30" },
+            { id: 46, name: "광양가본", city: "광양", category: "고기", menu: "광양불고기", hours: "평일 11:00-15:00, 16:30-21:00 / 주말 11:00-21:00", closed: "연중무휴" },
+            { id: 47, name: "장원회관", city: "광양", category: "고기", menu: "광양불고기", hours: "11:00-15:00, 16:30-21:30", closed: "설 연휴" },
             { id: 48, name: "대도갈비", city: "광양", category: "고기", menu: "돼지갈비" },
-            { id: 66, name: "대호돼지국밥", city: "광양", category: "국밥·탕", menu: "돼지국밥", note: "광영동" },
+            { id: 66, name: "대호돼지국밥", city: "광양", category: "국밥·탕", menu: "돼지국밥", note: "광영동", hours: "09:00-21:00", closed: "첫째·셋째 월" },
             { id: 67, name: "이모네아구찜", city: "광양", category: "해산물", menu: "아구찜", note: "광영동" },
-            { id: 49, name: "차도리가든", city: "광양", category: "닭구이", menu: "닭숯불구이" },
-            { id: 50, name: "지곡산장", city: "광양", category: "닭구이", menu: "닭숯불구이" },
+            { id: 49, name: "차도리가든", city: "광양", category: "닭구이", menu: "닭숯불구이", hours: "11:00-15:00, 17:00-21:00", closed: "수" },
+            { id: 50, name: "지곡산장", city: "광양", category: "닭구이", menu: "닭숯불구이", hours: "11:30-14:30, 17:00-21:30", closed: "월" },
             { id: 51, name: "억불산장", city: "광양", category: "닭구이", menu: "닭숯불구이" },
-            { id: 15, name: "청룡식당", city: "광양", category: "재첩", menu: "재첩국, 재첩회", note: "섬진강변 진월면" },
-            { id: 54, name: "모은정", city: "광양", category: "재첩", menu: "재첩 요리, 한정식" },
-            { id: 16, name: "망덕횟집", city: "광양", category: "해산물", menu: "전어회", note: "망덕포구" },
+            { id: 15, name: "청룡식당", city: "광양", category: "재첩", menu: "재첩국, 재첩회", note: "섬진강변 진월면", hours: "09:00-19:30", closed: "월" },
+            { id: 54, name: "모은정", city: "광양", category: "재첩", menu: "재첩 요리, 한정식", hours: "11:30-15:00, 17:00-20:30", closed: "일" },
+            { id: 16, name: "망덕횟집", city: "광양", category: "해산물", menu: "전어회", note: "망덕포구", hours: "10:00-21:00" },
             { id: 55, name: "장끄방횟집", city: "광양", category: "해산물", menu: "물회" },
             { id: 56, name: "갯벌낙지수제비", city: "광양", category: "해산물", menu: "낙지볶음, 수제비" },
-            { id: 57, name: "설담가", city: "광양", category: "한정식", menu: "한정식" },
-            { id: 68, name: "매화향", city: "광양", category: "한정식", menu: "한정식" },
-            { id: 58, name: "영일관", city: "광양", category: "한정식", menu: "보리굴비" },
+            { id: 57, name: "설담가", city: "광양", category: "한정식", menu: "한정식", hours: "11:30-21:00" },
+            { id: 68, name: "매화향", city: "광양", category: "한정식", menu: "한정식", hours: "평일 11:30-15:00, 17:00-21:00", closed: "일" },
+            { id: 58, name: "영일관", city: "광양", category: "한정식", menu: "보리굴비", hours: "10:30-15:00, 17:00-20:00", closed: "일" },
             { id: 59, name: "신가가마솥", city: "광양", category: "국밥·탕", menu: "국밥" },
-            { id: 69, name: "세림식당", city: "광양", category: "백반·한식", menu: "옛날오징어볶음, 돌산갓김치찜", note: "중마동 이순신대교 먹거리타운" },
-            { id: 70, name: "시내식당", city: "광양", category: "백반·한식", menu: "한식" },
-            { id: 60, name: "은성면옥", city: "광양", category: "면", menu: "갈비탕, 함흥냉면", note: "중마동" },
-            { id: 61, name: "승승칼국수", city: "광양", category: "면", menu: "칼국수", note: "중마동" }
+            { id: 69, name: "세림식당", city: "광양", category: "백반·한식", menu: "옛날오징어볶음, 돌산갓김치찜", note: "중마동 이순신대교 먹거리타운", closed: "토" },
+            { id: 70, name: "시내식당", city: "광양", category: "고기", menu: "광양불고기", note: "광양읍 불고기 거리 초입", hours: "10:30-21:00" },
+            { id: 60, name: "은성면옥", city: "광양", category: "면", menu: "갈비탕, 함흥냉면", note: "중마동", hours: "08:00-21:00", closed: "월" },
+            { id: 61, name: "승승칼국수", city: "광양", category: "면", menu: "칼국수", note: "중마동", hours: "평일 11:00-14:00, 16:30-21:00 / 토 11:00-14:00, 17:00-21:00", closed: "일" }
         ];
 
         // 지역별 마커 색
@@ -486,38 +487,88 @@
             return markerImageCache[color];
         }
 
-        // 4. 영업시간 ("11:00-21:00", 자정 넘김 "18:00-02:00" 지원) / 휴무일 ("월", "월,화", "매주 월요일")
-        function parseHours(text) {
-            const m = /(\d{1,2}):(\d{2})\s*[-~]\s*(\d{1,2}):(\d{2})/.exec(text || '');
-            if (!m) return null;
-            return { open: +m[1] * 60 + +m[2], close: +m[3] * 60 + +m[4] };
+        // 4. 영업시간
+        //   hours 예: "11:00-21:00", 브레이크타임 "11:00-15:00, 17:00-21:00", 자정 넘김 "18:00-02:00",
+        //            요일별 "평일 08:00-15:00 / 주말 08:00-18:00" (평일·주말·월~금·토 등, '/'로 구분)
+        //   closed 예: "월", "월,화", "매주 월요일", "둘째·넷째 화"(해당 요일엔 영업 여부를 표시하지 않음), "연중무휴"
+        const DAY_CHARS = '일월화수목금토';
+        const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0]; // 월~일 순서 (월~금 같은 범위 계산용)
+
+        function parseDays(spec) {
+            if (!spec) return null; // 요일 지정 없음 = 매일
+            if (spec.includes('평일')) return [1, 2, 3, 4, 5];
+            if (spec.includes('주말')) return [0, 6];
+            const range = /([일월화수목금토])\s*[~-]\s*([일월화수목금토])/.exec(spec);
+            if (range) {
+                const from = WEEK_ORDER.indexOf(DAY_CHARS.indexOf(range[1]));
+                const to = WEEK_ORDER.indexOf(DAY_CHARS.indexOf(range[2]));
+                return WEEK_ORDER.slice(from, to + 1);
+            }
+            const days = [...spec].map(ch => DAY_CHARS.indexOf(ch)).filter(d => d >= 0);
+            return days.length ? days : null;
         }
 
-        function isClosedDay(closed, day) {
+        // [{ days: 요일 배열 또는 null(매일), open, close }] (분 단위), 형식이 맞지 않으면 null
+        function parseHours(text) {
+            if (!text) return null;
+            const ranges = [];
+            text.split('/').forEach(segment => {
+                const firstDigit = segment.search(/\d/);
+                if (firstDigit < 0) return;
+                const days = parseDays(segment.slice(0, firstDigit).trim());
+                for (const m of segment.matchAll(/(\d{1,2}):(\d{2})\s*[-~]\s*(\d{1,2}):(\d{2})/g)) {
+                    ranges.push({ days, open: +m[1] * 60 + +m[2], close: +m[3] * 60 + +m[4] });
+                }
+            });
+            return ranges.length ? ranges : null;
+        }
+
+        // 그 요일의 영업 구간: 요일을 지정한 구간이 있으면 그것, 없으면 '매일' 구간
+        function rangesForDay(ranges, day) {
+            const specific = ranges.filter(r => r.days && r.days.includes(day));
+            return specific.length ? specific : ranges.filter(r => !r.days);
+        }
+
+        // true: 휴무, false: 영업일, null: 알 수 없음 (둘째·넷째 등 격주 휴무의 해당 요일)
+        function closedOn(closed, day) {
             if (!closed) return false;
-            const dayChar = '일월화수목금토'[day];
-            return closed.split(/[\s,/·]+/).some(token => token.charAt(0) === dayChar);
+            const dayChar = DAY_CHARS[day];
+            const mentioned = closed.split(/[\s,/·]+/).some(token => token.charAt(0) === dayChar);
+            if (!mentioned) return false;
+            return /째|격주|부정기/.test(closed) ? null : true;
         }
 
         // true: 영업 중, false: 영업 종료, null: 정보 없음
         function getOpenStatus(place, now = new Date()) {
-            const h = parseHours(place.hours);
-            if (!h) return null;
+            const ranges = parseHours(place.hours);
+            if (!ranges) return null;
             const minutes = now.getHours() * 60 + now.getMinutes();
             const today = now.getDay(), yesterday = (today + 6) % 7;
-            if (h.close > h.open) {
-                return !isClosedDay(place.closed, today) && minutes >= h.open && minutes < h.close;
+
+            // 어제 시작해 자정을 넘긴 영업의 새벽 부분
+            for (const r of rangesForDay(ranges, yesterday)) {
+                if (r.close <= r.open && minutes < r.close) {
+                    const c = closedOn(place.closed, yesterday);
+                    if (c === null) return null;
+                    if (!c) return true;
+                }
             }
-            // 자정을 넘기는 영업: 오늘 저녁 영업 또는 어제 시작한 영업의 새벽 부분
-            if (minutes >= h.open) return !isClosedDay(place.closed, today);
-            if (minutes < h.close) return !isClosedDay(place.closed, yesterday);
-            return false;
+
+            const closedToday = closedOn(place.closed, today);
+            if (closedToday === null) return null;
+            if (closedToday) return false;
+
+            const todays = rangesForDay(ranges, today);
+            if (!todays.length) return null; // 예: "평일"만 적혀 있는데 오늘이 토요일
+            return todays.some(r => r.close > r.open
+                ? minutes >= r.open && minutes < r.close
+                : minutes >= r.open); // 자정을 넘기는 영업의 저녁 부분
         }
 
         function hoursText(place) {
             if (!place.hours && !place.closed) return '';
             let text = '🕒 ' + (place.hours || '영업시간 정보 없음');
-            if (place.closed) text += ' (' + place.closed + ' 휴무)';
+            if (place.closed) text += place.closed === '연중무휴' ? ' · 연중무휴' : ' (' + place.closed + ' 휴무)';
             return text;
         }
 
@@ -824,6 +875,13 @@
                 li.append(main, createActions(place, 'place-links'));
                 ul.appendChild(li);
             });
+
+            if (list.some(p => p.hours || p.closed)) {
+                const li = document.createElement('li');
+                li.className = 'hours-note';
+                li.textContent = '🕒 영업시간·휴무일은 맛집 사이트·기사 기준이라 바뀔 수 있어요. 방문 전에 전화나 상세보기로 확인하세요.';
+                ul.appendChild(li);
+            }
         }
 
         // 10. 식당 선택 (마커 클릭 또는 목록 클릭)
