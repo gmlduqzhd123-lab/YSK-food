@@ -1,7 +1,7 @@
 // 여순광 맛집 지도 서비스 워커: 홈 화면 추가(설치)를 지원하고, 한 번 열어 본 화면은 인터넷이 약해도 뜨게 한다.
 // 지도 타일·카카오 SDK는 저장하지 않으므로 지도 자체는 인터넷이 있어야 보인다.
 // index.html이나 아이콘을 바꾸면 CACHE_VERSION을 올려야 예전 캐시가 정리된다.
-const CACHE_VERSION = 'ysk-food-v2';
+const CACHE_VERSION = 'ysk-food-v3';
 const APP_SHELL = [
     './',
     './index.html',
