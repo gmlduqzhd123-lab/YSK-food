@@ -2,49 +2,65 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>여순광 맛집 지도</title>
+    <meta name="description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
+    <meta property="og:title" content="여순광 맛집 지도">
+    <meta property="og:description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     <style>
         /* 기본 스타일 및 모바일 최적화 */
         body, html { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; width: 100%; height: 100%; overflow: hidden; }
-        
+        /* 헤더·필터 높이를 뺀 나머지를 지도가 채우도록 세로 flex 배치 (모바일 주소창 대응: 100dvh) */
+        body { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+
         /* 상단 헤더 */
-        header { background-color: #ff5722; color: white; padding: 16px; text-align: center; font-size: 1.2rem; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 10; }
-        
+        header { background-color: #ff5722; color: white; padding: 16px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 10; flex-shrink: 0; }
+        header h1 { margin: 0; font-size: 1.2rem; font-weight: bold; }
+
         /* 지역 필터 버튼 영역 */
-        .filter-container { display: flex; gap: 8px; padding: 12px 16px; background: white; overflow-x: auto; position: relative; z-index: 10; }
+        .filter-container { display: flex; gap: 8px; padding: 12px 16px; background: white; overflow-x: auto; position: relative; z-index: 10; flex-shrink: 0; }
         .filter-container::-webkit-scrollbar { display: none; }
-        .filter-btn { padding: 8px 16px; border: 1px solid #e0e0e0; background: white; border-radius: 20px; font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+        .filter-btn { padding: 8px 16px; border: 1px solid #e0e0e0; background: white; color: #333; border-radius: 20px; font-size: 0.9rem; font-family: inherit; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
         .filter-btn.active { background-color: #ff5722; color: white; border-color: #ff5722; font-weight: bold; }
-        
+
         /* 지도 영역 */
-        #map { width: 100%; height: calc(100vh - 110px); }
+        #map { width: 100%; flex: 1; min-height: 0; position: relative; }
+
+        /* 지도 로딩 실패 안내 */
+        .map-error { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center; color: #555; background: #fafafa; font-size: 15px; line-height: 1.5; }
+        .map-error strong { font-size: 17px; color: #333; }
+        .map-error button { margin-top: 8px; padding: 8px 20px; border: none; border-radius: 20px; background: #ff5722; color: white; font-size: 14px; font-family: inherit; cursor: pointer; }
 
         /* 커스텀 오버레이 (정보창) 스타일 */
         .wrap { position: absolute; left: 0; bottom: 40px; width: 250px; margin-left: -125px; text-align: left; font-size: 14px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         .wrap .info { padding: 15px; position: relative; }
-        .wrap .title { font-weight: bold; font-size: 16px; margin-bottom: 5px; color: #333; }
-        .wrap .close { position: absolute; top: 10px; right: 10px; cursor: pointer; color: #999; font-size: 16px; }
+        .wrap .title { font-weight: bold; font-size: 16px; margin-bottom: 5px; padding-right: 24px; color: #333; }
+        .wrap .close { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; padding: 0; border: none; background: none; cursor: pointer; color: #999; font-size: 16px; }
         .wrap .desc { color: #666; font-size: 13px; margin-bottom: 10px; }
+        .wrap .links { display: flex; gap: 6px; }
         .wrap .link { display: inline-block; padding: 6px 12px; background: #fee500; color: #000; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .wrap .link.sub { background: #f1f1f1; }
         .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
     </style>
 </head>
 <body>
 
-    <header>여순광 맛집 지도 🗺️</header>
-    
-    <div class="filter-container">
-        <button class="filter-btn active" data-city="all">전체보기</button>
-        <button class="filter-btn" data-city="여수">🌊 여수</button>
-        <button class="filter-btn" data-city="순천">🌿 순천</button>
-        <button class="filter-btn" data-city="광양">☀️ 광양</button>
+    <header><h1>여순광 맛집 지도 🗺️</h1></header>
+
+    <div class="filter-container" role="group" aria-label="지역 선택">
+        <button class="filter-btn active" data-city="all" aria-pressed="true">전체보기</button>
+        <button class="filter-btn" data-city="여수" aria-pressed="false">🌊 여수</button>
+        <button class="filter-btn" data-city="순천" aria-pressed="false">🌿 순천</button>
+        <button class="filter-btn" data-city="광양" aria-pressed="false">☀️ 광양</button>
     </div>
 
     <div id="map"></div>
 
-    <!-- ⚠️ 발급받은 카카오맵 JavaScript 키가 적용된 부분입니다. -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa"></script>
+    <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 → Web]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa"></script>
     <script>
         // 1. 더미 데이터 (추후 Google Sheets 연동 또는 JSON 파일 분리)
         const restaurants = [
@@ -54,63 +70,129 @@
             { id: 4, name: "로타리식당", city: "여수", menu: "백반", lat: 34.739417, lng: 127.733285, link: "https://place.map.kakao.com/10904300" }
         ];
 
-        let map;
+        const DEFAULT_CENTER = { lat: 34.8500, lng: 127.6000 }; // 여순광 중심점 (율촌면 인근)
+        const DEFAULT_LEVEL = 9;
+        const SINGLE_PLACE_LEVEL = 5; // 식당이 1곳뿐일 때의 확대 레벨
+
+        let map = null;
         let markers = [];
         let currentOverlay = null;
 
-        // 2. 지도 초기화 (여순광 중심점인 율촌면 인근을 초기 위경도로 설정)
+        // 2. 지도 초기화
         window.onload = function() {
             const mapContainer = document.getElementById('map');
-            const mapOption = { 
-                center: new kakao.maps.LatLng(34.8500, 127.6000), // 여순광 중심점
-                level: 9 // 확대 레벨
-            };
-            map = new kakao.maps.Map(mapContainer, mapOption);
+
+            // SDK 로드 실패 (네트워크 오류, 광고 차단, 미등록 도메인 등) 시 안내
+            if (typeof kakao === 'undefined' || !kakao.maps) {
+                showMapError(mapContainer);
+                return;
+            }
+
+            map = new kakao.maps.Map(mapContainer, {
+                center: new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng),
+                level: DEFAULT_LEVEL
+            });
+
+            // 지도 빈 곳을 누르면 열린 정보창 닫기
+            kakao.maps.event.addListener(map, 'click', closeOverlay);
 
             // 초기 마커 그리기 (전체)
             drawMarkers('all');
         };
+
+        function showMapError(container) {
+            container.innerHTML = `
+                <div class="map-error" role="alert">
+                    <strong>지도를 불러오지 못했어요 😢</strong>
+                    <span>인터넷 연결을 확인하거나, 광고 차단 기능을 끄고 다시 시도해 주세요.</span>
+                    <button type="button" onclick="location.reload()">다시 시도</button>
+                </div>
+            `;
+        }
+
+        // 정보창 DOM 생성 (textContent 사용으로 이름 등에 특수문자가 있어도 안전)
+        function createOverlayContent(place) {
+            const wrap = document.createElement('div');
+            wrap.className = 'wrap';
+
+            const info = document.createElement('div');
+            info.className = 'info';
+
+            const close = document.createElement('button');
+            close.type = 'button';
+            close.className = 'close';
+            close.title = '닫기';
+            close.setAttribute('aria-label', '닫기');
+            close.textContent = '✖';
+            close.addEventListener('click', closeOverlay);
+
+            const title = document.createElement('div');
+            title.className = 'title';
+            title.textContent = place.name;
+
+            const desc = document.createElement('div');
+            desc.className = 'desc';
+            desc.textContent = '추천: ' + place.menu;
+
+            const links = document.createElement('div');
+            links.className = 'links';
+
+            // 카카오맵 길찾기 (도착지 = 식당)
+            const route = document.createElement('a');
+            route.className = 'link';
+            route.href = 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng;
+            route.target = '_blank';
+            route.rel = 'noopener';
+            route.textContent = '카카오맵 길찾기';
+            links.appendChild(route);
+
+            // 카카오맵 상세정보
+            if (place.link) {
+                const detail = document.createElement('a');
+                detail.className = 'link sub';
+                detail.href = place.link;
+                detail.target = '_blank';
+                detail.rel = 'noopener';
+                detail.textContent = '상세보기';
+                links.appendChild(detail);
+            }
+
+            info.append(close, title, desc, links);
+            wrap.appendChild(info);
+            return wrap;
+        }
 
         // 3. 마커 그리기 함수
         function drawMarkers(filterCity) {
             // 기존 마커 및 오버레이 초기화
             markers.forEach(marker => marker.setMap(null));
             markers = [];
-            if (currentOverlay) currentOverlay.setMap(null);
+            closeOverlay();
 
             // 필터링된 데이터 추출
-            const filteredData = filterCity === 'all' 
-                ? restaurants 
+            const filteredData = filterCity === 'all'
+                ? restaurants
                 : restaurants.filter(r => r.city === filterCity);
 
             filteredData.forEach(place => {
                 const markerPosition = new kakao.maps.LatLng(place.lat, place.lng);
                 const marker = new kakao.maps.Marker({
                     position: markerPosition,
-                    map: map
+                    map: map,
+                    title: place.name
                 });
 
-                // 커스텀 오버레이 (정보창) 내용 구성
-                const content = `
-                    <div class="wrap">
-                        <div class="info">
-                            <div class="close" onclick="closeOverlay()" title="닫기">✖</div>
-                            <div class="title">${place.name}</div>
-                            <div class="desc">추천: ${place.menu}</div>
-                            <a href="${place.link}" target="_blank" class="link">카카오맵 길찾기</a>
-                        </div>
-                    </div>
-                `;
-
                 const overlay = new kakao.maps.CustomOverlay({
-                    content: content,
+                    content: createOverlayContent(place),
                     map: null,
-                    position: marker.getPosition()
+                    position: markerPosition,
+                    clickable: true, // 정보창 클릭이 지도 클릭(닫기)으로 전달되지 않도록
+                    zIndex: 3
                 });
 
                 // 마커 클릭 이벤트
                 kakao.maps.event.addListener(marker, 'click', function() {
-                    if (currentOverlay) currentOverlay.setMap(null); // 열려있는 창 닫기
+                    closeOverlay(); // 열려있는 창 닫기
                     overlay.setMap(map);
                     currentOverlay = overlay;
                     map.panTo(markerPosition); // 클릭 시 해당 위치로 부드럽게 이동
@@ -118,32 +200,53 @@
 
                 markers.push(marker);
             });
+
+            return filteredData;
         }
 
-        // 오버레이 닫기 전역 함수
+        // 표시된 식당이 모두 화면에 들어오도록 지도 범위 조정
+        function fitToPlaces(places) {
+            if (places.length === 0) {
+                map.setLevel(DEFAULT_LEVEL);
+                map.setCenter(new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng));
+            } else if (places.length === 1) {
+                map.setLevel(SINGLE_PLACE_LEVEL);
+                map.setCenter(new kakao.maps.LatLng(places[0].lat, places[0].lng));
+            } else {
+                const bounds = new kakao.maps.LatLngBounds();
+                places.forEach(p => bounds.extend(new kakao.maps.LatLng(p.lat, p.lng)));
+                map.setBounds(bounds, 60, 40, 40, 40); // 위쪽은 정보창 공간 확보
+            }
+        }
+
+        // 오버레이 닫기 함수
         function closeOverlay() {
             if (currentOverlay) currentOverlay.setMap(null);
+            currentOverlay = null;
         }
 
         // 4. 필터 버튼 클릭 이벤트
         document.querySelectorAll('.filter-btn').forEach(button => {
             button.addEventListener('click', function() {
                 // 버튼 활성화 스타일 변경
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
 
-                // 해당 지역 마커 렌더링
+                if (!map) return; // 지도 로드 실패 시
+
+                // 해당 지역 마커 렌더링 후 화면 범위 맞추기
                 const city = this.getAttribute('data-city');
-                drawMarkers(city);
-
-                // 선택한 지역에 맞게 지도 중심 및 레벨 이동
-                if(city === '여수') map.setCenter(new kakao.maps.LatLng(34.7604, 127.6622));
-                else if(city === '순천') map.setCenter(new kakao.maps.LatLng(34.9507, 127.4872));
-                else if(city === '광양') map.setCenter(new kakao.maps.LatLng(34.9407, 127.6959));
-                else map.setCenter(new kakao.maps.LatLng(34.8500, 127.6000));
-                
-                if(city !== 'all') map.setLevel(7);
-                else map.setLevel(9);
+                const places = drawMarkers(city);
+                if (city === 'all') {
+                    map.setLevel(DEFAULT_LEVEL);
+                    map.setCenter(new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng));
+                } else {
+                    fitToPlaces(places);
+                }
             });
         });
     </script>
