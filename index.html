@@ -64,9 +64,12 @@
 
         /* 맛집 목록 패널 */
         .panel { display: flex; flex-direction: column; background: white; min-height: 0; }
-        .panel-handle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; border: none; border-bottom: 1px solid #eee; background: white; font-size: 15px; font-weight: bold; color: #333; cursor: pointer; text-align: left; }
-        .panel-handle .arrow { transition: transform 0.2s; color: #999; }
-        .panel-handle .sort-note { font-size: 12px; font-weight: normal; color: #1e88e5; margin-left: 6px; }
+        .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #eee; background: white; font-size: 15px; font-weight: bold; color: #333; flex-shrink: 0; }
+        .panel-head .sort-note { font-size: 12px; font-weight: normal; color: #1e88e5; margin-left: 6px; }
+        /* 모바일 보기 전환: 지도 / 반반 / 목록 */
+        .view-switch { display: none; flex-shrink: 0; padding: 3px; border-radius: 18px; background: #f1f1f1; }
+        .view-switch button { padding: 6px 12px; border: none; border-radius: 15px; background: none; color: #666; font-size: 13px; font-weight: bold; cursor: pointer; }
+        .view-switch button[aria-pressed="true"] { background: #ff5722; color: white; }
         .place-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
         .place-list li { border-bottom: 1px solid #f0f0f0; }
         .place-list li.selected { background: #fff3ee; }
@@ -94,20 +97,25 @@
         /* 저작권 표시 */
         .site-footer { flex-shrink: 0; padding: 4px 16px; background: #fafafa; border-top: 1px solid #eee; color: #999; font-size: 11px; text-align: center; }
 
-        /* 모바일: 지도 아래 접었다 펴는 목록 */
+        /* 모바일: 지도 아래 목록. 처음엔 반반, 위쪽 버튼으로 지도 크게 / 목록 크게 전환 */
         @media (max-width: 767px) {
+            header { padding: 8px 16px; }
+            header h1 { font-size: 1.05rem; }
+            .search-box { padding-top: 8px; }
+            .search-box input { padding: 8px 12px; }
+            .filter-container { padding: 8px 16px; }
+            .filter-btn { padding: 7px 14px; }
             main { flex-direction: column; }
-            .panel { order: 2; flex-shrink: 0; height: 50px; overflow: hidden; box-shadow: 0 -2px 6px rgba(0,0,0,0.08); transition: height 0.25s; }
-            .panel.expanded { height: 45%; }
-            .panel.expanded .panel-handle .arrow { transform: rotate(180deg); }
+            .panel { order: 2; flex-shrink: 0; height: 55%; overflow: hidden; box-shadow: 0 -2px 8px rgba(0,0,0,0.12); border-radius: 14px 14px 0 0; transition: height 0.25s; }
+            .panel.mode-map { height: 49px; }
+            .panel.mode-list { height: 100%; border-radius: 0; }
+            .view-switch { display: flex; }
         }
         /* PC: 왼쪽 고정 목록, 필터 버튼은 가로 스크롤 대신 줄바꿈 (마우스로는 가로 스크롤이 어려움) */
         @media (min-width: 768px) {
             .filter-container, .filter-group { flex-wrap: wrap; }
             .filter-container { overflow-x: visible; }
             .panel { width: 340px; flex-shrink: 0; border-right: 1px solid #eee; }
-            .panel-handle { cursor: default; }
-            .panel-handle .arrow { display: none; }
         }
 
         /* 커스텀 오버레이 (정보창) 스타일 */
@@ -152,10 +160,14 @@
 
     <main>
         <section class="panel" id="panel" aria-label="맛집 목록">
-            <button type="button" class="panel-handle" id="panel-handle" aria-expanded="false" aria-controls="place-list">
+            <div class="panel-head">
                 <span><span id="panel-count">맛집 불러오는 중…</span><span class="sort-note" id="sort-note"></span></span>
-                <span class="arrow" aria-hidden="true">▲</span>
-            </button>
+                <div class="view-switch" role="group" aria-label="화면 보기">
+                    <button type="button" data-mode="map" aria-pressed="false">🗺️ 지도</button>
+                    <button type="button" data-mode="half" aria-pressed="true">반반</button>
+                    <button type="button" data-mode="list" aria-pressed="false">📋 목록</button>
+                </div>
+            </div>
             <ul class="place-list" id="place-list"></ul>
         </section>
 
@@ -741,7 +753,7 @@
             const routeUrl = hasCoords(place)
                 ? 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng
                 : 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name);
-            addLink('link', routeUrl, hasCoords(place) ? '카카오맵 길찾기' : '카카오맵에서 찾기', true);
+            addLink('link', routeUrl, hasCoords(place) ? '길찾기' : '카카오맵에서 찾기', true);
             // 상세보기: 카카오맵 장소 페이지, 없으면 카카오맵 검색 결과 (좌표가 없을 땐 위 버튼이 이미 검색으로 연결)
             if (place.link) addLink('link sub', place.link, '상세보기', true);
             else if (hasCoords(place)) addLink('link sub', 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name), '상세보기', true);
@@ -957,7 +969,8 @@
                 return;
             }
 
-            if (fromList && mobileQuery.matches) setPanelExpanded(false); // 모바일: 지도가 보이도록 목록 접기
+            // 모바일: 목록만 보고 있었다면 지도가 보이도록 반반으로 (크기가 바뀐 뒤 지도 중심을 다시 맞춤)
+            if (mobileQuery.matches && panelMode === 'list') setPanelMode('half', entry.marker.getPosition());
 
             if (currentOverlay) currentOverlay.setMap(null); // 열려있는 창 닫기
             entry.overlay.setMap(map);
@@ -966,15 +979,32 @@
             const position = entry.marker.getPosition();
             if (fromList && map.getLevel() > SINGLE_PLACE_LEVEL) {
                 map.setLevel(SINGLE_PLACE_LEVEL);
-                map.setCenter(position);
+                focusOn(position, false);
             } else {
-                map.panTo(position); // 해당 위치로 부드럽게 이동
+                focusOn(position, true); // 해당 위치로 부드럽게 이동
             }
 
             if (!fromList) {
+                // 모바일: 목록이 접혀 있었다면 펼쳐서 해당 식당을 보여줌
+                if (mobileQuery.matches && panelMode === 'map') setPanelMode('half', position);
                 const li = document.querySelector(`.place-list li[data-id="${id}"]`);
                 if (li) li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }
+        }
+
+        // 지도 중심 맞추기. 정보창이 마커 위로 뜨므로 지도 높이가 낮으면(모바일 반반 보기)
+        // 마커를 화면 아래쪽에 두어 정보창 윗부분이 잘리지 않게 한다
+        const OVERLAY_SPACE = 250; // 마커 위로 필요한 대략의 높이(px)
+        function focusOn(position, smooth) {
+            let target = position;
+            const h = document.getElementById('map').offsetHeight;
+            const shift = Math.min(OVERLAY_SPACE - h / 2, h / 2 - 30);
+            if (shift > 0 && map.getProjection) {
+                const proj = map.getProjection();
+                const p = proj.containerPointFromCoords(position);
+                target = proj.coordsFromContainerPoint(new kakao.maps.Point(p.x, p.y - shift));
+            }
+            if (smooth) map.panTo(target); else map.setCenter(target);
         }
 
         // 오버레이 닫기 함수
@@ -1043,20 +1073,33 @@
             searchTimer = setTimeout(() => applyFilters(true), 400);
         });
 
-        // 12. 모바일 목록 접기/펴기
-        function setPanelExpanded(expanded) {
+        // 12. 모바일 보기 전환: map(지도 크게) / half(반반, 기본) / list(목록 크게)
+        let panelMode = 'half';
+        let recenterAfterResize = null; // 패널 크기가 바뀐 뒤 지도 중심을 맞출 { position, forOverlay }
+
+        function setPanelMode(mode, recenterTo, forOverlay = true) {
+            if (recenterTo) recenterAfterResize = { position: recenterTo, forOverlay };
+            if (panelMode === mode) return;
+            panelMode = mode;
             const panel = document.getElementById('panel');
-            if (panel.classList.contains('expanded') === expanded) return;
-            panel.classList.toggle('expanded', expanded);
-            document.getElementById('panel-handle').setAttribute('aria-expanded', String(expanded));
+            panel.classList.toggle('mode-map', mode === 'map');
+            panel.classList.toggle('mode-list', mode === 'list');
+            document.querySelectorAll('.view-switch button').forEach(btn => {
+                btn.setAttribute('aria-pressed', String(btn.dataset.mode === mode));
+            });
         }
-        document.getElementById('panel-handle').addEventListener('click', () => {
-            if (!mobileQuery.matches) return;
-            setPanelExpanded(!document.getElementById('panel').classList.contains('expanded'));
+        document.querySelectorAll('.view-switch button').forEach(btn => {
+            btn.addEventListener('click', () => setPanelMode(btn.dataset.mode));
         });
         // 목록 크기가 바뀌면 지도 크기 다시 계산
         document.getElementById('panel').addEventListener('transitionend', e => {
-            if (e.propertyName === 'height' && map) map.relayout();
+            if (e.propertyName !== 'height' || !map) return;
+            map.relayout();
+            if (recenterAfterResize) {
+                const { position, forOverlay } = recenterAfterResize;
+                if (forOverlay) focusOn(position, false); else map.setCenter(position);
+                recenterAfterResize = null;
+            }
         });
         window.addEventListener('resize', () => { if (map) map.relayout(); });
 
@@ -1088,7 +1131,7 @@
                 map.setCenter(here);
 
                 applyFilters(false);
-                if (mobileQuery.matches) setPanelExpanded(true);
+                if (mobileQuery.matches && panelMode === 'map') setPanelMode('half', here, false);
                 showToast('가까운 순으로 정렬했어요.');
             }, err => {
                 btn.disabled = false;
