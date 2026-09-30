@@ -144,6 +144,7 @@
         .wrap .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
     </style>
+    <style>.install-btn{display:none}html.can-install .install-btn{display:inline}.install-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}</style>
 </head>
 <body>
 
@@ -192,7 +193,7 @@
         </div>
     </main>
 
-    <footer class="site-footer">© 2026 엽쌤 · 수업에는 자유롭게 사용하세요 🙌 · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a></footer>
+    <footer class="site-footer">© 2026 엽쌤 · 수업에는 자유롭게 사용하세요 🙌 · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span></footer>
 
     <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=services,clusterer"></script>
@@ -1182,6 +1183,27 @@
                 navigator.serviceWorker.register('sw.js').catch(() => { /* 설치 기능만 빠지고 사이트는 그대로 동작 */ });
             });
         }
+    </script>
+    <!-- 📲 앱 설치 버튼 (설치할 수 있는 브라우저에서만 보임) -->
+    <script>
+    (function () {
+        var deferred = null, root = document.documentElement;
+        var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var installed = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+        window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; root.classList.add('can-install'); });
+        window.addEventListener('appinstalled', function () { deferred = null; root.classList.remove('can-install'); });
+        if (ios && !installed) root.classList.add('can-install');
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest && e.target.closest('.install-btn button');
+            if (!btn) return;
+            if (deferred) {
+                deferred.prompt();
+                deferred.userChoice.then(function () { deferred = null; root.classList.remove('can-install'); });
+            } else if (ios) {
+                alert('Safari 아래쪽 공유 버튼(□↑)을 누른 뒤 "홈 화면에 추가"를 선택하세요.');
+            }
+        });
+    })();
     </script>
 </body>
 </html>
