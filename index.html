@@ -193,7 +193,7 @@
         </div>
     </main>
 
-    <footer class="site-footer">© 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span></footer>
+    <footer class="site-footer">© 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span><span class="qr-btn"> · <button type="button" data-qr>📱 QR로 접속</button></span></footer>
 
     <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=services,clusterer"></script>
@@ -1202,6 +1202,52 @@
             } else if (ios) {
                 alert('Safari 아래쪽 공유 버튼(□↑)을 누른 뒤 "홈 화면에 추가"를 선택하세요.');
             }
+        });
+    })();
+    </script>
+    <!-- 📱 QR로 접속 (교실 TV·전자칠판에 띄우는 큰 QR, 인터넷 없이도 뜸) -->
+    <style>
+.qr-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.yq-back{position:fixed;inset:0;z-index:2147483000;background:rgba(15,23,42,.72);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.yq-card{box-sizing:border-box;background:#fff;color:#0f172a;border-radius:20px;padding:22px 20px 16px;width:min(100%,520px);max-height:100%;overflow:auto;text-align:center;font-family:inherit;line-height:1.5;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.yq-card .yq-title{margin:0;font-size:22px;font-weight:800;color:#0f172a}
+.yq-card .yq-name{margin:2px 0 0;color:#475569;font-size:15px;font-weight:600}
+.yq-card .yq-qr{display:block;width:min(100%,62vh,420px);height:auto;margin:12px auto}
+.yq-card .yq-url{margin:0 0 4px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;word-break:break-all;color:#0f172a}
+.yq-card .yq-hint{margin:0 0 14px;color:#64748b;font-size:14px}
+.yq-card .yq-close{font:inherit;font-weight:700;width:100%;padding:12px;border:0;border-radius:12px;background:#0f172a;color:#fff;cursor:pointer}
+    </style>
+    <script>
+    (function () {
+    function yqOpen(url, name, svg) {
+        var last = document.activeElement;
+        var back = document.createElement('div');
+        back.className = 'yq-back';
+        back.style.setProperty('display', 'flex', 'important'); // 앱 CSS가 다른 창을 숨겨도 QR 창은 보이게
+        back.innerHTML = '<div class="yq-card" role="dialog" aria-modal="true" aria-labelledby="yq-title">' +
+            '<p class="yq-title" id="yq-title">📱 카메라로 찍어서 들어와요</p><p class="yq-name"></p>' + svg +
+            '<p class="yq-url"></p><p class="yq-hint">휴대폰·태블릿 카메라를 QR 코드에 비추면 바로 열려요.</p>' +
+            '<button type="button" class="yq-close">닫기</button></div>';
+        back.querySelector('.yq-name').textContent = name;
+        back.querySelector('.yq-url').textContent = url.replace(/^https?:\/\//, '');
+        function close() {
+            document.removeEventListener('keydown', onKey);
+            back.remove();
+            if (last && last.focus) last.focus();
+        }
+        function onKey(e) { if (e.key === 'Escape') close(); }
+        back.addEventListener('click', function (e) { if (e.target === back || e.target.closest('.yq-close')) close(); });
+        document.addEventListener('keydown', onKey);
+        document.body.appendChild(back);
+        back.querySelector('.yq-close').focus();
+    }
+        var QR_URL = "https://gmlduqzhd123-lab.github.io/YSK-food/", QR_NAME = "여순광 맛집 지도";
+        var QR_SVG = "<svg class=\"yq-qr\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\" shape-rendering=\"crispEdges\" role=\"img\" aria-label=\"여순광 맛집 지도 주소 QR 코드\"><rect width=\"41\" height=\"41\" fill=\"#fff\"/><path fill=\"#000\" d=\"M4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM13 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM23 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM33 4h1v1h-1zM34 4h1v1h-1zM35 4h1v1h-1zM36 4h1v1h-1zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM17 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM17 6h1v1h-1zM19 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM30 6h1v1h-1zM32 6h1v1h-1zM33 6h1v1h-1zM34 6h1v1h-1zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM23 7h1v1h-1zM24 7h1v1h-1zM25 7h1v1h-1zM26 7h1v1h-1zM28 7h1v1h-1zM30 7h1v1h-1zM32 7h1v1h-1zM33 7h1v1h-1zM34 7h1v1h-1zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM25 8h1v1h-1zM28 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM33 8h1v1h-1zM34 8h1v1h-1zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM24 9h1v1h-1zM25 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM31 10h1v1h-1zM32 10h1v1h-1zM33 10h1v1h-1zM34 10h1v1h-1zM35 10h1v1h-1zM36 10h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM27 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM21 12h1v1h-1zM26 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM31 12h1v1h-1zM32 12h1v1h-1zM33 12h1v1h-1zM34 12h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM20 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM25 13h1v1h-1zM26 13h1v1h-1zM27 13h1v1h-1zM30 13h1v1h-1zM31 13h1v1h-1zM33 13h1v1h-1zM34 13h1v1h-1zM36 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM14 14h1v1h-1zM19 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM28 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM34 14h1v1h-1zM35 14h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM9 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM26 15h1v1h-1zM29 15h1v1h-1zM32 15h1v1h-1zM33 15h1v1h-1zM34 15h1v1h-1zM35 15h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM13 16h1v1h-1zM15 16h1v1h-1zM16 16h1v1h-1zM19 16h1v1h-1zM22 16h1v1h-1zM25 16h1v1h-1zM28 16h1v1h-1zM29 16h1v1h-1zM31 16h1v1h-1zM32 16h1v1h-1zM33 16h1v1h-1zM36 16h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM31 17h1v1h-1zM33 17h1v1h-1zM35 17h1v1h-1zM36 17h1v1h-1zM5 18h1v1h-1zM7 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM28 18h1v1h-1zM29 18h1v1h-1zM30 18h1v1h-1zM32 18h1v1h-1zM33 18h1v1h-1zM35 18h1v1h-1zM4 19h1v1h-1zM6 19h1v1h-1zM7 19h1v1h-1zM8 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM25 19h1v1h-1zM29 19h1v1h-1zM30 19h1v1h-1zM31 19h1v1h-1zM32 19h1v1h-1zM34 19h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM7 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM13 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM28 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM32 20h1v1h-1zM36 20h1v1h-1zM5 21h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM15 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM21 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM30 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM34 21h1v1h-1zM36 21h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM13 22h1v1h-1zM15 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM21 22h1v1h-1zM26 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM31 22h1v1h-1zM32 22h1v1h-1zM34 22h1v1h-1zM35 22h1v1h-1zM4 23h1v1h-1zM6 23h1v1h-1zM7 23h1v1h-1zM13 23h1v1h-1zM14 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM23 23h1v1h-1zM30 23h1v1h-1zM31 23h1v1h-1zM32 23h1v1h-1zM33 23h1v1h-1zM34 23h1v1h-1zM36 23h1v1h-1zM5 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM18 24h1v1h-1zM20 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM29 24h1v1h-1zM31 24h1v1h-1zM33 24h1v1h-1zM35 24h1v1h-1zM36 24h1v1h-1zM4 25h1v1h-1zM7 25h1v1h-1zM11 25h1v1h-1zM12 25h1v1h-1zM14 25h1v1h-1zM15 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM22 25h1v1h-1zM27 25h1v1h-1zM30 25h1v1h-1zM33 25h1v1h-1zM36 25h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM10 26h1v1h-1zM14 26h1v1h-1zM17 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM29 26h1v1h-1zM32 26h1v1h-1zM33 26h1v1h-1zM35 26h1v1h-1zM4 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM19 27h1v1h-1zM22 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM29 27h1v1h-1zM30 27h1v1h-1zM31 27h1v1h-1zM33 27h1v1h-1zM34 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM7 28h1v1h-1zM8 28h1v1h-1zM9 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM15 28h1v1h-1zM16 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM27 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM33 28h1v1h-1zM34 28h1v1h-1zM35 28h1v1h-1zM36 28h1v1h-1zM12 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM20 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM25 29h1v1h-1zM28 29h1v1h-1zM32 29h1v1h-1zM34 29h1v1h-1zM36 29h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM9 30h1v1h-1zM10 30h1v1h-1zM15 30h1v1h-1zM17 30h1v1h-1zM18 30h1v1h-1zM19 30h1v1h-1zM20 30h1v1h-1zM22 30h1v1h-1zM24 30h1v1h-1zM25 30h1v1h-1zM27 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h1v1h-1zM13 31h1v1h-1zM14 31h1v1h-1zM16 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM25 31h1v1h-1zM26 31h1v1h-1zM27 31h1v1h-1zM28 31h1v1h-1zM32 31h1v1h-1zM33 31h1v1h-1zM34 31h1v1h-1zM36 31h1v1h-1zM4 32h1v1h-1zM6 32h1v1h-1zM7 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM12 32h1v1h-1zM16 32h1v1h-1zM19 32h1v1h-1zM22 32h1v1h-1zM25 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM30 32h1v1h-1zM31 32h1v1h-1zM32 32h1v1h-1zM33 32h1v1h-1zM4 33h1v1h-1zM6 33h1v1h-1zM7 33h1v1h-1zM8 33h1v1h-1zM10 33h1v1h-1zM12 33h1v1h-1zM14 33h1v1h-1zM17 33h1v1h-1zM18 33h1v1h-1zM19 33h1v1h-1zM20 33h1v1h-1zM21 33h1v1h-1zM24 33h1v1h-1zM25 33h1v1h-1zM26 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM32 33h1v1h-1zM36 33h1v1h-1zM4 34h1v1h-1zM6 34h1v1h-1zM7 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM12 34h1v1h-1zM16 34h1v1h-1zM17 34h1v1h-1zM21 34h1v1h-1zM23 34h1v1h-1zM25 34h1v1h-1zM26 34h1v1h-1zM27 34h1v1h-1zM30 34h1v1h-1zM31 34h1v1h-1zM33 34h1v1h-1zM34 34h1v1h-1zM4 35h1v1h-1zM10 35h1v1h-1zM13 35h1v1h-1zM14 35h1v1h-1zM15 35h1v1h-1zM16 35h1v1h-1zM17 35h1v1h-1zM20 35h1v1h-1zM22 35h1v1h-1zM23 35h1v1h-1zM24 35h1v1h-1zM25 35h1v1h-1zM29 35h1v1h-1zM30 35h1v1h-1zM32 35h1v1h-1zM33 35h1v1h-1zM34 35h1v1h-1zM4 36h1v1h-1zM5 36h1v1h-1zM6 36h1v1h-1zM7 36h1v1h-1zM8 36h1v1h-1zM9 36h1v1h-1zM10 36h1v1h-1zM12 36h1v1h-1zM13 36h1v1h-1zM14 36h1v1h-1zM15 36h1v1h-1zM16 36h1v1h-1zM17 36h1v1h-1zM21 36h1v1h-1zM23 36h1v1h-1zM24 36h1v1h-1zM27 36h1v1h-1zM28 36h1v1h-1zM29 36h1v1h-1zM30 36h1v1h-1zM31 36h1v1h-1zM33 36h1v1h-1zM34 36h1v1h-1zM35 36h1v1h-1z\"/></svg>";
+        document.addEventListener('click', function (e) {
+            var btn = e.target.closest && e.target.closest('[data-qr]');
+            if (!btn) return;
+            e.preventDefault();
+            yqOpen(QR_URL, QR_NAME, QR_SVG);
         });
     })();
     </script>
