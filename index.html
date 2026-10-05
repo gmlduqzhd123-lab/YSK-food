@@ -34,6 +34,11 @@
         /* 상단 헤더 */
         header { background-color: #ff5722; color: white; padding: 12px 16px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 10; flex-shrink: 0; }
         header h1 { margin: 0; font-size: 1.2rem; font-weight: bold; }
+        /* 📲 앱 설치 버튼 (헤더 오른쪽) */
+        header .head-install { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+        header .head-install button { text-decoration: none; background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 5px 11px; font-size: 0.82rem; font-weight: 700; color: #fff; white-space: nowrap; }
+        header .head-install button:hover { background: rgba(255,255,255,.32); }
+        @media (max-width: 400px) { header { text-align: left; } }
 
         /* 검색창 */
         .search-box { padding: 10px 16px 0; background: white; flex-shrink: 0; }
@@ -144,11 +149,12 @@
         .wrap .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
     </style>
+    <script src="ys-install.js"></script>
     <style>.install-btn{display:none}html.can-install .install-btn{display:inline}.install-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}</style>
 </head>
 <body>
 
-    <header><h1>여순광 맛집 지도 🗺️</h1></header>
+    <header><h1>여순광 맛집 지도 🗺️</h1><span class="install-btn head-install"><button type="button" aria-label="앱 설치">📲 앱 설치</button></span></header>
 
     <div class="search-box">
         <input type="search" id="search" placeholder="식당 이름이나 메뉴로 검색 (예: 국밥)" aria-label="맛집 검색" autocomplete="off">
@@ -1183,27 +1189,6 @@
                 navigator.serviceWorker.register('sw.js').catch(() => { /* 설치 기능만 빠지고 사이트는 그대로 동작 */ });
             });
         }
-    </script>
-    <!-- 📲 앱 설치 버튼 (설치할 수 있는 브라우저에서만 보임) -->
-    <script>
-    (function () {
-        var deferred = null, root = document.documentElement;
-        var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        var installed = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
-        window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; root.classList.add('can-install'); });
-        window.addEventListener('appinstalled', function () { deferred = null; root.classList.remove('can-install'); });
-        if (ios && !installed) root.classList.add('can-install');
-        document.addEventListener('click', function (e) {
-            var btn = e.target.closest && e.target.closest('.install-btn button');
-            if (!btn) return;
-            if (deferred) {
-                deferred.prompt();
-                deferred.userChoice.then(function () { deferred = null; root.classList.remove('can-install'); });
-            } else if (ios) {
-                alert('Safari 아래쪽 공유 버튼(□↑)을 누른 뒤 "홈 화면에 추가"를 선택하세요.');
-            }
-        });
-    })();
     </script>
     <!-- 📱 QR로 접속 (교실 TV·전자칠판에 띄우는 큰 QR, 인터넷 없이도 뜸) -->
     <style>
