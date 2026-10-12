@@ -356,7 +356,7 @@
         // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
         // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
         const FALLBACK_RESTAURANTS = [
-            // 여수 (72곳)
+            // 여수 (70곳)
             { id: 1, name: "이순신수제버거", city: "여수", category: "양식·일식", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, hours: "10:00-21:00" },
             { id: 4, name: "로타리식당", city: "여수", category: "백반·한식", menu: "백반", lat: 34.739417, lng: 127.733285, hours: "08:00-18:00", closed: "수" },
             { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집", lat: 34.733778, lng: 127.720705, link: "https://place.map.kakao.com/8276281", phone: "061-643-1880", hours: "09:00-20:00", closed: "연중무휴" },
@@ -369,7 +369,6 @@
             { id: 21, name: "당머리첫집", city: "여수", category: "해산물", menu: "하모(갯장어) 샤부샤부, 새조개 샤부샤부", hours: "11:00-15:00, 17:00-21:00" },
             { id: 22, name: "진남횟집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", note: "돌산공원 근처", hours: "10:30-23:00" },
             { id: 23, name: "황가네하모", city: "여수", category: "해산물", menu: "하모 샤부샤부", hours: "평일 11:30-21:30 / 주말 11:30-15:00, 17:00-21:30" },
-            { id: 24, name: "민들레집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", hours: "09:00-24:00", closed: "연중무휴" },
             { id: 25, name: "낭만해물삼합", city: "여수", category: "해산물", menu: "해물삼합", hours: "07:00-22:00", closed: "둘째·넷째 수" },
             { id: 26, name: "교동포차 26번 해물삼합", city: "여수", category: "해산물", menu: "해물삼합", note: "교동 포차거리, 저녁 영업", hours: "16:00-02:00" },
             { id: 8, name: "7공주식당", city: "여수", category: "장어", menu: "장어탕, 장어구이", hours: "11:00-14:30, 17:00-21:00", closed: "둘째·넷째 일" },
@@ -395,7 +394,6 @@
             { id: 89, name: "산골식당", city: "여수", category: "장어", menu: "장어소금구이", hours: "08:00-22:30", closed: "연중무휴" },
             { id: 90, name: "자매식당", city: "여수", category: "장어", menu: "통장어탕", hours: "06:30-20:00" },
             { id: 91, name: "호남갈비", city: "여수", category: "고기", menu: "돼지갈비", hours: "11:00-15:00, 17:00-21:00", closed: "연중무휴" },
-            { id: 92, name: "한꾼에88", city: "여수", category: "포차·술집", menu: "매운돼지갈비구이", hours: "16:00-24:00" },
             { id: 93, name: "돌문어상회", city: "여수", category: "포차·술집", menu: "돌문어삼합", hours: "평일 15:30-23:00 / 토 12:00-24:00 / 일 12:00-23:00", closed: "연중무휴" },
             { id: 94, name: "41번포차", city: "여수", category: "포차·술집", menu: "선어회, 병어조림", note: "교동 포차거리", hours: "16:00-23:00", closed: "일" },
             { id: 95, name: "동서식당", city: "여수", category: "백반·한식", menu: "서대회무침", hours: "11:10-15:00, 17:00-20:00", closed: "수" },
@@ -505,7 +503,7 @@
             { id: 201, name: "진주황포냉면", city: "순천", category: "면", menu: "진주냉면(물·비빔·섞어)", lat: 34.951785, lng: 127.517115, link: "https://place.map.kakao.com/1176808577", phone: "061-727-3727", hours: "11:00-20:00", closed: "연중무휴" },
             { id: 202, name: "맛이랑짱뚱어랑", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 짱뚱어전골", lat: 34.939253, lng: 127.495320, link: "https://place.map.kakao.com/1532696868", phone: "061-743-0333", hours: "11:00-15:00, 17:00-21:00", closed: "월" },
             { id: 203, name: "갈마골아구찜", city: "순천", category: "해산물", menu: "아귀찜, 청국장 아귀탕", lat: 34.952361, lng: 127.487564, link: "https://place.map.kakao.com/8141965", phone: "061-743-9106", hours: "11:00-21:00", closed: "화" },
-            // 광양 (22곳)
+            // 광양 (21곳)
             { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348, hours: "11:00-21:30" },
             { id: 46, name: "광양가본", city: "광양", category: "고기", menu: "광양불고기", hours: "평일 11:00-15:00, 16:30-21:00 / 주말 11:00-21:00", closed: "연중무휴" },
             { id: 47, name: "장원회관", city: "광양", category: "고기", menu: "광양불고기", hours: "11:00-15:00, 16:30-21:30", closed: "설 연휴" },
@@ -527,7 +525,6 @@
             { id: 139, name: "대한식당", city: "광양", category: "고기", menu: "광양불고기", note: "백년가게", hours: "11:30-21:30", closed: "명절" },
             { id: 140, name: "매실한우", city: "광양", category: "고기", menu: "매실숙성 불고기", hours: "11:00-21:00" },
             { id: 141, name: "금목서", city: "광양", category: "고기", menu: "광양불고기", note: "한옥 정원", hours: "평일 11:00-15:00, 17:00-21:00 / 주말 11:00-21:00", closed: "수" },
-            { id: 146, name: "구봉산전망대 카페", city: "광양", category: "카페·디저트", menu: "커피", note: "이순신대교 야경 뷰", hours: "10:00-20:00", closed: "연중무휴" }
         ];
 
         // 지역별 마커 색
