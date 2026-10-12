@@ -152,11 +152,139 @@
         .wrap .hours, .wrap .note { color: #666; font-size: 12px; margin-bottom: 4px; }
         .wrap .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
         .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
+        /* ===== 첫 화면 (B안: 지도 중심 모던형) ===== */
+        .home { position: fixed; inset: 0; z-index: 1000; overflow-y: auto; -webkit-overflow-scrolling: touch; background: #fafbfc; color: #1d2330; }
+        .home[hidden] { display: none; }
+        .home-inner { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+        .home-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+        .home-brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; }
+        .home-brand .pin { width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #ff5722; display: grid; place-items: center; }
+        .home-brand .pin::after { content: ''; width: 9px; height: 9px; border-radius: 50%; background: white; }
+        .home-icons { display: flex; gap: 6px; }
+        .home-icon { height: 36px; padding: 0 12px; border: 1px solid #eceff3; border-radius: 18px; background: white; color: #1d2330; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .home-layout { display: grid; gap: 22px; padding-bottom: 8px; }
+        .home-layout > * { min-width: 0; }
+        .home-map { position: relative; border-radius: 22px; overflow: hidden; background: #cfe3f7; box-shadow: 0 12px 30px rgba(29,35,48,0.08); }
+        .home-map svg { display: block; width: 100%; height: auto; }
+        .home-map .city-pin { cursor: pointer; }
+        .home-map .city-pin:focus { outline: none; }
+        .home-map .city-pin:focus-visible rect { stroke: #ff5722; stroke-width: 2; }
+        .home-live { position: absolute; left: 14px; top: 14px; display: flex; align-items: center; gap: 7px; padding: 8px 12px; border: none; border-radius: 20px; background: white; color: #1d2330; font-size: 13px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; }
+        .home-live i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
+        .home-live[hidden] { display: none; }
+        .home-map-open { position: absolute; right: 14px; bottom: 14px; padding: 10px 14px; border: none; border-radius: 12px; background: #1d2330; color: white; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .home h1 { margin: 4px 0 8px; font-size: 30px; line-height: 1.25; letter-spacing: -0.035em; font-weight: 800; }
+        .home h1 span { color: #ff5722; }
+        .home-lead { margin: 0 0 16px; color: #6b7280; font-size: 14px; line-height: 1.55; }
+        .home-search { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 14px; border: 2px solid #ff5722; border-radius: 14px; background: white; }
+        .home-search input { flex: 1; min-width: 0; padding: 8px 0; border: none; outline: none; background: none; font-size: 16px; font-family: inherit; }
+        .home-search button { padding: 10px 14px; border: none; border-radius: 10px; background: #ff5722; color: white; font-size: 14px; font-weight: 700; cursor: pointer; }
+        .home h2 { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 12px; font-size: 17px; letter-spacing: -0.02em; }
+        .home h2 small { color: #6b7280; font-size: 12px; font-weight: 500; }
+        .home-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .home-cat { padding: 12px 4px 10px; border: 1px solid #eceff3; border-radius: 14px; background: white; color: #1d2330; font-size: 12px; font-weight: 600; text-align: center; cursor: pointer; font-family: inherit; }
+        .home-cat b { display: block; margin-bottom: 4px; font-size: 24px; }
+        .home-cat span { display: block; color: #6b7280; font-size: 10px; font-weight: 500; }
+        .home-picks { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px; }
+        .home-pick { flex: 0 0 150px; padding: 0; border: 1px solid #eceff3; border-radius: 16px; overflow: hidden; background: white; text-align: left; cursor: pointer; font-family: inherit; color: #1d2330; }
+        .home-pick .art { height: 88px; display: grid; place-items: center; font-size: 40px; background: var(--bg); }
+        .home-pick .body { display: block; padding: 10px 12px 12px; }
+        .home-pick em { display: block; font-style: normal; color: var(--c); font-size: 11px; font-weight: 700; }
+        .home-pick strong { font-size: 14px; }
+        .home-cta { position: sticky; bottom: 0; margin: 0 -20px; padding: 12px 20px 16px; background: linear-gradient(to top, #fafbfc 72%, rgba(250,251,252,0)); }
+        .home-cta button { display: block; width: 100%; padding: 16px; border: none; border-radius: 14px; background: #ff5722; color: white; font-size: 16px; font-weight: 800; font-family: inherit; cursor: pointer; box-shadow: 0 8px 20px rgba(255,87,34,0.35); }
+        .home-foot { padding: 4px 0 18px; color: #9aa1ad; font-size: 11px; text-align: center; }
+        .home-foot a { color: inherit; }
+        header h1 { cursor: pointer; }
+        @media (min-width: 900px) {
+            .home-top { padding: 22px 0; }
+            .home-layout { grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: start; padding-bottom: 32px; }
+            .home-map { grid-row: span 3; position: sticky; top: 20px; }
+            .home h1 { font-size: 44px; }
+            .home-cta { position: static; margin: 16px 0 0; padding: 0; background: none; }
+        }
     </style>
     <script src="ys-install.js"></script>
     <style>.install-btn{display:none}html.can-install .install-btn{display:inline}.install-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}</style>
 </head>
 <body>
+
+    <!-- 첫 화면: 지도 일러스트·검색·종류 바로가기. 누르면 해당 조건으로 지도 화면을 연다 -->
+    <section class="home" id="home" aria-label="여순광 맛집 지도 시작 화면">
+        <div class="home-inner">
+            <div class="home-top">
+                <div class="home-brand"><span class="pin" aria-hidden="true"></span>여순광 맛집</div>
+                <div class="home-icons">
+                    <button type="button" class="home-icon" data-qr aria-label="QR 코드로 접속">📱 QR</button>
+                    <button type="button" class="home-icon" data-ys-install aria-label="앱 설치">📲 설치</button>
+                </div>
+            </div>
+
+            <div class="home-layout">
+                <div class="home-map">
+                    <!-- 여수·순천·광양 해안선을 단순화한 일러스트 -->
+                    <svg viewBox="0 0 400 300" role="img" aria-label="여수·순천·광양 지도">
+                        <rect width="400" height="300" fill="#cfe3f7"/>
+                        <path d="M0 0 H400 V120 C360 135 330 128 300 140 C280 150 270 170 248 168 C225 166 214 140 192 145 C170 150 165 175 140 172 C112 168 100 140 70 150 C40 160 25 150 0 160 Z" fill="#f4efe4"/>
+                        <path d="M150 160 C175 170 185 200 205 215 C220 228 228 255 250 262 C268 268 280 250 276 232 C272 214 252 205 248 185 C245 170 232 168 220 172 C205 177 196 160 180 158 C168 156 158 158 150 160 Z" fill="#f4efe4"/>
+                        <path d="M282 238 C295 232 310 240 312 252 C314 266 300 274 288 268 C278 262 274 246 282 238 Z" fill="#f4efe4"/>
+                        <path d="M0 40 C80 60 160 30 240 60 C300 80 350 70 400 90" stroke="#e6dccb" stroke-width="2" fill="none"/>
+                        <g font-family="inherit" font-size="13" font-weight="700">
+                            <g class="city-pin" data-city="순천" role="button" tabindex="0" aria-label="순천 맛집 보기">
+                                <circle cx="120" cy="105" r="22" fill="#43a047" opacity="0.18"/><circle cx="120" cy="105" r="9" fill="#43a047" stroke="white" stroke-width="3"/>
+                                <rect x="72" y="62" width="96" height="26" rx="13" fill="white"/><text x="120" y="80" text-anchor="middle" fill="#1d2330" data-count-city="순천">순천</text>
+                            </g>
+                            <g class="city-pin" data-city="광양" role="button" tabindex="0" aria-label="광양 맛집 보기">
+                                <circle cx="300" cy="100" r="18" fill="#fb8c00" opacity="0.18"/><circle cx="300" cy="100" r="9" fill="#fb8c00" stroke="white" stroke-width="3"/>
+                                <rect x="252" y="57" width="96" height="26" rx="13" fill="white"/><text x="300" y="75" text-anchor="middle" fill="#1d2330" data-count-city="광양">광양</text>
+                            </g>
+                            <g class="city-pin" data-city="여수" role="button" tabindex="0" aria-label="여수 맛집 보기">
+                                <circle cx="232" cy="236" r="24" fill="#1e88e5" opacity="0.18"/><circle cx="232" cy="236" r="9" fill="#1e88e5" stroke="white" stroke-width="3"/>
+                                <rect x="120" y="224" width="96" height="26" rx="13" fill="white"/><text x="168" y="242" text-anchor="middle" fill="#1d2330" data-count-city="여수">여수</text>
+                            </g>
+                        </g>
+                    </svg>
+                    <button type="button" class="home-live" id="home-live" hidden><i aria-hidden="true"></i><span id="home-live-text"></span></button>
+                    <button type="button" class="home-map-open" data-home-open>지도 크게 보기 →</button>
+                </div>
+
+                <div>
+                    <h1>오늘, 여순광에서<br><span>뭐 먹을까?</span></h1>
+                    <p class="home-lead" id="home-lead">여수·순천·광양 맛집을 지도로.<br>영업시간·길찾기·전화까지 한 번에.</p>
+                    <form class="home-search" id="home-search" role="search">
+                        <span aria-hidden="true">🔍</span>
+                        <input type="search" id="home-search-input" placeholder="식당·메뉴 검색 (예: 꼬막정식)" aria-label="맛집 검색" autocomplete="off">
+                        <button type="submit">검색</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h2>무엇이 당기세요? <small>종류별 바로가기</small></h2>
+                    <div class="home-cats" id="home-cats"></div>
+                </div>
+
+                <div>
+                    <h2>여순광 대표 맛 <small>옆으로 넘겨보기 →</small></h2>
+                    <div class="home-picks">
+                        <button type="button" class="home-pick" data-query="게장" style="--bg:#e8f0fe; --c:#1e88e5"><span class="art" aria-hidden="true">🦀</span><span class="body"><em>여수</em><strong>돌게장 백반</strong></span></button>
+                        <button type="button" class="home-pick" data-query="꼬막" style="--bg:#e6f6ee; --c:#43a047"><span class="art" aria-hidden="true">🐚</span><span class="body"><em>순천</em><strong>꼬막정식</strong></span></button>
+                        <button type="button" class="home-pick" data-query="광양불고기" style="--bg:#fdf0e3; --c:#fb8c00"><span class="art" aria-hidden="true">🔥</span><span class="body"><em>광양</em><strong>광양불고기</strong></span></button>
+                        <button type="button" class="home-pick" data-query="서대" style="--bg:#e8f0fe; --c:#1e88e5"><span class="art" aria-hidden="true">🐟</span><span class="body"><em>여수</em><strong>서대회 무침</strong></span></button>
+                        <button type="button" class="home-pick" data-query="재첩" style="--bg:#fdf0e3; --c:#fb8c00"><span class="art" aria-hidden="true">🥣</span><span class="body"><em>광양</em><strong>재첩국</strong></span></button>
+                    </div>
+                    <div class="home-cta"><button type="button" data-home-open>🗺️ 맛집 지도 열기</button></div>
+                    <p class="home-foot">© 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/">엽쌤의 다른 앱 보기 →</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // 공유 링크(?place=)나 점검(?check)으로 들어오면 첫 화면을 건너뛴다 (깜빡임 없이 바로 숨김)
+        (function () {
+            var q = new URLSearchParams(location.search);
+            if (q.has('place') || q.has('check')) document.getElementById('home').hidden = true;
+        })();
+    </script>
 
     <header><h1>여순광 맛집 지도 🗺️</h1><span class="head-actions"><span class="install-btn head-install"><button type="button" aria-label="앱 설치">📲 앱 설치</button></span><button type="button" class="head-qr" data-qr aria-label="QR 코드로 접속">📱 QR</button></span></header>
 
@@ -538,6 +666,7 @@
             if (map) createMarkers();
 
             applyFilters(false);
+            renderHome();
             openSharedPlace();
         };
 
@@ -1186,6 +1315,87 @@
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
         }
+
+        // 15. 첫 화면 (지도 일러스트·검색·종류 바로가기 → 조건을 적용해 지도 화면 열기)
+        const HOME_CATS = [
+            ['게장', '🦀'], ['해산물', '🐟'], ['국밥·탕', '🍲'], ['고기', '🥩'],
+            ['한정식', '🍱'], ['백반·한식', '🍚'], ['닭요리', '🍗'], ['카페·디저트', '☕']
+        ];
+        const homeEl = document.getElementById('home');
+
+        function renderHome() {
+            const byCity = {};
+            restaurants.forEach(p => { byCity[p.city] = (byCity[p.city] || 0) + 1; });
+            document.querySelectorAll('[data-count-city]').forEach(t => {
+                const city = t.dataset.countCity;
+                t.textContent = city + ' · ' + (byCity[city] || 0) + '곳';
+            });
+            document.getElementById('home-lead').innerHTML =
+                '여수·순천·광양 맛집 ' + restaurants.length + '곳을 지도로.<br>영업시간·길찾기·전화까지 한 번에.';
+
+            const open = restaurants.filter(p => getOpenStatus(p) === true).length;
+            document.getElementById('home-live-text').textContent = '지금 영업 중 ' + open + '곳';
+            document.getElementById('home-live').hidden = open === 0;
+
+            const box = document.getElementById('home-cats');
+            box.innerHTML = '';
+            HOME_CATS.forEach(([cat, icon]) => {
+                const n = restaurants.filter(p => p.category === cat).length;
+                if (!n) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'home-cat';
+                btn.innerHTML = '<b aria-hidden="true">' + icon + '</b>' + cat.replace('·디저트', '') + '<span>' + n + '곳</span>';
+                btn.addEventListener('click', () => openMapFromHome({ category: cat }));
+                box.appendChild(btn);
+            });
+        }
+
+        // 필터를 처음 상태로 되돌린 뒤 고른 조건 적용
+        function openMapFromHome({ city, category, query, openOnly } = {}) {
+            const click = sel => { const el = document.querySelector(sel); if (el) el.click(); };
+            if (state.city !== 'all') click('.filter-btn[data-city="all"]');
+            if (state.category !== 'all') click('#category-group [data-category="all"]');
+            if (state.favOnly) click('#fav-filter');
+            if (state.openOnly !== !!openOnly) click('#open-filter');
+            const search = document.getElementById('search');
+            search.value = query || '';
+            state.query = search.value;
+
+            if (city) click('.filter-btn[data-city="' + city + '"]');
+            if (category) click('#category-group [data-category="' + category + '"]');
+            applyFilters(true);
+
+            homeEl.hidden = true;
+            history.pushState({ yskView: 'map' }, '');
+            if (map) map.relayout();
+        }
+
+        function showHome() {
+            renderHome();
+            homeEl.hidden = false;
+            homeEl.scrollTop = 0;
+        }
+
+        document.querySelectorAll('[data-home-open]').forEach(b => b.addEventListener('click', () => openMapFromHome()));
+        document.getElementById('home-live').addEventListener('click', () => openMapFromHome({ openOnly: true }));
+        document.querySelectorAll('.home-pick').forEach(b => b.addEventListener('click', () => openMapFromHome({ query: b.dataset.query })));
+        document.querySelectorAll('.city-pin').forEach(pin => {
+            const go = () => openMapFromHome({ city: pin.dataset.city });
+            pin.addEventListener('click', go);
+            pin.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+        });
+        document.getElementById('home-search').addEventListener('submit', e => {
+            e.preventDefault();
+            openMapFromHome({ query: document.getElementById('home-search-input').value.trim() });
+        });
+        // 지도 화면 제목을 누르면 첫 화면으로, 휴대폰 뒤로가기도 첫 화면으로
+        document.querySelector('header h1').addEventListener('click', () => {
+            if (history.state && history.state.yskView === 'map') history.back(); else showHome();
+        });
+        window.addEventListener('popstate', () => {
+            if (!(history.state && history.state.yskView === 'map') && homeEl.hidden) showHome();
+        });
 
         // 14. 홈 화면 추가(PWA)용 서비스 워커
         if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
