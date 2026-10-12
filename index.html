@@ -356,7 +356,7 @@
         // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
         // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
         const FALLBACK_RESTAURANTS = [
-            // 여수 (74곳)
+            // 여수 (72곳)
             { id: 1, name: "이순신수제버거", city: "여수", category: "양식·일식", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, hours: "10:00-21:00" },
             { id: 4, name: "로타리식당", city: "여수", category: "백반·한식", menu: "백반", lat: 34.739417, lng: 127.733285, hours: "08:00-18:00", closed: "수" },
             { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집", lat: 34.733778, lng: 127.720705, link: "https://place.map.kakao.com/8276281", phone: "061-643-1880", hours: "09:00-20:00", closed: "연중무휴" },
@@ -410,7 +410,6 @@
             { id: 149, name: "거북이식당", city: "여수", category: "게장", menu: "돌게장 백반, 꽃게장정식, 생선구이", lat: 34.728673, lng: 127.722359, link: "https://place.map.kakao.com/17073987", phone: "061-681-4420", hours: "09:00-21:00", closed: "연중무휴" },
             { id: 150, name: "연화정", city: "여수", category: "해산물", menu: "꽃게장정식, 갈치조림, 왕갈치구이", lat: 34.743726, lng: 127.750489, link: "https://place.map.kakao.com/1947810293", phone: "061-663-8888", hours: "08:00-16:00, 17:00-20:30", closed: "연중무휴" },
             { id: 151, name: "정담식당", city: "여수", category: "백반·한식", menu: "서대회, 돌게장 백반, 우럭매운탕", lat: 34.757358, lng: 127.709144, link: "https://place.map.kakao.com/1121300072", phone: "061-651-3312", hours: "08:00-21:00", closed: "연중무휴" },
-            { id: 152, name: "중앙돈까스", city: "여수", category: "양식·일식", menu: "왕돈까스, 치즈돈까스", lat: 34.731022, lng: 127.717174, link: "https://place.map.kakao.com/1205282460", hours: "11:00-14:30, 16:30-20:00", closed: "일" },
             { id: 153, name: "여수회명가 국동점", city: "여수", category: "해산물", menu: "해물모듬, 전복사시미, 낙지탕탕이", lat: 34.726671, lng: 127.721359, link: "https://place.map.kakao.com/1336920259", phone: "010-4145-3526", hours: "10:00-14:30, 16:30-22:00", closed: "연중무휴" },
             { id: 154, name: "죽림해물칼국수", city: "여수", category: "면", menu: "해물칼국수, 해물파전, 콩국수", lat: 34.764136, lng: 127.637378, link: "https://place.map.kakao.com/2116993347", phone: "061-686-0580", hours: "11:00-21:00", closed: "수" },
             { id: 155, name: "화양식당", city: "여수", category: "장어", menu: "장어구이, 장어탕, 생선구이", lat: 34.745729, lng: 127.743121, link: "https://place.map.kakao.com/16952058", phone: "061-663-5505", hours: "07:30-20:00", closed: "연중무휴" },
@@ -428,7 +427,6 @@
             { id: 167, name: "겨비창고꽃삼겹", city: "여수", category: "고기", menu: "꽃삼겹살, 통삼겹살", lat: 34.760739, lng: 127.649874, link: "https://place.map.kakao.com/2094971709", phone: "010-6364-0064", hours: "17:00-21:30", closed: "토·일" },
             { id: 168, name: "존마틴버거", city: "여수", category: "양식·일식", menu: "수제버거", lat: 34.758667, lng: 127.659635, link: "https://place.map.kakao.com/1210023472", phone: "061-921-8552", hours: "11:00-20:30", closed: "월" },
             { id: 169, name: "갓라멘", city: "여수", category: "면", menu: "갓라멘, 갓돈코츠라멘", lat: 34.746877, lng: 127.743965, link: "https://place.map.kakao.com/1801165740", phone: "061-810-0060", hours: "11:30-20:00", closed: "화" },
-            { id: 170, name: "자산돌문어삼합라면", city: "여수", category: "포차·술집", menu: "돌문어 해물삼합, 돌문어해물라면", lat: 34.737387, lng: 127.747667, link: "https://place.map.kakao.com/1397033897", hours: "10:00-24:00", closed: "연중무휴" },
             { id: 171, name: "동백분식", city: "여수", category: "면", menu: "갓김치 들기름국수, 꼬막 비빔국수", lat: 34.745130, lng: 127.741989, link: "https://place.map.kakao.com/2311005", phone: "0503-7154-2114", hours: "월·화·수·금 09:00-16:00 / 토~일 09:00-17:00", closed: "목" },
             { id: 172, name: "조선제일국밥 본점", city: "여수", category: "국밥·탕", menu: "모듬국밥, 순대국밥, 내장국밥", lat: 34.744088, lng: 127.743228, link: "https://place.map.kakao.com/27526830", phone: "061-662-0333", hours: "월~토 07:00-20:30 / 일 07:00-14:00", closed: "연중무휴" },
             // 순천 (75곳)
