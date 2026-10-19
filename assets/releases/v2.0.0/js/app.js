@@ -1596,7 +1596,9 @@ export class YskFoodApp {
 
     const leadEl = document.getElementById('home-lead');
     if (leadEl) {
-      leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 ${regions.length}개 지역 총 ${totalAllCount}곳 · 초등·교사 단체 맞춤 ${elemVerifiedCount}곳 수록)`;
+      // 단체 수용이 실제로 확인된 식당이 있을 때만 그 수를 적는다
+      const groupText = elemVerifiedCount > 0 ? ` · 초등·교사 단체 수용 확인 ${elemVerifiedCount}곳` : '';
+      leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 ${regions.length}개 지역 총 ${totalAllCount}곳 · 카카오맵 영업 확인${groupText})`;
     }
 
     const openCount = this.currentRestaurants.filter(p => getOpenStatus(p) === true).length;

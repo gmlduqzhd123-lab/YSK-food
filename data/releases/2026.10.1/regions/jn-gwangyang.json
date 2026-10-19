@@ -4400,10 +4400,10 @@
       "type": "stadium",
       "typeLabel": "운동장·체육관",
       "regionCode": "jn-gwangyang",
-      "address": "전라남도 광양시 백운로 1641",
+      "address": "전라남도 광양시 광양읍 매천로 695-20",
       "location": {
-        "lat": 34.9331,
-        "lng": 127.6914,
+        "lat": 34.9844,
+        "lng": 127.5761,
         "status": "verified"
       },
       "eventRefs": [
@@ -4412,14 +4412,14 @@
     },
     {
       "id": "venue-gwangyang-retreat",
-      "name": "광양백운산수련관",
+      "name": "백운산자연휴양림",
       "type": "lodging",
       "typeLabel": "수련시설·숙소",
       "regionCode": "jn-gwangyang",
-      "address": "전라남도 광양시 옥룡면 백운로 455",
+      "address": "전라남도 광양시 옥룡면 백계로 337",
       "location": {
-        "lat": 35.0612,
-        "lng": 127.6182,
+        "lat": 35.0537,
+        "lng": 127.5974,
         "status": "verified"
       },
       "eventRefs": []

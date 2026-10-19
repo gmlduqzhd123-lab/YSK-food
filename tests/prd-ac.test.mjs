@@ -1106,11 +1106,13 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       fetchFn: createLocalFileFetch()
     });
 
-    // 1. 전국 전체('nationwide') 로드 시 기존 254곳(여순광 166 + 전국 초등·선수단 88곳) + 카카오맵 확인 추가분 반환
+    // 1. 전국 전체('nationwide') 로드 시 기존 여순광 166곳 + 카카오맵 확인 추가분 반환
+    //    (실제 식당이 아닌 것으로 확인된 '초등·선수단 맞춤 식당' 88곳(ysk-r-nat-…)은 공개 자료에 없어야 함)
     const nwRes = await repo.selectRegion('nationwide');
     assert.equal(nwRes.status, 'ok');
-    assert.equal(nwRes.restaurants.length, 254 + KAKAO_VERIFIED.restaurants.length);
-    assert.equal(nwRes.restaurants.filter(r => isLegacyId(r.id) || String(r.id).startsWith('ysk-r-nat-')).length, 254);
+    assert.equal(nwRes.restaurants.length, 166 + KAKAO_VERIFIED.restaurants.length);
+    assert.equal(nwRes.restaurants.filter(r => isLegacyId(r.id)).length, 166);
+    assert.equal(nwRes.restaurants.some(r => String(r.id).startsWith('ysk-r-nat-')), false);
     const regionSet = new Set(nwRes.restaurants.map(r => r.regionCode));
     assert.ok(regionSet.has('seoul-jongno'));
     assert.ok(regionSet.has('gb-gyeongju'));
@@ -1119,8 +1121,9 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.ok(regionSet.has('busan-haeundae'));
     assert.ok(regionSet.has('jb-jeonju'));
     assert.ok(regionSet.has('jj-jeju'));
-    // 기존 20개 지역 중 보성군(0곳 테스트용)을 뺀 19개 + 새 시·도 단위 지역에 식당 존재
-    assert.equal(regionSet.size, 19 + KAKAO_VERIFIED.regions.length);
+    // 식당이 있는 지역 = 여수·순천·광양 + 카카오맵 확인 식당이 들어간 지역 (보성군은 0곳 테스트용으로 비어 있음)
+    const expectedRegions = new Set(['jn-yeosu', 'jn-suncheon', 'jn-gwangyang', ...KAKAO_VERIFIED.restaurants.map(r => r.regionCode)]);
+    assert.equal(regionSet.size, expectedRegions.size);
     assert.equal(regionSet.has('jn-boseong'), false);
 
     // 2. 학교·선수단 모드 카테고리 목록에서 '포차·술집', '카페·디저트' 배제 확인
@@ -1155,9 +1158,16 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       assert.equal(isSuitableForMode(r, 'school'), true);
     }
 
-    // 4. 상위 추천 식당이 단체 수용 검증(availability === 'yes')된 초등·선수단 적합 식당인지 검증
-    assert.equal(athleteFiltered.combinedList[0].groupProfile.availability, 'yes');
-    assert.equal(schoolFiltered.combinedList[0].groupProfile.availability, 'yes');
+    // 4. 단체 수용이 확인된(availability === 'yes') 식당이 있으면 학교·선수단 모드에서 맨 위로 추천되는지 검증
+    //    (지금 공개 자료에는 단체 수용 확인 식당이 없으므로 시험용 식당 하나를 넣어 순서 규칙만 확인한다)
+    const probe = structuredClone(nwRes.restaurants.find(r => isSuitableForMode(r, 'school') && r.groupProfile.availability !== 'yes'));
+    probe.id = 'test-probe-group-yes';
+    probe.name = '단체수용확인 시험식당';
+    probe.groupProfile.availability = 'yes';
+    for (const mode of ['athlete', 'school']) {
+      const ranked = filterAndClassifyRestaurants([...nwRes.restaurants, probe], { mode, regionCode: 'nationwide' });
+      assert.equal(ranked.combinedList[0].id, 'test-probe-group-yes', `${mode} 모드에서 단체 수용 확인 식당이 맨 위가 아님`);
+    }
 
     // 5. 일반 모드('general')에서도 숫자 시작 술집(41번포차)이 최상단 1위로 노출되지 않는지 검증
     const generalFiltered = filterAndClassifyRestaurants(nwRes.restaurants, {
