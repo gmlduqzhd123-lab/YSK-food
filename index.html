@@ -42,31 +42,63 @@
             </div>
 
             <div class="home-layout">
-                <div class="home-map">
-                    <!-- 여수·순천·광양 기본 권역 및 전국 확장 일러스트 -->
-                    <svg viewBox="0 0 400 300" role="img" aria-label="여수·순천·광양 및 전국 지역 지도">
-                        <rect width="400" height="300" fill="#cfe3f7"/>
-                        <path d="M0 0 H400 V120 C360 135 330 128 300 140 C280 150 270 170 248 168 C225 166 214 140 192 145 C170 150 165 175 140 172 C112 168 100 140 70 150 C40 160 25 150 0 160 Z" fill="#f4efe4"/>
-                        <path d="M150 160 C175 170 185 200 205 215 C220 228 228 255 250 262 C268 268 280 250 276 232 C272 214 252 205 248 185 C245 170 232 168 220 172 C205 177 196 160 180 158 C168 156 158 158 150 160 Z" fill="#f4efe4"/>
-                        <path d="M282 238 C295 232 310 240 312 252 C314 266 300 274 288 268 C278 262 274 246 282 238 Z" fill="#f4efe4"/>
-                        <path d="M0 40 C80 60 160 30 240 60 C300 80 350 70 400 90" stroke="#e6dccb" stroke-width="2" fill="none"/>
-                        <g font-family="inherit" font-size="13" font-weight="700">
-                            <g class="city-pin" data-city="순천" role="button" tabindex="0" aria-label="순천 맛집 보기">
-                                <circle cx="120" cy="105" r="22" fill="#43a047" opacity="0.18"/><circle cx="120" cy="105" r="9" fill="#43a047" stroke="white" stroke-width="3"/>
-                                <rect x="72" y="62" width="96" height="26" rx="13" fill="white"/><text x="120" y="80" text-anchor="middle" fill="#1d2330" data-count-city="순천">순천</text>
+                <div class="home-map tiles">
+                    <!-- 전국 권역 타일: 권역을 실제 위치대로 배치, 여수·순천·광양은 대표 권역으로 크게 -->
+                    <svg viewBox="0 0 400 300" role="group" aria-label="전국 권역별 맛집 수">
+                        <defs>
+                            <filter id="tile-shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.10"/></filter>
+                            <linearGradient id="tile-hot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7043"/><stop offset="1" stop-color="#f4511e"/></linearGradient>
+                            <linearGradient id="tile-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4ee"/><stop offset="1" stop-color="#fdeee6"/></linearGradient>
+                        </defs>
+                        <rect width="400" height="300" fill="url(#tile-bg)"/>
+                        <g font-family="inherit">
+                            <g class="city-pin region-tile" data-region="seoul-metro" role="button" tabindex="0" aria-label="서울·수도권 맛집 보기">
+                                <rect x="114" y="16" width="82" height="60" rx="14" fill="#fff" stroke="#1e88e5" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="114" y="24" width="4" height="44" rx="2" fill="#1e88e5"/>
+                                <text x="127" y="38" font-size="15" aria-hidden="true">🏛️</text><text x="186" y="39" text-anchor="end" font-size="17" font-weight="800" fill="#1e88e5" data-count-group="seoul-metro">17</text>
+                                <text x="127" y="62" font-size="12" font-weight="700" fill="#1d2330">서울·수도권</text>
                             </g>
-                            <g class="city-pin" data-city="광양" role="button" tabindex="0" aria-label="광양 맛집 보기">
-                                <circle cx="300" cy="100" r="18" fill="#fb8c00" opacity="0.18"/><circle cx="300" cy="100" r="9" fill="#fb8c00" stroke="white" stroke-width="3"/>
-                                <rect x="252" y="57" width="96" height="26" rx="13" fill="white"/><text x="300" y="75" text-anchor="middle" fill="#1d2330" data-count-city="광양">광양</text>
+                            <g class="city-pin region-tile" data-region="gw-all" role="button" tabindex="0" aria-label="강릉·춘천 맛집 보기">
+                                <rect x="206" y="16" width="82" height="60" rx="14" fill="#fff" stroke="#00897b" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="206" y="24" width="4" height="44" rx="2" fill="#00897b"/>
+                                <text x="219" y="38" font-size="15" aria-hidden="true">🏔️</text><text x="278" y="39" text-anchor="end" font-size="17" font-weight="800" fill="#00897b" data-count-group="gw-all">11</text>
+                                <text x="219" y="62" font-size="12" font-weight="700" fill="#1d2330">강릉·춘천</text>
                             </g>
-                            <g class="city-pin" data-city="여수" role="button" tabindex="0" aria-label="여수 맛집 보기">
-                                <circle cx="232" cy="236" r="24" fill="#1e88e5" opacity="0.18"/><circle cx="232" cy="236" r="9" fill="#1e88e5" stroke="white" stroke-width="3"/>
-                                <rect x="120" y="224" width="96" height="26" rx="13" fill="white"/><text x="168" y="242" text-anchor="middle" fill="#1d2330" data-count-city="여수">여수</text>
+                            <g class="city-pin region-tile" data-region="cc-all" role="button" tabindex="0" aria-label="대전·공주 맛집 보기">
+                                <rect x="114" y="84" width="82" height="60" rx="14" fill="#fff" stroke="#7e57c2" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="114" y="92" width="4" height="44" rx="2" fill="#7e57c2"/>
+                                <text x="127" y="106" font-size="15" aria-hidden="true">🔬</text><text x="186" y="107" text-anchor="end" font-size="17" font-weight="800" fill="#7e57c2" data-count-group="cc-all">11</text>
+                                <text x="127" y="130" font-size="12" font-weight="700" fill="#1d2330">대전·공주</text>
+                            </g>
+                            <g class="city-pin region-tile" data-region="gb-all" role="button" tabindex="0" aria-label="경주·대구 맛집 보기">
+                                <rect x="206" y="84" width="82" height="60" rx="14" fill="#fff" stroke="#f4511e" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="206" y="92" width="4" height="44" rx="2" fill="#f4511e"/>
+                                <text x="219" y="106" font-size="15" aria-hidden="true">🏯</text><text x="278" y="107" text-anchor="end" font-size="17" font-weight="800" fill="#f4511e" data-count-group="gb-all">12</text>
+                                <text x="219" y="130" font-size="12" font-weight="700" fill="#1d2330">경주·대구</text>
+                            </g>
+                            <g class="city-pin region-tile" data-region="honam-west" role="button" tabindex="0" aria-label="전주·광주·목포 맛집 보기">
+                                <rect x="22" y="152" width="82" height="60" rx="14" fill="#fff" stroke="#6d4c41" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="22" y="160" width="4" height="44" rx="2" fill="#6d4c41"/>
+                                <text x="35" y="174" font-size="15" aria-hidden="true">🌾</text><text x="94" y="175" text-anchor="end" font-size="17" font-weight="800" fill="#6d4c41" data-count-group="honam-west">20</text>
+                                <text x="35" y="198" font-size="10.5" font-weight="700" fill="#1d2330">전주·광주·목포</text>
+                            </g>
+                            <g class="city-pin region-tile" data-region="pk-all" role="button" tabindex="0" aria-label="부산·통영 맛집 보기">
+                                <rect x="298" y="152" width="82" height="60" rx="14" fill="#fff" stroke="#039be5" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="298" y="160" width="4" height="44" rx="2" fill="#039be5"/>
+                                <text x="311" y="174" font-size="15" aria-hidden="true">🌊</text><text x="370" y="175" text-anchor="end" font-size="17" font-weight="800" fill="#039be5" data-count-group="pk-all">11</text>
+                                <text x="311" y="198" font-size="12" font-weight="700" fill="#1d2330">부산·통영</text>
+                            </g>
+                            <g class="city-pin region-tile" data-region="jj-jeju" role="button" tabindex="0" aria-label="제주 맛집 보기">
+                                <rect x="22" y="220" width="82" height="60" rx="14" fill="#fff" stroke="#fb8c00" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="22" y="228" width="4" height="44" rx="2" fill="#fb8c00"/>
+                                <text x="35" y="242" font-size="15" aria-hidden="true">🍊</text><text x="94" y="243" text-anchor="end" font-size="17" font-weight="800" fill="#fb8c00" data-count-group="jj-jeju">6</text>
+                                <text x="35" y="266" font-size="12" font-weight="700" fill="#1d2330">제주</text>
+                            </g>
+                            <g class="city-pin region-tile" data-region="all" role="button" tabindex="0" aria-label="여수·순천·광양 맛집 보기">
+                                <rect x="114" y="152" width="174" height="128" rx="18" fill="url(#tile-hot)" filter="url(#tile-shadow)"/>
+                                <text x="130" y="179" font-size="12" font-weight="700" fill="#fff" opacity="0.92">⭐ 대표 권역</text>
+                                <text x="130" y="205" font-size="17" font-weight="800" fill="#fff">여수·순천·광양</text>
+                                <text x="130" y="247" font-size="38" font-weight="800" fill="#fff"><tspan data-count-group="all">166</tspan><tspan font-size="15" dx="3">곳</tspan></text>
+                                <text x="130" y="268" font-size="10.5" font-weight="600" fill="#fff" opacity="0.92">여수 <tspan data-count-region="jn-yeosu">70</tspan> · 순천 <tspan data-count-region="jn-suncheon">75</tspan> · 광양 <tspan data-count-region="jn-gwangyang">21</tspan></text>
+                                <text x="274" y="198" text-anchor="end" font-size="34" aria-hidden="true">🦀</text>
                             </g>
                         </g>
                     </svg>
                     <button type="button" class="home-live" id="home-live" hidden><i aria-hidden="true"></i><span id="home-live-text"></span></button>
-                    <button type="button" class="home-map-open" data-home-open>지도 크게 보기 →</button>
+                    <button type="button" class="home-map-open" data-home-open>지도 보기 →</button>
                 </div>
 
                 <div>

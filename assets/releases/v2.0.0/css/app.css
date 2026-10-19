@@ -1756,3 +1756,38 @@ html.op-mode #open-op-tool-btn {
     height: 58px;
   }
 }
+
+/* 홈 대표 이미지: 전국 권역 타일 */
+.home-map.tiles {
+  background: #fff4ee;
+}
+.home-map .region-tile {
+  transition: transform 0.15s;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.home-map .region-tile:hover,
+.home-map .region-tile:focus-visible {
+  transform: scale(1.04);
+  outline: none;
+}
+/* 빈 왼쪽 위·오른쪽 아래 칸에 맞춰 작게 배치 */
+.home-map.tiles .home-live {
+  left: 2.5%;
+  top: 4%;
+  max-width: 24%;
+  padding: 6px 9px;
+  font-size: 11.5px;
+  line-height: 1.25;
+  text-align: left;
+}
+.home-map.tiles .home-live i {
+  flex-shrink: 0;
+}
+.home-map.tiles .home-map-open {
+  right: 2.5%;
+  bottom: 4%;
+  min-height: 36px;
+  padding: 8px 11px;
+  font-size: 12px;
+}

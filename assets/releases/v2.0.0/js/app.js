@@ -1581,6 +1581,16 @@ export class YskFoodApp {
       t.textContent = `${city} · ${count}곳`;
     });
 
+    // 홈 권역 타일: 권역 묶음 / 개별 지역 맛집 수
+    document.querySelectorAll('[data-count-region]').forEach(t => {
+      t.textContent = String(byRegionCode[t.dataset.countRegion] ?? 0);
+    });
+    document.querySelectorAll('[data-count-group]').forEach(t => {
+      // 권역 묶음이 아니면(예: 제주) 그 지역 하나로 센다
+      const codes = REGION_GROUPS[t.dataset.countGroup]?.regionCodes || [t.dataset.countGroup];
+      t.textContent = String(codes.reduce((sum, rc) => sum + (byRegionCode[rc] ?? 0), 0));
+    });
+
     const totalAllCount = regions.reduce((sum, r) => sum + (r.stats?.totalRestaurants ?? 0), 0);
     const elemVerifiedCount = regions.reduce((sum, r) => sum + (r.stats?.groupVerifiedCount ?? 0), 0);
 
@@ -1992,7 +2002,7 @@ export class YskFoodApp {
       b.addEventListener('click', () => this.openMapFromHome({ query: b.dataset.query }));
     });
     document.querySelectorAll('.city-pin').forEach(pin => {
-      const go = () => this.openMapFromHome({ city: pin.dataset.city });
+      const go = () => this.openMapFromHome(pin.dataset.region ? { regionCode: pin.dataset.region } : { city: pin.dataset.city });
       pin.addEventListener('click', go);
       pin.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
