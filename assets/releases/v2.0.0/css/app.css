@@ -1199,6 +1199,11 @@ main {
   font-weight: 700;
   text-align: left;
   cursor: pointer;
+  /* 한글이 낱말 중간(예: 수학여/행)에서 끊기지 않게 띄어쓰기 단위로만 줄바꿈 */
+  word-break: keep-all;
+}
+.home-mode-card .nowrap {
+  white-space: nowrap;
 }
 .home-search {
   display: flex;
