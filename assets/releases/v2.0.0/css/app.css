@@ -1728,4 +1728,31 @@ html.op-mode #open-op-tool-btn {
   .view-switch button {
     min-height: 40px;
   }
+
+  /* 바텀시트: 목록 위주 단계와 끌기 손잡이 */
+  .panel.mode-tall {
+    height: 80%;
+  }
+  .panel.dragging {
+    transition: none;
+  }
+  .panel-head {
+    padding-top: 16px;
+    touch-action: none;
+    cursor: grab;
+  }
+  .panel-head::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 40px;
+    height: 5px;
+    margin-left: -20px;
+    border-radius: 3px;
+    background: #cbd5e1;
+  }
+  .panel.mode-map {
+    height: 58px;
+  }
 }
