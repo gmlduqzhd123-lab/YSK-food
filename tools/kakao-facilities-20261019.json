@@ -1,0 +1,5783 @@
+{
+"checkedAt": "2026-10-19",
+"source": "카카오맵 장소 상세의 편의시설·좌석 옵션·AI 요약 정보 (일부 부정확할 수 있음)",
+"facilities": {
+"ysk-r-1": {
+"parking": true,
+"takeout": true,
+"parkingNote": "지하주차장 1시간 무료 후 10분마다 200원 부과, 주변 공영주차장 1시간 무료 이용 가능"
+},
+"ysk-r-10": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞에 10대~13대 주차 가능, 주차 공간 넓음"
+},
+"ysk-r-100": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-101": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-105": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-107": {
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 2시간 무료, 식당 앞 시장 주차장 주차비 지원"
+},
+"ysk-r-108": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 아랫장 공영주차장 이용"
+},
+"ysk-r-109": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-11": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "식당 전용 주차장 보유, 주차 공간 넉넉하여 점심·저녁 시간대에도 주차 스트레스 없음"
+},
+"ysk-r-110": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-111": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 마당과 뒤 대형 주차장에 넉넉한 주차 공간, 제2주차장 마련으로 단체 방문객도 주차 걱정 없음"
+},
+"ysk-r-112": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "벽오동 앞 넓은 전용 주차장 이용 가능, 주차요원 안내"
+},
+"ysk-r-113": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "금빈회관 전용 주차장 8대 이용 가능, 가게 옆 공터는 주차장 아님"
+},
+"ysk-r-114": {
+"group": true,
+"room": true,
+"parking": true,
+"parkingNote": "매장 바로 앞 2대 정도 주차 가능, 주변 유료 주차장 이용 가능"
+},
+"ysk-r-115": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "길 건너편 공영주차장 및 순천만국가정원 동문 공영주차장 이용 권장"
+},
+"ysk-r-117": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "바로 옆 승주주차장 이용 안내"
+},
+"ysk-r-118": {
+"group": true,
+"room": true,
+"parking": true,
+"parkingNote": "넓은 1층 전용 주차장 이용 가능, 주말과 공휴일에도 여유로운 주차 공간"
+},
+"ysk-r-122": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "가게 앞과 옆 공터에 주차 공간이 있어 편리하며, 가게 외부 주차장 이용 시 주차 지원이 가능하니 결제 시 "
+},
+"ysk-r-123": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "주차 불가, 길 건너 순천만국가정원4주차장과 순천만가든마켓 무료주차 가능"
+},
+"ysk-r-124": {
+"kidChair": true
+},
+"ysk-r-125": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-126": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "자체 주차장 없음, 근처 공영주차장 유료 이용 가능"
+},
+"ysk-r-127": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-128": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 옆 주차장 이용 가능, 방문객 많아 주차 공간 부족할 수 있음"
+},
+"ysk-r-129": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-13": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "전용 주차장 20대 이상 주차 가능, 순천만 습지대형주차장 유료 이용 가능"
+},
+"ysk-r-130": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 청춘 창고 및 공영주차장 이용 권장"
+},
+"ysk-r-131": {
+"takeout": true
+},
+"ysk-r-133": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-134": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-135": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 앞 전용주차장 넉넉함, 건너편 어린이집 앞쪽 주차장 이용 가능"
+},
+"ysk-r-136": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-137": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-139": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "전용 주차장 없음, 주변 공영주차장 이용 권장"
+},
+"ysk-r-14": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 넓은 전용 무료 주차장 완비, 순천만습지주차장 도보 1-2분 거리"
+},
+"ysk-r-140": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "매장 앞 전용 주차장 10대 가능, 한 블록 옆 대로변 주차 가능"
+},
+"ysk-r-141": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-147": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-148": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-149": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-15": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 옆 넓은 공터에 주차 가능, 식당 앞 섬진강 휴게소 인근 주차 가능"
+},
+"ysk-r-150": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차 가능, 매장 앞 공영주차장 이용 가능, 인근 엑스포 주차장 10분당 400원, 하루 최대 13"
+},
+"ysk-r-151": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 뒷편에 무료 주차 가능"
+},
+"ysk-r-153": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "근처 유료 공영주차장 이용 가능"
+},
+"ysk-r-154": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 공영주차장 이용 가능, 무료 주차 가능"
+},
+"ysk-r-155": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 5대 주차 가능, 도보 5분 거리 엑스포역 공영주차장 이용 가능"
+},
+"ysk-r-156": {
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-157": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-158": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 자체 주차 공간 이용 가능, 맞은편 공영주차장 있음"
+},
+"ysk-r-159": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "이순신광장 근처 공영주차장 이용 권장, 연안여객선터미널공영주차장 유료 주차 가능"
+},
+"ysk-r-16": {
+"parking": true,
+"freeParking": true,
+"parkingNote": "매장 앞 주차장 이용 가능"
+},
+"ysk-r-160": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 전용 주차장 이용 가능"
+},
+"ysk-r-161": {
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-162": {
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-163": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-164": {
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-165": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차 불가, 근처 스타벅스 무료 주차장 이용 가능"
+},
+"ysk-r-166": {
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-167": {
+"group": true,
+"room": true,
+"reserve": true
+},
+"ysk-r-168": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-169": {
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-17": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-171": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-172": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 한려공영주차장 이용 권장"
+},
+"ysk-r-173": {
+"group": true,
+"parking": true,
+"kidChair": true,
+"parkingNote": "순천역 공영주차장 이용 권장, 역전시장 제1공영주차장 최초 2시간 무료 주차 가능"
+},
+"ysk-r-175": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 무료 주차 6대 가능, 근처 공영주차장 및 주민용 공용 주차장 이용 가능"
+},
+"ysk-r-176": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞에 주차 공간이 넉넉하게 마련되어 있어 편리함"
+},
+"ysk-r-177": {
+"group": true
+},
+"ysk-r-178": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 아랫장 공영주차장 이용"
+},
+"ysk-r-179": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-18": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-180": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-181": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-182": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "가게에 방문 시 주차 공간 없음, 건너편 다리 밑에 주차 가능"
+},
+"ysk-r-183": {
+"takeout": true
+},
+"ysk-r-184": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-185": {
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "전용주차장 사용 가능, 당일 1회 2시간 무료주차 가능, 웃장 공영주차장 이용 가능"
+},
+"ysk-r-186": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-187": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-188": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-189": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-19": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "넓고 쾌적한 주차장 이용 가능, 대형버스 주차 가능"
+},
+"ysk-r-190": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-191": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞에 10대 정도 주차 가능"
+},
+"ysk-r-192": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-193": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-194": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "가게 바로 옆 공영주차장 이용 가능, 주변에 공영주차장 다수 있음"
+},
+"ysk-r-195": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 4대 주차 공간 있음, 매장 바로 앞 대형 공용주차장 이용 가능, 옆쪽 무료 주민주차장 이용 가능"
+},
+"ysk-r-196": {
+"group": true,
+"parking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-197": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 앞 주차 가능, 근처 주차장 이용 가능"
+},
+"ysk-r-198": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-199": {
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 앞 주차 가능, 근처 공영주차장 이용"
+},
+"ysk-r-2": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-20": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-200": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 옆 협소한 주차 공간 있음, 근처 공영주차장 이용 권장"
+},
+"ysk-r-201": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"parkingNote": "가게 바로 앞에 4대 주차 가능, 기본 30분 무료 주차 제공 및 식사 후 1시간 무료 주차 가능, 바로 옆"
+},
+"ysk-r-202": {
+"group": true,
+"room": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 가능"
+},
+"ysk-r-203": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "자체 주차장 없음, 근처 성남교 밑 주차장, 중앙동 공영주차장 이용 권장"
+},
+"ysk-r-21": {
+"parking": true
+},
+"ysk-r-22": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-23": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "식당 앞 마당에 전용 주차 공간 있음, 근처 골목 입구 공영주차장 이용 가능"
+},
+"ysk-r-25": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 3대 주차 가능, 이순신광장 공영지하주차장 1시간 무료, 근처 공영주차장 이용 가능"
+},
+"ysk-r-27": {
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-29": {
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 이순신광장공영주차장, 진남관 공영주차장, 진남상가 공영주차장 이용 권장, 무료 주차 1시간 가능"
+},
+"ysk-r-3": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-31": {
+"takeout": true
+},
+"ysk-r-32": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-33": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-34": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-35": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-36": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 민속촌앞 주차장 이용 권장"
+},
+"ysk-r-37": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-38": {
+"group": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-4": {
+"parking": true,
+"reserve": true,
+"parkingNote": "매장 자체 주차장 없음, 맞은편 서시장 공영 주차장 및 인근 유료 주차장 이용 권장"
+},
+"ysk-r-40": {
+"parking": true,
+"takeout": true,
+"parkingNote": "주차장이 넓고 주차 문제 없음"
+},
+"ysk-r-41": {
+"parking": true
+},
+"ysk-r-42": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 주차 가능, 선암사 입구 주차장 이용 가능, 무료 주차 공간 널널"
+},
+"ysk-r-43": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-44": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-46": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-47": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "매장 앞 4대 무료 주차 가능, 시장 공영주차장 이용 가능"
+},
+"ysk-r-49": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "차도리가든 입구 전용 주차장과 제2주차장 이용 가능, 주차 공간 넉넉함"
+},
+"ysk-r-5": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 앞 전용 주차장 넓게 구비되어 주차 용이"
+},
+"ysk-r-50": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-54": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 옆 전용 주차장 15대 이용 가능, 주말 피크타임 광양읍사무소 앞 무료 공영주차장 이용 권장"
+},
+"ysk-r-55": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "식당 바로 앞과 건너편에 전용 주차 공간 있음, 주변 골목길 주차 가능, 근처 공용주차장 이용 권장"
+},
+"ysk-r-57": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "식당 앞 무료 주차 가능"
+},
+"ysk-r-58": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-59": {
+"group": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-6": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-60": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 맞은편 무료 공영주차장 이용 가능, 바로 옆 공영주차장 있음"
+},
+"ysk-r-61": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 전용주차장 있음, 근처 공용주차장 이용 가능"
+},
+"ysk-r-64": {
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 웃장공영주차장 2시간 무료 주차 가능"
+},
+"ysk-r-66": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 알리바이 공영주차장 이용"
+},
+"ysk-r-68": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-69": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-7": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 권장, 여수 수산물 특화시장 주차장 1시간 무료, 점심시간 12시부터 14시까지 무료 "
+},
+"ysk-r-70": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 옆 전용 주차장 넓게 마련되어 대형차도 주차 가능, 근처 큰길 공영주차장 이용 권장"
+},
+"ysk-r-71": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 바로 뒤편 전용 주차장 이용 가능, 인근 여서동로타리 공영주차장 이용 권장"
+},
+"ysk-r-72": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-73": {
+"group": true,
+"parking": true,
+"takeout": true
+},
+"ysk-r-74": {
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-75": {
+"group": true,
+"takeout": true
+},
+"ysk-r-76": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 진남상가 공영주차장 이용, 점심시간 2시간 무료, 일반시간 1시간 무료, 주말에는 만차 가능성 있음"
+},
+"ysk-r-78": {
+"reserve": true,
+"takeout": true
+},
+"ysk-r-79": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-8": {
+"group": true,
+"reserve": true,
+"parkingNote": "주차 공간 없음, 근처 수산시장 공용주차장 이용 권장"
+},
+"ysk-r-80": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 1대 주차 가능, 진남상가 및 진남관 공영주차장 1시간 무료 이용 가능, 근처 공영주차장 이용"
+},
+"ysk-r-81": {
+"group": true,
+"room": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-82": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 해양공원 공영주차장 1시간 무료 이용 가능"
+},
+"ysk-r-83": {
+"group": true,
+"parking": true,
+"takeout": true
+},
+"ysk-r-85": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-87": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-88": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 가능"
+},
+"ysk-r-89": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "전용 주차장이 양옆 두 군데 있어 주차 편리, 주차장 넓고 잘 갖추어져 있음"
+},
+"ysk-r-9": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-90": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-91": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 옆 전용 주차장 5-6대 주차 가능"
+},
+"ysk-r-93": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-94": {
+"group": true,
+"room": true,
+"takeout": true
+},
+"ysk-r-95": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "근처 볼링장 지하주차장 이용 가능"
+},
+"ysk-r-98": {
+"room": true,
+"parking": true,
+"parkingNote": "매장 앞과 맞은편 교회 옆에 약 4대 주차 가능, 근처 박람회장 공영주차장 이용 가능"
+},
+"ysk-r-99": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0001": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0002": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 넓은 주차 공간 이용 가능"
+},
+"ysk-r-k0003": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0005": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0007": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 앞 전용 주차장 이용 가능, 주말 점심 시간 만차 가능성 있음"
+},
+"ysk-r-k0008": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 앞 넓은 전용 주차장 이용 가능, 식당 앞 주차장 내 발렛주차 가능, 전용 주차장 만차 시 주변 공영주"
+},
+"ysk-r-k0009": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 옆에 4~6대 전용 주차장 이용 가능, 동암역 공영주차장 이용 권장"
+},
+"ysk-r-k0010": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 앞 넓은 전용 주차장 이용 가능, 맞은편 공영주차장 이용 가능"
+},
+"ysk-r-k0011": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0013": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0015": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"parkingNote": "주차 공간이 넉넉해 차량 이용 부담 없이 방문 가능, 가게 입구에 주차 공간 충분"
+},
+"ysk-r-k0016": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 옆에 7-10대 정도 주차 가능"
+},
+"ysk-r-k0017": {
+"parking": true
+},
+"ysk-r-k0018": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0019": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0020": {
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 공간 없음, 통인시장 공영주차장 및 인근 유료 공영주차장 이용 권장"
+},
+"ysk-r-k0021": {
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0022": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"parkingNote": "매장 앞 넓은 주차장 이용 가능, 주차 공간 여유로움"
+},
+"ysk-r-k0023": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0024": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0029": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 무료 주차 공간 이용 가능"
+},
+"ysk-r-k0030": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "장미상가 내 주차 공간 이용 가능, 상가 내 주차 요금 11000원"
+},
+"ysk-r-k0031": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0032": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "자체 주차장 없음, 근처 공영주차장 이용"
+},
+"ysk-r-k0036": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 옆에 작은 공영주차장 이용 가능"
+},
+"ysk-r-k0039": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0040": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "전용주차장과 무료주차 가능, 근처 대형 공영주차장 이용 가능"
+},
+"ysk-r-k0042": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "식당 앞쪽 10자리 및 뒷마당 주차장 이용 가능, 건물 앞 전용 주차장 넓음"
+},
+"ysk-r-k0044": {
+"group": true,
+"parking": true
+},
+"ysk-r-k0045": {
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-k0046": {
+"takeout": true,
+"parkingNote": "도림천 공용주차장 이용 가능, 별빛신사리 상권 인근 주차비 일시적으로 무료 지원해주나 추가 확인 반드시 필요"
+},
+"ysk-r-k0048": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0049": {
+"group": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "건물 주차장 이용 가능, 공간 협소, 약 2대 주차 가능"
+},
+"ysk-r-k0051": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-k0053": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "별도의 주차장 없음, 인근 골목 주차 이용 필요"
+},
+"ysk-r-k0054": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "전용 대형 주차장 및 지하 주차장 완비, 주차 안내원 상주, 발렛파킹 가능"
+},
+"ysk-r-k0055": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0057": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0063": {
+"group": true,
+"parkingNote": "근처 스마일 주차장, 남천 민영 주차장 유료 이용 가능"
+},
+"ysk-r-k0064": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "전용주차장 없음, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0065": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 앞에 주차 가능, 도보 10초 거리 무료 주차장 있음"
+},
+"ysk-r-k0066": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 전용 주차장 이용 가능, 주차 요원 상시 배치"
+},
+"ysk-r-k0068": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0069": {
+"group": true,
+"parkingNote": "전용 주차장 없음, 가까운 군포역 공영주차장 이용 권장"
+},
+"ysk-r-k0070": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "인근 공영주차장 이용 권장"
+},
+"ysk-r-k0071": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "근처 일산시장 공영주차장 이용 가능"
+},
+"ysk-r-k0074": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "묵동 자이 1단지 상가 지하 주차장 무료 2시간 지원, 가게 맞은편 상가 주차장 이용 권장"
+},
+"ysk-r-k0076": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0078": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 낙원상가 공영주차장 유료 이용 가능"
+},
+"ysk-r-k0079": {
+"takeout": true
+},
+"ysk-r-k0080": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 지하 주차장 무료 이용 가능"
+},
+"ysk-r-k0081": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "가게 옆 유료 공영주차장 및 인근 재담 주차장 이용 가능, 주차비 최초 10분 1,000원, 추가 10분당 "
+},
+"ysk-r-k0084": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 옆에 10대 정도 주차 가능, 발렛파킹 가능"
+},
+"ysk-r-k0085": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 주차 가능, 주차 요원 배치로 편리함"
+},
+"ysk-r-k0086": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "자양전통시장 공영주차장 및 인근 자양민영주차장 이용 권장"
+},
+"ysk-r-k0088": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0091": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0093": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0094": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 마당에 넓은 무료 주차장 이용 가능"
+},
+"ysk-r-k0095": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "넓은 식당 앞 주차공간 이용 가능"
+},
+"ysk-r-k0097": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "횟집 맞은편에 여유 있는 주차장 이용 가능"
+},
+"ysk-r-k0098": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 앞에 바로 주차 가능"
+},
+"ysk-r-k0099": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 3대 주차 가능, 바로 옆 무료 공영주차장, 건너편 유료 주차장"
+},
+"ysk-r-k0101": {
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0104": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0106": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "넓은 전용 주차장 보유"
+},
+"ysk-r-k0108": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "전용주차장 이용 가능, 주차장 넓음"
+},
+"ysk-r-k0112": {
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0113": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0114": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "오박사냉면 전용 주차장 약 10대 무료 주차 가능"
+},
+"ysk-r-k0115": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 내 약 6대 주차 가능, 무료 주차, 북문교 인근 주차 가능"
+},
+"ysk-r-k0116": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0117": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "건물 뒤편 4대 주차 가능"
+},
+"ysk-r-k0119": {
+"room": true,
+"parking": true,
+"parkingNote": "인근 공영주차장 이용, 주차 요금 1시간에 2,400원"
+},
+"ysk-r-k0120": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "넓은 전용 주차장 이용 가능, 발렛파킹 서비스 제공"
+},
+"ysk-r-k0122": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "1층 전체가 주차장이고 주차장 여유로움, 발렛주차 가능"
+},
+"ysk-r-k0124": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "넓은 자체 주차장 완비, 매장 바로 앞 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0127": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 넓은 주차 공간 30대 이상 주차 가능, 단체 방문 시에도 편리"
+},
+"ysk-r-k0128": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "식당 바로 앞 50대 규모 대형 무료 전용 주차장 이용 가능"
+},
+"ysk-r-k0130": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "매장 옆 전용 주차장 1시간 무료 주차 가능, 인근 카페 주차장 이용 가능"
+},
+"ysk-r-k0131": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "채움병원 주차장 무료 주차권 제공, 매장 앞 잠깐 주차 가능, 피크 시간대 주변 주차장 이용 필요"
+},
+"ysk-r-k0132": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 죽도시장 공영주차장 이용 권장, 주차 공간 없음"
+},
+"ysk-r-k0133": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 유료주차장 이용 필요"
+},
+"ysk-r-k0134": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "주차장 부지가 넓고 편리하며 주차 스트레스 없이 이용 가능"
+},
+"ysk-r-k0135": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 바로 앞 전용 주차장 이용 가능"
+},
+"ysk-r-k0136": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0137": {
+"group": true,
+"room": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0138": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0139": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0141": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "건물 뒤편 전용 주차장 이용 가능"
+},
+"ysk-r-k0142": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "자체 주차장 없음, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0143": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "독천 낙지거리 내 공영주차장 이용 가능"
+},
+"ysk-r-k0144": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 옆 전용 주차장 5-6대 주차 가능"
+},
+"ysk-r-k0148": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0150": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0156": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "넓은 식당 앞 주차장과 뒤쪽 대형 주차 공간 이용 가능"
+},
+"ysk-r-k0157": {
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞에 3~5대 주차 가능, 주변 골목 주차 필요할 수 있음"
+},
+"ysk-r-k0158": {
+"group": true,
+"room": true,
+"takeout": true,
+"parkingNote": "주차 공간 없음, 공영주차장 주차권 제공"
+},
+"ysk-r-k0159": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "근처 아카데미타워 주차장 이용 시 주차권 제공"
+},
+"ysk-r-k0161": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0162": {
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0163": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "가게 바로 옆 바닷가 쪽 무료 공영주차장 이용 가능, 부둣가 무료 주차 가능"
+},
+"ysk-r-k0164": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0165": {
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0166": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 모성 전용 주차장 이용 가능"
+},
+"ysk-r-k0167": {
+"group": true,
+"room": true,
+"parking": true,
+"kidChair": true,
+"parkingNote": "전용 주차장 없음, 광한루원 유료 공영주차장 이용 가능"
+},
+"ysk-r-k0168": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "남원시청 인근 공영주차장 이용 가능, 주말과 공휴일 무료"
+},
+"ysk-r-k0169": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞과 옆에 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0170": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "가게 바로 옆 전용 주차장 이용 가능, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0171": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차 공간 이용 가능"
+},
+"ysk-r-k0172": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 공영주차장 무료 이용 가능"
+},
+"ysk-r-k0173": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0176": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0179": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-k0180": {
+"takeout": true
+},
+"ysk-r-k0183": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0185": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 전용 주차장 있음, 무료 주차 가능"
+},
+"ysk-r-k0187": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0188": {
+"parking": true,
+"takeout": true
+},
+"ysk-r-k0189": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "가게 앞 4-5대 주차 가능, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0190": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0191": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0195": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0196": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0197": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "넓은 마당과 제2주차장에 주차 가능, 주변에 전용 주차장 여러 곳 있음"
+},
+"ysk-r-k0200": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞뒤 넓은 전용 무료 주차장 완비, 주차 편리"
+},
+"ysk-r-k0201": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 뒷편 전용 주차장 유료 이용 가능, 회차 10분 무료, 최초 30분 1500원, 초과 30분마다 150"
+},
+"ysk-r-k0202": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "자체 주차건물 20대 이상 주차 가능, 무료 주차 1시간 30분 가능"
+},
+"ysk-r-k0203": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 뒤편 전용 주차장 8대 이용 가능, 근처 도보 5분 공영주차장 이용 가능"
+},
+"ysk-r-k0204": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0206": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "건물 뒤편 전용 주차장 이용 가능, 가게 앞 주차 가능"
+},
+"ysk-r-k0207": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0208": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "근처 공영주차장 이용 가능"
+},
+"ysk-r-k0209": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 마당에 차량 2-3대 주차 가능, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0211": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 전용 넓은 주차장 이용 가능, 가게 앞 주차 공간 넓음"
+},
+"ysk-r-k0212": {
+"group": true,
+"parking": true,
+"parkingNote": "매장 앞 자체 주차 공간 이용 가능, 인근 하빈면 동곡리 공영 주차장 이용 권장"
+},
+"ysk-r-k0213": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "식당 바로 앞 전용 주차장 이용 가능, 발렛파킹 가능, 광산구청 공영주차장 1시간 30분 무료주차"
+},
+"ysk-r-k0214": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 광산로 공영 주차장 1시간 무료주차 가능, 발렛파킹 가능"
+},
+"ysk-r-k0215": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0218": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차장으로 주차 걱정 없음"
+},
+"ysk-r-k0219": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "가게 앞에 3-4대 협소하지만 주차 가능, 인근 골목 및 공영주차장 이용 권장"
+},
+"ysk-r-k0220": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 바로 앞 협소한 전용 주차공간 4대 가능, 맞은편 월영교 공영주차장 이용 권장"
+},
+"ysk-r-k0222": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 옆과 건너편에 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0223": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차장 이용 가능"
+},
+"ysk-r-k0225": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0227": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0229": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0231": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 및 유료주차장 이용 가능"
+},
+"ysk-r-k0235": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0238": {
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 앞 최대 3대 주차 가능, 식당 옆 3대 주차 가능, 주차 공간 협소"
+},
+"ysk-r-k0239": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "통복시장 공영주차장 1시간 30분 무료, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0243": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "제일시장 전용 주차장 이용 가능, 주차권 요청 시 1~2시간 무료주차 가능"
+},
+"ysk-r-k0245": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매우 넓은 자체 주차장 보유, 주차 공간 여유로움"
+},
+"ysk-r-k0246": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0248": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0249": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0254": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-k0255": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 주차 가능, 인근 공영주차장 이용 권장"
+},
+"ysk-r-k0256": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 널찍한 무료 주차장 완비"
+},
+"ysk-r-k0259": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0260": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 전면에 넓은 주차 공간, 매장 앞 바로 주차 가능"
+},
+"ysk-r-k0262": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 바로 옆에 전용 주차장 마련, 주차 공간 충분함"
+},
+"ysk-r-k0263": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0264": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "주차장은 따로 없으며 근처 정선군청 민원인전용주차장 이용 가능"
+},
+"ysk-r-k0265": {
+"group": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "민생회관 바로 앞 노상주차 자리와 옆 골목에 몇 대 주차 가능"
+},
+"ysk-r-k0266": {
+"group": true,
+"parking": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0267": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0268": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞에 여러 대 주차 가능, 가게 옆 주차 가능, 엑스포공원 무료주차장 이용 가능"
+},
+"ysk-r-k0269": {
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 대포항 제2공영주차장 이용 가능"
+},
+"ysk-r-k0270": {
+"parking": true,
+"takeout": true
+},
+"ysk-r-k0271": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "식당 앞에 주차 가능, 주차장은 다소 작음"
+},
+"ysk-r-k0273": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 일자형 주차 공간 및 넓은 전용 주차장 완비, 식당 부지 내 전용 주차 공간 마련"
+},
+"ysk-r-k0275": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0278": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "건물 뒤편 전용 주차장 및 지하 주차 공간 이용 가능, 식사 후 주차 정산 지원으로 무료 주차"
+},
+"ysk-r-k0279": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-k0283": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게에서 도보 1분 거리에 있는 목화예식장 주차장을 2시간 무료로 이용 가능"
+},
+"ysk-r-k0285": {
+"takeout": true
+},
+"ysk-r-k0286": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0287": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 뒤쪽에 주차 가능"
+},
+"ysk-r-k0288": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "주차 불가, 인근 유료 주차장 이용 권장"
+},
+"ysk-r-k0290": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0291": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "맞은편 공영주차장 이용"
+},
+"ysk-r-k0292": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차 공간과 추가 주차공간이 있어 평일에 비교적 여유롭게 주차 가능"
+},
+"ysk-r-k0293": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0294": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 넉넉한 주차 공간, 별도 넓은 마당 주차장 이용 가능"
+},
+"ysk-r-k0295": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0297": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0298": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0301": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0302": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0303": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 뒤편 넓은 전용 주차장과 매장 앞 전용 주차장 무료 이용 가능"
+},
+"ysk-r-k0304": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0306": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "전용 주차장 50대 이상 주차 가능, 트럭 및 관광버스 주차 가능, 가게 바로 앞 주차 가능, 넓은 주차장 "
+},
+"ysk-r-k0308": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 바로 옆 전용 주차장 6대 주차 가능"
+},
+"ysk-r-k0309": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"parkingNote": "전용 주차장 없음, 통영여객선터미널 주차장 1시간 무료주차"
+},
+"ysk-r-k0311": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 팔포항 무료주차장 이용 권장, 가까운 삼천포항공영주차장 있음"
+},
+"ysk-r-k0313": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 앞 전용 주차장이 넓게 마련되어 있어 주차 걱정 없음"
+},
+"ysk-r-k0317": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0318": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0319": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "희망통닭 매장 바로 옆 전용 주차장 무료 이용 가능, 주차 공간 협소"
+},
+"ysk-r-k0321": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 바로 앞 넓은 주차장 이용 가능, 주말 주차요원 안내로 편리"
+},
+"ysk-r-k0323": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "전용 주차장이 넓고 건물 앞에 마련되어 있어 주차 편리"
+},
+"ysk-r-k0325": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 자체 무료 주차 가능, 광천전통시장 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0326": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0327": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 전용 주차장 없음, 영천공설시장 공영주차장 이용 가능, 가게에서 주차권 받으면 무료"
+},
+"ysk-r-k0328": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0331": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 뒤 20대 주차 가능, 무료 주차 가능"
+},
+"ysk-r-k0332": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 앞 협소한 주차 공간 있음, 시장 주변 공영주차장 이용 가능"
+},
+"ysk-r-k0333": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"parkingNote": "매장 바로 앞 소규모 주차 공간 이용 가능, 화엄사 공용 주차장 이용 가능"
+},
+"ysk-r-k0334": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0337": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 바로 앞 전용 주차존 이용 가능, 주차 공간 넓음"
+},
+"ysk-r-k0339": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0341": {
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 한진빌딩 주차장 1시간 무료 이용 권장"
+},
+"ysk-r-k0345": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 옆 주차공간 있음, 주변 공용주차장 이용 가능"
+},
+"ysk-r-k0346": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 넓은 전용 주차장 이용 가능, 정문 앞 발렛파킹 서비스 제공"
+},
+"ysk-r-k0347": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 여문공원 공영주차장 이용 가능"
+},
+"ysk-r-k0349": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0351": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 공간 협소하여 사실상 주차 불가, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0352": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 내 및 매장 앞 전용 주차장 넉넉함, 무료주차 가능, 건물 밖 외부 주차장 이용 가능"
+},
+"ysk-r-k0353": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0354": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0355": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0356": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-k0357": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "아크로타워 무료 주차 가능"
+},
+"ysk-r-k0358": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0359": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0360": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0361": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0363": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 전용 주차장 없음, 매장 앞 3대 정도 주차 가능하나 불편함, 바로 옆 대구은행 주차장 4대 주차 가능"
+},
+"ysk-r-k0365": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0366": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "군포식당 전용 주차장 이용 가능, 주차 요원 안내"
+},
+"ysk-r-k0367": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "가게 앞 1~2대 주차 가능, 역사공원 내 공영주차장 및 진영역철도박물관 주차장 이용 가능, 진영역철도박물관"
+},
+"ysk-r-k0368": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "근처 동상시장 공영주차장 이용 가능"
+},
+"ysk-r-k0371": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-k0373": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0375": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0376": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-k0377": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 4대 정도 주차 가능, 무료 주차 가능"
+},
+"ysk-r-k0378": {
+"group": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 공영주차장 이용 가능"
+},
+"ysk-r-k0379": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0380": {
+"group": true,
+"room": true,
+"takeout": true,
+"parkingNote": "가게 전용 주차공간 없음, 인근 중동 봉산길공영주차장 및 금성삼계탕 옆 공영주차장 유료 이용 가능"
+},
+"ysk-r-k0381": {
+"kidChair": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0382": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 전용 주차장 이용 가능, 주차 공간 넉넉함"
+},
+"ysk-r-k0384": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 전용주차장 10대 이상 가능, 건물 앞쪽과 옆쪽에 넓은 주차 공간 확보, 단체손님도 주차 걱정 없음"
+},
+"ysk-r-k0385": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0386": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "전용 주차장 수십 대 주차 가능, 주차료 무료"
+},
+"ysk-r-k0387": {
+"parking": true,
+"kidChair": true
+},
+"ysk-r-k0388": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 유료주차장 유정초밥 전용 주차장 이용 가능"
+},
+"ysk-r-k0389": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0390": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 공영주차장 무료 이용 가능"
+},
+"ysk-r-k0392": {
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-k0394": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 전용 주차 공간은 따로 마련되어 있지 않거나 매우 협소, 공영주차장 1시간 무료 주차 가능"
+},
+"ysk-r-k0395": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0397": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0399": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 앞에 4대 정도 주차 가능, 다소 협소하여 점심시간 주차 어려울 수 있음"
+},
+"ysk-r-k0400": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "시흥유통상가 내 주차 가능, 기본 1시간 무료, 최대 2시간 무료 지원"
+},
+"ysk-r-k0402": {
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "주차 불가, 어린이대공원 구의문 공영주차장 유료 이용 권장"
+},
+"ysk-r-k0403": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "매장 앞 1~2대 주차 가능"
+},
+"ysk-r-k0404": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0406": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0408": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "넓고 전용 주차장 마련, 건물 주변 및 아래쪽 주차장 이용 가능"
+},
+"ysk-r-k0409": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "태화장 바로 옆 전용주차장 이용 가능, 공용주차장 주차권 제공, 근처 공용주차장 이용 가능"
+},
+"ysk-r-k0411": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 앞과 인근에 총 14대 주차 가능, 제1,2주차장 이용 가능"
+},
+"ysk-r-k0413": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞과 옆에 전용 주차장 마련, 발렛파킹 가능, 바로 인근 공영주차장 이용 가능"
+},
+"ysk-r-k0419": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0420": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 불가, 근처 웅부공원공영주차장 및 중앙문화의거리상인회 공영주차장 이용 권장"
+},
+"ysk-r-k0421": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차 공간 이용 가능, 월영교 맞은편 공영주차장 있음"
+},
+"ysk-r-k0423": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"parkingNote": "가게 앞 주차 공간 없음, 중앙시장 공영주차장 이용 권장"
+},
+"ysk-r-k0429": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0431": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "20대 이상 주차 가능한 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0433": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 바로 건너편 6~8대 주차 가능, 무료 발렛파킹 서비스 제공, 만차 시 근처 공영주차장 이용 안내"
+},
+"ysk-r-k0434": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 옆 전용 주차장 이용 가능, 식사 시 공영주차장 무료주차 혜택, 백석천 공영주차장 이용 가능"
+},
+"ysk-r-k0435": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "가게 앞 주차 가능, 근처 무료 주차장 이용 가능"
+},
+"ysk-r-k0436": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0437": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "성모병원 옆 서인동 공영주차장 1시간 무료 이용 가능"
+},
+"ysk-r-k0439": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 3~5대 주차 가능, 맞은편 공영주차장 유료 이용 가능"
+},
+"ysk-r-k0441": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0442": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 앞 주차 가능"
+},
+"ysk-r-k0444": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "매장 바로 앞에 4~5대 협소한 주차 공간 있음, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0446": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "주차 공간 없음, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0447": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 옆 주차장 2시간 무료 주차 가능"
+},
+"ysk-r-k0448": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0451": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"wheelchair": true
+},
+"ysk-r-k0453": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 전용 주차 공간 및 주차타워 이용 가능, 발렛파킹 3,000원"
+},
+"ysk-r-k0454": {
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 바로 앞 공영주차장 이용 가능, 맞은편 주차장 30분 무료 주차 가능"
+},
+"ysk-r-k0455": {
+"group": true,
+"parkingNote": "시장 안이라 주차 불가, 근처 공용주차장 및 신세계백화점 주차장 이용 권장"
+},
+"ysk-r-k0456": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0457": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0458": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0459": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0460": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "내호냉면 본점 근처에 약 3~4대 주차 가능, 붐비는 시간에는 주차 어려움"
+},
+"ysk-r-k0461": {
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 옆 공영주차장 유료 이용 가능, 식당 앞 2대 주차 가능, 주차비 최초 30분 1000원 이후 10분당"
+},
+"ysk-r-k0465": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "전용 주차장 이용 가능, 도로 건너편 전용 주차장 이용 가능, 가게 앞과 주변 공영주차장 이용 가능"
+},
+"ysk-r-k0468": {
+"parking": true,
+"freeParking": true,
+"takeout": true
+},
+"ysk-r-k0469": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "맞은편 농협주차장 이용 가능"
+},
+"ysk-r-k0470": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0471": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차장 이용 가능, 평일 11:30-13:30 방문 시 주차 가능, 건물 옆 공영주차장 있음"
+},
+"ysk-r-k0472": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞과 뒤에 넓은 주차 공간이 마련되어 있어 대형 차량도 주차 가능"
+},
+"ysk-r-k0473": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "동부시장 공영주차장 이용 가능, 2시간 주차 할인권 제공"
+},
+"ysk-r-k0474": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0475": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0476": {
+"takeout": true,
+"parkingNote": "자체 주차 불가, 근처 성남빌딩 주차장, 아자빌딩 주차장, 영등포주차장 등 공영주차장 이용 권장"
+},
+"ysk-r-k0477": {
+"room": true,
+"parking": true,
+"takeout": true
+},
+"ysk-r-k0478": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차 공간 이용 가능, 주말 및 식사 시간에는 주차 어려울 수 있음, 주변에 주차할 자리"
+},
+"ysk-r-k0479": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0480": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 넓은 주차장 이용 가능"
+},
+"ysk-r-k0481": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0483": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0486": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0487": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 자체 전용 주차장 없음, 중앙동 행정복지센터 주차장 이용 가능, 주말 무료 개방"
+},
+"ysk-r-k0488": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 주차장 없음, 근처 공용주차장 이용 권장, 새마을금고 앞 공영주차장 무료 이용 가능"
+},
+"ysk-r-k0489": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "매장 바로 옆 2대 주차 가능, 전용 주차장 30m 이내 위치, 낮시간 앞 공영주차장 이용 가능"
+},
+"ysk-r-k0492": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "자체 주차 공간 없음, 외대앞역 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0494": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0495": {
+"group": true,
+"parkingNote": "가게 인근 주차장 이용 가능"
+},
+"ysk-r-k0496": {
+"group": true,
+"parking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0497": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "근처 가게 앞 강변 무료주차장 이용 가능"
+},
+"ysk-r-k0499": {
+"group": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 주차는 힘들고 별도 주차장 없음, 근처 공영주차장 및 유료 주차장 이용 가능"
+},
+"ysk-r-k0503": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0506": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 옆 전용 주차장 넉넉하게 이용 가능, 무료 주차 가능"
+},
+"ysk-r-k0507": {
+"group": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0508": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0511": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "폭포수 식당 앞에 4대 주차 가능, 바로 맞은편 무료 주차장 이용 가능"
+},
+"ysk-r-k0513": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 옆에 협소한 주차 공간 있음"
+},
+"ysk-r-k0514": {
+"reserve": true
+},
+"ysk-r-k0515": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 바로 앞에 5대 정도 주차 가능, 주차요원 상주로 편리, 무료 주차 가능"
+},
+"ysk-r-k0518": {
+"group": true,
+"parking": true,
+"parkingNote": "식당 앞에 3대 정도 주차 가능, 주변 소망교회 주차장 이용 가능"
+},
+"ysk-r-k0523": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0524": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 내 14대 무료 주차 가능, 만차 시 인근 유료주차장 주차비 지원, 바로 맞은편 전용주차장 있음"
+},
+"ysk-r-k0527": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0532": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 전용 주차장 없음, 근처 금남시장 유료 공영주차장 이용 가능"
+},
+"ysk-r-k0533": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "가게 옆 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0535": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0539": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0540": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 공간이 매우 협소하며 별도의 주차 공간이 없습니다, 인근 공영주차장 추천"
+},
+"ysk-r-k0541": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "주차장 없음, 근처 무료 공영주차장 이용 가능"
+},
+"ysk-r-k0542": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "주차 공간 없음, 인근 새터공영주차장 이용 가능 무료이나 공간 제한"
+},
+"ysk-r-k0546": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 주변에 전용 주차장 있어 주차 걱정 없이 방문 가능"
+},
+"ysk-r-k0548": {
+"group": true,
+"takeout": true,
+"parkingNote": "자체 주차 공간 없음, 근처 죽변항 넓은 주차장 이용 가능"
+},
+"ysk-r-k0549": {
+"group": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용 가능"
+},
+"ysk-r-k0552": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "넓은 마당에 3대 정도 주차 가능, 식당 내부 주차장 이용 가능"
+},
+"ysk-r-k0553": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 옆 전용주차장 이용 가능, 주차장 넓음"
+},
+"ysk-r-k0554": {
+"room": true,
+"reserve": true,
+"parkingNote": "근처 공영주차장 이용 권장"
+},
+"ysk-r-k0556": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0557": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 협소한 주차 공간 있음, 인근 기업은행, 산업은행, 콩새주차장, 삼화주차장, 태성주차장 1시간 무료"
+},
+"ysk-r-k0558": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "마포 유수지 공영주차장 1시간 무료 지원, 주말 공휴일 도로변 노상 주차장 무료 이용 가능"
+},
+"ysk-r-k0559": {
+"group": true,
+"parking": true
+},
+"ysk-r-k0561": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "근처 영천공설시장 2층 공영주차장 이용 가능, 주차비 기본 2시간 500원, 이후 10분당 200원 과금, "
+},
+"ysk-r-k0563": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0564": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0565": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0567": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞마당 넓어 주차 걱정 없음, 익산 백제가든 맞은편 넓은 주차장 이용 가능"
+},
+"ysk-r-k0568": {
+"group": true,
+"takeout": true,
+"parkingNote": "주차장 없음, 주변 공영주차장 이용 권장"
+},
+"ysk-r-k0570": {
+"parking": true
+},
+"ysk-r-k0571": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 뒤편 전용 주차장 넓게 마련되어 있음, 상가 옆 전용주차장 무료 주차 가능"
+},
+"ysk-r-k0573": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0577": {
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0580": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0581": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차 공간 협소, 근처 하나로마트 뒷편 주차장 이용 가능"
+},
+"ysk-r-k0584": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0585": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 공영주차장 이용 권장, 매장 입구 바로 앞 넓은 공영주차장 무료 주차 가능"
+},
+"ysk-r-k0587": {
+"group": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "의령전통시장 전용 공영주차장 이용 권장"
+},
+"ysk-r-k0588": {
+"group": true,
+"room": true,
+"parking": true,
+"kidChair": true,
+"parkingNote": "인근 유료 주차장 이용 필요, 복계주차장 주차권 증정, 여객선터미널 주차장 1시간 무료, 서호시장 농협하나로"
+},
+"ysk-r-k0590": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 1대 주차 가능, 주변 어촌계 주차장 및 공영주차장 이용 권장"
+},
+"ysk-r-k0591": {
+"group": true,
+"takeout": true,
+"parkingNote": "중앙시장 공영주차장 및 인근 공영주차장 이용 권장"
+},
+"ysk-r-k0592": {
+"group": true,
+"takeout": true,
+"parkingNote": "죽도시장 공영주차장 이용 권장, 시장 주변 개인 유료 주차장 30분 1500원"
+},
+"ysk-r-k0595": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 옆 주차장 이용 가능"
+},
+"ysk-r-k0596": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "전용 주차장 있음, 무료 주차 가능"
+},
+"ysk-r-k0600": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "가게 앞 전용 주차장 2시간 무료주차, 외부인 주차 시 3만원 3시간마다 부과"
+},
+"ysk-r-k0601": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0602": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 앞 전용 주차장 넓게 마련되어 주차 가능, 주변 공원 무료 주차장 이용 가능"
+},
+"ysk-r-k0604": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 옆 전용 주차장 보유, 식당 앞과 주변에 주차 가능"
+},
+"ysk-r-k0606": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "매장 앞 넓은 전용주차장 이용 가능"
+},
+"ysk-r-k0607": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0609": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0610": {
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0611": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0613": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "식당 바로 앞 전용 주차장 무료 이용 가능, 주차장 넓음"
+},
+"ysk-r-k0616": {
+"group": true,
+"room": true,
+"reserve": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0619": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0620": {
+"takeout": true,
+"parkingNote": "칠성시장 공영주차장 이용 가능"
+},
+"ysk-r-k0621": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true
+},
+"ysk-r-k0622": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차 가능, 인근 송도 라마다 호텔 무료 주차 가능"
+},
+"ysk-r-k0623": {
+"takeout": true,
+"parkingNote": "맞은편 공터 및 도로변 주차는 불가"
+},
+"ysk-r-k0625": {
+"group": true,
+"parking": true,
+"parkingNote": "건물 내 지상 및 지하 주차장 이용 가능"
+},
+"ysk-r-k0626": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주변 골목에 주차 불가, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0630": {
+"group": true,
+"parking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "산성시장 공영주차장 이용 필요, 식사 시 주차 할인권 제공으로 일부 비용 지원, 평일 1시간 500원, 하루"
+},
+"ysk-r-k0631": {
+"reserve": true,
+"parkingNote": "근처 공영주차장 이용"
+},
+"ysk-r-k0633": {
+"parking": true,
+"takeout": true,
+"parkingNote": "북부시장 주차장 이용 가능, 무료 주차권 1시간 제공"
+},
+"ysk-r-k0634": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 4~5대 주차 가능, 발렛파킹 가능"
+},
+"ysk-r-k0635": {
+"group": true,
+"room": true,
+"parking": true,
+"parkingNote": "근처 음식거리 공용 주차장 이용 편리, 김천 직지사 공영주차장 이용"
+},
+"ysk-r-k0636": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "매장 앞 전용 주차장 있음, 건물 뒷편 주차 가능, 건너편 공영주차장 이용 가능"
+},
+"ysk-r-k0643": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 앞 주차 가능, 무료 주차 가능"
+},
+"ysk-r-k0644": {
+"parking": true,
+"parkingNote": "가게 맞은편 전용 주차장 약 15대 이용 가능"
+},
+"ysk-r-k0647": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"wheelchair": true
+},
+"ysk-r-k0650": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 바로 옆에 차량 4대 주차 가능, 근처 중앙동 행정복지센터 공영주차장 및 진주대첩 역사공원 주차장 이용"
+},
+"ysk-r-k0651": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 주차장 10~12대 이용 가능, 주변 공영주차장 있음"
+},
+"ysk-r-k0652": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0653": {
+"parking": true,
+"parkingNote": "2번 출구 쪽 공영주차장 1시간 무료 주차 가능"
+},
+"ysk-r-k0656": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0659": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0666": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0667": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0668": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞과 건물 내 무료 주차 가능, 발렛파킹 서비스 운영"
+},
+"ysk-r-k0669": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "매장 앞 협소한 주차 공간 일부 가능, 근처 보은 민영주차장 1시간 무료 주차 가능"
+},
+"ysk-r-k0670": {
+"group": true,
+"room": true,
+"takeout": true,
+"parkingNote": "근처 황등 전통시장 무료 공영주차장 이용 권장"
+},
+"ysk-r-k0671": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0673": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 주차장 있음, 금정 주차장 주차 시 지원, 근처 공영주차장이나 유료주차장 이용 가능"
+},
+"ysk-r-k0675": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 길이 좁아 주차 어려움, 건물 뒤편 협소한 주차 공간 있음, 근처 넓은 무료 공영주차장 이용 가능"
+},
+"ysk-r-k0678": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0681": {
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 전용 주차장 없음, 근처 용현시장 공영주차장 이용 권장"
+},
+"ysk-r-k0682": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0685": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 전용 주차장 넉넉함"
+},
+"ysk-r-k0687": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "근처 공영주차장 유료 이용 권장"
+},
+"ysk-r-k0688": {
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0689": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "자체 주차장 없음, 인근 공영주차장 이용 가능"
+},
+"ysk-r-k0690": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0691": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "건물 옆 2~3대 주차 가능, 신도주차장 30분 주차권 제공, 평일 큰나무 정형외과 주차장 이용 가능"
+},
+"ysk-r-k0693": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 바로 앞과 식당에서 운영하는 주차장 이용 가능, 주차 공간 넓음"
+},
+"ysk-r-k0694": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"parkingNote": "가게 양 옆과 앞에 1-2대 주차 가능, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0695": {
+"group": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "맞은편 건물 주차장 이용 가능"
+},
+"ysk-r-k0696": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0697": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0698": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"parkingNote": "전용 주차장 있음, 가게 앞 주차 가능"
+},
+"ysk-r-k0700": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 자체 주차장 없음, 근처 성안길고객주차장 및 공영주차장 이용 가능"
+},
+"ysk-r-k0702": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0704": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0705": {
+"group": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0706": {
+"group": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0712": {
+"group": true,
+"takeout": true,
+"parkingNote": "전용 주차장 없음, 인근 공영주차장 이용 권장"
+},
+"ysk-r-k0713": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0714": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 영진항 공영주차장 무료 이용 가능"
+},
+"ysk-r-k0717": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0720": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0721": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0723": {
+"takeout": true
+},
+"ysk-r-k0725": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0727": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0728": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0729": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0730": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0731": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0732": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "주차장 없음, 근처 공영주차장 이용 가능"
+},
+"ysk-r-k0733": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 앞 주차 어려움, 건물 내 주차 시설 없음, 구리 전통시장 공영주차장 1시간 주차권 제공"
+},
+"ysk-r-k0735": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 지하주차장 2시간 무료 주차 가능, 9단지 지하주차장도 2시간 무료 이용 가능"
+},
+"ysk-r-k0737": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0742": {
+"parking": true,
+"wheelchair": true
+},
+"ysk-r-k0743": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0744": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 2~5대 주차 가능, 만차 시 유정장어 주차장 1시간 주차권 제공, 인계공영주차장 60분 무료 주차"
+},
+"ysk-r-k0745": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0747": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0752": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0754": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0755": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0756": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0757": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "매장 바로 앞 넓은 주차 공간 이용 가능"
+},
+"ysk-r-k0758": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0763": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0764": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0765": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 1층 주차장 이용 가능, 맞은편 및 근처에 추가 주차 공간 있음"
+},
+"ysk-r-k0768": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0770": {
+"group": true,
+"parking": true,
+"takeout": true
+},
+"ysk-r-k0772": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0774": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "넓은 가게 전용 주차장 무료 이용 가능, 대형 차량 및 단체 방문객도 편리한 주차"
+},
+"ysk-r-k0777": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0778": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0781": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "건물 뒤쪽 넓은 전용 주차장 이용 가능"
+},
+"ysk-r-k0783": {
+"parking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0785": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매주 일요일 건물 내 주차장 이용 가능, 근처 공영주차장 이용"
+},
+"ysk-r-k0786": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0787": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0790": {
+"group": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0792": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0793": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0795": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0796": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0798": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0800": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 넓은 주차장 완비로 편리한 주차 가능"
+},
+"ysk-r-k0804": {
+"group": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0805": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0807": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0809": {
+"group": true,
+"room": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0811": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0812": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0813": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 내 주차 가능"
+},
+"ysk-r-k0815": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0816": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0817": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 뒤쪽 주차 가능, 가게에서 1시간 주차 지원, 매장 앞 골목길 초입 부자 주차장 이용 가능"
+},
+"ysk-r-k0818": {
+"group": true,
+"parking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0820": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "근처 동삼 하리항 공영주차장 이용 권장"
+},
+"ysk-r-k0821": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "가게 바로 앞 주차장 이용 가능, 근처 유료 주차장 이용 가능"
+},
+"ysk-r-k0822": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "근처 미포 씨랜드 지하주차장 이용 가능, 주차비 1만원 지원"
+},
+"ysk-r-k0824": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0826": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0828": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 발렛파킹 가능, 발렛 비용 3,000원"
+},
+"ysk-r-k0829": {
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "자체 주차 공간 없음, 근처 갤러리아 유료주차장 이용 권장"
+},
+"ysk-r-k0833": {
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0834": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0836": {
+"parking": true,
+"freeParking": true
+},
+"ysk-r-k0837": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0838": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "자체 주차장 불가, 공릉 쇼핑 센터 주차장 및 공릉동 공영 주차장 이용 가능"
+},
+"ysk-r-k0839": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0841": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0842": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true
+},
+"ysk-r-k0844": {
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 불가, 인근 공영주차장 이용"
+},
+"ysk-r-k0845": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "마당에 내부 3대 주차 가능, 근처 공영주차장 이용"
+},
+"ysk-r-k0846": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0847": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0848": {
+"parking": true,
+"parkingNote": "양화진 공영주차장 이용"
+},
+"ysk-r-k0849": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 옆과 뒷편에 전용 주차장 있음, 주차 공간 협소하여 인근 공영주차장 이용 권장"
+},
+"ysk-r-k0850": {
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0851": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0852": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0853": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0855": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0856": {
+"group": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0857": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0858": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0861": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0862": {
+"group": true,
+"room": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "자체 주차 불가, 인근 대경프라자주차장 및 청학빌딩 주차장 이용 가능, 청학빌딩 주차장 30분당 2,000원"
+},
+"ysk-r-k0863": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0866": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0867": {
+"takeout": true,
+"parkingNote": "주차 공간 없음, 근처 공영주차장 및 주변 유료주차장 이용"
+},
+"ysk-r-k0871": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0872": {
+"group": true,
+"room": true,
+"parking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "주차 불가, 근처 정독도서관 및 국립현대미술관 주차장 이용 가능, 정독도서관 주차장 1시간 3,000원, 책"
+},
+"ysk-r-k0875": {
+"group": true,
+"reserve": true
+},
+"ysk-r-k0876": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0877": {
+"group": true,
+"takeout": true
+},
+"ysk-r-k0878": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0879": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0880": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0881": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "전용 주차공간 매우 넓음, 20대 이상 주차 가능, 주말에도 주차 걱정 없음"
+},
+"ysk-r-k0882": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true,
+"parkingNote": "전용 주차장 있음, 주말에 주차 도우미 있음"
+},
+"ysk-r-k0884": {
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "남구청 주차장 유료 이용 가능, 문화 공원공영 주차장 1시간 무료 후 유료"
+},
+"ysk-r-k0886": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0887": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0888": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0890": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"parkingNote": "답동성당 공영주차장 2시간 무료 이용 가능"
+},
+"ysk-r-k0891": {
+"group": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0893": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 주차장 있음, 가게 뒤쪽 주차 가능, 근처 마트 주차장 이용 추천"
+},
+"ysk-r-k0894": {
+"parking": true,
+"freeParking": true,
+"parkingNote": "근처 공영주차장 이용, 무료주차 가능"
+},
+"ysk-r-k0895": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "가게 안 전용주차장 10대 이상 주차 가능"
+},
+"ysk-r-k0896": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0897": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0899": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 맞은편 행정복지센터 주차 가능, 주변 공영주차장 이용 권장"
+},
+"ysk-r-k0900": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0901": {
+"group": true,
+"parking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 전용 주차장에 주차 가능"
+},
+"ysk-r-k0902": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0903": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0904": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0906": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0907": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "식당 앞 전용 주차장과 내부 2주차장에 넉넉한 주차 공간 제공"
+},
+"ysk-r-k0908": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0910": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "매장 옆 전용 주차장 있음, 식당 앞 마당에 주차공간 있음"
+},
+"ysk-r-k0912": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0913": {
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "가게 앞 야외 주차장 이용 가능"
+},
+"ysk-r-k0916": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0918": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차장 없음, 근처 하나로마트 주차장 1시간 무료 지원"
+},
+"ysk-r-k0919": {
+"group": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "인근 차이나타운 공영주차장 유료 이용 가능"
+},
+"ysk-r-k0920": {
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0921": {
+"reserve": true
+},
+"ysk-r-k0922": {
+"reserve": true
+},
+"ysk-r-k0923": {
+"group": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0926": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0927": {
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0929": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0930": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "단독 건물 넓은 주차 공간 이용 가능, 식사 시 3시간 무료 주차, 발렛파킹 서비스 제공"
+},
+"ysk-r-k0932": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0933": {
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "가게 앞 2대 주차 가능, 오후 2시까지 주차 가능, 광안리해수욕장공영주차장 유료 이용 가능"
+},
+"ysk-r-k0934": {
+"room": true
+},
+"ysk-r-k0935": {
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0938": {
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0940": {
+"group": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0941": {
+"group": true,
+"kidChair": true,
+"parkingNote": "근처 이지카드 전용주차장 및 스테이 호텔 주차장 이용 가능, 인근 공영주차장 이용 권장"
+},
+"ysk-r-k0943": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"wheelchair": true,
+"parkingNote": "청강주차장 주차 가능, 약 3시간 무료 주차 등록 지원"
+},
+"ysk-r-k0944": {
+"group": true,
+"parking": true,
+"reserve": true,
+"kidChair": true,
+"parkingNote": "건물 지하 주차 가능, 상가 지하주차장 2시간 무료"
+},
+"ysk-r-k0945": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0947": {
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0948": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0950": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "파라다이스 호텔 본관 1층 지하주차장 3시간 무료 지원, 발렛파킹 서비스 제공"
+},
+"ysk-r-k0951": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0952": {
+"room": true,
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0954": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0955": {
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0956": {
+"room": true,
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0957": {
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "건물 앞 발렛 부스에 발렛파킹 가능, 발렛 요금 5,000원 기본, 추가 주차 10분당 3,000원, 4시간"
+},
+"ysk-r-k0958": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 1층 모니카 갤러리 옆 발렛 파킹 유료 서비스 이용 가능 5,000원"
+},
+"ysk-r-k0959": {
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "발렛파킹 5,000원"
+},
+"ysk-r-k0962": {
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+},
+"ysk-r-k0963": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"kidChair": true
+},
+"ysk-r-k0964": {
+"parking": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0965": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "발렛비 별도 5,000원"
+},
+"ysk-r-k0967": {
+"room": true,
+"parking": true,
+"reserve": true,
+"parkingNote": "건물 내 유료 주차 가능, 최초 120분 5,000원, 이후 10분당 1,000원, 발렛파킹 가능, 비용 5"
+},
+"ysk-r-k0970": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "건물 1층 발렛 파킹 가능, 3시간 5천원, 이후 추가금 발생"
+},
+"ysk-r-k0971": {
+"room": true,
+"reserve": true,
+"takeout": true
+},
+"ysk-r-k0972": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true,
+"parkingNote": "발렛파킹 가능, 2시간 3,000원, 10분당 1,000원, 최대 30,000원"
+},
+"ysk-r-k0973": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"parkingNote": "조선팰리스 지하 주차장 이용 가능, 레스토랑 이용 시 3시간 무료, 발렛 서비스 별도 요금 35000원"
+},
+"ysk-r-k0974": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "현대백화점 무역센터점 지하주차장 이용 가능, 식사 고객 2시간 무료, 추가 요금 10분당 1,000원, 백화"
+},
+"ysk-r-k0976": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0977": {
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0978": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"wheelchair": true,
+"parkingNote": "매장 이용 시 최대 2시간까지 주차 가능, 이후 30분당 2,000원 추가 요금 발생, 발렛파킹 2시간 4,"
+},
+"ysk-r-k0979": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 가능, 발렛파킹 5,000~6,000원 유료 이용 가능"
+},
+"ysk-r-k0982": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0984": {
+"parking": true,
+"parkingNote": "근처 공영주차장 및 유료 주차장 이용 필요"
+},
+"ysk-r-k0985": {
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0987": {
+"group": true,
+"reserve": true
+},
+"ysk-r-k0989": {
+"parking": true,
+"reserve": true
+},
+"ysk-r-k0990": {
+"group": true,
+"takeout": true,
+"wheelchair": true
+},
+"ysk-r-k0991": {
+"group": true,
+"room": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"wheelchair": true
+},
+"ysk-r-k0992": {
+"group": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "주차 불가, 근처 공영주차장 이용 권장, 매장 앞 발렛파킹 가능"
+},
+"ysk-r-k0993": {
+"group": true,
+"parking": true,
+"freeParking": true,
+"takeout": true,
+"wheelchair": true,
+"parkingNote": "건물 1층 필로티 공간과 앞쪽에 전용 주차장 널찍하게 마련, 발렛파킹 서비스 제공, 인근 공영주차장 이용 가"
+},
+"ysk-r-k0994": {
+"group": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true,
+"parkingNote": "발렛파킹 가능, 발렛 요금 2시간 5,000원 이후 30분당 1,000원, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0995": {
+"room": true,
+"parking": true,
+"parkingNote": "건물 내 주차장 이용 가능, 근처 공영주차장 이용 권장"
+},
+"ysk-r-k0996": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"wheelchair": true
+},
+"ysk-r-k0998": {
+"group": true,
+"room": true,
+"parking": true,
+"reserve": true,
+"takeout": true,
+"parkingNote": "매장 앞 주차장 4대 정도 주차 가능, 발렛파킹 2,000원, 근처 공용 주차장 이용 권장"
+},
+"ysk-r-k1000": {
+"group": true,
+"room": true,
+"parking": true,
+"freeParking": true,
+"reserve": true,
+"takeout": true,
+"kidChair": true
+}
+}
+}

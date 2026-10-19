@@ -24,6 +24,37 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 // (영업 표시·요일별 영업시간·최근 6개월 리뷰·전화번호를 모두 확인한 곳만 수록, 단체 수용은 미확인)
 const KAKAO_VERIFIED_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'century-guide-1000.json'), 'utf8'));
 const KAKAO_CHECK_SOURCE_ID = 'src-kakao-check-20261019';
+
+// 카카오맵 장소 상세의 편의시설·좌석 옵션(단체석·룸·주차·예약·포장 등, 일부 AI 요약 포함) 수집 결과
+const KAKAO_FACILITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-facilities-20261019.json'), 'utf8'));
+const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
+
+/**
+ * 카카오맵 편의시설 정보를 단체 식사 항목에 옮긴다.
+ * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
+ */
+function applyKakaoFacilities(rest) {
+  const f = KAKAO_FACILITIES.facilities[rest.id];
+  if (!f) return;
+  const gp = rest.groupProfile;
+  if (f.group) {
+    gp.availability = 'yes';
+    gp.seatTypes = ['단체석', ...(f.room ? ['룸'] : [])];
+  }
+  if (f.room) gp.room.privateRoom = 'yes';
+  if (f.reserve) gp.preOrder.leadTimeNote = '예약 가능 (단체 인원·메뉴는 전화로 확인)';
+  if (f.takeout) {
+    gp.lunchbox.availability = 'yes';
+    gp.lunchbox.handlingNotes = '포장 가능 (단체 도시락 수량은 전화로 확인)';
+  }
+  if (f.parking) {
+    gp.parking.walkingNotes = `${f.freeParking ? '무료 주차' : '주차 가능'}${f.parkingNote ? ` · ${f.parkingNote}` : ''} (승용차 기준, 대형버스는 전화 확인)`;
+  }
+  const access = [f.wheelchair ? '휠체어 이용 가능' : null, f.kidChair ? '유아의자 있음' : null].filter(Boolean);
+  if (access.length) gp.accessibility.entryNote = access.join(' · ');
+  gp.checkedAt = KAKAO_FACILITIES.checkedAt;
+  if (!gp.evidenceRefs.includes(FACILITY_SOURCE_ID)) gp.evidenceRefs.push(FACILITY_SOURCE_ID);
+}
 const LIST_SOURCES = {
   백년가게: {
     id: 'src-centuryshop-2022',
@@ -375,6 +406,7 @@ function buildDataset() {
   // NATIONWIDE_ELEMENTARY_RESTAURANTS(88곳)는 카카오맵에 같은 이름의 식당이 하나도 없고 전화번호도 다른 업체 번호여서
   // 실제 식당 자료가 아닌 것으로 확인되어 공개 자료에서 뺀다 (2026-10-19 확인).
   for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
+    applyKakaoFacilities(r);
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
     }
@@ -426,6 +458,19 @@ function buildDataset() {
     ];
 
     // 1000곳 조사에서 들어온 식당이 있는 지역은 출처(명부·카카오맵 확인)를 함께 적는다
+    const facilityRests = restaurants.filter(r => r.groupProfile.evidenceRefs.includes(FACILITY_SOURCE_ID));
+    if (facilityRests.length) {
+      sources.push({
+        id: FACILITY_SOURCE_ID,
+        kind: 'map_platform',
+        url: 'https://map.kakao.com',
+        obtainedAt: KAKAO_FACILITIES.checkedAt,
+        checkedAt: KAKAO_FACILITIES.checkedAt,
+        factScope: facilityRests.slice(0, 5).map(r => ({ entityId: r.id, fieldPath: '/groupProfile/availability' })),
+        usageTerms: '카카오맵 편의시설·좌석 옵션(단체석·룸·주차·예약·포장, 일부 AI 요약) · 좌석 수·대형버스는 미확인, 방문 전 전화 확인',
+        attribution: '카카오맵 편의시설 정보 (2026-10-19)'
+      });
+    }
     const kakaoRests = restaurants.filter(r => r.groupProfile.evidenceRefs.includes(KAKAO_CHECK_SOURCE_ID));
     if (kakaoRests.length) {
       sources.push({

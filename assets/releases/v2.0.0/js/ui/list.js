@@ -286,18 +286,22 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
 
   const grid = el('div', 'detail-grid');
   const rows = [
-    ['단체 수용 여부', triText(gp.availability)],
+    ['단체 수용 여부', gp.availability === 'yes' && (gp.seatTypes || []).includes('단체석')
+      ? `단체석 있음${(gp.seatTypes || []).includes('룸') ? ' · 룸' : ''} (인원은 전화 확인)`
+      : triText(gp.availability)],
     ['총 좌석 수', numText(gp.totalSeats, '석')],
     ['동시 식사 가능 인원', numText(gp.simultaneousCapacity, '명')],
     ['교대(회차) 식사', `${triText(gp.mealWaves?.availability)}${gp.mealWaves?.turnaroundMinutes ? ` (전환 ${gp.mealWaves.turnaroundMinutes}분)` : ''}`],
     ['별도 공간(룸/홀)', `${triText(gp.room?.privateRoom)}${gp.room?.roomFeeKRW !== null && gp.room?.roomFeeKRW !== undefined ? ` (비용 ${gp.room.roomFeeKRW.toLocaleString()}원)` : ''}`],
     ['사전 주문 조건', `${triText(gp.preOrder?.required)}${gp.preOrder?.leadTimeNote ? ` (${gp.preOrder.leadTimeNote})` : ''}`],
+    ['주차', gp.parking?.walkingNotes || '미확인'],
     ['대형버스 진입', triText(gp.parking?.busEntry)],
     ['버스 주차 가능 대수', numText(gp.parking?.busParkingSpaces, '대')],
     ['버스 승하차만 가능', `${triText(gp.parking?.dropoff)}${gp.parking?.dropoffLocation ? ` (${gp.parking.dropoffLocation})` : ''}`],
     ['하차 후 도보 거리', numText(gp.parking?.walkingDistanceMeters, 'm')],
     ['단체 조식 제공', `${triText(gp.earlyBreakfast?.availability)}${gp.earlyBreakfast?.earliestTime ? ` (${gp.earlyBreakfast.earliestTime}부터)` : ''}`],
-    ['단체 도시락·포장', `${triText(gp.lunchbox?.availability)}${gp.lunchbox?.minOrderQty ? ` (최소 ${gp.lunchbox.minOrderQty}개)` : ''}`],
+    ['단체 도시락·포장', `${triText(gp.lunchbox?.availability)}${gp.lunchbox?.minOrderQty ? ` (최소 ${gp.lunchbox.minOrderQty}개)` : ''}${gp.lunchbox?.handlingNotes && !gp.lunchbox?.minOrderQty ? ` · ${gp.lunchbox.handlingNotes}` : ''}`],
+    ['예약', gp.preOrder?.leadTimeNote || '미확인'],
     ['출입·계단·화장실', [gp.accessibility?.stairs, gp.accessibility?.entryNote, gp.accessibility?.restroom].filter(Boolean).join(' / ') || '미확인'],
     ['단체정보 확인일', freshness.label]
   ];
@@ -394,7 +398,11 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
     ...(gp.evidenceRefs || []),
     ...(place.openingHours?.evidenceRefs || [])
   ]);
-  const matchedSources = (sources || []).filter(s => refSet.has(s.id) || sources.length <= 2);
+  // 전국 보기에서는 지역마다 같은 출처가 들어 있으므로 출처 ID 기준으로 한 번씩만 보여 준다
+  const seenSourceIds = new Set();
+  const matchedSources = (sources || [])
+    .filter(s => refSet.has(s.id) || sources.length <= 2)
+    .filter(s => (seenSourceIds.has(s.id) ? false : (seenSourceIds.add(s.id), true)));
   if (matchedSources.length === 0) {
     srcSec.appendChild(el('p', 'detail-empty', '기본 등록 자료 (확인일: 2026-10-18)'));
   } else {
