@@ -101,6 +101,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..');
 
+// 기존 여순광 166곳은 숫자 영구 ID(ysk-r-1 …)를 쓴다
+const isLegacyId = id => /^ysk-r-\d+$/.test(String(id));
+// 1000곳 조사 중 카카오맵에서 영업을 확인해 추가한 식당 자료
+const KAKAO_VERIFIED = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/century-guide-1000.json'), 'utf8'));
+
 function createLocalFileFetch(rootDir = ROOT) {
   return async (urlStr) => {
     const u = new URL(urlStr, 'https://gmlduqzhd123-lab.github.io/YSK-food/');
@@ -148,23 +153,26 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     });
     const res = await repo.selectRegion('all');
     assert.equal(res.status, 'ok');
-    assert.equal(res.restaurants.length, 166);
+    // 기존 166곳(숫자 영구 ID)은 그대로 보존되고, 이후 카카오맵 확인으로 추가된 식당(ysk-r-k…)은 별도로 더해진다
+    const legacy = res.restaurants.filter(r => isLegacyId(r.id));
+    assert.equal(legacy.length, 166);
+    assert.ok(res.restaurants.length >= 166);
 
-    const yeosu = res.restaurants.filter(r => r.regionCode === 'jn-yeosu');
-    const suncheon = res.restaurants.filter(r => r.regionCode === 'jn-suncheon');
-    const gwangyang = res.restaurants.filter(r => r.regionCode === 'jn-gwangyang');
+    const yeosu = legacy.filter(r => r.regionCode === 'jn-yeosu');
+    const suncheon = legacy.filter(r => r.regionCode === 'jn-suncheon');
+    const gwangyang = legacy.filter(r => r.regionCode === 'jn-gwangyang');
     assert.equal(yeosu.length, 70);
     assert.equal(suncheon.length, 75);
     assert.equal(gwangyang.length, 21);
 
     // AC03: 좌표 확인 60곳, 좌표 미확인 106곳 모두 목록에 보존됨
-    const mappable = res.restaurants.filter(r => isMappablePlace(r));
-    const unverifiedCoord = res.restaurants.filter(r => !isMappablePlace(r));
+    const mappable = legacy.filter(r => isMappablePlace(r));
+    const unverifiedCoord = legacy.filter(r => !isMappablePlace(r));
     assert.equal(mappable.length, 60);
     assert.equal(unverifiedCoord.length, 106);
 
     const filterRes = filterAndClassifyRestaurants(res.restaurants, { regionCode: 'all' });
-    assert.equal(filterRes.combinedList.length, 166);
+    assert.equal(filterRes.combinedList.length, res.restaurants.length);
 
     // AC05: 미확인 단체 항목이 임의로 'yes'로 채워지지 않고 모두 'unknown' 또는 null로 보존됨
     for (const r of res.restaurants) {
@@ -272,7 +280,7 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.equal(r1.stale, true);
     assert.equal(r3.stale, false);
     assert.equal(r3.regionCode, 'jn-gwangyang');
-    assert.equal(r3.restaurants.length, 21);
+    assert.equal(r3.restaurants.filter(r => isLegacyId(r.id)).length, 21);
 
     // AC08: 등록 식당이 0곳인 지역(전남 보성군 jn-boseong) 선택 시 오류 없이 0곳 상태 반환
     const emptyReg = await repo.selectRegion('jn-boseong');
@@ -284,7 +292,7 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.equal(badReg.status, 'region_error');
     const suncheonReg = await repo.selectRegion('jn-suncheon');
     assert.equal(suncheonReg.status, 'ok');
-    assert.equal(suncheonReg.restaurants.length, 75);
+    assert.equal(suncheonReg.restaurants.filter(r => isLegacyId(r.id)).length, 75);
   });
 
   test('AC09, AC10, AC11, AC50: 단체 조건 4상태 판정(unset/met/needs_check/unmet), 버스 주차 3단 구분, 동시착석 vs 교대식사 판정', () => {
@@ -1098,10 +1106,11 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       fetchFn: createLocalFileFetch()
     });
 
-    // 1. 전국 전체('nationwide') 로드 시 20개 지역 254곳(기존 여순광 166 + 전국 16개 권역 초등·선수단 88곳) 반환
+    // 1. 전국 전체('nationwide') 로드 시 기존 254곳(여순광 166 + 전국 초등·선수단 88곳) + 카카오맵 확인 추가분 반환
     const nwRes = await repo.selectRegion('nationwide');
     assert.equal(nwRes.status, 'ok');
-    assert.equal(nwRes.restaurants.length, 254);
+    assert.equal(nwRes.restaurants.length, 254 + KAKAO_VERIFIED.restaurants.length);
+    assert.equal(nwRes.restaurants.filter(r => isLegacyId(r.id) || String(r.id).startsWith('ysk-r-nat-')).length, 254);
     const regionSet = new Set(nwRes.restaurants.map(r => r.regionCode));
     assert.ok(regionSet.has('seoul-jongno'));
     assert.ok(regionSet.has('gb-gyeongju'));
@@ -1110,7 +1119,9 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.ok(regionSet.has('busan-haeundae'));
     assert.ok(regionSet.has('jb-jeonju'));
     assert.ok(regionSet.has('jj-jeju'));
-    assert.equal(regionSet.size, 19); // 20개 지역 중 보성군(0곳 테스트용) 제외한 19개 지역에 식당 존재
+    // 기존 20개 지역 중 보성군(0곳 테스트용)을 뺀 19개 + 새 시·도 단위 지역에 식당 존재
+    assert.equal(regionSet.size, 19 + KAKAO_VERIFIED.regions.length);
+    assert.equal(regionSet.has('jn-boseong'), false);
 
     // 2. 학교·선수단 모드 카테고리 목록에서 '포차·술집', '카페·디저트' 배제 확인
     const schoolCats = getCategoriesForMode(nwRes.restaurants, 'school');

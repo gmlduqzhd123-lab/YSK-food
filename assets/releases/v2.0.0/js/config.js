@@ -49,6 +49,22 @@ export const REGION_COLORS = {
   'jn-yeosu': '#1e88e5',
   'jn-suncheon': '#43a047',
   'jn-gwangyang': '#fb8c00',
+  'seoul-etc': '#2563eb',
+  'gyeonggi-etc': '#3b82f6',
+  'incheon-etc': '#0284c7',
+  'gw-etc': '#0d9488',
+  'cb-all': '#7c3aed',
+  'cn-etc': '#8b5cf6',
+  'daejeon-etc': '#7c3aed',
+  'sejong': '#6d28d9',
+  'jb-etc': '#16a34a',
+  'gj-etc': '#15803d',
+  'jn-etc': '#059669',
+  'gb-etc': '#d97706',
+  'daegu-etc': '#ea580c',
+  'gn-etc': '#06b6d4',
+  'busan-etc': '#0891b2',
+  'ulsan': '#0e7490',
   '서울 종로': '#2563eb',
   '수원·용인': '#3b82f6',
   '인천': '#0284c7',
@@ -78,55 +94,55 @@ export const REGION_GROUPS = {
     shortLabel: '전국 전체',
     regionCodes: null, // 모든 등록 지역
     center: { lat: 36.25, lng: 127.85, zoomLevel: 12 },
-    bounds: { sw: { lat: 33.35, lng: 126.15 }, ne: { lat: 37.95, lng: 129.50 } }
+    bounds: { sw: { lat: 33.20, lng: 126.10 }, ne: { lat: 38.30, lng: 129.60 } }
   },
   'seoul-metro': {
     code: 'seoul-metro',
-    label: '서울·수도권 (서울·수원·용인·인천)',
+    label: '서울·수도권 (서울·경기·인천)',
     shortLabel: '서울·수도권',
-    regionCodes: ['seoul-jongno', 'gyeonggi-suwon', 'incheon-junggu'],
-    center: { lat: 37.45, lng: 126.90, zoomLevel: 9 },
-    bounds: { sw: { lat: 37.20, lng: 126.58 }, ne: { lat: 37.63, lng: 127.22 } }
+    regionCodes: ['seoul-jongno', 'gyeonggi-suwon', 'incheon-junggu', 'seoul-etc', 'gyeonggi-etc', 'incheon-etc'],
+    center: { lat: 37.45, lng: 127.02, zoomLevel: 11 },
+    bounds: { sw: { lat: 36.96, lng: 126.43 }, ne: { lat: 37.95, lng: 127.60 } }
   },
   'gw-all': {
     code: 'gw-all',
-    label: '강원권 (강릉·춘천)',
-    shortLabel: '강원 (강릉·춘천)',
-    regionCodes: ['gw-gangneung', 'gw-chuncheon'],
-    center: { lat: 37.82, lng: 128.30, zoomLevel: 10 },
-    bounds: { sw: { lat: 37.60, lng: 127.65 }, ne: { lat: 37.95, lng: 129.05 } }
+    label: '강원권',
+    shortLabel: '강원',
+    regionCodes: ['gw-gangneung', 'gw-chuncheon', 'gw-etc'],
+    center: { lat: 37.70, lng: 128.28, zoomLevel: 11 },
+    bounds: { sw: { lat: 37.13, lng: 127.26 }, ne: { lat: 38.27, lng: 129.29 } }
   },
   'cc-all': {
     code: 'cc-all',
-    label: '대전·충청권 (대전 과학관·공주·부여)',
+    label: '대전·세종·충청권',
     shortLabel: '대전·충청',
-    regionCodes: ['daejeon-yuseong', 'cn-gongju'],
-    center: { lat: 36.41, lng: 127.25, zoomLevel: 9 },
-    bounds: { sw: { lat: 36.26, lng: 126.88 }, ne: { lat: 36.52, lng: 127.42 } }
+    regionCodes: ['daejeon-yuseong', 'cn-gongju', 'daejeon-etc', 'sejong', 'cb-all', 'cn-etc'],
+    center: { lat: 36.63, lng: 127.31, zoomLevel: 11 },
+    bounds: { sw: { lat: 36.07, lng: 126.37 }, ne: { lat: 37.19, lng: 128.26 } }
   },
   'gb-all': {
     code: 'gb-all',
-    label: '대구·경북권 (경주·대구)',
-    shortLabel: '경주·대구',
-    regionCodes: ['gb-gyeongju', 'daegu-junggu'],
-    center: { lat: 35.85, lng: 128.91, zoomLevel: 9 },
-    bounds: { sw: { lat: 35.70, lng: 128.54 }, ne: { lat: 36.05, lng: 129.50 } }
+    label: '대구·경북권',
+    shortLabel: '대구·경북',
+    regionCodes: ['gb-gyeongju', 'daegu-junggu', 'gb-etc', 'daegu-etc'],
+    center: { lat: 36.35, lng: 128.72, zoomLevel: 11 },
+    bounds: { sw: { lat: 35.59, lng: 127.97 }, ne: { lat: 37.11, lng: 129.47 } }
   },
   'pk-all': {
     code: 'pk-all',
-    label: '부산·경남권 (부산·통영·거제)',
-    shortLabel: '부산·통영',
-    regionCodes: ['busan-haeundae', 'gn-tongyeong'],
-    center: { lat: 35.01, lng: 128.80, zoomLevel: 9 },
-    bounds: { sw: { lat: 34.78, lng: 128.36 }, ne: { lat: 35.22, lng: 129.22 } }
+    label: '부산·울산·경남권',
+    shortLabel: '부산·울산·경남',
+    regionCodes: ['busan-haeundae', 'gn-tongyeong', 'busan-etc', 'gn-etc', 'ulsan'],
+    center: { lat: 35.21, lng: 128.66, zoomLevel: 11 },
+    bounds: { sw: { lat: 34.77, lng: 127.93 }, ne: { lat: 35.65, lng: 129.38 } }
   },
   'honam-west': {
     code: 'honam-west',
-    label: '전북·광주·목포·고흥 (전주·광주·목포·고흥)',
-    shortLabel: '전주·광주·목포',
-    regionCodes: ['jb-jeonju', 'gj-donggu', 'jn-mokpo', 'jn-goheung'],
-    center: { lat: 35.15, lng: 126.95, zoomLevel: 10 },
-    bounds: { sw: { lat: 34.40, lng: 126.32 }, ne: { lat: 35.90, lng: 127.55 } }
+    label: '광주·전북·전남 (여수·순천·광양 외)',
+    shortLabel: '전북·광주·전남',
+    regionCodes: ['jb-jeonju', 'gj-donggu', 'jn-mokpo', 'jn-goheung', 'jb-etc', 'gj-etc', 'jn-etc'],
+    center: { lat: 35.23, lng: 127.00, zoomLevel: 11 },
+    bounds: { sw: { lat: 34.40, lng: 126.33 }, ne: { lat: 36.06, lng: 127.66 } }
   },
   all: {
     code: 'all',

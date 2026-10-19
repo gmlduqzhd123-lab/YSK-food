@@ -418,7 +418,7 @@ export class YskFoodApp {
     const modeFilterText = this.state.mode !== 'general'
       ? ' · 🏫 초등·선수단 맞춤 추천 (술집·포차·카페 자동 제외)'
       : '';
-    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 초등·단체 수용 확인 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-18`;
+    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 초등·단체 수용 확인 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-19`;
   }
 
   showBannerAlert(message, level = 'warn') {
@@ -1536,11 +1536,11 @@ export class YskFoodApp {
     if (this.state.regionCode === 'nationwide') {
       entries = [
         ['서울·수도권', REGION_COLORS['seoul-jongno']],
-        ['강릉·춘천', REGION_COLORS['gw-gangneung']],
-        ['대전·공주', REGION_COLORS['daejeon-yuseong']],
-        ['경주·대구', REGION_COLORS['gb-gyeongju']],
-        ['부산·통영', REGION_COLORS['busan-haeundae']],
-        ['전주·광주·전남', REGION_COLORS['jb-jeonju']],
+        ['강원', REGION_COLORS['gw-gangneung']],
+        ['대전·충청', REGION_COLORS['daejeon-yuseong']],
+        ['대구·경북', REGION_COLORS['gb-gyeongju']],
+        ['부산·울산·경남', REGION_COLORS['busan-haeundae']],
+        ['전북·광주·전남', REGION_COLORS['jb-jeonju']],
         ['제주', REGION_COLORS['jj-jeju']]
       ];
     } else if (this.state.regionCode === 'all') {
@@ -1596,7 +1596,7 @@ export class YskFoodApp {
 
     const leadEl = document.getElementById('home-lead');
     if (leadEl) {
-      leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 20개 지역 총 ${totalAllCount}곳 · 초등·교사 단체 맞춤 ${elemVerifiedCount}곳 수록)`;
+      leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 ${regions.length}개 지역 총 ${totalAllCount}곳 · 초등·교사 단체 맞춤 ${elemVerifiedCount}곳 수록)`;
     }
 
     const openCount = this.currentRestaurants.filter(p => getOpenStatus(p) === true).length;
