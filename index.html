@@ -123,7 +123,9 @@
 
     <header>
         <h1>전국 맛집 지도 🗺️</h1>
-        <div class="head-actions">
+        <!-- 휴대폰: 상단 기능 버튼을 메뉴 하나로 묶음 -->
+        <button type="button" class="head-menu-btn" id="head-menu-btn" aria-expanded="false" aria-controls="head-actions">☰ 메뉴</button>
+        <div class="head-actions" id="head-actions">
             <button type="button" class="head-action-btn" id="open-compare-btn" aria-label="후보 식당 비교함 열기">⚖️ 후보 비교 (0/3)</button>
             <button type="button" class="head-action-btn" id="open-events-btn" aria-label="내 행사 계획 열기">📅 내 행사 (0)</button>
             <button type="button" class="head-action-btn" id="open-report-btn" aria-label="이용 기록 및 식당 제보">✍️ 기록·제보</button>
@@ -185,10 +187,13 @@
 
     <!-- 전국 지역 드롭다운 + 검색창 -->
     <div class="search-box">
+        <!-- 휴대폰: 이용 목적·행사 설정과 필터를 접어 두는 버튼 -->
+        <button type="button" class="setup-toggle" id="setup-toggle" aria-expanded="false" aria-label="이용 목적·행사 설정 열기"><span id="setup-toggle-label">🍽️ 일반</span> ▾</button>
         <select id="region-select" class="mode-select" aria-label="전국 지역 선택">
             <option value="nationwide">🌏 전국 전체 (초등 체험학습·선수단)</option>
         </select>
         <input type="search" id="search" placeholder="식당 이름·메뉴·지역 검색 (예: 돈가스, 불고기, 설렁탕, 경주)" aria-label="맛집 검색" autocomplete="off">
+        <button type="button" class="filter-toggle" id="filter-toggle" aria-expanded="false" aria-label="세부 지역·종류·영업 중 필터 열기">⚙️ 필터</button>
     </div>
 
     <!-- 빠른 지역 버튼 + 즐겨찾기/영업중 + 종류 필터 -->
@@ -224,6 +229,10 @@
                 </div>
             </div>
             <ul class="place-list" id="place-list"></ul>
+            <!-- 휴대폰: 저작권 문구를 목록 맨 끝에 둠 (화면 하단에 고정하면 카드 버튼을 가림) -->
+            <div class="panel-foot">
+                © 2026 엽쌤. All rights reserved.<br><a href="https://gmlduqzhd123-lab.github.io/YScode/">엽쌤의 다른 앱 보기 →</a> · <button type="button" data-qr>📱 QR로 접속</button>
+            </div>
         </section>
 
         <div class="map-wrap">
@@ -240,5 +249,76 @@
 
     <!-- 정적 ES 모듈 진입점 (카카오 지도 SDK는 map.js에서 비차단 방식으로 로드하여 목록·검색·행사 기능을 차단하지 않음) -->
     <script type="module" src="assets/releases/v2.0.0/js/app.js"></script>
+    <script>
+        // 휴대폰 화면 정리: 메뉴·설정·필터 접기, 자료 안내 펼치기, 범례 접기
+        (function () {
+            var root = document.documentElement;
+            var q = new URLSearchParams(location.search);
+            // 자료점검(운영자용)은 ?admin 으로 한 번 들어오면 그 기기에서 계속 보인다 (?admin=off 로 끔)
+            try {
+                if (q.get('admin') === 'off') localStorage.removeItem('ysk-admin');
+                else if (q.has('admin')) localStorage.setItem('ysk-admin', '1');
+                if (localStorage.getItem('ysk-admin') === '1') root.classList.add('op-mode');
+            } catch (e) {
+                if (q.has('admin') && q.get('admin') !== 'off') root.classList.add('op-mode');
+            }
+
+            var header = document.querySelector('header');
+            var menuBtn = document.getElementById('head-menu-btn');
+            var setupBtn = document.getElementById('setup-toggle');
+            var filterBtn = document.getElementById('filter-toggle');
+
+            function setOpen(btn, cls, open) {
+                root.classList.toggle(cls, open);
+                btn.setAttribute('aria-expanded', String(open));
+            }
+            function toggle(btn, cls) {
+                setOpen(btn, cls, !root.classList.contains(cls));
+            }
+
+            menuBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggle(menuBtn, 'menu-open');
+            });
+            // 메뉴 항목을 누르거나 메뉴 밖을 누르면 닫는다 (지도처럼 클릭 전파를 막는 곳도 있어 누르는 순간을 먼저 잡는다)
+            header.addEventListener('click', function (e) {
+                if (e.target.closest('.head-actions button')) setOpen(menuBtn, 'menu-open', false);
+            });
+            document.addEventListener('pointerdown', function (e) {
+                if (root.classList.contains('menu-open') && !header.contains(e.target)) setOpen(menuBtn, 'menu-open', false);
+            }, true);
+            setupBtn.addEventListener('click', function () { toggle(setupBtn, 'setup-open'); });
+            filterBtn.addEventListener('click', function () { toggle(filterBtn, 'filters-open'); });
+
+            // 자료 안내 한 줄은 누르면 전체 문구가 펼쳐진다
+            var banner = document.getElementById('dataset-status-banner');
+            banner.addEventListener('click', function () { banner.classList.toggle('expanded'); });
+            // (앱이 문구를 새로 쓰면 className을 다시 정하므로 자연스럽게 접힌 상태로 돌아간다)
+
+            // 범례는 접어 두고 누르면 펼친다
+            var legend = document.getElementById('legend');
+            legend.addEventListener('click', function () { legend.classList.toggle('open'); });
+
+            // 접힌 버튼에 현재 이용 목적과 켜진 필터 수를 보여 준다
+            var modeShort = { general: '🍽️ 일반', school: '🏫 학교', athlete: '🏃 선수단' };
+            var setupLabel = document.getElementById('setup-toggle-label');
+            var regionSelect = document.getElementById('region-select');
+            function refresh() {
+                var active = document.querySelector('.mode-tab.active');
+                setupLabel.textContent = modeShort[active && active.dataset.mode] || modeShort.general;
+                var n = document.querySelectorAll('#fav-filter.active, #open-filter.active, .filter-btn.category.active:not([data-category=""]):not([data-category="all"])').length;
+                var quick = document.querySelector('.filter-btn[data-region].active');
+                if (!quick && regionSelect.value) n += 1;
+                filterBtn.textContent = n ? '⚙️ 필터 ' + n : '⚙️ 필터';
+            }
+            var bar = document.querySelector('.mode-bar');
+            var filters = document.querySelector('.filter-container');
+            var mo = new MutationObserver(refresh);
+            mo.observe(bar, { attributes: true, subtree: true, attributeFilter: ['class'] });
+            mo.observe(filters, { attributes: true, childList: true, subtree: true, attributeFilter: ['class'] });
+            regionSelect.addEventListener('change', refresh);
+            refresh();
+        })();
+    </script>
 </body>
 </html>
