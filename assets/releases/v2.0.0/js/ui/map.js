@@ -8,7 +8,9 @@ import {
   KAKAO_SDK_URL,
   MY_POS_LEVEL,
   REGION_COLORS,
-  SINGLE_PLACE_LEVEL
+  SINGLE_PLACE_LEVEL,
+  SOUTH_KOREA_VIEW_BOUNDS,
+  SOUTH_KOREA_MASK_HOLE
 } from '../config.js';
 import { getPlaceCoords, isMappablePlace, isValidCoordinate } from '../data/normalize.js';
 
@@ -305,6 +307,11 @@ export class MapController {
         }
       }
 
+      if (!this.viewLimitBound) {
+        this.installSouthKoreaViewLimit();
+        this.viewLimitBound = true;
+      }
+
       if (!this.mapClickListenerBound) {
         kakao.maps.event.addListener(this.map, 'click', () => {
           this.closeOverlay();
@@ -494,6 +501,74 @@ export class MapController {
   relayout() {
     if (this.isReady() && this.map.relayout) {
       this.map.relayout();
+      this.applySouthKoreaViewLimit();
+    }
+  }
+
+  /**
+   * 남한만 보이도록 지도 축소 한계와 이동 범위를 건다.
+   * - 축소: 지금 지도 크기에서 남한 전체가 한 화면에 들어오는 단계까지만 허용 (그 이상 축소하면 중국·일본·북한이 넓게 보임)
+   * - 이동: 화면 중심이 남한 범위를 벗어나지 않게 되돌림 (남한보다 화면이 넓은 방향은 남한 가운데에 고정)
+   */
+  installSouthKoreaViewLimit() {
+    const clamp = () => this.clampCenterToSouthKorea();
+    kakao.maps.event.addListener(this.map, 'dragend', clamp);
+    kakao.maps.event.addListener(this.map, 'zoom_changed', clamp);
+    kakao.maps.event.addListener(this.map, 'idle', clamp);
+    this.applySouthKoreaViewLimit();
+
+    // 남한 바깥 땅을 흐리게 덮는다 (큰 사각형에 남한 모양 구멍). 식당 표시·지도 클릭은 그대로 동작한다
+    if (kakao.maps.Polygon) {
+      try {
+        const outer = [[50, 110], [50, 150], [25, 150], [25, 110]].map(([lat, lng]) => new kakao.maps.LatLng(lat, lng));
+        const hole = SOUTH_KOREA_MASK_HOLE.map(([lat, lng]) => new kakao.maps.LatLng(lat, lng));
+        this.outsideMask = new kakao.maps.Polygon({
+          map: this.map,
+          path: [outer, hole],
+          strokeWeight: 0,
+          fillColor: '#eef2f6',
+          fillOpacity: 0.88,
+          zIndex: 0
+        });
+      } catch {
+        this.outsideMask = null;
+      }
+    }
+  }
+
+  applySouthKoreaViewLimit() {
+    if (!this.map || typeof this.map.getBounds !== 'function') return;
+    const view = this.map.getBounds();
+    if (!view) return;
+    const B = SOUTH_KOREA_VIEW_BOUNDS;
+    const latSpan = view.getNorthEast().getLat() - view.getSouthWest().getLat();
+    const lngSpan = view.getNorthEast().getLng() - view.getSouthWest().getLng();
+    if (!(latSpan > 0) || !(lngSpan > 0)) return; // 지도가 아직 화면에 펼쳐지지 않음
+    // 한 단계 축소할 때마다 보이는 범위가 2배가 되므로, 남한 전체가 처음으로 다 들어오는 단계를 계산한다
+    const level = this.map.getLevel();
+    const need = Math.max((B.ne.lat - B.sw.lat) / latSpan, (B.ne.lng - B.sw.lng) / lngSpan);
+    const maxLevel = Math.max(6, Math.min(14, level + Math.ceil(Math.log2(need) - 0.05)));
+    if (typeof this.map.setMaxLevel === 'function') this.map.setMaxLevel(maxLevel);
+    if (level > maxLevel) this.map.setLevel(maxLevel);
+    this.clampCenterToSouthKorea();
+  }
+
+  clampCenterToSouthKorea() {
+    if (!this.map || this.clampingView) return;
+    const view = this.map.getBounds();
+    if (!view) return;
+    const B = SOUTH_KOREA_VIEW_BOUNDS;
+    const sw = view.getSouthWest(), ne = view.getNorthEast();
+    const halfLat = (ne.getLat() - sw.getLat()) / 2, halfLng = (ne.getLng() - sw.getLng()) / 2;
+    const c = this.map.getCenter();
+    // 화면이 남한보다 좁은 방향: 화면 가장자리가 남한 밖으로 나가지 않게 / 넓은 방향: 남한 가운데에 맞춤
+    const fitAxis = (v, half, lo, hi) => (hi - lo <= half * 2 ? (lo + hi) / 2 : Math.min(Math.max(v, lo + half), hi - half));
+    const lat = fitAxis(c.getLat(), halfLat, B.sw.lat, B.ne.lat);
+    const lng = fitAxis(c.getLng(), halfLng, B.sw.lng, B.ne.lng);
+    if (Math.abs(lat - c.getLat()) > 1e-6 || Math.abs(lng - c.getLng()) > 1e-6) {
+      this.clampingView = true;
+      this.map.setCenter(new kakao.maps.LatLng(lat, lng));
+      this.clampingView = false;
     }
   }
 }
