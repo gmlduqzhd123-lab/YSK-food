@@ -1,0 +1,2663 @@
+{
+  "schemaVersion": 2,
+  "datasetVersion": "2026.10.1",
+  "generatedAt": "2026-10-19T09:30:00+09:00",
+  "entries": [
+    {
+      "id": "ysk-r-1",
+      "regionCode": "jn-yeosu",
+      "name": "이순신수제버거",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "이순신버거, 바삭바삭",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-4",
+      "regionCode": "jn-yeosu",
+      "name": "로타리식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-5",
+      "regionCode": "jn-yeosu",
+      "name": "두꺼비게장",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "봉산동 게장골목의 원조로 꼽히는 집",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-6",
+      "regionCode": "jn-yeosu",
+      "name": "황소식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "돌게장백반, 갈치조림",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "봉산동 게장골목",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-17",
+      "regionCode": "jn-yeosu",
+      "name": "명동게장",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "간장게장, 돌산갓김치",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "봉산동 게장골목",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-18",
+      "regionCode": "jn-yeosu",
+      "name": "꽃돌게장1번가",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장정식",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-7",
+      "regionCode": "jn-yeosu",
+      "name": "구백식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "서대회, 금풍생이구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "서대회는 여름이 제철",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-19",
+      "regionCode": "jn-yeosu",
+      "name": "갈치조림기똥차게맛있는집",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "갈치조림, 간장게장",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "향일암 가는 길",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-20",
+      "regionCode": "jn-yeosu",
+      "name": "여수밥상 갈치야",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "갈치조림, 갈치구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-21",
+      "regionCode": "jn-yeosu",
+      "name": "당머리첫집",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "하모(갯장어) 샤부샤부, 새조개 샤부샤부",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-22",
+      "regionCode": "jn-yeosu",
+      "name": "진남횟집",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "하모 샤부샤부, 활어회",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "돌산공원 근처",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-23",
+      "regionCode": "jn-yeosu",
+      "name": "황가네하모",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "하모 샤부샤부",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-25",
+      "regionCode": "jn-yeosu",
+      "name": "낭만해물삼합",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "해물삼합",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-26",
+      "regionCode": "jn-yeosu",
+      "name": "교동포차 26번 해물삼합",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "해물삼합",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "교동 포차거리, 저녁 영업",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-8",
+      "regionCode": "jn-yeosu",
+      "name": "7공주식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어탕, 장어구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-9",
+      "regionCode": "jn-yeosu",
+      "name": "연이네식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어탕, 생선구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-10",
+      "regionCode": "jn-yeosu",
+      "name": "어부사시사",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "회 한정식",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-27",
+      "regionCode": "jn-yeosu",
+      "name": "순이네밥상",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "게장·생선 백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-29",
+      "regionCode": "jn-yeosu",
+      "name": "여수당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "바게트버거, 쑥 아이스크림",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "이순신광장",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-71",
+      "regionCode": "jn-yeosu",
+      "name": "싱싱게장마을",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-72",
+      "regionCode": "jn-yeosu",
+      "name": "청정게장촌",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-73",
+      "regionCode": "jn-yeosu",
+      "name": "여진식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-74",
+      "regionCode": "jn-yeosu",
+      "name": "정다운식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "게장백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-75",
+      "regionCode": "jn-yeosu",
+      "name": "바다김밥",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "갓참치김밥",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "포장 필수",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-76",
+      "regionCode": "jn-yeosu",
+      "name": "통만두집",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "군만두, 칼국수",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-78",
+      "regionCode": "jn-yeosu",
+      "name": "순심원",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "해물철판짜장",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-79",
+      "regionCode": "jn-yeosu",
+      "name": "나진국밥 본점",
+      "branchName": "본점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "들깨국밥, 수육",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-80",
+      "regionCode": "jn-yeosu",
+      "name": "유정해장국",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "해장국, 알밥",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-81",
+      "regionCode": "jn-yeosu",
+      "name": "복춘식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아귀탕, 아귀찜",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-82",
+      "regionCode": "jn-yeosu",
+      "name": "삼학집",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "서대회무침",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-83",
+      "regionCode": "jn-yeosu",
+      "name": "조일식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "선어회, 튀김",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-85",
+      "regionCode": "jn-yeosu",
+      "name": "희망선어",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "모둠 선어회",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-87",
+      "regionCode": "jn-yeosu",
+      "name": "대성식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "삼치회",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-88",
+      "regionCode": "jn-yeosu",
+      "name": "상아식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "통장어탕",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-89",
+      "regionCode": "jn-yeosu",
+      "name": "산골식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어소금구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-90",
+      "regionCode": "jn-yeosu",
+      "name": "자매식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "통장어탕",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-91",
+      "regionCode": "jn-yeosu",
+      "name": "호남갈비",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-93",
+      "regionCode": "jn-yeosu",
+      "name": "돌문어상회",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "포차·술집"
+      ],
+      "menuSummary": "돌문어삼합",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-94",
+      "regionCode": "jn-yeosu",
+      "name": "41번포차",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "포차·술집"
+      ],
+      "menuSummary": "선어회, 병어조림",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "교동 포차거리",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-95",
+      "regionCode": "jn-yeosu",
+      "name": "동서식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "서대회무침",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-96",
+      "regionCode": "jn-yeosu",
+      "name": "진남식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "꽃게탕정식",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-98",
+      "regionCode": "jn-yeosu",
+      "name": "덕충식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "백반",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "가성비 백반",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-99",
+      "regionCode": "jn-yeosu",
+      "name": "한일관",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "해산물 코스 한정식",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-100",
+      "regionCode": "jn-yeosu",
+      "name": "다다한정식",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "상견례 장소로 인기",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-101",
+      "regionCode": "jn-yeosu",
+      "name": "좌수영바게트버거",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "바게트버거",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-105",
+      "regionCode": "jn-yeosu",
+      "name": "카페포",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "커피",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "벽화마을 뷰",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-147",
+      "regionCode": "jn-yeosu",
+      "name": "낭만24포차",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "포차·술집"
+      ],
+      "menuSummary": "돌문어 해물삼합, 딱새우회, 낙지호롱이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-148",
+      "regionCode": "jn-yeosu",
+      "name": "여수딸기모찌 삼합당 본점",
+      "branchName": "본점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "딸기찹쌀떡, 해풍쑥 딸기모찌",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-149",
+      "regionCode": "jn-yeosu",
+      "name": "거북이식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "돌게장 백반, 꽃게장정식, 생선구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-150",
+      "regionCode": "jn-yeosu",
+      "name": "연화정",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "꽃게장정식, 갈치조림, 왕갈치구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-151",
+      "regionCode": "jn-yeosu",
+      "name": "정담식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "서대회, 돌게장 백반, 우럭매운탕",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-153",
+      "regionCode": "jn-yeosu",
+      "name": "여수회명가 국동점",
+      "branchName": "국동점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "해물모듬, 전복사시미, 낙지탕탕이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-154",
+      "regionCode": "jn-yeosu",
+      "name": "죽림해물칼국수",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "해물칼국수, 해물파전, 콩국수",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-155",
+      "regionCode": "jn-yeosu",
+      "name": "화양식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어구이, 장어탕, 생선구이",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-156",
+      "regionCode": "jn-yeosu",
+      "name": "노랑고래찹쌀꽈배기 여수중앙점",
+      "branchName": "여수중앙점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "찹쌀꽈배기, 치즈도너츠",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-157",
+      "regionCode": "jn-yeosu",
+      "name": "서울해장국",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "여수 선짓국, 장어우거지국, 서대회무침",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-158",
+      "regionCode": "jn-yeosu",
+      "name": "미가칼국수",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "해물칼국수, 팥칼국수, 해물파전",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-159",
+      "regionCode": "jn-yeosu",
+      "name": "돌산식당",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "갈치조림, 서대회무침",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-160",
+      "regionCode": "jn-yeosu",
+      "name": "문자네통장어",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "우거지 통장어탕",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-161",
+      "regionCode": "jn-yeosu",
+      "name": "라이라이",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "차돌박이 짬뽕, 유린기, 탕수육",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-162",
+      "regionCode": "jn-yeosu",
+      "name": "돌산족발",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "족발, 순대",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-163",
+      "regionCode": "jn-yeosu",
+      "name": "따끼또스",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "타코, 부리또, 케사디아",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-164",
+      "regionCode": "jn-yeosu",
+      "name": "귀감",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "거북빵, 앙금라떼",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-165",
+      "regionCode": "jn-yeosu",
+      "name": "엄마매점",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "떡볶이, 튀김",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-166",
+      "regionCode": "jn-yeosu",
+      "name": "사쿠라야",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "사케동, 연어초밥, 연어장",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-167",
+      "regionCode": "jn-yeosu",
+      "name": "겨비창고꽃삼겹",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "꽃삼겹살, 통삼겹살",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-168",
+      "regionCode": "jn-yeosu",
+      "name": "존마틴버거",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "수제버거",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-169",
+      "regionCode": "jn-yeosu",
+      "name": "갓라멘",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "갓라멘, 갓돈코츠라멘",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-171",
+      "regionCode": "jn-yeosu",
+      "name": "동백분식",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "갓김치 들기름국수, 꼬막 비빔국수",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-172",
+      "regionCode": "jn-yeosu",
+      "name": "조선제일국밥 본점",
+      "branchName": "본점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "모듬국밥, 순대국밥, 내장국밥",
+      "address": "여수 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-2",
+      "regionCode": "jn-suncheon",
+      "name": "건봉국밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "국밥, 수육",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-64",
+      "regionCode": "jn-suncheon",
+      "name": "순복식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "국밥, 수육",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "웃장 국밥골목",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-31",
+      "regionCode": "jn-suncheon",
+      "name": "금당골추어탕",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "추어탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-11",
+      "regionCode": "jn-suncheon",
+      "name": "대대선창집",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "짱뚱어탕, 꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "순천만습지 근처",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-13",
+      "regionCode": "jn-suncheon",
+      "name": "순천만갈대밭식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-14",
+      "regionCode": "jn-suncheon",
+      "name": "순천만 전라도밥상",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-32",
+      "regionCode": "jn-suncheon",
+      "name": "도원경",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-33",
+      "regionCode": "jn-suncheon",
+      "name": "남녘들밥상",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-34",
+      "regionCode": "jn-suncheon",
+      "name": "명궁관",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 보리굴비, 떡갈비",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-35",
+      "regionCode": "jn-suncheon",
+      "name": "선비촌",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "꼬막정식, 떡갈비",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "낙안읍성 근처",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-36",
+      "regionCode": "jn-suncheon",
+      "name": "고향정가",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "낙안읍성 근처",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-37",
+      "regionCode": "jn-suncheon",
+      "name": "대숲골농원",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭숯불구이",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "대나무숲 속 식당",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-38",
+      "regionCode": "jn-suncheon",
+      "name": "최가네흑두부",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "흑두부, 삼겹살",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-40",
+      "regionCode": "jn-suncheon",
+      "name": "광신식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "산채비빔밥, 파전",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "송광사 아래",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-41",
+      "regionCode": "jn-suncheon",
+      "name": "송광사식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "산채비빔밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "송광사 아래",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-42",
+      "regionCode": "jn-suncheon",
+      "name": "길상식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "산채비빔밥, 산채정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "송광사 아래",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-43",
+      "regionCode": "jn-suncheon",
+      "name": "선암식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "산채비빔밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "선암사 입구",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-44",
+      "regionCode": "jn-suncheon",
+      "name": "조계산보리밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "보리밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "조계산 굴목재 아래",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-107",
+      "regionCode": "jn-suncheon",
+      "name": "향촌식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "돼지국밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "웃장 국밥골목",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-108",
+      "regionCode": "jn-suncheon",
+      "name": "거목순대국밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "막창 순대국밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-109",
+      "regionCode": "jn-suncheon",
+      "name": "신화정",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "떡갈비 한정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-110",
+      "regionCode": "jn-suncheon",
+      "name": "향토정",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "제철 남도한정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-111",
+      "regionCode": "jn-suncheon",
+      "name": "참조은시골집",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "약선한정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-112",
+      "regionCode": "jn-suncheon",
+      "name": "벽오동",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "보리밥정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-113",
+      "regionCode": "jn-suncheon",
+      "name": "금빈회관",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "소·돼지 떡갈비정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-114",
+      "regionCode": "jn-suncheon",
+      "name": "흥덕식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "백반",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "순천역 앞 가성비 백반",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-115",
+      "regionCode": "jn-suncheon",
+      "name": "나눌터",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "도토리임자탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-117",
+      "regionCode": "jn-suncheon",
+      "name": "양지쌈밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "돼지고기쌈밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-118",
+      "regionCode": "jn-suncheon",
+      "name": "순천만가든",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-122",
+      "regionCode": "jn-suncheon",
+      "name": "텃밭",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "토종닭 숯불구이",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-123",
+      "regionCode": "jn-suncheon",
+      "name": "풍미통닭",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "마늘통닭",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-124",
+      "regionCode": "jn-suncheon",
+      "name": "형제정육점식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "꽃삼겹살",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-125",
+      "regionCode": "jn-suncheon",
+      "name": "고력당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "흑염소전골",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-126",
+      "regionCode": "jn-suncheon",
+      "name": "원조동경낙지",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "낙지전골",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-127",
+      "regionCode": "jn-suncheon",
+      "name": "만천하",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "민물장어구이",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-128",
+      "regionCode": "jn-suncheon",
+      "name": "송치마을",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "돈가스, 항아리수제비",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-129",
+      "regionCode": "jn-suncheon",
+      "name": "다락카레 호수공원점",
+      "branchName": "호수공원점",
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "수제카레",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-130",
+      "regionCode": "jn-suncheon",
+      "name": "순천양조장",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "포차·술집"
+      ],
+      "menuSummary": "수제버거, 수제맥주",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-131",
+      "regionCode": "jn-suncheon",
+      "name": "화월당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "볼카스테라, 찹쌀떡",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-133",
+      "regionCode": "jn-suncheon",
+      "name": "밀림슈퍼",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "밀크티",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "레트로 감성",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-134",
+      "regionCode": "jn-suncheon",
+      "name": "브루웍스",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "커피",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "창고형 로스터리 카페",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-135",
+      "regionCode": "jn-suncheon",
+      "name": "뱀부스",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "커피",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "대나무숲 뷰",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-136",
+      "regionCode": "jn-suncheon",
+      "name": "아삐에노",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "커피, 디저트",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "주택 개조 카페",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-137",
+      "regionCode": "jn-suncheon",
+      "name": "고데레",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "아인슈페너",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "한옥 카페",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-173",
+      "regionCode": "jn-suncheon",
+      "name": "이레돈까스",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "등심·안심 돈까스, 철판마늘등심",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-174",
+      "regionCode": "jn-suncheon",
+      "name": "만석국밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대고기국밥, 순대",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-175",
+      "regionCode": "jn-suncheon",
+      "name": "어울가",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "보쌈 정식, 보쌈칼국수, 쭈꾸미볶음",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-176",
+      "regionCode": "jn-suncheon",
+      "name": "최대감벌교꼬막",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "꼬막정식, 짱뚱어탕, 꼬막비빔밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-177",
+      "regionCode": "jn-suncheon",
+      "name": "주복",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "동파육 덮밥, 전복장 비빔밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-178",
+      "regionCode": "jn-suncheon",
+      "name": "광춘원",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "간짜장, 삼선짬뽕, 탕수육",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-179",
+      "regionCode": "jn-suncheon",
+      "name": "전주식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "꼬막비빔밥, 보리굴비, 갈치조림",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-180",
+      "regionCode": "jn-suncheon",
+      "name": "수퍼비 버거앤칩스",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "수제버거, 감자칩",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-181",
+      "regionCode": "jn-suncheon",
+      "name": "순천맛집가야밀면",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "물밀면, 비빔밀면, 옛날돈가스",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-182",
+      "regionCode": "jn-suncheon",
+      "name": "장대콩국수",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "콩국수",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-183",
+      "regionCode": "jn-suncheon",
+      "name": "여수돌문어꼬마김밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "돌문어 꼬마김밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-184",
+      "regionCode": "jn-suncheon",
+      "name": "바바베이커스",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "빵, 커피",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-185",
+      "regionCode": "jn-suncheon",
+      "name": "웃장가마솥국밥",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "모듬국밥, 머리국밥, 찰순대국밥",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-186",
+      "regionCode": "jn-suncheon",
+      "name": "카페와온",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "커피, 디저트",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-187",
+      "regionCode": "jn-suncheon",
+      "name": "한베식당",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "분짜, 소고기쌀국수, 베트남 샤브샤브",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-188",
+      "regionCode": "jn-suncheon",
+      "name": "솔잎닭구이",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "토종닭구이, 토종닭백숙",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-189",
+      "regionCode": "jn-suncheon",
+      "name": "투데이지",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "케이크, 빙수, 투데이지라떼",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-190",
+      "regionCode": "jn-suncheon",
+      "name": "가미섬",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "제철 활어회",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-191",
+      "regionCode": "jn-suncheon",
+      "name": "조훈모과자점 죽도봉점",
+      "branchName": "죽도봉점",
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "카페·디저트"
+      ],
+      "menuSummary": "빵, 케이크, 커피",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-192",
+      "regionCode": "jn-suncheon",
+      "name": "강변장어",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어구이, 짱뚱어탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-193",
+      "regionCode": "jn-suncheon",
+      "name": "미가돼지생갈비",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지생갈비, 양념구이",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-194",
+      "regionCode": "jn-suncheon",
+      "name": "정제",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "매실멍게비빔밥, 해물볶음우동",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-195",
+      "regionCode": "jn-suncheon",
+      "name": "순천갈대장어 신대점",
+      "branchName": "신대점",
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어구이, 장어탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-196",
+      "regionCode": "jn-suncheon",
+      "name": "지라멘",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "토리파이탄 라멘, 마제소바",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-197",
+      "regionCode": "jn-suncheon",
+      "name": "돌담",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생삼겹살, 쌈밥정식",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-198",
+      "regionCode": "jn-suncheon",
+      "name": "국가정원오리",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "한방 오리 백숙, 생오리구이, 오리불고기",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-199",
+      "regionCode": "jn-suncheon",
+      "name": "추어본가",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "추어탕, 우렁추어탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-200",
+      "regionCode": "jn-suncheon",
+      "name": "알트로",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "파스타, 스테이크, 에그 인 헬",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-201",
+      "regionCode": "jn-suncheon",
+      "name": "진주황포냉면",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "진주냉면(물·비빔·섞어)",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-202",
+      "regionCode": "jn-suncheon",
+      "name": "맛이랑짱뚱어랑",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "짱뚱어탕, 짱뚱어전골",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-203",
+      "regionCode": "jn-suncheon",
+      "name": "갈마골아구찜",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아귀찜, 청국장 아귀탕",
+      "address": "순천 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-3",
+      "regionCode": "jn-gwangyang",
+      "name": "삼대광양불고기집",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-46",
+      "regionCode": "jn-gwangyang",
+      "name": "광양가본",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-47",
+      "regionCode": "jn-gwangyang",
+      "name": "장원회관",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-66",
+      "regionCode": "jn-gwangyang",
+      "name": "대호돼지국밥",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "돼지국밥",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "광영동",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-49",
+      "regionCode": "jn-gwangyang",
+      "name": "차도리가든",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭숯불구이",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-50",
+      "regionCode": "jn-gwangyang",
+      "name": "지곡산장",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭숯불구이",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-15",
+      "regionCode": "jn-gwangyang",
+      "name": "청룡식당",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "재첩"
+      ],
+      "menuSummary": "재첩국, 재첩회",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "섬진강변 진월면",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-54",
+      "regionCode": "jn-gwangyang",
+      "name": "모은정",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "재첩"
+      ],
+      "menuSummary": "재첩 요리, 한정식",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-16",
+      "regionCode": "jn-gwangyang",
+      "name": "망덕횟집",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "전어회",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "망덕포구",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-55",
+      "regionCode": "jn-gwangyang",
+      "name": "장끄방횟집",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "물회",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-57",
+      "regionCode": "jn-gwangyang",
+      "name": "설담가",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-68",
+      "regionCode": "jn-gwangyang",
+      "name": "매화향",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-58",
+      "regionCode": "jn-gwangyang",
+      "name": "영일관",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "보리굴비",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-59",
+      "regionCode": "jn-gwangyang",
+      "name": "신가가마솥",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "국밥",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-69",
+      "regionCode": "jn-gwangyang",
+      "name": "세림식당",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "옛날오징어볶음, 돌산갓김치찜",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "중마동 이순신대교 먹거리타운",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-70",
+      "regionCode": "jn-gwangyang",
+      "name": "시내식당",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "광양읍 불고기 거리 초입",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-60",
+      "regionCode": "jn-gwangyang",
+      "name": "은성면옥",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "갈비탕, 함흥냉면",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "중마동",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-61",
+      "regionCode": "jn-gwangyang",
+      "name": "승승칼국수",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "칼국수",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "중마동",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-139",
+      "regionCode": "jn-gwangyang",
+      "name": "대한식당",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "백년가게",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-140",
+      "regionCode": "jn-gwangyang",
+      "name": "매실한우",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "매실숙성 불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    },
+    {
+      "id": "ysk-r-141",
+      "regionCode": "jn-gwangyang",
+      "name": "금목서",
+      "branchName": null,
+      "regionName": "광양시",
+      "shortRegionName": "광양",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "광양불고기",
+      "address": "광양 (상세 주소 미확인)",
+      "note": "한옥 정원",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": false
+    }
+  ]
+}

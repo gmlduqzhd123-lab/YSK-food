@@ -1,0 +1,160 @@
+// 공개 지도 설정 · 자료 경로 · 제보 전달 안내 · 버전 상수
+export const APP_VERSION = 'v2.0.0';
+export const DEFAULT_DATASET_VERSION = '2026.10.1';
+export const PUBLIC_SCHEMA_VERSION = 2;
+export const PERSONAL_SCHEMA_VERSION = 1;
+export const SOURCE_APP = 'ysk-food';
+
+export const KAKAO_APP_KEY = '445297c316aa9c088ff6c8c40cc341fa';
+export const KAKAO_SDK_URL = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_APP_KEY}&libraries=services,clusterer&autoload=false`;
+export const KAKAO_SDK_TIMEOUT_MS = 8000;
+
+export const LEGACY_FAV_STORAGE_KEY = 'ysk-food-favorites';
+export const UI_STORAGE_KEY = 'ysk-food-ui-v2';
+export const LEGACY_GEO_CACHE_KEY = 'ysk-food-places-v1';
+export const GEO_CACHE_KEY_V2 = 'ysk-food-geo-cache-v2';
+
+export const IDB_NAME = 'ysk-food-personal-db';
+export const IDB_VERSION = 1;
+
+export const PAGE_SIZE = 50;
+export const MAX_COMPARE_COUNT = 3;
+export const MAX_SHARE_URL_LENGTH = 2000;
+export const STALE_DAYS_THRESHOLD = 180;
+
+export const DEFAULT_CENTER = { lat: 34.8500, lng: 127.6000 };
+export const DEFAULT_LEVEL = 9;
+export const SINGLE_PLACE_LEVEL = 5;
+export const MY_POS_LEVEL = 6;
+export const CLUSTER_MIN_LEVEL = 6;
+
+export const REGION_COLORS = {
+  'jn-yeosu': '#1e88e5',
+  'jn-suncheon': '#43a047',
+  'jn-gwangyang': '#fb8c00',
+  '여수': '#1e88e5',
+  '순천': '#43a047',
+  '광양': '#fb8c00'
+};
+export const DEFAULT_MARKER_COLOR = '#475569';
+
+export const APP_MODES = [
+  { id: 'general', label: '일반 맛집', shortLabel: '일반', desc: '전국 지역·메뉴별 맛집과 영업시간 탐색' },
+  { id: 'school', label: '학교 단체식사', shortLabel: '학교행사', desc: '체험학습·수련회·수학여행 인원·예산·버스 조건 비교' },
+  { id: 'athlete', label: '선수단 식사', shortLabel: '선수단', desc: '대회·전지훈련 조식·도시락·분산 식사·일정 변경 관리' }
+];
+
+export const EVENT_PRESETS = {
+  field_trip: {
+    id: 'field_trip',
+    label: '현장체험학습',
+    mode: 'school',
+    seatingPolicy: 'simultaneous_required',
+    providerType: 'restaurant',
+    highlightFields: ['simultaneousCapacity', 'busEntry', 'busParkingSpaces', 'servingMinutes'],
+    guideText: '동시 식사 가능 인원, 대형버스 진입·주차·승하차 위치, 배식 소요시간을 우선 확인합니다.'
+  },
+  retreat: {
+    id: 'retreat',
+    label: '수련회',
+    mode: 'school',
+    seatingPolicy: 'simultaneous_required',
+    providerType: 'lodging',
+    highlightFields: ['providerType', 'simultaneousCapacity', 'busParkingSpaces'],
+    guideText: '외부 식당 식사와 수련원·숙소 제공 식사(숙박비 포함 또는 별도 식비)를 구분해 관리합니다.'
+  },
+  school_trip: {
+    id: 'school_trip',
+    label: '수학여행',
+    mode: 'school',
+    seatingPolicy: 'simultaneous_required',
+    providerType: 'restaurant',
+    highlightFields: ['simultaneousCapacity', 'mealWaves', 'busParkingSpaces', 'preOrder'],
+    guideText: '일정별 방문지와 숙소 동선에 맞춰 외부 식당 및 숙소 식사를 함께 구성합니다.'
+  },
+  school_sports_club: {
+    id: 'school_sports_club',
+    label: '학교스포츠클럽대회',
+    mode: 'athlete',
+    seatingPolicy: 'waves_allowed',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
+    guideText: '경기장 기준 거리, 경기 시간 변경 시 재확인, 도시락 수령 및 회차별 분산 식사를 지원합니다.'
+  },
+  national_sports: {
+    id: 'national_sports',
+    label: '전국체전',
+    mode: 'athlete',
+    seatingPolicy: 'waves_allowed',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
+    guideText: '개최 연도·종목·경기장별 기준점 설정과 이른 조식·도시락·선수단 회차 배정을 지원합니다.'
+  },
+  other_tournament: {
+    id: 'other_tournament',
+    label: '기타 체육대회',
+    mode: 'athlete',
+    seatingPolicy: 'waves_allowed',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
+    guideText: '종목별 경기 일정과 대진 변경에 따른 식사 시간 재확인 및 포장 전환을 관리합니다.'
+  },
+  training_camp: {
+    id: 'training_camp',
+    label: '전지훈련',
+    mode: 'athlete',
+    seatingPolicy: 'simultaneous_required',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'multiDay', 'RepeatVisit', 'budget'],
+    guideText: '연속 날짜의 조식·중식·석식 일정을 생성하고 식단·인원·단가를 날짜별로 복사·관리합니다.'
+  }
+};
+
+export const SUBMISSION_CONFIG = {
+  configured: false,
+  deliveryChannel: null,
+  guideMessage: '현재 온라인 자동 제출 경로가 설정되지 않았습니다. 작성한 제보·이용 기록 초안은 브라우저에 저장되며, JSON 파일로 내보내어 운영자에게 전달해 주세요. (내보내기 완료가 공용 지도 즉시 반영을 뜻하지 않습니다.)'
+};
+
+export const ALLOWED_SHARE_PARAMS = [
+  'restaurantId',
+  'restaurantIds',
+  'region',
+  'mode',
+  'q',
+  'category',
+  'fav',
+  'open'
+];
+
+/**
+ * 앱 루트 URL(/YSK-food/ 등)을 한 번 결정한다.
+ * index.html?restaurantId=... 진입이나 하위 경로에서도 동일한 APP_BASE를 반환한다.
+ */
+export function resolveAppBase(loc = globalThis.location) {
+  if (!loc || !loc.origin) return 'https://gmlduqzhd123-lab.github.io/YSK-food/';
+  let pathname = loc.pathname || '/';
+  // 모듈 경로(/assets/releases/...)나 /tools/, /tests/ 등이 포함된 경우 상위 루트로 정규화
+  const assetIdx = pathname.indexOf('/assets/releases/');
+  if (assetIdx >= 0) {
+    pathname = pathname.slice(0, assetIdx + 1);
+  }
+  if (pathname.endsWith('/index.html')) {
+    pathname = pathname.slice(0, -'index.html'.length);
+  } else if (!pathname.endsWith('/')) {
+    const lastSegment = pathname.slice(pathname.lastIndexOf('/') + 1);
+    if (lastSegment.includes('.')) {
+      pathname = pathname.slice(0, pathname.lastIndexOf('/') + 1);
+    } else {
+      pathname = pathname + '/';
+    }
+  }
+  return new URL(pathname, loc.origin).href;
+}
+
+export const APP_BASE = resolveAppBase();
+
+export function resolveAppUrl(relativePath, base = APP_BASE) {
+  const clean = String(relativePath || '').replace(/^(\.\/|\/)+/, '');
+  return new URL(clean, base).href;
+}

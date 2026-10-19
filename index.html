@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>여순광 맛집 지도</title>
+    <title>전국 맛집 지도 — 학교·선수단 단체식사 지원</title>
     <meta property="og:site_name" content="엽쌤스쿨">
     <meta property="og:url" content="https://gmlduqzhd123-lab.github.io/YSK-food/">
     <meta property="og:locale" content="ko_KR">
@@ -12,219 +12,29 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="여순광 맛집 지도">
+    <meta property="og:image:alt" content="전국 맛집 지도 — 학교·선수단 단체식사 지원">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://gmlduqzhd123-lab.github.io/YSK-food/og-image.jpg">
-    <meta name="description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
+    <meta name="description" content="여수·순천·광양 및 전국 맛집 탐색부터 학교 현장체험학습·선수단 단체식사 계획까지 한눈에 준비하세요.">
     <meta name="theme-color" content="#ff5722">
-    <meta property="og:title" content="여순광 맛집 지도">
-    <meta property="og:description" content="여수·순천·광양 맛집을 지도에서 한눈에 찾아보세요.">
+    <meta property="og:title" content="전국 맛집 지도 — 학교·선수단 단체식사 지원">
+    <meta property="og:description" content="여수·순천·광양 및 전국 맛집 탐색부터 학교 현장체험학습·선수단 단체식사 계획까지 한눈에 준비하세요.">
     <meta property="og:type" content="website">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-    <style>
-        /* 기본 스타일 및 모바일 최적화 */
-        body, html { margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; width: 100%; height: 100%; overflow: hidden; color: #333; }
-        /* 헤더·검색·필터 높이를 뺀 나머지를 본문이 채우도록 세로 flex 배치 (모바일 주소창 대응: 100dvh) */
-        body { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
-        button, input { font-family: inherit; }
-
-        /* 상단 헤더 */
-        header { background-color: #ff5722; color: white; padding: 12px 16px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; z-index: 10; flex-shrink: 0; }
-        header h1 { margin: 0; font-size: 1.2rem; font-weight: bold; }
-        /* 📲 앱 설치 버튼 (헤더 오른쪽) */
-        /* 📲 앱 설치 · 📱 QR (헤더 오른쪽) */
-        header .head-actions button { line-height: 1.3; }
-        header .head-actions { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); display: flex; gap: 6px; align-items: center; }
-        header .head-qr { font: inherit; cursor: pointer; text-decoration: none; background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 5px 11px; font-size: 0.82rem; font-weight: 700; color: #fff; white-space: nowrap; }
-        header .head-qr:hover { background: rgba(255,255,255,.32); }
-        header .head-install button { text-decoration: none; background: rgba(255,255,255,.22); border: 1px solid rgba(255,255,255,.55); border-radius: 999px; padding: 5px 11px; font-size: 0.82rem; font-weight: 700; color: #fff; white-space: nowrap; }
-        header .head-install button:hover { background: rgba(255,255,255,.32); }
-        @media (max-width: 640px) { header { text-align: left; } header h1 { padding-right: 150px; } }
-
-        /* 검색창 */
-        .search-box { padding: 10px 16px 0; background: white; flex-shrink: 0; }
-        .search-box input { width: 100%; box-sizing: border-box; padding: 10px 14px; border: 1px solid #e0e0e0; border-radius: 10px; font-size: 16px; background: #f7f7f7; outline: none; }
-        .search-box input:focus { border-color: #ff5722; background: white; }
-
-        /* 지역·종류 필터 버튼 영역 (가로 스크롤 한 줄) */
-        .filter-container { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: white; overflow-x: auto; position: relative; z-index: 10; flex-shrink: 0; border-bottom: 1px solid #eee; }
-        .filter-container::-webkit-scrollbar { display: none; }
-        .filter-group { display: flex; gap: 8px; }
-        .filter-divider { flex-shrink: 0; width: 1px; height: 24px; background: #e0e0e0; }
-        .filter-btn { padding: 8px 16px; border: 1px solid #e0e0e0; background: white; color: #333; border-radius: 20px; font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
-        .filter-btn.active { background-color: #ff5722; color: white; border-color: #ff5722; font-weight: bold; }
-        .filter-btn.category.active { background-color: #333; border-color: #333; }
-        .filter-btn.toggle.active { background-color: #fff8e1; color: #e65100; border-color: #ffb300; }
-
-        /* 본문: 목록 + 지도 */
-        main { flex: 1; min-height: 0; display: flex; }
-        .map-wrap { position: relative; flex: 1; min-width: 0; min-height: 0; overflow: hidden; }
-        #map { width: 100%; height: 100%; position: relative; }
-
-        /* 내 위치 버튼 */
-        .locate-btn { position: absolute; top: 12px; right: 12px; z-index: 5; padding: 8px 12px; border: 1px solid #ddd; border-radius: 20px; background: white; font-size: 13px; font-weight: bold; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
-        .locate-btn:disabled { opacity: 0.6; cursor: wait; }
-        .my-pos { width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: #1e88e5; border: 3px solid white; box-shadow: 0 0 0 6px rgba(30,136,229,0.25); }
-
-        /* 지역별 마커 색 안내 */
-        .legend { position: absolute; left: 12px; top: 12px; z-index: 5; display: flex; gap: 8px; padding: 6px 10px; border-radius: 16px; background: rgba(255,255,255,0.92); box-shadow: 0 1px 4px rgba(0,0,0,0.15); font-size: 12px; }
-        .legend span::before { content: ''; display: inline-block; width: 9px; height: 9px; margin-right: 4px; border-radius: 50%; background: var(--c); }
-
-        /* 알림 메시지 */
-        .toast { position: absolute; left: 50%; top: 60px; transform: translateX(-50%); z-index: 6; max-width: calc(100% - 32px); box-sizing: border-box; padding: 10px 16px; border-radius: 20px; background: rgba(0,0,0,0.8); color: white; font-size: 13px; text-align: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
-        .toast.show { opacity: 1; }
-
-        /* 지도 로딩 실패 안내 */
-        .map-error { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center; color: #555; background: #fafafa; font-size: 15px; line-height: 1.5; }
-        .map-error strong { font-size: 17px; color: #333; }
-        .map-error button { margin-top: 8px; padding: 8px 20px; border: none; border-radius: 20px; background: #ff5722; color: white; font-size: 14px; cursor: pointer; }
-
-        /* 맛집 목록 패널 */
-        .panel { display: flex; flex-direction: column; background: white; min-height: 0; }
-        .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #eee; background: white; font-size: 15px; font-weight: bold; color: #333; flex-shrink: 0; }
-        .panel-head .sort-note { font-size: 12px; font-weight: normal; color: #1e88e5; margin-left: 6px; }
-        /* 모바일 보기 전환: 지도 / 반반 / 목록 */
-        .view-switch { display: none; flex-shrink: 0; padding: 3px; border-radius: 18px; background: #f1f1f1; }
-        .view-switch button { padding: 6px 12px; border: none; border-radius: 15px; background: none; color: #666; font-size: 13px; font-weight: bold; cursor: pointer; }
-        .view-switch button[aria-pressed="true"] { background: #ff5722; color: white; }
-        .place-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
-        .place-list li { border-bottom: 1px solid #f0f0f0; }
-        .place-list li.selected { background: #fff3ee; }
-        .place-main { display: block; width: 100%; padding: 12px 16px 6px; border: none; background: none; text-align: left; cursor: pointer; color: inherit; }
-        .place-name { font-size: 15px; font-weight: bold; }
-        .place-name::before { content: ''; display: inline-block; width: 8px; height: 8px; margin: 0 6px 2px 0; border-radius: 50%; background: var(--c, #999); }
-        .place-dist { float: right; font-size: 12px; font-weight: bold; color: #1e88e5; }
-        .place-meta { margin-top: 2px; font-size: 12px; color: #999; }
-        .place-menu { margin-top: 4px; font-size: 13px; color: #666; }
-        .place-hours { margin-top: 3px; font-size: 12px; color: #666; }
-        .place-links { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 12px; }
-        .empty { padding: 32px 16px; text-align: center; color: #999; font-size: 14px; }
-        .hours-note { padding: 14px 16px 18px; font-size: 12px; line-height: 1.5; color: #999; }
-
-        /* 영업 상태 표시 */
-        .badge { display: inline-block; margin-left: 4px; padding: 1px 6px; border-radius: 8px; font-size: 11px; font-weight: bold; }
-        .badge.open { background: #e8f5e9; color: #2e7d32; }
-        .badge.closed { background: #f1f1f1; color: #999; }
-
-        /* 공통 링크·작은 버튼 */
-        .link { display: inline-block; padding: 6px 12px; border: none; background: #fee500; color: #000; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; }
-        .link.sub { background: #f1f1f1; }
-        .link.fav.on { background: #fff8e1; color: #e65100; }
-
-        /* 저작권 표시 */
-        .site-footer { flex-shrink: 0; padding: 4px 16px; background: #fafafa; border-top: 1px solid #eee; color: #999; font-size: 11px; text-align: center; }
-
-        /* 모바일: 지도 아래 목록. 처음엔 반반, 위쪽 버튼으로 지도 크게 / 목록 크게 전환 */
-        @media (max-width: 767px) {
-            header { padding: 8px 16px; }
-            header h1 { font-size: 1.05rem; }
-            .search-box { padding-top: 8px; }
-            .search-box input { padding: 8px 12px; }
-            .filter-container { padding: 8px 16px; }
-            .filter-btn { padding: 7px 14px; }
-            main { flex-direction: column; }
-            .panel { order: 2; flex-shrink: 0; height: 65%; overflow: hidden; box-shadow: 0 -2px 8px rgba(0,0,0,0.12); border-radius: 14px 14px 0 0; transition: height 0.25s; }
-            .panel.mode-map { height: 49px; }
-            .panel.mode-list { height: 100%; border-radius: 0; }
-            .view-switch { display: flex; }
-            .place-links { gap: 5px; }
-            /* 정보창이 열려 있으면 지도 위 범례·내 주변 버튼을 숨겨 정보창을 가리지 않게 */
-            .legend, .locate-btn { transition: opacity 0.15s; }
-            .map-wrap.overlay-open .legend, .map-wrap.overlay-open .locate-btn { opacity: 0; pointer-events: none; }
-            /* 지도가 낮으므로 정보창을 간결하게 (저장·공유는 목록 카드에 있음) */
-            .wrap { width: 240px; margin-left: -120px; }
-            .wrap .info { padding: 12px 12px 10px; }
-            .wrap .title { font-size: 15px; margin-bottom: 2px; }
-            .wrap .meta, .wrap .desc, .wrap .hours { margin-bottom: 2px; }
-            .wrap .note, .wrap .links .fav, .wrap .links .share { display: none; }
-            .wrap .links { margin-top: 6px; flex-wrap: nowrap; }
-            .wrap .link { padding: 6px 10px; }
-            .place-links .link { padding: 6px 9px; }
-        }
-        /* PC: 왼쪽 고정 목록, 필터 버튼은 가로 스크롤 대신 줄바꿈 (마우스로는 가로 스크롤이 어려움) */
-        @media (min-width: 768px) {
-            .filter-container, .filter-group { flex-wrap: wrap; }
-            .filter-container { overflow-x: visible; }
-            .panel { width: 340px; flex-shrink: 0; border-right: 1px solid #eee; }
-        }
-
-        /* 커스텀 오버레이 (정보창) 스타일 */
-        .wrap { position: absolute; left: 0; bottom: 40px; width: 260px; margin-left: -130px; text-align: left; font-size: 14px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .wrap .photo { display: block; width: 100%; height: 120px; object-fit: cover; border-radius: 8px 8px 0 0; }
-        .wrap .info { padding: 15px; position: relative; }
-        .wrap .title { font-weight: bold; font-size: 16px; margin-bottom: 5px; padding-right: 24px; color: #333; }
-        .wrap .close { position: absolute; top: 6px; right: 6px; width: 28px; height: 28px; padding: 0; border: none; background: none; cursor: pointer; color: #999; font-size: 16px; }
-        .wrap .photo + .info .close { top: -114px; border-radius: 50%; background: rgba(0,0,0,0.5); color: white; }
-        .wrap .meta { color: #999; font-size: 12px; margin-bottom: 4px; }
-        .wrap .desc { color: #666; font-size: 13px; margin-bottom: 4px; }
-        .wrap .hours, .wrap .note { color: #666; font-size: 12px; margin-bottom: 4px; }
-        .wrap .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-        .wrap:after { content: ''; position: absolute; margin-left: -10px; left: 50%; bottom: -10px; border-top: 10px solid white; border-left: 10px solid transparent; border-right: 10px solid transparent; }
-        /* ===== 첫 화면 (B안: 지도 중심 모던형) ===== */
-        .home { position: fixed; inset: 0; z-index: 1000; overflow-y: auto; -webkit-overflow-scrolling: touch; background: #fafbfc; color: #1d2330; }
-        .home[hidden] { display: none; }
-        .home-inner { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-        .home-top { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-        .home-brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; letter-spacing: -0.02em; }
-        .home-brand .pin { width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #ff5722; display: grid; place-items: center; }
-        .home-brand .pin::after { content: ''; width: 9px; height: 9px; border-radius: 50%; background: white; }
-        .home-icons { display: flex; gap: 6px; }
-        .home-icon { height: 36px; padding: 0 12px; border: 1px solid #eceff3; border-radius: 18px; background: white; color: #1d2330; font-size: 13px; font-weight: 700; cursor: pointer; }
-        .home-layout { display: grid; gap: 22px; padding-bottom: 8px; }
-        .home-layout > * { min-width: 0; }
-        .home-map { position: relative; border-radius: 22px; overflow: hidden; background: #cfe3f7; box-shadow: 0 12px 30px rgba(29,35,48,0.08); }
-        .home-map svg { display: block; width: 100%; height: auto; }
-        .home-map .city-pin { cursor: pointer; }
-        .home-map .city-pin:focus { outline: none; }
-        .home-map .city-pin:focus-visible rect { stroke: #ff5722; stroke-width: 2; }
-        .home-live { position: absolute; left: 14px; top: 14px; display: flex; align-items: center; gap: 7px; padding: 8px 12px; border: none; border-radius: 20px; background: white; color: #1d2330; font-size: 13px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; }
-        .home-live i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
-        .home-live[hidden] { display: none; }
-        .home-map-open { position: absolute; right: 14px; bottom: 14px; padding: 10px 14px; border: none; border-radius: 12px; background: #1d2330; color: white; font-size: 13px; font-weight: 700; cursor: pointer; }
-        .home h1 { margin: 4px 0 8px; font-size: 30px; line-height: 1.25; letter-spacing: -0.035em; font-weight: 800; }
-        .home h1 span { color: #ff5722; }
-        .home-lead { margin: 0 0 16px; color: #6b7280; font-size: 14px; line-height: 1.55; }
-        .home-search { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 14px; border: 2px solid #ff5722; border-radius: 14px; background: white; }
-        .home-search input { flex: 1; min-width: 0; padding: 8px 0; border: none; outline: none; background: none; font-size: 16px; font-family: inherit; }
-        .home-search button { padding: 10px 14px; border: none; border-radius: 10px; background: #ff5722; color: white; font-size: 14px; font-weight: 700; cursor: pointer; }
-        .home h2 { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 12px; font-size: 17px; letter-spacing: -0.02em; }
-        .home h2 small { color: #6b7280; font-size: 12px; font-weight: 500; }
-        .home-cats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-        .home-cat { padding: 12px 4px 10px; border: 1px solid #eceff3; border-radius: 14px; background: white; color: #1d2330; font-size: 12px; font-weight: 600; text-align: center; cursor: pointer; font-family: inherit; }
-        .home-cat b { display: block; margin-bottom: 4px; font-size: 24px; }
-        .home-cat span { display: block; color: #6b7280; font-size: 10px; font-weight: 500; }
-        .home-picks { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 4px; }
-        .home-pick { flex: 0 0 150px; padding: 0; border: 1px solid #eceff3; border-radius: 16px; overflow: hidden; background: white; text-align: left; cursor: pointer; font-family: inherit; color: #1d2330; }
-        .home-pick .art { height: 88px; display: grid; place-items: center; font-size: 40px; background: var(--bg); }
-        .home-pick .body { display: block; padding: 10px 12px 12px; }
-        .home-pick em { display: block; font-style: normal; color: var(--c); font-size: 11px; font-weight: 700; }
-        .home-pick strong { font-size: 14px; }
-        .home-cta { position: sticky; bottom: 0; margin: 0 -20px; padding: 12px 20px 16px; background: linear-gradient(to top, #fafbfc 72%, rgba(250,251,252,0)); }
-        .home-cta button { display: block; width: 100%; padding: 16px; border: none; border-radius: 14px; background: #ff5722; color: white; font-size: 16px; font-weight: 800; font-family: inherit; cursor: pointer; box-shadow: 0 8px 20px rgba(255,87,34,0.35); }
-        .home-foot { padding: 4px 0 18px; color: #9aa1ad; font-size: 11px; text-align: center; }
-        .home-foot a { color: inherit; }
-        header h1 { cursor: pointer; }
-        @media (min-width: 900px) {
-            .home-top { padding: 22px 0; }
-            .home-layout { grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: start; padding-bottom: 32px; }
-            .home-map { grid-row: span 3; position: sticky; top: 20px; }
-            .home h1 { font-size: 44px; }
-            .home-cta { position: static; margin: 16px 0 0; padding: 0; background: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/releases/v2.0.0/css/app.css">
+    <link rel="stylesheet" href="assets/releases/v2.0.0/css/print.css">
     <script src="ys-install.js"></script>
-    <style>.install-btn{display:none}html.can-install .install-btn{display:inline}.install-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}</style>
 </head>
 <body>
 
-    <!-- 첫 화면: 지도 일러스트·검색·종류 바로가기. 누르면 해당 조건으로 지도 화면을 연다 -->
-    <section class="home" id="home" aria-label="여순광 맛집 지도 시작 화면">
+    <!-- 첫 화면: 전국 맛집·학교 단체식사·선수단 식사 시작 화면 -->
+    <section class="home" id="home" aria-label="전국 맛집 지도 시작 화면">
         <div class="home-inner">
             <div class="home-top">
-                <div class="home-brand"><span class="pin" aria-hidden="true"></span>여순광 맛집</div>
+                <div class="home-brand"><span class="pin" aria-hidden="true"></span>전국 맛집 지도</div>
                 <div class="home-icons">
                     <button type="button" class="home-icon" data-qr aria-label="QR 코드로 접속">📱 QR</button>
                     <button type="button" class="home-icon" data-ys-install aria-label="앱 설치">📲 설치</button>
@@ -233,8 +43,8 @@
 
             <div class="home-layout">
                 <div class="home-map">
-                    <!-- 여수·순천·광양 해안선을 단순화한 일러스트 -->
-                    <svg viewBox="0 0 400 300" role="img" aria-label="여수·순천·광양 지도">
+                    <!-- 여수·순천·광양 기본 권역 및 전국 확장 일러스트 -->
+                    <svg viewBox="0 0 400 300" role="img" aria-label="여수·순천·광양 및 전국 지역 지도">
                         <rect width="400" height="300" fill="#cfe3f7"/>
                         <path d="M0 0 H400 V120 C360 135 330 128 300 140 C280 150 270 170 248 168 C225 166 214 140 192 145 C170 150 165 175 140 172 C112 168 100 140 70 150 C40 160 25 150 0 160 Z" fill="#f4efe4"/>
                         <path d="M150 160 C175 170 185 200 205 215 C220 228 228 255 250 262 C268 268 280 250 276 232 C272 214 252 205 248 185 C245 170 232 168 220 172 C205 177 196 160 180 158 C168 156 158 158 150 160 Z" fill="#f4efe4"/>
@@ -260,11 +70,16 @@
                 </div>
 
                 <div>
-                    <h1>오늘, 여순광에서<br><span>뭐 먹을까?</span></h1>
-                    <p class="home-lead" id="home-lead">여수·순천·광양 맛집을 지도로.<br>영업시간·길찾기·전화까지 한 번에.</p>
+                    <h1>전국 맛집 탐색과<br><span>학교·선수단 단체식사</span></h1>
+                    <p class="home-lead" id="home-lead">전국 맛집 탐색과 학교행사·선수단 단체식사 준비를 한 곳에서.</p>
+                    <div class="home-mode-cards" role="group" aria-label="이용 목적별 바로가기">
+                        <button type="button" class="home-mode-card" data-home-open data-home-mode="general">🍽️ 일반 맛집 탐색</button>
+                        <button type="button" class="home-mode-card" data-home-open data-home-mode="school" data-home-preset="field_trip">🏫 학교 단체식사 준비</button>
+                        <button type="button" class="home-mode-card" data-home-open data-home-mode="athlete" data-home-preset="school_sports_club">🏃 선수단 식사 준비</button>
+                    </div>
                     <form class="home-search" id="home-search" role="search">
                         <span aria-hidden="true">🔍</span>
-                        <input type="search" id="home-search-input" placeholder="식당·메뉴 검색 (예: 꼬막정식)" aria-label="맛집 검색" autocomplete="off">
+                        <input type="search" id="home-search-input" placeholder="식당·메뉴 검색 (예: 꼬막정식, 불고기)" aria-label="맛집 검색" autocomplete="off">
                         <button type="submit">검색</button>
                     </form>
                 </div>
@@ -275,7 +90,7 @@
                 </div>
 
                 <div>
-                    <h2>여순광 대표 맛 <small>옆으로 넘겨보기 →</small></h2>
+                    <h2>여수·순천·광양 대표 맛 <small>옆으로 넘겨보기 →</small></h2>
                     <div class="home-picks">
                         <button type="button" class="home-pick" data-query="게장" style="--bg:#e8f0fe; --c:#1e88e5"><span class="art" aria-hidden="true">🦀</span><span class="body"><em>여수</em><strong>돌게장 백반</strong></span></button>
                         <button type="button" class="home-pick" data-query="꼬막" style="--bg:#e6f6ee; --c:#43a047"><span class="art" aria-hidden="true">🐚</span><span class="body"><em>순천</em><strong>꼬막정식</strong></span></button>
@@ -290,39 +105,111 @@
         </div>
     </section>
     <script>
-        // 공유 링크(?place=)나 점검(?check)으로 들어오면 첫 화면을 건너뛴다 (깜빡임 없이 바로 숨김)
+        // 공유 링크(?restaurantId=, ?restaurantIds=, ?place=)나 조건·점검(?check, ?region=, ?mode=, ?q=)으로 들어오면 첫 화면을 건너뛴다
         (function () {
             var q = new URLSearchParams(location.search);
-            if (q.has('place') || q.has('check')) document.getElementById('home').hidden = true;
+            if (q.has('restaurantId') || q.has('restaurantIds') || q.has('place') || q.has('check') || q.has('region') || q.has('mode') || q.has('q')) {
+                var h = document.getElementById('home');
+                if (h) h.hidden = true;
+            }
         })();
     </script>
 
-    <header><h1>여순광 맛집 지도 🗺️</h1><span class="head-actions"><span class="install-btn head-install"><button type="button" aria-label="앱 설치">📲 앱 설치</button></span><button type="button" class="head-qr" data-qr aria-label="QR 코드로 접속">📱 QR</button></span></header>
-
-    <div class="search-box">
-        <input type="search" id="search" placeholder="식당 이름이나 메뉴로 검색 (예: 국밥)" aria-label="맛집 검색" autocomplete="off">
+    <!-- 대기 서비스 워커 업데이트 안내 배너 (편집 중 탭 강제 새로고침 방지 - AC41) -->
+    <div class="sw-banner" id="sw-update-banner" role="status" aria-live="polite" hidden>
+        <span>새 앱 버전이 준비되었습니다. 편집 내용을 저장한 뒤 적용할 수 있습니다.</span>
+        <button type="button" data-sw-apply>새 버전 적용</button>
     </div>
 
+    <header>
+        <h1>전국 맛집 지도 🗺️</h1>
+        <div class="head-actions">
+            <button type="button" class="head-action-btn" id="open-compare-btn" aria-label="후보 식당 비교함 열기">⚖️ 후보 비교 (0/3)</button>
+            <button type="button" class="head-action-btn" id="open-events-btn" aria-label="내 행사 계획 열기">📅 내 행사 (0)</button>
+            <button type="button" class="head-action-btn" id="open-report-btn" aria-label="이용 기록 및 식당 제보">✍️ 기록·제보</button>
+            <button type="button" class="head-action-btn" id="open-op-tool-btn" aria-label="운영자 데이터 점검 및 병합">🛠️ 자료점검</button>
+            <span class="install-btn head-install"><button type="button" aria-label="앱 설치">📲 앱 설치</button></span>
+            <button type="button" class="head-qr" data-qr aria-label="공개 QR 코드 보기">📱 QR</button>
+        </div>
+    </header>
+
+    <!-- 지역 자료 상태 안내 배너 (갱신일·좌표 미확인 수·이전 버전 대체 안내) -->
+    <div class="status-banner info" id="dataset-status-banner" role="status" aria-live="polite" hidden></div>
+
+    <!-- 이용 모드 전환 및 행사 프리셋·기준점 선택 바 (FR01, FR02, FR04) -->
+    <div class="mode-bar" role="region" aria-label="이용 모드 및 행사 프리셋">
+        <div class="mode-tabs" role="group" aria-label="이용 모드 선택">
+            <button type="button" class="mode-tab active" data-mode="general" aria-pressed="true">🍽️ 일반 맛집</button>
+            <button type="button" class="mode-tab" data-mode="school" aria-pressed="false">🏫 학교 단체식사</button>
+            <button type="button" class="mode-tab" data-mode="athlete" aria-pressed="false">🏃 선수단 식사</button>
+        </div>
+        <div class="mode-Selectors">
+            <select id="event-preset-select" class="mode-select" aria-label="행사 프리셋 선택">
+                <option value="">🎯 행사 프리셋 선택 (기본 안내)</option>
+                <option value="field_trip">현장체험학습 (1일)</option>
+                <option value="school_trip">수학여행 (다일)</option>
+                <option value="training_camp">수련활동</option>
+                <option value="school_sports_club">학교스포츠클럽 대회</option>
+                <option value="national_youth_sports">전국소년체육대회</option>
+                <option value="national_sports_festival">전국체육대회</option>
+            </select>
+            <select id="ref-point-select" class="mode-select" aria-label="기준점(체험처·경기장·숙소) 선택">
+                <option value="">📍 기준점 선택 (체험처·경기장·숙소)</option>
+            </select>
+        </div>
+        <div class="preset-guide-note" id="preset-guide-note" hidden></div>
+    </div>
+
+    <!-- 단체 조건 입력 바 (학교·선수단 모드 시 표시 - FR03) -->
+    <div class="group-criteria-bar" id="group-criteria-bar" role="region" aria-label="단체 식사 조건 필터" hidden>
+        <div class="gc-grid">
+            <label class="gc-field">학생·선수 <input type="number" id="gc-students" min="0" max="2000" placeholder="명"></label>
+            <label class="gc-field">인솔·지도자 <input type="number" id="gc-staff" min="0" max="500" placeholder="명"></label>
+            <label class="gc-field budget">1인 예산(원) <input type="number" id="gc-budget" min="0" step="1000" placeholder="예: 12000"></label>
+            <label class="gc-field">버스(대) <input type="number" id="gc-buses" min="0" max="50" placeholder="대"></label>
+            <label class="gc-field">좌석방식
+                <select id="gc-seating-policy">
+                    <option value="simultaneous_required">동시 착석 필수</option>
+                    <option value="split_waves_allowed">시간차(교대) 허용</option>
+                </select>
+            </label>
+            <label class="gc-field">방문일 <input type="date" id="gc-visit-date"></label>
+            <label class="gc-field">시작 <input type="time" id="gc-start-time"></label>
+            <label class="gc-field">종료 <input type="time" id="gc-end-time"></label>
+            <label class="gc-check"><input type="checkbox" id="gc-bus-parking"> 대형버스 주차 필수</label>
+            <label class="gc-check"><input type="checkbox" id="gc-early-breakfast"> 이른 아침식사 필수</label>
+            <label class="gc-check"><input type="checkbox" id="gc-lunchbox"> 도시락·포장 필수</label>
+            <button type="button" class="gc-reset-btn" id="gc-reset-btn">조건 초기화</button>
+        </div>
+    </div>
+
+    <!-- 전국 지역 드롭다운 + 검색창 -->
+    <div class="search-box">
+        <select id="region-select" class="mode-select" aria-label="전국 지역 선택">
+            <option value="all">여수·순천·광양 전체</option>
+        </select>
+        <input type="search" id="search" placeholder="식당 이름·메뉴·주소 검색 (예: 국밥, 게장)" aria-label="맛집 검색" autocomplete="off">
+    </div>
+
+    <!-- 빠른 지역 버튼 + 즐겨찾기/영업중 + 종류 필터 -->
     <div class="filter-container">
-        <div class="filter-group" role="group" aria-label="지역 선택">
-            <button class="filter-btn active" data-city="all" aria-pressed="true">전체 지역</button>
-            <button class="filter-btn" data-city="여수" aria-pressed="false">🌊 여수</button>
-            <button class="filter-btn" data-city="순천" aria-pressed="false">🌿 순천</button>
-            <button class="filter-btn" data-city="광양" aria-pressed="false">☀️ 광양</button>
+        <div class="filter-group" role="group" aria-label="빠른 지역 선택">
+            <button type="button" class="filter-btn active" data-region="all" aria-pressed="true">여순광 전체</button>
+            <button type="button" class="filter-btn" data-region="jn-yeosu" aria-pressed="false">🌊 여수</button>
+            <button type="button" class="filter-btn" data-region="jn-suncheon" aria-pressed="false">🌿 순천</button>
+            <button type="button" class="filter-btn" data-region="jn-gwangyang" aria-pressed="false">☀️ 광양</button>
         </div>
         <span class="filter-divider" aria-hidden="true"></span>
         <div class="filter-group" role="group" aria-label="추가 조건">
-            <button class="filter-btn toggle" id="fav-filter" aria-pressed="false">⭐ 즐겨찾기</button>
-            <!-- 영업시간 정보가 있는 식당이 있을 때만 표시 -->
-            <button class="filter-btn toggle" id="open-filter" aria-pressed="false" hidden>🕒 영업 중</button>
+            <button type="button" class="filter-btn toggle" id="fav-filter" aria-pressed="false">⭐ 즐겨찾기</button>
+            <button type="button" class="filter-btn toggle" id="open-filter" aria-pressed="false">🕒 지금 영업 중</button>
         </div>
         <span class="filter-divider" aria-hidden="true"></span>
-        <!-- 종류 버튼은 데이터에 있는 종류로 자동 생성 -->
         <div class="filter-group" id="category-group" role="group" aria-label="종류 선택"></div>
     </div>
 
     <main>
-        <section class="panel" id="panel" aria-label="맛집 목록">
+        <section class="panel" id="panel" aria-label="맛집 및 단체식사 후보 목록">
             <div class="panel-head">
                 <span><span id="panel-count">맛집 불러오는 중…</span><span class="sort-note" id="sort-note"></span></span>
                 <div class="view-switch" role="group" aria-label="화면 보기">
@@ -342,1205 +229,11 @@
         </div>
     </main>
 
-    <footer class="site-footer">© 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span><span class="qr-btn"> · <button type="button" data-qr>📱 QR로 접속</button></span></footer>
-
-    <!-- ⚠️ 카카오맵 JavaScript 키. 카카오 개발자 콘솔 [플랫폼 키 → JavaScript 키 → JavaScript SDK 도메인]에 사이트 도메인을 등록해야 지도가 표시됩니다. -->
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=445297c316aa9c088ff6c8c40cc341fa&libraries=services,clusterer"></script>
-    <script>
-        // 1. 데이터 설정
-        // 구글 시트 [파일 → 공유 → 웹에 게시 → CSV]로 받은 주소를 넣으면 시트 데이터를 사용합니다. (README.md 참고)
-        // 비워두거나 불러오기에 실패하면 아래 기본 데이터를 사용합니다.
-        const SHEET_CSV_URL = '';
-
-        // 필수: name, city / 선택: category, menu, lat, lng, link, hours(예: 11:00-21:00, 브레이크타임은 "11:00-15:00, 17:00-21:00"), closed(예: 월 / 둘째·넷째 화 / 연중무휴), price, phone, image, note
-        // lat·lng를 비워두면 카카오맵 장소 검색으로 위치·상세 링크·전화번호를 자동으로 찾습니다. (찾지 못하면 지도에서 숨김)
-        // link를 비워두면 좌표가 있어도 장소 검색으로 최신 상세 링크를 찾습니다. (예전 장소 번호는 바뀌거나 사라질 수 있음)
-        const FALLBACK_RESTAURANTS = [
-            // 여수 (70곳)
-            { id: 1, name: "이순신수제버거", city: "여수", category: "양식·일식", menu: "이순신버거, 바삭바삭", lat: 34.739749, lng: 127.735706, hours: "10:00-21:00" },
-            { id: 4, name: "로타리식당", city: "여수", category: "백반·한식", menu: "백반", lat: 34.739417, lng: 127.733285, hours: "08:00-18:00", closed: "수" },
-            { id: 5, name: "두꺼비게장", city: "여수", category: "게장", menu: "게장백반", note: "봉산동 게장골목의 원조로 꼽히는 집", lat: 34.733778, lng: 127.720705, link: "https://place.map.kakao.com/8276281", phone: "061-643-1880", hours: "09:00-20:00", closed: "연중무휴" },
-            { id: 6, name: "황소식당", city: "여수", category: "게장", menu: "돌게장백반, 갈치조림", note: "봉산동 게장골목", hours: "08:00-20:20" },
-            { id: 17, name: "명동게장", city: "여수", category: "게장", menu: "간장게장, 돌산갓김치", note: "봉산동 게장골목", hours: "07:00-21:00", closed: "연중무휴" },
-            { id: 18, name: "꽃돌게장1번가", city: "여수", category: "게장", menu: "게장정식", hours: "10:00-15:00, 17:00-20:30", closed: "명절" },
-            { id: 7, name: "구백식당", city: "여수", category: "해산물", menu: "서대회, 금풍생이구이", note: "서대회는 여름이 제철", hours: "평일 08:00-15:00 / 주말 08:00-18:00", closed: "둘째·넷째 화" },
-            { id: 19, name: "갈치조림기똥차게맛있는집", city: "여수", category: "해산물", menu: "갈치조림, 간장게장", note: "향일암 가는 길", hours: "08:00-19:00", closed: "연중무휴" },
-            { id: 20, name: "여수밥상 갈치야", city: "여수", category: "해산물", menu: "갈치조림, 갈치구이", hours: "07:30-20:00", closed: "수" },
-            { id: 21, name: "당머리첫집", city: "여수", category: "해산물", menu: "하모(갯장어) 샤부샤부, 새조개 샤부샤부", hours: "11:00-15:00, 17:00-21:00" },
-            { id: 22, name: "진남횟집", city: "여수", category: "해산물", menu: "하모 샤부샤부, 활어회", note: "돌산공원 근처", hours: "10:30-23:00" },
-            { id: 23, name: "황가네하모", city: "여수", category: "해산물", menu: "하모 샤부샤부", hours: "평일 11:30-21:30 / 주말 11:30-15:00, 17:00-21:30" },
-            { id: 25, name: "낭만해물삼합", city: "여수", category: "해산물", menu: "해물삼합", hours: "07:00-22:00", closed: "둘째·넷째 수" },
-            { id: 26, name: "교동포차 26번 해물삼합", city: "여수", category: "해산물", menu: "해물삼합", note: "교동 포차거리, 저녁 영업", hours: "16:00-02:00" },
-            { id: 8, name: "7공주식당", city: "여수", category: "장어", menu: "장어탕, 장어구이", hours: "11:00-14:30, 17:00-21:00", closed: "둘째·넷째 일" },
-            { id: 9, name: "연이네식당", city: "여수", category: "장어", menu: "장어탕, 생선구이", hours: "06:00-21:00", closed: "연중무휴" },
-            { id: 10, name: "어부사시사", city: "여수", category: "한정식", menu: "회 한정식", hours: "11:00-15:00, 17:00-22:00", closed: "연중무휴" },
-            { id: 27, name: "순이네밥상", city: "여수", category: "백반·한식", menu: "게장·생선 백반", hours: "09:30-15:30, 17:00-21:00", closed: "둘째·넷째 수" },
-            { id: 29, name: "여수당", city: "여수", category: "카페·디저트", menu: "바게트버거, 쑥 아이스크림", note: "이순신광장", hours: "07:30-23:00" },
-            { id: 71, name: "싱싱게장마을", city: "여수", category: "게장", menu: "게장백반", hours: "09:30-15:00", closed: "셋째 수" },
-            { id: 72, name: "청정게장촌", city: "여수", category: "게장", menu: "게장백반", hours: "08:00-20:30", closed: "연중무휴" },
-            { id: 73, name: "여진식당", city: "여수", category: "게장", menu: "게장백반", hours: "10:00-16:00, 17:00-20:00", closed: "일" },
-            { id: 74, name: "정다운식당", city: "여수", category: "게장", menu: "게장백반", hours: "평일 10:00-15:00, 17:00-21:30 / 주말 10:00-21:00", closed: "연중무휴" },
-            { id: 75, name: "바다김밥", city: "여수", category: "분식·중식", menu: "갓참치김밥", note: "포장 필수", hours: "08:00-20:00" },
-            { id: 76, name: "통만두집", city: "여수", category: "분식·중식", menu: "군만두, 칼국수", hours: "11:00-20:00", closed: "목" },
-            { id: 78, name: "순심원", city: "여수", category: "분식·중식", menu: "해물철판짜장", hours: "11:00-15:00, 17:00-20:00", closed: "금" },
-            { id: 79, name: "나진국밥 본점", city: "여수", category: "국밥·탕", menu: "들깨국밥, 수육", hours: "09:00-14:00", closed: "화" },
-            { id: 80, name: "유정해장국", city: "여수", category: "국밥·탕", menu: "해장국, 알밥", hours: "05:30-15:00", closed: "화" },
-            { id: 81, name: "복춘식당", city: "여수", category: "해산물", menu: "아귀탕, 아귀찜", hours: "09:00-15:00, 17:00-21:00", closed: "월" },
-            { id: 82, name: "삼학집", city: "여수", category: "해산물", menu: "서대회무침", hours: "09:00-21:00", closed: "수" },
-            { id: 83, name: "조일식당", city: "여수", category: "해산물", menu: "선어회, 튀김", hours: "16:00-22:00" },
-            { id: 85, name: "희망선어", city: "여수", category: "해산물", menu: "모둠 선어회", hours: "10:00-22:00", closed: "연중무휴" },
-            { id: 87, name: "대성식당", city: "여수", category: "해산물", menu: "삼치회", hours: "09:00-21:00", closed: "월" },
-            { id: 88, name: "상아식당", city: "여수", category: "장어", menu: "통장어탕", hours: "07:00-20:00", closed: "설·추석 연휴" },
-            { id: 89, name: "산골식당", city: "여수", category: "장어", menu: "장어소금구이", hours: "08:00-22:30", closed: "연중무휴" },
-            { id: 90, name: "자매식당", city: "여수", category: "장어", menu: "통장어탕", hours: "06:30-20:00" },
-            { id: 91, name: "호남갈비", city: "여수", category: "고기", menu: "돼지갈비", hours: "11:00-15:00, 17:00-21:00", closed: "연중무휴" },
-            { id: 93, name: "돌문어상회", city: "여수", category: "포차·술집", menu: "돌문어삼합", hours: "평일 15:30-23:00 / 토 12:00-24:00 / 일 12:00-23:00", closed: "연중무휴" },
-            { id: 94, name: "41번포차", city: "여수", category: "포차·술집", menu: "선어회, 병어조림", note: "교동 포차거리", hours: "16:00-23:00", closed: "일" },
-            { id: 95, name: "동서식당", city: "여수", category: "백반·한식", menu: "서대회무침", hours: "11:10-15:00, 17:00-20:00", closed: "수" },
-            { id: 96, name: "진남식당", city: "여수", category: "백반·한식", menu: "꽃게탕정식", hours: "09:30-20:30", closed: "월" },
-            { id: 98, name: "덕충식당", city: "여수", category: "백반·한식", menu: "백반", note: "가성비 백반", hours: "07:00-22:00" },
-            { id: 99, name: "한일관", city: "여수", category: "한정식", menu: "해산물 코스 한정식", hours: "11:00-15:00, 17:00-21:30", closed: "명절" },
-            { id: 100, name: "다다한정식", city: "여수", category: "한정식", menu: "한정식", note: "상견례 장소로 인기", hours: "12:00-15:00, 17:00-21:00", closed: "설·추석" },
-            { id: 101, name: "좌수영바게트버거", city: "여수", category: "카페·디저트", menu: "바게트버거", hours: "09:30-20:00", closed: "연중무휴" },
-            { id: 105, name: "카페포", city: "여수", category: "카페·디저트", menu: "커피", note: "벽화마을 뷰", hours: "평일 10:00-20:00 / 주말 10:00-21:00", closed: "수" },
-            { id: 147, name: "낭만24포차", city: "여수", category: "포차·술집", menu: "돌문어 해물삼합, 딱새우회, 낙지호롱이", lat: 34.737693, lng: 127.747015, link: "https://place.map.kakao.com/1267277320", phone: "0507-1361-6451", hours: "월~목 11:30-03:00 / 금~일 11:30-04:00", closed: "연중무휴" },
-            { id: 148, name: "여수딸기모찌 삼합당 본점", city: "여수", category: "카페·디저트", menu: "딸기찹쌀떡, 해풍쑥 딸기모찌", lat: 34.741420, lng: 127.736085, link: "https://place.map.kakao.com/1189575668", phone: "061-665-3030", hours: "09:00-21:00", closed: "연중무휴" },
-            { id: 149, name: "거북이식당", city: "여수", category: "게장", menu: "돌게장 백반, 꽃게장정식, 생선구이", lat: 34.728673, lng: 127.722359, link: "https://place.map.kakao.com/17073987", phone: "061-681-4420", hours: "09:00-21:00", closed: "연중무휴" },
-            { id: 150, name: "연화정", city: "여수", category: "해산물", menu: "꽃게장정식, 갈치조림, 왕갈치구이", lat: 34.743726, lng: 127.750489, link: "https://place.map.kakao.com/1947810293", phone: "061-663-8888", hours: "08:00-16:00, 17:00-20:30", closed: "연중무휴" },
-            { id: 151, name: "정담식당", city: "여수", category: "백반·한식", menu: "서대회, 돌게장 백반, 우럭매운탕", lat: 34.757358, lng: 127.709144, link: "https://place.map.kakao.com/1121300072", phone: "061-651-3312", hours: "08:00-21:00", closed: "연중무휴" },
-            { id: 153, name: "여수회명가 국동점", city: "여수", category: "해산물", menu: "해물모듬, 전복사시미, 낙지탕탕이", lat: 34.726671, lng: 127.721359, link: "https://place.map.kakao.com/1336920259", phone: "010-4145-3526", hours: "10:00-14:30, 16:30-22:00", closed: "연중무휴" },
-            { id: 154, name: "죽림해물칼국수", city: "여수", category: "면", menu: "해물칼국수, 해물파전, 콩국수", lat: 34.764136, lng: 127.637378, link: "https://place.map.kakao.com/2116993347", phone: "061-686-0580", hours: "11:00-21:00", closed: "수" },
-            { id: 155, name: "화양식당", city: "여수", category: "장어", menu: "장어구이, 장어탕, 생선구이", lat: 34.745729, lng: 127.743121, link: "https://place.map.kakao.com/16952058", phone: "061-663-5505", hours: "07:30-20:00", closed: "연중무휴" },
-            { id: 156, name: "노랑고래찹쌀꽈배기 여수중앙점", city: "여수", category: "카페·디저트", menu: "찹쌀꽈배기, 치즈도너츠", lat: 34.741302, lng: 127.735800, link: "https://place.map.kakao.com/787357115", phone: "061-662-2002", hours: "09:30-20:00", closed: "연중무휴" },
-            { id: 157, name: "서울해장국", city: "여수", category: "국밥·탕", menu: "여수 선짓국, 장어우거지국, 서대회무침", lat: 34.740997, lng: 127.735697, link: "https://place.map.kakao.com/9967837", phone: "061-662-2195", hours: "05:00-23:00", closed: "연중무휴" },
-            { id: 158, name: "미가칼국수", city: "여수", category: "면", menu: "해물칼국수, 팥칼국수, 해물파전", lat: 34.751420, lng: 127.743447, link: "https://place.map.kakao.com/538235849", phone: "061-641-7666", hours: "10:00-20:00", closed: "연중무휴" },
-            { id: 159, name: "돌산식당", city: "여수", category: "해산물", menu: "갈치조림, 서대회무침", lat: 34.739506, lng: 127.734736, link: "https://place.map.kakao.com/8272851", phone: "061-662-3037", hours: "08:00-15:00", closed: "화" },
-            { id: 160, name: "문자네통장어", city: "여수", category: "장어", menu: "우거지 통장어탕", lat: 34.749574, lng: 127.683811, link: "https://place.map.kakao.com/10413843", phone: "061-681-0390", hours: "10:30-14:30, 17:00-20:00", closed: "연중무휴" },
-            { id: 161, name: "라이라이", city: "여수", category: "분식·중식", menu: "차돌박이 짬뽕, 유린기, 탕수육", lat: 34.761149, lng: 127.665295, link: "https://place.map.kakao.com/12626244", phone: "061-684-3388", hours: "11:30-14:30, 17:00-21:00", closed: "월" },
-            { id: 162, name: "돌산족발", city: "여수", category: "고기", menu: "족발, 순대", lat: 34.741489, lng: 127.728691, link: "https://place.map.kakao.com/8263928", phone: "061-642-7089", hours: "06:00-20:30", closed: "일" },
-            { id: 163, name: "따끼또스", city: "여수", category: "양식·일식", menu: "타코, 부리또, 케사디아", lat: 34.742925, lng: 127.674108, link: "https://place.map.kakao.com/340084132", phone: "070-8777-0145", hours: "월·화·목·금 17:00-23:00 / 토 12:00-15:00, 17:00-23:00 / 일 12:00-15:00, 17:00-21:00", closed: "수" },
-            { id: 164, name: "귀감", city: "여수", category: "카페·디저트", menu: "거북빵, 앙금라떼", lat: 34.740501, lng: 127.736514, link: "https://place.map.kakao.com/320212298", phone: "010-3019-0655", hours: "10:00-22:00", closed: "연중무휴" },
-            { id: 165, name: "엄마매점", city: "여수", category: "분식·중식", menu: "떡볶이, 튀김", lat: 34.727758, lng: 127.743886, link: "https://place.map.kakao.com/484917067", phone: "061-644-7230", hours: "11:30-19:30", closed: "수" },
-            { id: 166, name: "사쿠라야", city: "여수", category: "양식·일식", menu: "사케동, 연어초밥, 연어장", lat: 34.738545, lng: 127.743974, link: "https://place.map.kakao.com/1282333903", phone: "0503-7151-6008", hours: "수~목 12:00-15:00, 17:00-24:00 / 금 12:00-15:00, 17:00-01:00 / 토 17:00-02:00 / 일 17:00-24:00", closed: "월·화" },
-            { id: 167, name: "겨비창고꽃삼겹", city: "여수", category: "고기", menu: "꽃삼겹살, 통삼겹살", lat: 34.760739, lng: 127.649874, link: "https://place.map.kakao.com/2094971709", phone: "010-6364-0064", hours: "17:00-21:30", closed: "토·일" },
-            { id: 168, name: "존마틴버거", city: "여수", category: "양식·일식", menu: "수제버거", lat: 34.758667, lng: 127.659635, link: "https://place.map.kakao.com/1210023472", phone: "061-921-8552", hours: "11:00-20:30", closed: "월" },
-            { id: 169, name: "갓라멘", city: "여수", category: "면", menu: "갓라멘, 갓돈코츠라멘", lat: 34.746877, lng: 127.743965, link: "https://place.map.kakao.com/1801165740", phone: "061-810-0060", hours: "11:30-20:00", closed: "화" },
-            { id: 171, name: "동백분식", city: "여수", category: "면", menu: "갓김치 들기름국수, 꼬막 비빔국수", lat: 34.745130, lng: 127.741989, link: "https://place.map.kakao.com/2311005", phone: "0503-7154-2114", hours: "월·화·수·금 09:00-16:00 / 토~일 09:00-17:00", closed: "목" },
-            { id: 172, name: "조선제일국밥 본점", city: "여수", category: "국밥·탕", menu: "모듬국밥, 순대국밥, 내장국밥", lat: 34.744088, lng: 127.743228, link: "https://place.map.kakao.com/27526830", phone: "061-662-0333", hours: "월~토 07:00-20:30 / 일 07:00-14:00", closed: "연중무휴" },
-            // 순천 (75곳)
-            { id: 2, name: "건봉국밥", city: "순천", category: "국밥·탕", menu: "국밥, 수육", lat: 34.95073, lng: 127.493822, hours: "월 09:00-21:00 / 금~일 07:00-21:00", closed: "화,수,목" },
-            { id: 64, name: "순복식당", city: "순천", category: "국밥·탕", menu: "국밥, 수육", note: "웃장 국밥골목", hours: "평일 10:00-16:00 / 주말 08:00-14:00", closed: "화" },
-            { id: 31, name: "금당골추어탕", city: "순천", category: "국밥·탕", menu: "추어탕", hours: "09:30-20:30", closed: "일" },
-            { id: 11, name: "대대선창집", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 꼬막정식", note: "순천만습지 근처", hours: "08:30-21:00", closed: "연중무휴" },
-            { id: 13, name: "순천만갈대밭식당", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "08:00-21:00", closed: "연중무휴" },
-            { id: 14, name: "순천만 전라도밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "08:00-20:00", closed: "연중무휴" },
-            { id: 32, name: "도원경", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "10:00-21:00" },
-            { id: 33, name: "남녘들밥상", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "11:00-14:30, 17:00-21:00" },
-            { id: 34, name: "명궁관", city: "순천", category: "한정식", menu: "한정식, 보리굴비, 떡갈비", hours: "11:00-15:00, 17:00-21:30", closed: "월" },
-            { id: 35, name: "선비촌", city: "순천", category: "한정식", menu: "꼬막정식, 떡갈비", note: "낙안읍성 근처", hours: "09:00-21:00" },
-            { id: 36, name: "고향정가", city: "순천", category: "한정식", menu: "한정식", note: "낙안읍성 근처", hours: "09:00-20:00", closed: "부정기 일요일" },
-            { id: 37, name: "대숲골농원", city: "순천", category: "닭요리", menu: "닭숯불구이", note: "대나무숲 속 식당", hours: "11:30-21:30", closed: "연중무휴" },
-            { id: 38, name: "최가네흑두부", city: "순천", category: "백반·한식", menu: "흑두부, 삼겹살", hours: "17:00-22:00", closed: "토" },
-            { id: 40, name: "광신식당", city: "순천", category: "백반·한식", menu: "산채비빔밥, 파전", note: "송광사 아래", hours: "07:30-21:00" },
-            { id: 41, name: "송광사식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "송광사 아래", hours: "08:00-22:00" },
-            { id: 42, name: "길상식당", city: "순천", category: "백반·한식", menu: "산채비빔밥, 산채정식", note: "송광사 아래", hours: "09:00-19:00" },
-            { id: 43, name: "선암식당", city: "순천", category: "백반·한식", menu: "산채비빔밥", note: "선암사 입구", hours: "09:00-18:00" },
-            { id: 44, name: "조계산보리밥", city: "순천", category: "백반·한식", menu: "보리밥", note: "조계산 굴목재 아래", hours: "10:00-16:30" },
-            { id: 107, name: "향촌식당", city: "순천", category: "국밥·탕", menu: "돼지국밥", note: "웃장 국밥골목", hours: "08:00-15:00, 16:00-19:30", closed: "수" },
-            { id: 108, name: "거목순대국밥", city: "순천", category: "국밥·탕", menu: "막창 순대국밥", hours: "06:00-24:00" },
-            { id: 109, name: "신화정", city: "순천", category: "한정식", menu: "떡갈비 한정식", hours: "11:30-15:30, 17:00-21:30" },
-            { id: 110, name: "향토정", city: "순천", category: "한정식", menu: "제철 남도한정식", hours: "11:00-15:00, 17:00-21:30", closed: "화" },
-            { id: 111, name: "참조은시골집", city: "순천", category: "한정식", menu: "약선한정식", hours: "11:30-15:00, 17:00-21:00" },
-            { id: 112, name: "벽오동", city: "순천", category: "백반·한식", menu: "보리밥정식", hours: "11:00-15:00, 17:00-20:30", closed: "수" },
-            { id: 113, name: "금빈회관", city: "순천", category: "백반·한식", menu: "소·돼지 떡갈비정식", hours: "11:00-21:00", closed: "화" },
-            { id: 114, name: "흥덕식당", city: "순천", category: "백반·한식", menu: "백반", note: "순천역 앞 가성비 백반", hours: "08:30-15:00, 16:00-20:00", closed: "화" },
-            { id: 115, name: "나눌터", city: "순천", category: "백반·한식", menu: "도토리임자탕", hours: "11:00-15:30, 17:00-21:00", closed: "목" },
-            { id: 117, name: "양지쌈밥", city: "순천", category: "백반·한식", menu: "돼지고기쌈밥", hours: "10:30-15:00, 16:00-21:00", closed: "월" },
-            { id: 118, name: "순천만가든", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식", hours: "09:00-20:00" },
-            { id: 122, name: "텃밭", city: "순천", category: "닭요리", menu: "토종닭 숯불구이", hours: "12:00-23:00" },
-            { id: 123, name: "풍미통닭", city: "순천", category: "닭요리", menu: "마늘통닭", hours: "11:00-24:00" },
-            { id: 124, name: "형제정육점식당", city: "순천", category: "고기", menu: "꽃삼겹살", hours: "11:00-22:00" },
-            { id: 125, name: "고력당", city: "순천", category: "고기", menu: "흑염소전골", hours: "평일 11:30-15:00, 17:30-22:00 / 주말 11:30-22:00", closed: "연중무휴" },
-            { id: 126, name: "원조동경낙지", city: "순천", category: "해산물", menu: "낙지전골", hours: "10:30-21:00" },
-            { id: 127, name: "만천하", city: "순천", category: "장어", menu: "민물장어구이", hours: "11:00-21:00" },
-            { id: 128, name: "송치마을", city: "순천", category: "양식·일식", menu: "돈가스, 항아리수제비", hours: "평일 11:00-15:00, 16:00-20:00 / 주말 11:00-20:00", closed: "화" },
-            { id: 129, name: "다락카레 호수공원점", city: "순천", category: "양식·일식", menu: "수제카레", hours: "평일 10:30-15:00, 17:00-21:00 / 주말 10:30-21:00", closed: "화" },
-            { id: 130, name: "순천양조장", city: "순천", category: "포차·술집", menu: "수제버거, 수제맥주", hours: "11:00-24:00", closed: "월" },
-            { id: 131, name: "화월당", city: "순천", category: "카페·디저트", menu: "볼카스테라, 찹쌀떡", hours: "10:00-18:00", closed: "마지막 주 일" },
-            { id: 133, name: "밀림슈퍼", city: "순천", category: "카페·디저트", menu: "밀크티", note: "레트로 감성", hours: "12:00-19:00", closed: "금" },
-            { id: 134, name: "브루웍스", city: "순천", category: "카페·디저트", menu: "커피", note: "창고형 로스터리 카페", hours: "10:00-22:00", closed: "연중무휴" },
-            { id: 135, name: "뱀부스", city: "순천", category: "카페·디저트", menu: "커피", note: "대나무숲 뷰", hours: "11:00-22:00", closed: "화" },
-            { id: 136, name: "아삐에노", city: "순천", category: "카페·디저트", menu: "커피, 디저트", note: "주택 개조 카페", hours: "11:30-21:30", closed: "부정기(인스타 공지)" },
-            { id: 137, name: "고데레", city: "순천", category: "카페·디저트", menu: "아인슈페너", note: "한옥 카페", hours: "11:30-21:30", closed: "월" },
-            { id: 173, name: "이레돈까스", city: "순천", category: "양식·일식", menu: "등심·안심 돈까스, 철판마늘등심", lat: 34.946018, lng: 127.501048, link: "https://place.map.kakao.com/165497774", phone: "061-741-8417", hours: "월~금 11:30-15:00, 16:20-19:00 / 토 11:00-16:00", closed: "일" },
-            { id: 174, name: "만석국밥", city: "순천", category: "국밥·탕", menu: "순대고기국밥, 순대", lat: 34.945728, lng: 127.499834, link: "https://place.map.kakao.com/14824745", phone: "061-741-6637", hours: "09:00-12:00, 17:00-20:00", closed: "연중무휴" },
-            { id: 175, name: "어울가", city: "순천", category: "고기", menu: "보쌈 정식, 보쌈칼국수, 쭈꾸미볶음", lat: 34.933759, lng: 127.495834, link: "https://place.map.kakao.com/482288262", phone: "061-906-2252", hours: "11:00-15:00, 17:00-21:00", closed: "화" },
-            { id: 176, name: "최대감벌교꼬막", city: "순천", category: "짱뚱어·꼬막", menu: "꼬막정식, 짱뚱어탕, 꼬막비빔밥", lat: 34.904954, lng: 127.343726, link: "https://place.map.kakao.com/1286663140", phone: "061-753-0888", hours: "09:00-20:00", closed: "연중무휴" },
-            { id: 177, name: "주복", city: "순천", category: "백반·한식", menu: "동파육 덮밥, 전복장 비빔밥", lat: 34.954906, lng: 127.479675, link: "https://place.map.kakao.com/859191620", phone: "0503-7153-4480", hours: "화~금 11:30-14:30, 18:00-21:00 / 토 11:30-16:00", closed: "월·일" },
-            { id: 178, name: "광춘원", city: "순천", category: "분식·중식", menu: "간짜장, 삼선짬뽕, 탕수육", lat: 34.942272, lng: 127.494059, link: "https://place.map.kakao.com/8773799", phone: "061-745-8333", hours: "10:30-20:00", closed: "화" },
-            { id: 179, name: "전주식당", city: "순천", category: "백반·한식", menu: "꼬막비빔밥, 보리굴비, 갈치조림", lat: 34.944172, lng: 127.501904, link: "https://place.map.kakao.com/726398753", phone: "061-743-2185", hours: "10:30-14:30", closed: "월" },
-            { id: 180, name: "수퍼비 버거앤칩스", city: "순천", category: "양식·일식", menu: "수제버거, 감자칩", lat: 34.951682, lng: 127.520110, link: "https://place.map.kakao.com/1215348461", phone: "061-722-7008", hours: "월~수 11:00-15:00, 16:00-20:30 / 목~일 11:00-20:30", closed: "연중무휴" },
-            { id: 181, name: "순천맛집가야밀면", city: "순천", category: "면", menu: "물밀면, 비빔밀면, 옛날돈가스", lat: 34.930708, lng: 127.496183, link: "https://place.map.kakao.com/1447495479", phone: "061-742-8988", hours: "11:00-15:00, 17:00-20:00", closed: "연중무휴" },
-            { id: 182, name: "장대콩국수", city: "순천", category: "면", menu: "콩국수", lat: 34.949618, lng: 127.492789, link: "https://place.map.kakao.com/9421442", phone: "061-744-1057", hours: "08:00-17:00", closed: "연중무휴" },
-            { id: 183, name: "여수돌문어꼬마김밥", city: "순천", category: "분식·중식", menu: "돌문어 꼬마김밥", lat: 34.944816, lng: 127.502276, link: "https://place.map.kakao.com/1015895020", phone: "0502-5554-3011", hours: "07:50-18:30", closed: "연중무휴" },
-            { id: 184, name: "바바베이커스", city: "순천", category: "카페·디저트", menu: "빵, 커피", lat: 34.970007, lng: 127.526445, link: "https://place.map.kakao.com/1585386067", phone: "061-727-0435", hours: "09:00-21:00", closed: "연중무휴" },
-            { id: 185, name: "웃장가마솥국밥", city: "순천", category: "국밥·탕", menu: "모듬국밥, 머리국밥, 찰순대국밥", lat: 34.959066, lng: 127.485361, link: "https://place.map.kakao.com/19547892", phone: "061-753-1583", hours: "10:00-15:00, 16:30-21:00", closed: "연중무휴" },
-            { id: 186, name: "카페와온", city: "순천", category: "카페·디저트", menu: "커피, 디저트", lat: 34.848217, lng: 127.525122, link: "https://place.map.kakao.com/1877398355", phone: "0507-1328-8404", hours: "10:30-22:00", closed: "화" },
-            { id: 187, name: "한베식당", city: "순천", category: "양식·일식", menu: "분짜, 소고기쌀국수, 베트남 샤브샤브", lat: 34.949197, lng: 127.490755, link: "https://place.map.kakao.com/20677445", phone: "010-9237-0143", hours: "10:00-21:00", closed: "월" },
-            { id: 188, name: "솔잎닭구이", city: "순천", category: "닭요리", menu: "토종닭구이, 토종닭백숙", lat: 34.898127, lng: 127.533912, link: "https://place.map.kakao.com/1979666346", phone: "061-904-9279", hours: "11:30-21:00", closed: "연중무휴" },
-            { id: 189, name: "투데이지", city: "순천", category: "카페·디저트", menu: "케이크, 빙수, 투데이지라떼", lat: 34.951465, lng: 127.520240, link: "https://place.map.kakao.com/756434881", phone: "010-2688-8168", hours: "월 12:00-21:00 / 수~일 12:00-21:30", closed: "화" },
-            { id: 190, name: "가미섬", city: "순천", category: "해산물", menu: "제철 활어회", lat: 34.944291, lng: 127.516639, link: "https://place.map.kakao.com/9654717", phone: "061-726-0908", hours: "17:00-20:00", closed: "연중무휴" },
-            { id: 191, name: "조훈모과자점 죽도봉점", city: "순천", category: "카페·디저트", menu: "빵, 케이크, 커피", lat: 34.956112, lng: 127.495294, link: "https://place.map.kakao.com/1056832102", phone: "061-755-3822", hours: "08:00-22:00", closed: "연중무휴" },
-            { id: 192, name: "강변장어", city: "순천", category: "장어", menu: "장어구이, 짱뚱어탕", lat: 34.892613, lng: 127.508968, link: "https://place.map.kakao.com/25040254", phone: "061-742-4233", hours: "10:00-21:00", closed: "연중무휴" },
-            { id: 193, name: "미가돼지생갈비", city: "순천", category: "고기", menu: "돼지생갈비, 양념구이", lat: 34.960848, lng: 127.517255, link: "https://place.map.kakao.com/1240794131", phone: "061-723-9284", hours: "16:00-24:00", closed: "연중무휴" },
-            { id: 194, name: "정제", city: "순천", category: "양식·일식", menu: "매실멍게비빔밥, 해물볶음우동", lat: 34.933822, lng: 127.514691, link: "https://place.map.kakao.com/1449046477", phone: "061-721-7037", hours: "11:00-14:30, 17:00-20:30", closed: "일" },
-            { id: 195, name: "순천갈대장어 신대점", city: "순천", category: "장어", menu: "장어구이, 장어탕", lat: 34.933142, lng: 127.554427, link: "https://place.map.kakao.com/1107614226", phone: "061-725-9595", hours: "11:00-21:30", closed: "연중무휴" },
-            { id: 196, name: "지라멘", city: "순천", category: "면", menu: "토리파이탄 라멘, 마제소바", lat: 34.934055, lng: 127.554249, link: "https://place.map.kakao.com/1410002886", phone: "010-7924-5141", hours: "월~금 11:00-15:00, 17:00-21:00 / 토~일 11:00-21:00", closed: "연중무휴" },
-            { id: 197, name: "돌담", city: "순천", category: "고기", menu: "생삼겹살, 쌈밥정식", lat: 34.943738, lng: 127.489869, link: "https://place.map.kakao.com/11259300", phone: "061-742-2553", hours: "11:30-23:50", closed: "연중무휴" },
-            { id: 198, name: "국가정원오리", city: "순천", category: "닭요리", menu: "한방 오리 백숙, 생오리구이, 오리불고기", lat: 34.930349, lng: 127.495831, link: "https://place.map.kakao.com/989059325", phone: "061-744-0644", hours: "월·화·목·금·토·일 10:30-14:30, 16:30-21:00 / 수 10:30-21:00", closed: "연중무휴" },
-            { id: 199, name: "추어본가", city: "순천", category: "국밥·탕", menu: "추어탕, 우렁추어탕", lat: 34.934122, lng: 127.553816, link: "https://place.map.kakao.com/207134453", phone: "061-723-7977", hours: "11:00-14:30, 17:00-19:00", closed: "토" },
-            { id: 200, name: "알트로", city: "순천", category: "양식·일식", menu: "파스타, 스테이크, 에그 인 헬", lat: 34.955537, lng: 127.485976, link: "https://place.map.kakao.com/2077013985", phone: "061-755-3009", hours: "11:30-15:00, 17:00-21:00", closed: "수" },
-            { id: 201, name: "진주황포냉면", city: "순천", category: "면", menu: "진주냉면(물·비빔·섞어)", lat: 34.951785, lng: 127.517115, link: "https://place.map.kakao.com/1176808577", phone: "061-727-3727", hours: "11:00-20:00", closed: "연중무휴" },
-            { id: 202, name: "맛이랑짱뚱어랑", city: "순천", category: "짱뚱어·꼬막", menu: "짱뚱어탕, 짱뚱어전골", lat: 34.939253, lng: 127.495320, link: "https://place.map.kakao.com/1532696868", phone: "061-743-0333", hours: "11:00-15:00, 17:00-21:00", closed: "월" },
-            { id: 203, name: "갈마골아구찜", city: "순천", category: "해산물", menu: "아귀찜, 청국장 아귀탕", lat: 34.952361, lng: 127.487564, link: "https://place.map.kakao.com/8141965", phone: "061-743-9106", hours: "11:00-21:00", closed: "화" },
-            // 광양 (21곳)
-            { id: 3, name: "삼대광양불고기집", city: "광양", category: "고기", menu: "광양불고기", lat: 34.975411, lng: 127.583348, hours: "11:00-21:30" },
-            { id: 46, name: "광양가본", city: "광양", category: "고기", menu: "광양불고기", hours: "평일 11:00-15:00, 16:30-21:00 / 주말 11:00-21:00", closed: "연중무휴" },
-            { id: 47, name: "장원회관", city: "광양", category: "고기", menu: "광양불고기", hours: "11:00-15:00, 16:30-21:30", closed: "설 연휴" },
-            { id: 66, name: "대호돼지국밥", city: "광양", category: "국밥·탕", menu: "돼지국밥", note: "광영동", hours: "09:00-21:00", closed: "첫째·셋째 월" },
-            { id: 49, name: "차도리가든", city: "광양", category: "닭요리", menu: "닭숯불구이", hours: "11:00-15:00, 17:00-21:00", closed: "수" },
-            { id: 50, name: "지곡산장", city: "광양", category: "닭요리", menu: "닭숯불구이", hours: "11:30-14:30, 17:00-21:30", closed: "월" },
-            { id: 15, name: "청룡식당", city: "광양", category: "재첩", menu: "재첩국, 재첩회", note: "섬진강변 진월면", hours: "09:00-19:30", closed: "월" },
-            { id: 54, name: "모은정", city: "광양", category: "재첩", menu: "재첩 요리, 한정식", hours: "11:30-15:00, 17:00-20:30", closed: "일" },
-            { id: 16, name: "망덕횟집", city: "광양", category: "해산물", menu: "전어회", note: "망덕포구", hours: "10:00-21:00" },
-            { id: 55, name: "장끄방횟집", city: "광양", category: "해산물", menu: "물회", hours: "11:30-15:00, 17:00-21:00" },
-            { id: 57, name: "설담가", city: "광양", category: "한정식", menu: "한정식", hours: "11:30-21:00" },
-            { id: 68, name: "매화향", city: "광양", category: "한정식", menu: "한정식", hours: "평일 11:30-15:00, 17:00-21:00", closed: "일" },
-            { id: 58, name: "영일관", city: "광양", category: "한정식", menu: "보리굴비", hours: "10:30-15:00, 17:00-20:00", closed: "일" },
-            { id: 59, name: "신가가마솥", city: "광양", category: "국밥·탕", menu: "국밥", hours: "07:00-21:30", closed: "월" },
-            { id: 69, name: "세림식당", city: "광양", category: "백반·한식", menu: "옛날오징어볶음, 돌산갓김치찜", note: "중마동 이순신대교 먹거리타운", hours: "10:30-15:00, 17:00-20:00", closed: "토" },
-            { id: 70, name: "시내식당", city: "광양", category: "고기", menu: "광양불고기", note: "광양읍 불고기 거리 초입", hours: "10:30-21:00" },
-            { id: 60, name: "은성면옥", city: "광양", category: "면", menu: "갈비탕, 함흥냉면", note: "중마동", hours: "08:00-21:00", closed: "월" },
-            { id: 61, name: "승승칼국수", city: "광양", category: "면", menu: "칼국수", note: "중마동", hours: "평일 11:00-14:00, 16:30-21:00 / 토 11:00-14:00, 17:00-21:00", closed: "일" },
-            { id: 139, name: "대한식당", city: "광양", category: "고기", menu: "광양불고기", note: "백년가게", hours: "11:30-21:30", closed: "명절" },
-            { id: 140, name: "매실한우", city: "광양", category: "고기", menu: "매실숙성 불고기", hours: "11:00-21:00" },
-            { id: 141, name: "금목서", city: "광양", category: "고기", menu: "광양불고기", note: "한옥 정원", hours: "평일 11:00-15:00, 17:00-21:00 / 주말 11:00-21:00", closed: "수" },
-        ];
-
-        // 지역별 마커 색
-        const CITY_COLORS = { '여수': '#1e88e5', '순천': '#43a047', '광양': '#fb8c00' };
-        const OTHER_COLOR = '#757575';
-
-        const DEFAULT_CENTER = { lat: 34.8500, lng: 127.6000 }; // 여순광 중심점 (율촌면 인근)
-        const DEFAULT_LEVEL = 9;
-        const SINGLE_PLACE_LEVEL = 5; // 식당이 1곳뿐일 때의 확대 레벨
-        const MY_POS_LEVEL = 6;       // 내 위치로 이동할 때의 확대 레벨
-        const CLUSTER_MIN_LEVEL = 6;  // 이 레벨부터 가까운 마커를 묶어서 표시
-        const FAV_STORAGE_KEY = 'ysk-food-favorites';
-
-        let restaurants = [];
-        const state = { city: 'all', category: 'all', query: '', favOnly: false, openOnly: false, myPos: null, selectedId: null };
-
-        let map = null;
-        let clusterer = null;
-        const entries = {};      // id → { place, marker, overlay, content }
-        let currentOverlay = null;
-        let myPosOverlay = null;
-        let favorites = loadFavorites();
-
-        const mobileQuery = window.matchMedia('(max-width: 767px)');
-
-        // 2. 데이터 불러오기
-        async function loadRestaurants() {
-            if (!SHEET_CSV_URL) return FALLBACK_RESTAURANTS;
-            try {
-                const res = await fetch(SHEET_CSV_URL);
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                const places = csvToPlaces(await res.text());
-                if (places.length === 0) throw new Error('유효한 행 없음');
-                return places;
-            } catch (e) {
-                console.warn('시트 데이터를 불러오지 못해 기본 데이터를 사용합니다.', e);
-                showToast('최신 맛집 목록을 불러오지 못해 기본 목록을 보여드려요.');
-                return FALLBACK_RESTAURANTS;
-            }
-        }
-
-        // 따옴표·쉼표·줄바꿈이 들어간 칸도 처리하는 CSV 파서
-        function parseCSV(text) {
-            const rows = [];
-            let row = [], field = '', inQuotes = false;
-            for (let i = 0; i < text.length; i++) {
-                const ch = text[i];
-                if (inQuotes) {
-                    if (ch === '"' && text[i + 1] === '"') { field += '"'; i++; }
-                    else if (ch === '"') inQuotes = false;
-                    else field += ch;
-                } else if (ch === '"') inQuotes = true;
-                else if (ch === ',') { row.push(field); field = ''; }
-                else if (ch === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
-                else if (ch !== '\r') field += ch;
-            }
-            if (field !== '' || row.length) { row.push(field); rows.push(row); }
-            return rows;
-        }
-
-        // 첫 줄(머리글): name, city, category, menu, lat, lng, link (+ 선택 칸)
-        function csvToPlaces(text) {
-            const [header, ...rows] = parseCSV(text.replace(/^﻿/, ''));
-            if (!header) return [];
-            const keys = header.map(h => h.trim().toLowerCase());
-            return rows.map((cols, i) => {
-                const r = {};
-                keys.forEach((k, j) => { r[k] = (cols[j] || '').trim(); });
-                return {
-                    id: i + 1,
-                    name: r.name, city: r.city, category: r.category || '기타', menu: r.menu || '',
-                    lat: parseFloat(r.lat), lng: parseFloat(r.lng), link: r.link || '',
-                    hours: r.hours || '', closed: r.closed || '', price: r.price || '',
-                    phone: r.phone || '', image: r.image || '', note: r.note || ''
-                };
-            }).filter(p => p.name && p.city); // 좌표가 비어 있으면 카카오 장소 검색으로 채움
-        }
-
-        // 좌표가 없는 식당은 카카오맵 장소 검색으로 위치를 찾는다 (결과는 30일간 브라우저에 저장)
-        const GEO_CACHE_KEY = 'ysk-food-places-v1';
-        const GEO_CACHE_DAYS = 30;
-        const GEO_MISS_CACHE_DAYS = 1; // 못 찾은 결과는 하루 뒤 다시 검색
-
-        function hasCoords(p) {
-            return Number.isFinite(p.lat) && Number.isFinite(p.lng);
-        }
-
-        function loadGeoCache() {
-            try { return JSON.parse(localStorage.getItem(GEO_CACHE_KEY) || '{}'); } catch (e) { return {}; }
-        }
-
-        function saveGeoCache(cache) {
-            try { localStorage.setItem(GEO_CACHE_KEY, JSON.stringify(cache)); } catch (e) { /* 저장이 막힌 브라우저: 다음 방문 때 다시 검색 */ }
-        }
-
-        const normalizeName = s => (s || '').replace(/\s+/g, '').toLowerCase();
-
-        // 같은 도시의 음식점·카페 중 이름이 맞는 첫 결과
-        function searchPlace(place) {
-            return new Promise(resolve => {
-                const ps = new kakao.maps.services.Places();
-                ps.keywordSearch(place.city + ' ' + place.name, (data, status) => {
-                    if (status !== kakao.maps.services.Status.OK) return resolve(null);
-                    const want = normalizeName(place.name);
-                    const candidates = data.filter(d =>
-                        (d.address_name || '').includes(place.city + '시') &&
-                        (d.category_group_code === 'FD6' || d.category_group_code === 'CE7')
-                    );
-                    // 이름이 정확히 같은 곳 우선. "정원"처럼 짧은 이름은 다른 가게가 잡히기 쉬워 정확히 같을 때만 인정
-                    const hit = candidates.find(d => normalizeName(d.place_name) === want) ||
-                        (want.length <= 2 ? null : candidates.find(d => {
-                            const got = normalizeName(d.place_name);
-                            return got.includes(want) || want.includes(got);
-                        }));
-                    resolve(hit ? { lat: parseFloat(hit.y), lng: parseFloat(hit.x), link: hit.place_url, phone: hit.phone } : null);
-                });
-            });
-        }
-
-        const SEARCH_CONCURRENCY = 5;
-
-        // 작업을 limit개씩 나눠 실행
-        async function runLimited(items, limit, worker) {
-            const queue = items.slice();
-            const runners = Array.from({ length: Math.min(limit, queue.length) }, async () => {
-                while (queue.length) await worker(queue.shift());
-            });
-            await Promise.all(runners);
-        }
-
-        async function resolveLocations(places) {
-            const canSearch = typeof kakao !== 'undefined' && kakao.maps && kakao.maps.services;
-            const cache = loadGeoCache();
-            const now = Date.now(), day = 24 * 60 * 60 * 1000;
-            const missing = [];
-
-            // 좌표나 상세 링크가 없는 식당만 검색 (카카오 요청 제한을 피하려고 동시에 SEARCH_CONCURRENCY개씩)
-            await runLimited(places.filter(p => !hasCoords(p) || !p.link), SEARCH_CONCURRENCY, async p => {
-                const key = favKey(p);
-                let hit = cache[key];
-                const fresh = hit && now - hit.t < (hit.miss ? GEO_MISS_CACHE_DAYS : GEO_CACHE_DAYS) * day;
-                if (!fresh) {
-                    if (!canSearch) return;
-                    const found = await searchPlace(p);
-                    hit = cache[key] = found ? { ...found, t: now } : { miss: true, t: now };
-                }
-                if (hit.miss) {
-                    // 좌표가 이미 있으면 지도에는 두고 상세보기는 카카오맵 검색으로 연결
-                    missing.push(p.city + ' ' + p.name + (hasCoords(p) ? ' (위치는 표시됨)' : ''));
-                    return;
-                }
-                if (!hasCoords(p)) {
-                    p.lat = hit.lat;
-                    p.lng = hit.lng;
-                }
-                if (!p.link) p.link = (hit.link || '').replace(/^http:/, 'https:');
-                if (!p.phone) p.phone = hit.phone || '';
-            });
-            saveGeoCache(cache);
-
-            if (missing.length) {
-                console.warn('카카오맵에서 찾지 못해 지도에서 숨긴 식당:', missing);
-                // 관리자 확인용: 주소 끝에 ?check 를 붙이면 화면에 표시
-                if (new URLSearchParams(location.search).has('check')) {
-                    alert('카카오맵에서 찾지 못한 식당 (' + missing.length + '곳)\n\n' + missing.join('\n'));
-                }
-            }
-            // 지도를 못 불러온 경우엔 목록에서라도 보이도록 그대로 둔다
-            return canSearch ? places.filter(hasCoords) : places;
-        }
-
-        // 3. 초기화
-        window.onload = async function() {
-            const mapContainer = document.getElementById('map');
-            // SDK 로드 실패 (네트워크 오류, 광고 차단, 미등록 도메인 등) 시 안내. 목록은 계속 사용 가능
-            if (typeof kakao === 'undefined' || !kakao.maps) {
-                showMapError(mapContainer);
-                document.getElementById('locate-btn').hidden = true;
-                document.getElementById('legend').hidden = true;
-            } else {
-                map = new kakao.maps.Map(mapContainer, {
-                    center: new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng),
-                    level: DEFAULT_LEVEL
-                });
-                // 가까운 마커 묶어 표시 (클러스터 라이브러리를 못 받았으면 개별 마커로 표시)
-                if (kakao.maps.MarkerClusterer) {
-                    clusterer = new kakao.maps.MarkerClusterer({
-                        map: map,
-                        averageCenter: true,
-                        minLevel: CLUSTER_MIN_LEVEL
-                    });
-                }
-                // 지도 빈 곳을 누르면 열린 정보창 닫기
-                kakao.maps.event.addListener(map, 'click', closeOverlay);
-            }
-
-            // 지도를 먼저 띄운 뒤 데이터 불러오기·위치 찾기
-            restaurants = await resolveLocations(await loadRestaurants());
-            renderCategoryButtons();
-            renderLegend();
-            document.getElementById('open-filter').hidden = !restaurants.some(p => parseHours(p.hours));
-            if (map) createMarkers();
-
-            applyFilters(false);
-            renderHome();
-            openSharedPlace();
-        };
-
-        function showMapError(container) {
-            container.innerHTML = `
-                <div class="map-error" role="alert">
-                    <strong>지도를 불러오지 못했어요 😢</strong>
-                    <span>인터넷 연결을 확인하거나, 광고 차단 기능을 끄고 다시 시도해 주세요.<br>아래 목록에서 길찾기는 계속 이용할 수 있어요.</span>
-                    <button type="button" onclick="location.reload()">다시 시도</button>
-                </div>
-            `;
-        }
-
-        function cityColor(city) {
-            return CITY_COLORS[city] || OTHER_COLOR;
-        }
-
-        function renderLegend() {
-            const legend = document.getElementById('legend');
-            Object.entries(CITY_COLORS).forEach(([city, color]) => {
-                const span = document.createElement('span');
-                span.style.setProperty('--c', color);
-                span.textContent = city;
-                legend.appendChild(span);
-            });
-        }
-
-        // 지역 색 마커 이미지 (SVG)
-        const markerImageCache = {};
-        function markerImage(city) {
-            const color = cityColor(city);
-            if (!markerImageCache[color]) {
-                const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 30 42">` +
-                    `<path d="M15 1C7.3 1 1 7.2 1 14.9 1 25.3 15 41 15 41s14-15.7 14-26.1C29 7.2 22.7 1 15 1z" fill="${color}" stroke="white" stroke-width="2"/>` +
-                    `<circle cx="15" cy="15" r="5.5" fill="white"/></svg>`;
-                markerImageCache[color] = new kakao.maps.MarkerImage(
-                    'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg),
-                    new kakao.maps.Size(30, 42),
-                    { offset: new kakao.maps.Point(15, 42) }
-                );
-            }
-            return markerImageCache[color];
-        }
-
-        // 4. 영업시간
-        //   hours 예: "11:00-21:00", 브레이크타임 "11:00-15:00, 17:00-21:00", 자정 넘김 "18:00-02:00",
-        //            요일별 "평일 08:00-15:00 / 주말 08:00-18:00" (평일·주말·월~금·토 등, '/'로 구분)
-        //   closed 예: "월", "월,화", "매주 월요일", "둘째·넷째 화"(해당 요일엔 영업 여부를 표시하지 않음), "연중무휴"
-        const DAY_CHARS = '일월화수목금토';
-        const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0]; // 월~일 순서 (월~금 같은 범위 계산용)
-
-        function parseDays(spec) {
-            if (!spec) return null; // 요일 지정 없음 = 매일
-            if (spec.includes('평일')) return [1, 2, 3, 4, 5];
-            if (spec.includes('주말')) return [0, 6];
-            const range = /([일월화수목금토])\s*[~-]\s*([일월화수목금토])/.exec(spec);
-            if (range) {
-                const from = WEEK_ORDER.indexOf(DAY_CHARS.indexOf(range[1]));
-                const to = WEEK_ORDER.indexOf(DAY_CHARS.indexOf(range[2]));
-                return WEEK_ORDER.slice(from, to + 1);
-            }
-            const days = [...spec].map(ch => DAY_CHARS.indexOf(ch)).filter(d => d >= 0);
-            return days.length ? days : null;
-        }
-
-        // [{ days: 요일 배열 또는 null(매일), open, close }] (분 단위), 형식이 맞지 않으면 null
-        function parseHours(text) {
-            if (!text) return null;
-            const ranges = [];
-            text.split('/').forEach(segment => {
-                const firstDigit = segment.search(/\d/);
-                if (firstDigit < 0) return;
-                const days = parseDays(segment.slice(0, firstDigit).trim());
-                for (const m of segment.matchAll(/(\d{1,2}):(\d{2})\s*[-~]\s*(\d{1,2}):(\d{2})/g)) {
-                    ranges.push({ days, open: +m[1] * 60 + +m[2], close: +m[3] * 60 + +m[4] });
-                }
-            });
-            return ranges.length ? ranges : null;
-        }
-
-        // 그 요일의 영업 구간: 요일을 지정한 구간이 있으면 그것, 없으면 '매일' 구간
-        function rangesForDay(ranges, day) {
-            const specific = ranges.filter(r => r.days && r.days.includes(day));
-            return specific.length ? specific : ranges.filter(r => !r.days);
-        }
-
-        // true: 휴무, false: 영업일, null: 알 수 없음 (둘째·넷째 등 격주 휴무의 해당 요일)
-        function closedOn(closed, day) {
-            if (!closed) return false;
-            const dayChar = DAY_CHARS[day];
-            const mentioned = closed.split(/[\s,/·]+/).some(token => token.charAt(0) === dayChar);
-            if (!mentioned) return false;
-            return /째|격주|부정기|마지막/.test(closed) ? null : true;
-        }
-
-        // true: 영업 중, false: 영업 종료, null: 정보 없음
-        function getOpenStatus(place, now = new Date()) {
-            const ranges = parseHours(place.hours);
-            if (!ranges) return null;
-            const minutes = now.getHours() * 60 + now.getMinutes();
-            const today = now.getDay(), yesterday = (today + 6) % 7;
-
-            // 어제 시작해 자정을 넘긴 영업의 새벽 부분
-            for (const r of rangesForDay(ranges, yesterday)) {
-                if (r.close <= r.open && minutes < r.close) {
-                    const c = closedOn(place.closed, yesterday);
-                    if (c === null) return null;
-                    if (!c) return true;
-                }
-            }
-
-            const closedToday = closedOn(place.closed, today);
-            if (closedToday === null) return null;
-            if (closedToday) return false;
-
-            const todays = rangesForDay(ranges, today);
-            if (!todays.length) return null; // 예: "평일"만 적혀 있는데 오늘이 토요일
-            return todays.some(r => r.close > r.open
-                ? minutes >= r.open && minutes < r.close
-                : minutes >= r.open); // 자정을 넘기는 영업의 저녁 부분
-        }
-
-        function hoursText(place) {
-            if (!place.hours && !place.closed) return '';
-            let text = '🕒 ' + (place.hours || '영업시간 정보 없음');
-            if (place.closed) text += place.closed === '연중무휴' ? ' · 연중무휴' : ' (' + place.closed + ' 휴무)';
-            return text;
-        }
-
-        function createBadge(place) {
-            const status = getOpenStatus(place);
-            if (status === null) return null;
-            const badge = document.createElement('span');
-            badge.className = 'badge ' + (status ? 'open' : 'closed');
-            badge.textContent = status ? '영업 중' : '영업 종료';
-            return badge;
-        }
-
-        // 5. 즐겨찾기 (이 브라우저에만 저장)
-        function favKey(place) {
-            return place.city + ':' + place.name;
-        }
-
-        function loadFavorites() {
-            try {
-                return new Set(JSON.parse(localStorage.getItem(FAV_STORAGE_KEY) || '[]'));
-            } catch (e) {
-                return new Set();
-            }
-        }
-
-        function saveFavorites() {
-            try {
-                localStorage.setItem(FAV_STORAGE_KEY, JSON.stringify([...favorites]));
-            } catch (e) { /* 저장이 막힌 브라우저: 이번 방문 동안만 유지 */ }
-        }
-
-        function toggleFavorite(place) {
-            const key = favKey(place);
-            const on = !favorites.has(key);
-            if (on) favorites.add(key); else favorites.delete(key);
-            saveFavorites();
-            showToast(on ? '즐겨찾기에 추가했어요.' : '즐겨찾기에서 뺐어요.');
-
-            // 정보창 버튼 갱신 후, 목록은 필터 결과가 달라질 수 있어 다시 그리기
-            const entry = entries[place.id];
-            if (entry) updateFavButton(entry.content.querySelector('.fav'), on);
-            applyFilters(false);
-        }
-
-        function updateFavButton(btn, on) {
-            if (!btn) return;
-            btn.classList.toggle('on', on);
-            btn.textContent = on ? '★ 저장됨' : '☆ 저장';
-            btn.setAttribute('aria-pressed', String(on));
-        }
-
-        // 6. 공유 (?place=식당이름 링크)
-        function shareUrl(place) {
-            return location.origin + location.pathname + '?place=' + encodeURIComponent(place.name);
-        }
-
-        async function sharePlace(place) {
-            const url = shareUrl(place);
-            if (navigator.share) {
-                try {
-                    await navigator.share({ title: place.name + ' - 여순광 맛집 지도', text: place.city + ' ' + place.name + ' (' + place.menu + ')', url });
-                    return;
-                } catch (e) {
-                    if (e.name === 'AbortError') return; // 사용자가 공유 창을 닫음
-                }
-            }
-            try {
-                await navigator.clipboard.writeText(url);
-                showToast('링크를 복사했어요. 원하는 곳에 붙여 넣어 공유하세요.');
-            } catch (e) {
-                prompt('아래 링크를 복사해 공유하세요.', url);
-            }
-        }
-
-        // 공유 링크로 들어온 경우 해당 식당 바로 열기
-        function openSharedPlace() {
-            const name = new URLSearchParams(location.search).get('place');
-            if (!name) return;
-            const place = restaurants.find(p => p.name === name);
-            if (!place) {
-                showToast('공유된 맛집을 찾지 못했어요.');
-                return;
-            }
-            selectPlace(place.id, true);
-        }
-
-        // 링크·버튼 묶음 (길찾기, 상세보기, 전화, 저장, 공유)
-        function createActions(place, className) {
-            const box = document.createElement('div');
-            box.className = className;
-
-            const addLink = (cls, href, text, newTab) => {
-                const a = document.createElement('a');
-                a.className = cls;
-                a.href = href;
-                if (newTab) { a.target = '_blank'; a.rel = 'noopener'; }
-                a.textContent = text;
-                box.appendChild(a);
-            };
-            const addButton = (cls, text, onClick) => {
-                const b = document.createElement('button');
-                b.type = 'button';
-                b.className = cls;
-                b.textContent = text;
-                b.addEventListener('click', e => { e.stopPropagation(); onClick(); });
-                box.appendChild(b);
-                return b;
-            };
-
-            // 카카오맵 길찾기 (도착지 = 식당). 좌표가 없으면 카카오맵 검색으로 연결
-            const routeUrl = hasCoords(place)
-                ? 'https://map.kakao.com/link/to/' + encodeURIComponent(place.name) + ',' + place.lat + ',' + place.lng
-                : 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name);
-            addLink('link', routeUrl, hasCoords(place) ? '길찾기' : '카카오맵에서 찾기', true);
-            // 상세보기: 카카오맵 장소 페이지, 없으면 카카오맵 검색 결과 (좌표가 없을 땐 위 버튼이 이미 검색으로 연결)
-            if (place.link) addLink('link sub', place.link, '상세보기', true);
-            else if (hasCoords(place)) addLink('link sub', 'https://map.kakao.com/link/search/' + encodeURIComponent(place.city + ' ' + place.name), '상세보기', true);
-            if (place.phone) addLink('link sub', 'tel:' + place.phone.replace(/[^\d+]/g, ''), '📞 전화', false);
-
-            const fav = addButton('link sub fav', '', () => toggleFavorite(place));
-            updateFavButton(fav, favorites.has(favKey(place)));
-            addButton('link sub share', '공유', () => sharePlace(place));
-            return box;
-        }
-
-        function addText(parent, className, text) {
-            if (!text) return null;
-            const el = document.createElement('div');
-            el.className = className;
-            el.textContent = text;
-            parent.appendChild(el);
-            return el;
-        }
-
-        function metaText(place) {
-            return [place.city, place.category, place.price && '💰 ' + place.price].filter(Boolean).join(' · ');
-        }
-
-        // 정보창 DOM 생성 (textContent 사용으로 이름 등에 특수문자가 있어도 안전)
-        function createOverlayContent(place) {
-            const wrap = document.createElement('div');
-            wrap.className = 'wrap';
-
-            if (place.image) {
-                const img = document.createElement('img');
-                img.className = 'photo';
-                img.src = place.image;
-                img.alt = place.name + ' 사진';
-                img.loading = 'lazy';
-                img.addEventListener('error', () => img.remove());
-                wrap.appendChild(img);
-            }
-
-            const info = document.createElement('div');
-            info.className = 'info';
-
-            const close = document.createElement('button');
-            close.type = 'button';
-            close.className = 'close';
-            close.title = '닫기';
-            close.setAttribute('aria-label', '닫기');
-            close.textContent = '✖';
-            close.addEventListener('click', closeOverlay);
-            info.appendChild(close);
-
-            addText(info, 'title', place.name);
-            addText(info, 'meta', metaText(place));
-            addText(info, 'desc', place.menu && '추천: ' + place.menu);
-            const hours = addText(info, 'hours', hoursText(place));
-            if (hours) {
-                const badge = createBadge(place);
-                if (badge) hours.appendChild(badge);
-            }
-            addText(info, 'note', place.note && '💬 ' + place.note);
-            info.appendChild(createActions(place, 'links'));
-
-            wrap.appendChild(info);
-            return wrap;
-        }
-
-        // 7. 마커는 한 번만 만들고, 필터에 따라 보이기/숨기기
-        function createMarkers() {
-            restaurants.forEach(place => {
-                const position = new kakao.maps.LatLng(place.lat, place.lng);
-                const marker = new kakao.maps.Marker({ position: position, title: place.name, image: markerImage(place.city) });
-                const content = createOverlayContent(place);
-                const overlay = new kakao.maps.CustomOverlay({
-                    content: content,
-                    position: position,
-                    clickable: true, // 정보창 클릭이 지도 클릭(닫기)으로 전달되지 않도록
-                    zIndex: 3
-                });
-                kakao.maps.event.addListener(marker, 'click', () => selectPlace(place.id));
-                entries[place.id] = { place, marker, overlay, content };
-            });
-        }
-
-        // 8. 필터 적용 (지역 + 종류 + 검색어 + 즐겨찾기 + 영업 중, 내 위치가 있으면 가까운 순)
-        function getFilteredPlaces() {
-            const q = state.query.trim().toLowerCase();
-            const list = restaurants.filter(p =>
-                (state.city === 'all' || p.city === state.city) &&
-                (state.category === 'all' || p.category === state.category) &&
-                (!state.favOnly || favorites.has(favKey(p))) &&
-                (!state.openOnly || getOpenStatus(p) === true) &&
-                (!q || [p.name, p.menu, p.category, p.city, p.note].join(' ').toLowerCase().includes(q))
-            );
-            if (state.myPos) {
-                list.forEach(p => { p.distance = hasCoords(p) ? distanceKm(state.myPos, p) : Infinity; });
-                list.sort((a, b) => a.distance - b.distance);
-            }
-            return list;
-        }
-
-        function applyFilters(fit) {
-            const list = getFilteredPlaces();
-            const visibleIds = new Set(list.map(p => p.id));
-
-            if (map) {
-                const visibleMarkers = [];
-                Object.values(entries).forEach(({ place, marker }) => {
-                    if (visibleIds.has(place.id)) visibleMarkers.push(marker);
-                    else if (!clusterer) marker.setMap(null);
-                });
-                if (clusterer) {
-                    clusterer.clear();
-                    clusterer.addMarkers(visibleMarkers);
-                } else {
-                    visibleMarkers.forEach(marker => marker.setMap(map));
-                }
-            }
-            if (state.selectedId !== null && !visibleIds.has(state.selectedId)) closeOverlay();
-
-            renderList(list);
-
-            if (fit && map) {
-                const noFilter = state.city === 'all' && state.category === 'all' && !state.favOnly && !state.openOnly && !state.query.trim();
-                if (noFilter) {
-                    map.setLevel(DEFAULT_LEVEL);
-                    map.setCenter(new kakao.maps.LatLng(DEFAULT_CENTER.lat, DEFAULT_CENTER.lng));
-                } else {
-                    fitToPlaces(list);
-                }
-            }
-        }
-
-        // 표시된 식당이 모두 화면에 들어오도록 지도 범위 조정
-        function fitToPlaces(places) {
-            if (places.length === 0) return; // 결과가 없으면 지도는 그대로
-            if (places.length === 1) {
-                map.setLevel(SINGLE_PLACE_LEVEL);
-                map.setCenter(new kakao.maps.LatLng(places[0].lat, places[0].lng));
-            } else {
-                const bounds = new kakao.maps.LatLngBounds();
-                places.forEach(p => bounds.extend(new kakao.maps.LatLng(p.lat, p.lng)));
-                map.setBounds(bounds, 60, 40, 40, 40); // 위쪽은 정보창 공간 확보
-            }
-        }
-
-        // 9. 목록 그리기
-        function renderList(list) {
-            document.getElementById('panel-count').textContent = '맛집 ' + list.length + '곳';
-            document.getElementById('sort-note').textContent = state.myPos ? '가까운 순' : '';
-
-            const ul = document.getElementById('place-list');
-            ul.innerHTML = '';
-
-            if (list.length === 0) {
-                const li = document.createElement('li');
-                li.className = 'empty';
-                li.textContent = state.favOnly && favorites.size === 0
-                    ? '아직 저장한 맛집이 없어요. 식당의 ☆ 저장 버튼을 눌러 보세요.'
-                    : '조건에 맞는 맛집이 없어요. 검색어나 필터를 바꿔 보세요.';
-                ul.appendChild(li);
-                return;
-            }
-
-            list.forEach(place => {
-                const li = document.createElement('li');
-                li.dataset.id = place.id;
-                if (place.id === state.selectedId) li.classList.add('selected');
-
-                const main = document.createElement('button');
-                main.type = 'button';
-                main.className = 'place-main';
-
-                if (state.myPos && Number.isFinite(place.distance)) {
-                    const dist = document.createElement('span');
-                    dist.className = 'place-dist';
-                    dist.textContent = formatDistance(place.distance);
-                    main.appendChild(dist);
-                }
-                const name = addText(main, 'place-name', place.name);
-                name.style.setProperty('--c', cityColor(place.city));
-                addText(main, 'place-meta', metaText(place));
-                const hours = addText(main, 'place-hours', hoursText(place));
-                if (hours) {
-                    const badge = createBadge(place);
-                    if (badge) hours.appendChild(badge);
-                }
-                addText(main, 'place-menu', place.menu && '추천: ' + place.menu);
-                main.addEventListener('click', () => selectPlace(place.id, true));
-
-                li.append(main, createActions(place, 'place-links'));
-                ul.appendChild(li);
-            });
-
-            if (list.some(p => p.hours || p.closed)) {
-                const li = document.createElement('li');
-                li.className = 'hours-note';
-                li.textContent = '🕒 영업시간·휴무일은 맛집 사이트·기사 기준이라 바뀔 수 있어요. 방문 전에 전화나 상세보기로 확인하세요.';
-                ul.appendChild(li);
-            }
-        }
-
-        // 10. 식당 선택 (마커 클릭 또는 목록 클릭)
-        function selectPlace(id, fromList) {
-            state.selectedId = id;
-            document.querySelectorAll('.place-list li').forEach(li => {
-                li.classList.toggle('selected', Number(li.dataset.id) === id);
-            });
-
-            const entry = entries[id];
-            if (!map || !entry) {
-                const li = document.querySelector(`.place-list li[data-id="${id}"]`);
-                if (li) li.scrollIntoView({ block: 'nearest' });
-                return;
-            }
-
-            const position = entry.marker.getPosition();
-            // 모바일: 목록만 보고 있었다면(목록 클릭) 또는 지도만 보고 있었다면(마커 클릭) 반반 보기로.
-            // 지도 크기가 바뀐 뒤에 정보창을 열고 중심을 맞춘다
-            const toHalf = mobileQuery.matches &&
-                ((panelMode === 'list') || (!fromList && panelMode === 'map'));
-            if (currentOverlay) currentOverlay.setMap(null); // 열려있는 창 닫기
-            currentOverlay = null;
-            if (toHalf) {
-                pendingOverlay = entry;
-                setPanelMode('half', position);
-            } else {
-                showOverlay(entry);
-            }
-
-            if (fromList && map.getLevel() > SINGLE_PLACE_LEVEL) {
-                map.setLevel(SINGLE_PLACE_LEVEL);
-                focusOn(position, false);
-            } else {
-                focusOn(position, true); // 해당 위치로 부드럽게 이동
-            }
-
-            if (!fromList) {
-                const li = document.querySelector(`.place-list li[data-id="${id}"]`);
-                if (li) li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-            }
-        }
-
-        // 지도 중심 맞추기. 정보창이 마커 위로 뜨므로 지도 높이가 낮으면(모바일 반반 보기)
-        // 마커를 화면 아래쪽에 두어 정보창 윗부분이 잘리지 않게 한다
-        let overlaySpace = 250; // 마커 위로 필요한 높이(px). 정보창을 열 때 실제 높이로 갱신
-        let pendingOverlay = null; // 지도 크기가 바뀐 뒤 열 정보창
-
-        // 정보창 열기. 휴대폰에서 지도가 너무 낮아 정보창이 잘리면 열지 않고
-        // (같은 정보와 버튼이 있는) 목록 카드 강조로 대신한다
-        function showOverlay(entry) {
-            const mapWrap = document.querySelector('.map-wrap');
-            entry.overlay.setMap(map);
-            const need = (entry.content.offsetHeight || 200) + 52; // 정보창 높이 + 마커와의 간격(40px) + 여유
-            if (mobileQuery.matches && document.getElementById('map').offsetHeight < need + 20) {
-                entry.overlay.setMap(null);
-                currentOverlay = null;
-                overlaySpace = 0;
-                mapWrap.classList.remove('overlay-open');
-                return false;
-            }
-            currentOverlay = entry.overlay;
-            overlaySpace = need;
-            mapWrap.classList.add('overlay-open');
-            return true;
-        }
-        function focusOn(position, smooth) {
-            let target = position;
-            const h = document.getElementById('map').offsetHeight;
-            const shift = Math.min(overlaySpace - h / 2, h / 2 - 30);
-            if (shift > 0 && map.getProjection) {
-                const proj = map.getProjection();
-                const p = proj.containerPointFromCoords(position);
-                target = proj.coordsFromContainerPoint(new kakao.maps.Point(p.x, p.y - shift));
-            }
-            if (smooth) map.panTo(target); else map.setCenter(target);
-        }
-
-        // 오버레이 닫기 함수
-        function closeOverlay() {
-            if (currentOverlay) currentOverlay.setMap(null);
-            currentOverlay = null;
-            state.selectedId = null;
-            document.querySelector('.map-wrap').classList.remove('overlay-open');
-            document.querySelectorAll('.place-list li.selected').forEach(li => li.classList.remove('selected'));
-        }
-
-        // 11. 필터 버튼
-        // 종류 버튼 (데이터에 있는 종류로 생성)
-        function renderCategoryButtons() {
-            const group = document.getElementById('category-group');
-            const categories = [...new Set(restaurants.map(p => p.category))].sort((a, b) => a.localeCompare(b, 'ko'));
-            group.innerHTML = '';
-            ['all', ...categories].forEach(cat => {
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'filter-btn category' + (cat === state.category ? ' active' : '');
-                btn.dataset.category = cat;
-                btn.setAttribute('aria-pressed', String(cat === state.category));
-                btn.textContent = cat === 'all' ? '전체 종류' : cat;
-                btn.addEventListener('click', () => {
-                    setActive(group.querySelectorAll('.filter-btn'), btn);
-                    state.category = cat;
-                    applyFilters(true);
-                });
-                group.appendChild(btn);
-            });
-        }
-
-        function setActive(buttons, activeBtn) {
-            buttons.forEach(btn => {
-                btn.classList.toggle('active', btn === activeBtn);
-                btn.setAttribute('aria-pressed', String(btn === activeBtn));
-            });
-        }
-
-        // 지역 버튼 클릭 이벤트
-        const cityButtons = document.querySelectorAll('.filter-btn[data-city]');
-        cityButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                setActive(cityButtons, this);
-                state.city = this.dataset.city;
-                applyFilters(true);
-            });
-        });
-
-        // 즐겨찾기만 / 영업 중만 켜고 끄기
-        [['fav-filter', 'favOnly'], ['open-filter', 'openOnly']].forEach(([id, key]) => {
-            document.getElementById(id).addEventListener('click', function() {
-                state[key] = !state[key];
-                this.classList.toggle('active', state[key]);
-                this.setAttribute('aria-pressed', String(state[key]));
-                applyFilters(true);
-            });
-        });
-
-        // 검색 (입력이 멈춘 뒤 지도 범위 조정)
-        let searchTimer = null;
-        document.getElementById('search').addEventListener('input', function() {
-            state.query = this.value;
-            applyFilters(false);
-            clearTimeout(searchTimer);
-            searchTimer = setTimeout(() => applyFilters(true), 400);
-        });
-
-        // 12. 모바일 보기 전환: map(지도 크게) / half(반반, 기본) / list(목록 크게)
-        let panelMode = 'half';
-        let recenterAfterResize = null; // 패널 크기가 바뀐 뒤 지도 중심을 맞출 { position, forOverlay }
-
-        function setPanelMode(mode, recenterTo, forOverlay = true) {
-            if (recenterTo) recenterAfterResize = { position: recenterTo, forOverlay };
-            if (panelMode === mode) return;
-            panelMode = mode;
-            const panel = document.getElementById('panel');
-            panel.classList.toggle('mode-map', mode === 'map');
-            panel.classList.toggle('mode-list', mode === 'list');
-            document.querySelectorAll('.view-switch button').forEach(btn => {
-                btn.setAttribute('aria-pressed', String(btn.dataset.mode === mode));
-            });
-        }
-        document.querySelectorAll('.view-switch button').forEach(btn => {
-            btn.addEventListener('click', () => setPanelMode(btn.dataset.mode));
-        });
-        // 목록 크기가 바뀌면 지도 크기 다시 계산
-        document.getElementById('panel').addEventListener('transitionend', e => {
-            if (e.propertyName !== 'height' || !map) return;
-            map.relayout();
-            if (pendingOverlay) {
-                showOverlay(pendingOverlay);
-                pendingOverlay = null;
-            }
-            if (recenterAfterResize) {
-                const { position, forOverlay } = recenterAfterResize;
-                if (forOverlay) focusOn(position, false); else map.setCenter(position);
-                recenterAfterResize = null;
-            }
-        });
-        window.addEventListener('resize', () => { if (map) map.relayout(); });
-
-        // 13. 내 주변 맛집 (현재 위치)
-        document.getElementById('locate-btn').addEventListener('click', function() {
-            if (!navigator.geolocation) {
-                showToast('이 브라우저는 위치 기능을 지원하지 않아요.');
-                return;
-            }
-            const btn = this;
-            btn.disabled = true;
-            btn.textContent = '📍 찾는 중…';
-            navigator.geolocation.getCurrentPosition(pos => {
-                btn.disabled = false;
-                btn.textContent = '📍 내 주변';
-                state.myPos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-
-                const here = new kakao.maps.LatLng(state.myPos.lat, state.myPos.lng);
-                if (!myPosOverlay) {
-                    const dot = document.createElement('div');
-                    dot.className = 'my-pos';
-                    dot.title = '내 위치';
-                    myPosOverlay = new kakao.maps.CustomOverlay({ content: dot, position: here, zIndex: 2 });
-                } else {
-                    myPosOverlay.setPosition(here);
-                }
-                myPosOverlay.setMap(map);
-                map.setLevel(MY_POS_LEVEL);
-                map.setCenter(here);
-
-                applyFilters(false);
-                if (mobileQuery.matches && panelMode === 'map') setPanelMode('half', here, false);
-                showToast('가까운 순으로 정렬했어요.');
-            }, err => {
-                btn.disabled = false;
-                btn.textContent = '📍 내 주변';
-                showToast(err.code === err.PERMISSION_DENIED
-                    ? '위치 권한이 필요해요. 브라우저 설정에서 허용해 주세요.'
-                    : '현재 위치를 찾지 못했어요. 잠시 후 다시 시도해 주세요.');
-            }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
-        });
-
-        // 두 지점 사이 거리(km)
-        function distanceKm(a, b) {
-            const R = 6371, toRad = d => d * Math.PI / 180;
-            const dLat = toRad(b.lat - a.lat), dLng = toRad(b.lng - a.lng);
-            const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLng / 2) ** 2;
-            return 2 * R * Math.asin(Math.sqrt(h));
-        }
-
-        function formatDistance(km) {
-            return km < 1 ? Math.round(km * 1000) + 'm' : km.toFixed(1) + 'km';
-        }
-
-        let toastTimer = null;
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
-        // 15. 첫 화면 (지도 일러스트·검색·종류 바로가기 → 조건을 적용해 지도 화면 열기)
-        const HOME_CATS = [
-            ['게장', '🦀'], ['해산물', '🐟'], ['국밥·탕', '🍲'], ['고기', '🥩'],
-            ['한정식', '🍱'], ['백반·한식', '🍚'], ['닭요리', '🍗'], ['카페·디저트', '☕']
-        ];
-        const homeEl = document.getElementById('home');
-
-        function renderHome() {
-            const byCity = {};
-            restaurants.forEach(p => { byCity[p.city] = (byCity[p.city] || 0) + 1; });
-            document.querySelectorAll('[data-count-city]').forEach(t => {
-                const city = t.dataset.countCity;
-                t.textContent = city + ' · ' + (byCity[city] || 0) + '곳';
-            });
-            document.getElementById('home-lead').innerHTML =
-                '여수·순천·광양 맛집 ' + restaurants.length + '곳을 지도로.<br>영업시간·길찾기·전화까지 한 번에.';
-
-            const open = restaurants.filter(p => getOpenStatus(p) === true).length;
-            document.getElementById('home-live-text').textContent = '지금 영업 중 ' + open + '곳';
-            document.getElementById('home-live').hidden = open === 0;
-
-            const box = document.getElementById('home-cats');
-            box.innerHTML = '';
-            HOME_CATS.forEach(([cat, icon]) => {
-                const n = restaurants.filter(p => p.category === cat).length;
-                if (!n) return;
-                const btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'home-cat';
-                btn.innerHTML = '<b aria-hidden="true">' + icon + '</b>' + cat.replace('·디저트', '') + '<span>' + n + '곳</span>';
-                btn.addEventListener('click', () => openMapFromHome({ category: cat }));
-                box.appendChild(btn);
-            });
-        }
-
-        // 필터를 처음 상태로 되돌린 뒤 고른 조건 적용
-        function openMapFromHome({ city, category, query, openOnly } = {}) {
-            const click = sel => { const el = document.querySelector(sel); if (el) el.click(); };
-            if (state.city !== 'all') click('.filter-btn[data-city="all"]');
-            if (state.category !== 'all') click('#category-group [data-category="all"]');
-            if (state.favOnly) click('#fav-filter');
-            if (state.openOnly !== !!openOnly) click('#open-filter');
-            const search = document.getElementById('search');
-            search.value = query || '';
-            state.query = search.value;
-
-            if (city) click('.filter-btn[data-city="' + city + '"]');
-            if (category) click('#category-group [data-category="' + category + '"]');
-            applyFilters(true);
-
-            homeEl.hidden = true;
-            history.pushState({ yskView: 'map' }, '');
-            if (map) map.relayout();
-        }
-
-        function showHome() {
-            renderHome();
-            homeEl.hidden = false;
-            homeEl.scrollTop = 0;
-        }
-
-        document.querySelectorAll('[data-home-open]').forEach(b => b.addEventListener('click', () => openMapFromHome()));
-        document.getElementById('home-live').addEventListener('click', () => openMapFromHome({ openOnly: true }));
-        document.querySelectorAll('.home-pick').forEach(b => b.addEventListener('click', () => openMapFromHome({ query: b.dataset.query })));
-        document.querySelectorAll('.city-pin').forEach(pin => {
-            const go = () => openMapFromHome({ city: pin.dataset.city });
-            pin.addEventListener('click', go);
-            pin.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-        });
-        document.getElementById('home-search').addEventListener('submit', e => {
-            e.preventDefault();
-            openMapFromHome({ query: document.getElementById('home-search-input').value.trim() });
-        });
-        // 지도 화면 제목을 누르면 첫 화면으로, 휴대폰 뒤로가기도 첫 화면으로
-        document.querySelector('header h1').addEventListener('click', () => {
-            if (history.state && history.state.yskView === 'map') history.back(); else showHome();
-        });
-        window.addEventListener('popstate', () => {
-            if (!(history.state && history.state.yskView === 'map') && homeEl.hidden) showHome();
-        });
-
-        // 14. 홈 화면 추가(PWA)용 서비스 워커
-        if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => { /* 설치 기능만 빠지고 사이트는 그대로 동작 */ });
-            });
-        }
-    </script>
-    <!-- 📱 QR로 접속 (교실 TV·전자칠판에 띄우는 큰 QR, 인터넷 없이도 뜸) -->
-    <style>
-.qr-btn button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.yq-back{position:fixed;inset:0;z-index:2147483000;background:rgba(15,23,42,.72);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
-.yq-card{box-sizing:border-box;background:#fff;color:#0f172a;border-radius:20px;padding:22px 20px 16px;width:min(100%,520px);max-height:100%;overflow:auto;text-align:center;font-family:inherit;line-height:1.5;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.yq-card .yq-title{margin:0;font-size:22px;font-weight:800;color:#0f172a}
-.yq-card .yq-name{margin:2px 0 0;color:#475569;font-size:15px;font-weight:600}
-.yq-card .yq-qr{display:block;width:min(100%,62vh,420px);height:auto;margin:12px auto}
-.yq-card .yq-url{margin:0 0 4px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;word-break:break-all;color:#0f172a}
-.yq-card .yq-hint{margin:0 0 14px;color:#64748b;font-size:14px}
-.yq-card .yq-close{font:inherit;font-weight:700;width:100%;padding:12px;border:0;border-radius:12px;background:#0f172a;color:#fff;cursor:pointer}
-    </style>
-    <script>
-    (function () {
-    function yqOpen(url, name, svg) {
-        var last = document.activeElement;
-        var back = document.createElement('div');
-        back.className = 'yq-back';
-        back.style.setProperty('display', 'flex', 'important'); // 앱 CSS가 다른 창을 숨겨도 QR 창은 보이게
-        back.innerHTML = '<div class="yq-card" role="dialog" aria-modal="true" aria-labelledby="yq-title">' +
-            '<p class="yq-title" id="yq-title">📱 카메라로 찍어서 들어와요</p><p class="yq-name"></p>' + svg +
-            '<p class="yq-url"></p><p class="yq-hint">휴대폰·태블릿 카메라를 QR 코드에 비추면 바로 열려요.</p>' +
-            '<button type="button" class="yq-close">닫기</button></div>';
-        back.querySelector('.yq-name').textContent = name;
-        back.querySelector('.yq-url').textContent = url.replace(/^https?:\/\//, '');
-        function close() {
-            document.removeEventListener('keydown', onKey);
-            back.remove();
-            if (last && last.focus) last.focus();
-        }
-        function onKey(e) { if (e.key === 'Escape') close(); }
-        back.addEventListener('click', function (e) { if (e.target === back || e.target.closest('.yq-close')) close(); });
-        document.addEventListener('keydown', onKey);
-        document.body.appendChild(back);
-        back.querySelector('.yq-close').focus();
-    }
-        var QR_URL = "https://gmlduqzhd123-lab.github.io/YSK-food/", QR_NAME = "여순광 맛집 지도";
-        var QR_SVG = "<svg class=\"yq-qr\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 41 41\" shape-rendering=\"crispEdges\" role=\"img\" aria-label=\"여순광 맛집 지도 주소 QR 코드\"><rect width=\"41\" height=\"41\" fill=\"#fff\"/><path fill=\"#000\" d=\"M4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM13 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM23 4h1v1h-1zM24 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM33 4h1v1h-1zM34 4h1v1h-1zM35 4h1v1h-1zM36 4h1v1h-1zM4 5h1v1h-1zM10 5h1v1h-1zM13 5h1v1h-1zM17 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM21 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM17 6h1v1h-1zM19 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM30 6h1v1h-1zM32 6h1v1h-1zM33 6h1v1h-1zM34 6h1v1h-1zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM12 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM18 7h1v1h-1zM20 7h1v1h-1zM23 7h1v1h-1zM24 7h1v1h-1zM25 7h1v1h-1zM26 7h1v1h-1zM28 7h1v1h-1zM30 7h1v1h-1zM32 7h1v1h-1zM33 7h1v1h-1zM34 7h1v1h-1zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM25 8h1v1h-1zM28 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM33 8h1v1h-1zM34 8h1v1h-1zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM24 9h1v1h-1zM25 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM31 10h1v1h-1zM32 10h1v1h-1zM33 10h1v1h-1zM34 10h1v1h-1zM35 10h1v1h-1zM36 10h1v1h-1zM12 11h1v1h-1zM13 11h1v1h-1zM14 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM27 11h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM13 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM21 12h1v1h-1zM26 12h1v1h-1zM27 12h1v1h-1zM30 12h1v1h-1zM31 12h1v1h-1zM32 12h1v1h-1zM33 12h1v1h-1zM34 12h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM20 13h1v1h-1zM22 13h1v1h-1zM23 13h1v1h-1zM25 13h1v1h-1zM26 13h1v1h-1zM27 13h1v1h-1zM30 13h1v1h-1zM31 13h1v1h-1zM33 13h1v1h-1zM34 13h1v1h-1zM36 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM14 14h1v1h-1zM19 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM25 14h1v1h-1zM28 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM32 14h1v1h-1zM34 14h1v1h-1zM35 14h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM9 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM26 15h1v1h-1zM29 15h1v1h-1zM32 15h1v1h-1zM33 15h1v1h-1zM34 15h1v1h-1zM35 15h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM13 16h1v1h-1zM15 16h1v1h-1zM16 16h1v1h-1zM19 16h1v1h-1zM22 16h1v1h-1zM25 16h1v1h-1zM28 16h1v1h-1zM29 16h1v1h-1zM31 16h1v1h-1zM32 16h1v1h-1zM33 16h1v1h-1zM36 16h1v1h-1zM6 17h1v1h-1zM7 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM24 17h1v1h-1zM26 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM31 17h1v1h-1zM33 17h1v1h-1zM35 17h1v1h-1zM36 17h1v1h-1zM5 18h1v1h-1zM7 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM13 18h1v1h-1zM14 18h1v1h-1zM22 18h1v1h-1zM23 18h1v1h-1zM28 18h1v1h-1zM29 18h1v1h-1zM30 18h1v1h-1zM32 18h1v1h-1zM33 18h1v1h-1zM35 18h1v1h-1zM4 19h1v1h-1zM6 19h1v1h-1zM7 19h1v1h-1zM8 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM18 19h1v1h-1zM20 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM25 19h1v1h-1zM29 19h1v1h-1zM30 19h1v1h-1zM31 19h1v1h-1zM32 19h1v1h-1zM34 19h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM7 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM13 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM28 20h1v1h-1zM29 20h1v1h-1zM31 20h1v1h-1zM32 20h1v1h-1zM36 20h1v1h-1zM5 21h1v1h-1zM6 21h1v1h-1zM7 21h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM15 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM21 21h1v1h-1zM22 21h1v1h-1zM23 21h1v1h-1zM27 21h1v1h-1zM30 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM34 21h1v1h-1zM36 21h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM13 22h1v1h-1zM15 22h1v1h-1zM18 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM21 22h1v1h-1zM26 22h1v1h-1zM28 22h1v1h-1zM29 22h1v1h-1zM31 22h1v1h-1zM32 22h1v1h-1zM34 22h1v1h-1zM35 22h1v1h-1zM4 23h1v1h-1zM6 23h1v1h-1zM7 23h1v1h-1zM13 23h1v1h-1zM14 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM21 23h1v1h-1zM22 23h1v1h-1zM23 23h1v1h-1zM30 23h1v1h-1zM31 23h1v1h-1zM32 23h1v1h-1zM33 23h1v1h-1zM34 23h1v1h-1zM36 23h1v1h-1zM5 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM18 24h1v1h-1zM20 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM29 24h1v1h-1zM31 24h1v1h-1zM33 24h1v1h-1zM35 24h1v1h-1zM36 24h1v1h-1zM4 25h1v1h-1zM7 25h1v1h-1zM11 25h1v1h-1zM12 25h1v1h-1zM14 25h1v1h-1zM15 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM22 25h1v1h-1zM27 25h1v1h-1zM30 25h1v1h-1zM33 25h1v1h-1zM36 25h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM10 26h1v1h-1zM14 26h1v1h-1zM17 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM29 26h1v1h-1zM32 26h1v1h-1zM33 26h1v1h-1zM35 26h1v1h-1zM4 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM13 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM19 27h1v1h-1zM22 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM29 27h1v1h-1zM30 27h1v1h-1zM31 27h1v1h-1zM33 27h1v1h-1zM34 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM7 28h1v1h-1zM8 28h1v1h-1zM9 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM15 28h1v1h-1zM16 28h1v1h-1zM17 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM22 28h1v1h-1zM24 28h1v1h-1zM26 28h1v1h-1zM27 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM33 28h1v1h-1zM34 28h1v1h-1zM35 28h1v1h-1zM36 28h1v1h-1zM12 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM18 29h1v1h-1zM20 29h1v1h-1zM22 29h1v1h-1zM23 29h1v1h-1zM25 29h1v1h-1zM28 29h1v1h-1zM32 29h1v1h-1zM34 29h1v1h-1zM36 29h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM9 30h1v1h-1zM10 30h1v1h-1zM15 30h1v1h-1zM17 30h1v1h-1zM18 30h1v1h-1zM19 30h1v1h-1zM20 30h1v1h-1zM22 30h1v1h-1zM24 30h1v1h-1zM25 30h1v1h-1zM27 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM34 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h1v1h-1zM13 31h1v1h-1zM14 31h1v1h-1zM16 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM25 31h1v1h-1zM26 31h1v1h-1zM27 31h1v1h-1zM28 31h1v1h-1zM32 31h1v1h-1zM33 31h1v1h-1zM34 31h1v1h-1zM36 31h1v1h-1zM4 32h1v1h-1zM6 32h1v1h-1zM7 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM12 32h1v1h-1zM16 32h1v1h-1zM19 32h1v1h-1zM22 32h1v1h-1zM25 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM30 32h1v1h-1zM31 32h1v1h-1zM32 32h1v1h-1zM33 32h1v1h-1zM4 33h1v1h-1zM6 33h1v1h-1zM7 33h1v1h-1zM8 33h1v1h-1zM10 33h1v1h-1zM12 33h1v1h-1zM14 33h1v1h-1zM17 33h1v1h-1zM18 33h1v1h-1zM19 33h1v1h-1zM20 33h1v1h-1zM21 33h1v1h-1zM24 33h1v1h-1zM25 33h1v1h-1zM26 33h1v1h-1zM27 33h1v1h-1zM28 33h1v1h-1zM29 33h1v1h-1zM32 33h1v1h-1zM36 33h1v1h-1zM4 34h1v1h-1zM6 34h1v1h-1zM7 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM12 34h1v1h-1zM16 34h1v1h-1zM17 34h1v1h-1zM21 34h1v1h-1zM23 34h1v1h-1zM25 34h1v1h-1zM26 34h1v1h-1zM27 34h1v1h-1zM30 34h1v1h-1zM31 34h1v1h-1zM33 34h1v1h-1zM34 34h1v1h-1zM4 35h1v1h-1zM10 35h1v1h-1zM13 35h1v1h-1zM14 35h1v1h-1zM15 35h1v1h-1zM16 35h1v1h-1zM17 35h1v1h-1zM20 35h1v1h-1zM22 35h1v1h-1zM23 35h1v1h-1zM24 35h1v1h-1zM25 35h1v1h-1zM29 35h1v1h-1zM30 35h1v1h-1zM32 35h1v1h-1zM33 35h1v1h-1zM34 35h1v1h-1zM4 36h1v1h-1zM5 36h1v1h-1zM6 36h1v1h-1zM7 36h1v1h-1zM8 36h1v1h-1zM9 36h1v1h-1zM10 36h1v1h-1zM12 36h1v1h-1zM13 36h1v1h-1zM14 36h1v1h-1zM15 36h1v1h-1zM16 36h1v1h-1zM17 36h1v1h-1zM21 36h1v1h-1zM23 36h1v1h-1zM24 36h1v1h-1zM27 36h1v1h-1zM28 36h1v1h-1zM29 36h1v1h-1zM30 36h1v1h-1zM31 36h1v1h-1zM33 36h1v1h-1zM34 36h1v1h-1zM35 36h1v1h-1z\"/></svg>";
-        document.addEventListener('click', function (e) {
-            var btn = e.target.closest && e.target.closest('[data-qr]');
-            if (!btn) return;
-            e.preventDefault();
-            yqOpen(QR_URL, QR_NAME, QR_SVG);
-        });
-    })();
-    </script>
+    <footer class="site-footer">
+        © 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span><span class="qr-btn"> · <button type="button" data-qr>📱 QR로 접속</button></span>
+    </footer>
+
+    <!-- 정적 ES 모듈 진입점 (카카오 지도 SDK는 map.js에서 비차단 방식으로 로드하여 목록·검색·행사 기능을 차단하지 않음) -->
+    <script type="module" src="assets/releases/v2.0.0/js/app.js"></script>
 </body>
 </html>

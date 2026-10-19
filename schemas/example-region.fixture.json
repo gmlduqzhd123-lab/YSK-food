@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "datasetVersion": "example-v1",
+  "generatedAt": "2026-10-18T12:00:00+09:00",
+  "regionCode": "example-region",
+  "restaurants": [
+    {
+      "id": "example-restaurant-001",
+      "name": "단체식당 예시",
+      "regionCode": "example-region",
+      "address": "기능 설명용 주소",
+      "location": { "lat": null, "lng": null, "status": "unverified" },
+      "groupProfile": {
+        "availability": "unknown",
+        "totalSeats": null,
+        "simultaneousCapacity": null,
+        "mealWaves": { "availability": "unknown" },
+        "parking": {
+          "busEntry": "unknown",
+          "busParkingSpaces": null,
+          "dropoff": "unknown"
+        },
+        "evidenceRefs": []
+      },
+      "menus": [],
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "unknown",
+        "weeklyIntervals": [],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": null,
+        "evidenceRefs": []
+      },
+      "officialDesignations": [],
+      "businessStatus": "unknown"
+    }
+  ],
+  "venues": [],
+  "eventReferences": [],
+  "visitRecords": [],
+  "sources": []
+}

@@ -1,0 +1,102 @@
+/* 인솔자용 인쇄·PDF 요약표 스타일 (FR08, AC22: 행 중간 페이지 잘림 방지) */
+.teacher-print-sheet {
+  padding: 16px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.teacher-print-sheet h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 6px;
+}
+
+.teacher-print-meta {
+  margin: 0 0 14px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.teacher-print-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+  font-size: 12.5px;
+}
+
+.teacher-print-table th,
+.teacher-print-table td {
+  border: 1px solid #475569;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.teacher-print-table th {
+  background: #f1f5f9;
+  font-weight: 800;
+}
+
+.teacher-print-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.teacher-print-footer {
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: #475569;
+}
+
+@media print {
+  body, html {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  header,
+  .sw-banner,
+  .status-banner,
+  .mode-bar,
+  .group-criteria-bar,
+  .search-box,
+  .filter-container,
+  main,
+  .site-footer,
+  .home,
+  .toast,
+  .ysk-modal-head,
+  .ysk-modal-foot {
+    display: none !important;
+  }
+
+  .ysk-modal-backdrop {
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .ysk-modal-dialog {
+    width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  .ysk-modal-content {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .teacher-print-row,
+  .teacher-print-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

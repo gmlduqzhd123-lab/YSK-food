@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YSK-food Schema Definitions",
+  "description": "Schema specifications for public datasets (schemaVersion 2) and personal backup/share envelopes (schemaVersion 1)",
+  "schemas": {
+    "regionDataset": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "regionCode",
+        "restaurants",
+        "venues",
+        "eventReferences",
+        "visitRecords",
+        "sources"
+      ],
+      "requiredRestaurant": [
+        "id",
+        "name",
+        "regionCode",
+        "address",
+        "location",
+        "groupProfile",
+        "menus",
+        "openingHours",
+        "officialDesignations",
+        "businessStatus"
+      ]
+    },
+    "manifest": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "regionsPath",
+        "regionFiles",
+        "searchIndexPath",
+        "idIndexPath",
+        "legacyAliasesPath",
+        "checksums",
+        "changeSummary"
+      ]
+    },
+    "regions": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "regions"
+      ]
+    },
+    "searchIndex": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "entries"
+      ]
+    },
+    "idIndex": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "entries"
+      ]
+    },
+    "legacyAliases": {
+      "schemaVersion": 2,
+      "requiredTopLevel": [
+        "schemaVersion",
+        "datasetVersion",
+        "generatedAt",
+        "favoriteKeys",
+        "placeNames"
+      ]
+    },
+    "backupEnvelope": {
+      "schemaVersion": 1,
+      "kind": "backup",
+      "sourceApp": "ysk-food",
+      "requiredTopLevel": [
+        "schemaVersion",
+        "kind",
+        "exportedAt",
+        "sourceApp",
+        "events",
+        "favorites",
+        "settings",
+        "drafts",
+        "unresolvedFavorites",
+        "migrationState"
+      ]
+    },
+    "shareEnvelope": {
+      "schemaVersion": 1,
+      "kind": "share",
+      "sourceApp": "ysk-food",
+      "requiredTopLevel": [
+        "schemaVersion",
+        "kind",
+        "exportedAt",
+        "sourceApp",
+        "selectedFields",
+        "eventCopy"
+      ]
+    }
+  }
+}

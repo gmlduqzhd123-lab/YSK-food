@@ -1,0 +1,475 @@
+{
+  "schemaVersion": 2,
+  "datasetVersion": "2026.10.1",
+  "generatedAt": "2026-10-19T09:30:00+09:00",
+  "regions": [
+    {
+      "regionCode": "jn-yeosu",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "여수시",
+      "shortName": "여수",
+      "aliases": [
+        "여수",
+        "여수시",
+        "전남 여수",
+        "전라남도 여수시"
+      ],
+      "center": {
+        "lat": 34.7604,
+        "lng": 127.6622,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.6,
+          "lng": 127.5
+        },
+        "ne": {
+          "lat": 34.88,
+          "lng": 127.82
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
+      "stats": {
+        "totalRestaurants": 70,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 43,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jn-suncheon",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "순천시",
+      "shortName": "순천",
+      "aliases": [
+        "순천",
+        "순천시",
+        "전남 순천",
+        "전라남도 순천시"
+      ],
+      "center": {
+        "lat": 34.9506,
+        "lng": 127.4872,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.82,
+          "lng": 127.3
+        },
+        "ne": {
+          "lat": 35.1,
+          "lng": 127.6
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
+      "stats": {
+        "totalRestaurants": 75,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 43,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jn-gwangyang",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "광양시",
+      "shortName": "광양",
+      "aliases": [
+        "광양",
+        "광양시",
+        "전남 광양",
+        "전라남도 광양시"
+      ],
+      "center": {
+        "lat": 34.9407,
+        "lng": 127.6959,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.88,
+          "lng": 127.55
+        },
+        "ne": {
+          "lat": 35.12,
+          "lng": 127.78
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-gwangyang.json",
+      "stats": {
+        "totalRestaurants": 21,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 20,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jn-boseong",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "보성군",
+      "shortName": "보성군",
+      "aliases": [
+        "보성",
+        "보성군",
+        "전남 보성",
+        "전라남도 보성군"
+      ],
+      "center": {
+        "lat": 34.7715,
+        "lng": 127.08,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.65,
+          "lng": 126.95
+        },
+        "ne": {
+          "lat": 34.92,
+          "lng": 127.28
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-boseong.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jn-goheung",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "고흥군",
+      "shortName": "고흥군",
+      "aliases": [
+        "고흥",
+        "고흥군",
+        "전남 고흥",
+        "전라남도 고흥군"
+      ],
+      "center": {
+        "lat": 34.6047,
+        "lng": 127.2755,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.4,
+          "lng": 127.05
+        },
+        "ne": {
+          "lat": 34.78,
+          "lng": 127.5
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jn-mokpo",
+      "parentCode": "jn",
+      "sidoName": "전라남도",
+      "level": "sigungu",
+      "name": "목포시",
+      "shortName": "목포",
+      "aliases": [
+        "목포",
+        "목포시",
+        "전남 목포",
+        "전라남도 목포시"
+      ],
+      "center": {
+        "lat": 34.8118,
+        "lng": 126.3922,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 34.75,
+          "lng": 126.32
+        },
+        "ne": {
+          "lat": 34.86,
+          "lng": 126.46
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "gj-donggu",
+      "parentCode": "gj",
+      "sidoName": "광주광역시",
+      "level": "sigungu",
+      "name": "광주 동구",
+      "shortName": "광주 동구",
+      "aliases": [
+        "동구",
+        "광주 동구",
+        "광주광역시 동구"
+      ],
+      "center": {
+        "lat": 35.1461,
+        "lng": 126.9231,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 35.08,
+          "lng": 126.89
+        },
+        "ne": {
+          "lat": 35.18,
+          "lng": 126.99
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jb-jeonju",
+      "parentCode": "jb",
+      "sidoName": "전북특별자치도",
+      "level": "sigungu",
+      "name": "전주시",
+      "shortName": "전주",
+      "aliases": [
+        "전주",
+        "전주시",
+        "전북 전주",
+        "전북특별자치도 전주시",
+        "전라북도 전주시"
+      ],
+      "center": {
+        "lat": 35.8242,
+        "lng": 127.148,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 35.75,
+          "lng": 127.05
+        },
+        "ne": {
+          "lat": 35.9,
+          "lng": 127.25
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "jj-jeju",
+      "parentCode": "jj",
+      "sidoName": "제주특별자치도",
+      "level": "sigungu",
+      "name": "제주시",
+      "shortName": "제주",
+      "aliases": [
+        "제주",
+        "제주시",
+        "제주특별자치도 제주시"
+      ],
+      "center": {
+        "lat": 33.4996,
+        "lng": 126.5312,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 33.35,
+          "lng": 126.15
+        },
+        "ne": {
+          "lat": 33.56,
+          "lng": 126.95
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "gw-gangneung",
+      "parentCode": "gw",
+      "sidoName": "강원특별자치도",
+      "level": "sigungu",
+      "name": "강릉시",
+      "shortName": "강릉",
+      "aliases": [
+        "강릉",
+        "강릉시",
+        "강원 강릉",
+        "강원특별자치도 강릉시",
+        "강원도 강릉시"
+      ],
+      "center": {
+        "lat": 37.7519,
+        "lng": 128.8761,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.6,
+          "lng": 128.7
+        },
+        "ne": {
+          "lat": 37.9,
+          "lng": 129.05
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "gb-gyeongju",
+      "parentCode": "gb",
+      "sidoName": "경상북도",
+      "level": "sigungu",
+      "name": "경주시",
+      "shortName": "경주",
+      "aliases": [
+        "경주",
+        "경주시",
+        "경북 경주",
+        "경상북도 경주시"
+      ],
+      "center": {
+        "lat": 35.8562,
+        "lng": 129.2247,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 35.7,
+          "lng": 129.05
+        },
+        "ne": {
+          "lat": 36.05,
+          "lng": 129.5
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "seoul-jongno",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "서울 종로구",
+      "shortName": "서울 종로",
+      "aliases": [
+        "종로",
+        "종로구",
+        "서울 종로구",
+        "서울특별시 종로구"
+      ],
+      "center": {
+        "lat": 37.573,
+        "lng": 126.9794,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.56,
+          "lng": 126.95
+        },
+        "ne": {
+          "lat": 37.63,
+          "lng": 127.02
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    },
+    {
+      "regionCode": "busan-haeundae",
+      "parentCode": "busan",
+      "sidoName": "부산광역시",
+      "level": "sigungu",
+      "name": "부산 해운대구",
+      "shortName": "부산 해운대",
+      "aliases": [
+        "해운대",
+        "해운대구",
+        "부산 해운대구",
+        "부산광역시 해운대구"
+      ],
+      "center": {
+        "lat": 35.1631,
+        "lng": 129.1636,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 35.14,
+          "lng": 129.11
+        },
+        "ne": {
+          "lat": 35.22,
+          "lng": 129.22
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
+      "stats": {
+        "totalRestaurants": 0,
+        "groupVerifiedCount": 0,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-18"
+      }
+    }
+  ]
+}
