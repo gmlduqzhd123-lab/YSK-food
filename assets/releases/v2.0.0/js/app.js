@@ -418,7 +418,7 @@ export class YskFoodApp {
     const modeFilterText = this.state.mode !== 'general'
       ? ' · 🏫 초등·선수단 맞춤 추천 (술집·포차·카페 자동 제외)'
       : '';
-    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 초등·단체 수용 확인 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-19`;
+    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 단체석 있음 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-19`;
   }
 
   showBannerAlert(message, level = 'warn') {
@@ -1597,7 +1597,7 @@ export class YskFoodApp {
     const leadEl = document.getElementById('home-lead');
     if (leadEl) {
       // 단체 수용이 실제로 확인된 식당이 있을 때만 그 수를 적는다
-      const groupText = elemVerifiedCount > 0 ? ` · 초등·교사 단체 수용 확인 ${elemVerifiedCount}곳` : '';
+      const groupText = elemVerifiedCount > 0 ? ` · 단체석 있음 ${elemVerifiedCount}곳` : '';
       leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 ${regions.length}개 지역 총 ${totalAllCount}곳 · 카카오맵 영업 확인${groupText})`;
     }
 

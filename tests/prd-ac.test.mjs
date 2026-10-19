@@ -174,10 +174,11 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     const filterRes = filterAndClassifyRestaurants(res.restaurants, { regionCode: 'all' });
     assert.equal(filterRes.combinedList.length, res.restaurants.length);
 
-    // AC05: 미확인 단체 항목이 임의로 'yes'로 채워지지 않고 모두 'unknown' 또는 null로 보존됨
+    // AC05: 단체 항목은 근거(카카오맵 편의시설 정보)가 있을 때만 'yes'이고, 그 밖에는 'unknown' 또는 null로 보존됨
     for (const r of res.restaurants) {
       assert.ok(r.id.startsWith('ysk-r-'));
-      assert.equal(r.groupProfile.availability, 'unknown');
+      const hasFacilityEvidence = r.groupProfile.evidenceRefs.includes('src-kakao-facility-20261019');
+      assert.equal(r.groupProfile.availability, hasFacilityEvidence && r.groupProfile.seatTypes?.includes('단체석') ? 'yes' : 'unknown');
       assert.equal(r.groupProfile.totalSeats, null);
       assert.equal(r.groupProfile.simultaneousCapacity, null);
       assert.equal(r.groupProfile.parking.busEntry, 'unknown');
@@ -1158,15 +1159,17 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       assert.equal(isSuitableForMode(r, 'school'), true);
     }
 
-    // 4. 단체 수용이 확인된(availability === 'yes') 식당이 있으면 학교·선수단 모드에서 맨 위로 추천되는지 검증
-    //    (지금 공개 자료에는 단체 수용 확인 식당이 없으므로 시험용 식당 하나를 넣어 순서 규칙만 확인한다)
-    const probe = structuredClone(nwRes.restaurants.find(r => isSuitableForMode(r, 'school') && r.groupProfile.availability !== 'yes'));
-    probe.id = 'test-probe-group-yes';
-    probe.name = '단체수용확인 시험식당';
-    probe.groupProfile.availability = 'yes';
+    // 4. 학교·선수단 모드의 맨 위 추천은 단체석이 확인된(availability === 'yes') 식당이어야 함
+    assert.equal(athleteFiltered.combinedList[0].groupProfile.availability, 'yes');
+    assert.equal(schoolFiltered.combinedList[0].groupProfile.availability, 'yes');
+    // 같은 식당이라도 단체석이 확인된 쪽이 미확인 쪽보다 앞에 와야 함
+    const base = nwRes.restaurants.find(r => isSuitableForMode(r, 'school') && r.groupProfile.availability !== 'yes');
+    const probeYes = structuredClone(base);
+    probeYes.id = 'test-probe-group-yes';
+    probeYes.groupProfile.availability = 'yes';
     for (const mode of ['athlete', 'school']) {
-      const ranked = filterAndClassifyRestaurants([...nwRes.restaurants, probe], { mode, regionCode: 'nationwide' });
-      assert.equal(ranked.combinedList[0].id, 'test-probe-group-yes', `${mode} 모드에서 단체 수용 확인 식당이 맨 위가 아님`);
+      const ranked = filterAndClassifyRestaurants([...nwRes.restaurants, probeYes], { mode, regionCode: 'nationwide' }).combinedList.map(r => r.id);
+      assert.ok(ranked.indexOf('test-probe-group-yes') < ranked.indexOf(base.id), `${mode} 모드에서 단체석 확인 식당이 미확인 식당보다 뒤에 있음`);
     }
 
     // 5. 일반 모드('general')에서도 숫자 시작 술집(41번포차)이 최상단 1위로 노출되지 않는지 검증

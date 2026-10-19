@@ -42,7 +42,7 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
@@ -70,17 +70,18 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 · 주차 공간이 넉넉해 차량 이용 부담 없이 방문 가능, 가게 입구에 주차 공간 충분 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
         ]
       },
       "menus": [
@@ -234,7 +235,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -250,7 +251,7 @@
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -273,17 +274,21 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -506,7 +511,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -517,12 +522,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -530,14 +535,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -545,17 +550,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -764,7 +774,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -775,12 +785,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -803,17 +813,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 · 넓은 전용 주차장 보유 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -1022,7 +1037,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -1033,7 +1048,7 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
@@ -1046,14 +1061,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -1061,17 +1076,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "휠체어 이용 가능 · 유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -1238,7 +1258,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -1249,12 +1269,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -1262,14 +1282,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -1284,10 +1304,15 @@
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -1510,7 +1535,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -1526,7 +1551,7 @@
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -1534,14 +1559,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -1549,17 +1574,21 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "휠체어 이용 가능 · 유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -1793,12 +1822,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -1806,14 +1835,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -1821,17 +1850,18 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 · 근처 팔포항 무료주차장 이용 권장, 가까운 삼천포항공영주차장 있음 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
         ]
       },
       "menus": [
@@ -1998,7 +2028,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -2009,12 +2039,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -2022,14 +2052,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -2037,17 +2067,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 · 전용 주차장이 넓고 건물 앞에 마련되어 있어 주차 편리 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -2254,7 +2289,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -2270,7 +2305,7 @@
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -2278,14 +2313,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -2297,13 +2332,17 @@
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "휠체어 이용 가능 · 유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -2464,7 +2503,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -2475,12 +2514,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -2503,17 +2542,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 · 가게 앞 1~2대 주차 가능, 역사공원 내 공영주차장 및 진영역철도박물관 주차장 이용 가능, 진영역철도박물관 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -2674,7 +2718,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -2685,12 +2729,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -2720,10 +2764,15 @@
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -3159,12 +3208,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -3172,14 +3221,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -3187,17 +3236,18 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
         ]
       },
       "menus": [
@@ -3420,7 +3470,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -3431,12 +3481,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -3444,14 +3494,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -3459,17 +3509,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 · 근처 가게 앞 강변 무료주차장 이용 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -3678,7 +3733,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -3689,12 +3744,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -3702,14 +3757,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -3717,17 +3772,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 · 매장 주변에 전용 주차장 있어 주차 걱정 없이 방문 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -3936,7 +3996,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -3960,14 +4020,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -3979,13 +4039,17 @@
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -4152,7 +4216,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -4176,14 +4240,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -4198,10 +4262,14 @@
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -4392,14 +4460,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -4407,17 +4475,18 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "휠체어 이용 가능",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
         ]
       },
       "menus": [
@@ -4626,7 +4695,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -4637,7 +4706,7 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
@@ -4650,14 +4719,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -4665,17 +4734,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 · 건물 바로 옆에 차량 4대 주차 가능, 근처 중앙동 행정복지센터 공영주차장 및 진주대첩 역사공원 주차장 이용 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -4852,7 +4926,7 @@
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -4860,14 +4934,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -4875,17 +4949,18 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
         ]
       },
       "menus": [
@@ -5052,7 +5127,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -5068,7 +5143,7 @@
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -5091,17 +5166,21 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-centuryshop-2022",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -5262,7 +5341,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -5286,14 +5365,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -5301,17 +5380,21 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-blueribbon-list",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -5458,7 +5541,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -5469,12 +5552,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -5482,14 +5565,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -5497,17 +5580,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 · 건물 1층 주차장 이용 가능, 맞은편 및 근처에 추가 주차 공간 있음 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-blueribbon-list",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -5674,7 +5762,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -5685,12 +5773,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -5713,17 +5801,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-blueribbon-list",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -5932,7 +6025,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -5956,14 +6049,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -5971,17 +6064,21 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "주차 가능 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
           "entryNote": null,
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-blueribbon-list",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석"
         ]
       },
       "menus": [
@@ -6142,7 +6239,7 @@
         "checkedAt": "2026-10-19"
       },
       "groupProfile": {
-        "availability": "unknown",
+        "availability": "yes",
         "totalSeats": null,
         "simultaneousCapacity": null,
         "mealWaves": {
@@ -6153,12 +6250,12 @@
           "servingMinutes": null
         },
         "room": {
-          "privateRoom": "unknown",
+          "privateRoom": "yes",
           "roomFeeKRW": null
         },
         "preOrder": {
           "required": "unknown",
-          "leadTimeNote": null
+          "leadTimeNote": "예약 가능 (단체 인원·메뉴는 전화로 확인)"
         },
         "earlyBreakfast": {
           "availability": "unknown",
@@ -6166,14 +6263,14 @@
           "note": null
         },
         "lunchbox": {
-          "availability": "unknown",
+          "availability": "yes",
           "orderDeadline": null,
           "pickupTimeWindow": null,
           "pickupLocation": null,
           "minOrderQty": null,
           "unitPriceKRW": null,
           "pickupMethod": null,
-          "handlingNotes": null
+          "handlingNotes": "포장 가능 (단체 도시락 수량은 전화로 확인)"
         },
         "parking": {
           "busEntry": "unknown",
@@ -6181,17 +6278,22 @@
           "dropoff": "unknown",
           "dropoffLocation": null,
           "walkingDistanceMeters": null,
-          "walkingNotes": null
+          "walkingNotes": "무료 주차 (승용차 기준, 대형버스는 전화 확인)"
         },
         "accessibility": {
           "stairs": null,
-          "entryNote": null,
+          "entryNote": "유아의자 있음",
           "restroom": null
         },
-        "checkedAt": null,
+        "checkedAt": "2026-10-19",
         "evidenceRefs": [
           "src-redguide-list",
-          "src-kakao-check-20261019"
+          "src-kakao-check-20261019",
+          "src-kakao-facility-20261019"
+        ],
+        "seatTypes": [
+          "단체석",
+          "룸"
         ]
       },
       "menus": [
@@ -6388,6 +6490,37 @@
       ],
       "usageTerms": "엽쌤스쿨 YSK-food 기본 등록 자료 (단체 수용·버스 조건 미검증)",
       "attribution": "엽쌤스쿨 여순광 맛집 지도 기본 목록 (95f28ea)"
+    },
+    {
+      "id": "src-kakao-facility-20261019",
+      "kind": "map_platform",
+      "url": "https://map.kakao.com",
+      "obtainedAt": "2026-10-19",
+      "checkedAt": "2026-10-19",
+      "factScope": [
+        {
+          "entityId": "ysk-r-k0015",
+          "fieldPath": "/groupProfile/availability"
+        },
+        {
+          "entityId": "ysk-r-k0051",
+          "fieldPath": "/groupProfile/availability"
+        },
+        {
+          "entityId": "ysk-r-k0104",
+          "fieldPath": "/groupProfile/availability"
+        },
+        {
+          "entityId": "ysk-r-k0106",
+          "fieldPath": "/groupProfile/availability"
+        },
+        {
+          "entityId": "ysk-r-k0229",
+          "fieldPath": "/groupProfile/availability"
+        }
+      ],
+      "usageTerms": "카카오맵 편의시설·좌석 옵션(단체석·룸·주차·예약·포장, 일부 AI 요약) · 좌석 수·대형버스는 미확인, 방문 전 전화 확인",
+      "attribution": "카카오맵 편의시설 정보 (2026-10-19)"
     },
     {
       "id": "src-kakao-check-20261019",
