@@ -1343,7 +1343,7 @@ html.can-install .install-btn {
   display: inline-flex;
 }
 
-/* 반응형 미디어 쿼리: 모바일 (<768px) */
+/* 반응형 미디어 쿼리: 모바일 (<768px) — 화면 정리 규칙은 파일 끝에 이어짐 */
 @media (max-width: 767px) {
   header {
     padding: 8px 12px;
@@ -1439,5 +1439,293 @@ html.can-install .install-btn {
   }
   .home h1 {
     font-size: 40px;
+  }
+}
+
+/* ==========================================================================
+   화면 정리 (휴대폰에서 지도·목록 공간 확보, 하단 버튼 가림 해결)
+   ========================================================================== */
+
+/* 휴대폰 전용 접기 버튼과 목록 끝 저작권 문구는 PC에서 숨김 */
+.head-menu-btn,
+.setup-toggle,
+.filter-toggle,
+.panel-foot {
+  display: none;
+}
+
+/* 자료점검은 운영자용: ?admin 으로 들어온 기기에서만 보임 */
+#open-op-tool-btn {
+  display: none;
+}
+html.op-mode #open-op-tool-btn {
+  display: inline-flex;
+}
+
+/* 선택창이 화면 폭을 넘지 않게 */
+.mode-select {
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  /* 화면 위에서부터: 헤더 → 자료 안내 한 줄 → 검색줄 → (펼친 설정) → 지역 버튼줄 → 지도·목록 */
+  .sw-banner { order: 0; }
+  header { order: 1; }
+  .status-banner { order: 2; }
+  .search-box { order: 3; }
+  .mode-bar { order: 4; }
+  .group-criteria-bar { order: 5; }
+  .filter-container { order: 6; }
+  main { order: 7; }
+  .site-footer { display: none; }
+
+  /* 헤더: 제목 + 메뉴 버튼 한 줄 */
+  header {
+    flex-wrap: nowrap;
+  }
+  header .head-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  html.menu-open header .head-menu-btn {
+    background: #fff;
+    color: #d84315;
+  }
+  header .head-actions {
+    display: none;
+  }
+  html.menu-open header .head-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    position: absolute;
+    top: calc(100% - 4px);
+    right: 8px;
+    min-width: 210px;
+    padding: 8px;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(15,23,42,0.22);
+  }
+  html.menu-open header .head-action-btn,
+  html.menu-open header .head-qr,
+  html.menu-open header .head-install button {
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 8px 14px;
+    border: 1px solid #fed7aa;
+    border-radius: 10px;
+    background: #fff8f6;
+    color: #9a3412;
+    font-size: 14px;
+  }
+  html.menu-open header .head-action-btn.active {
+    background: #ea580c;
+    color: #fff;
+    border-color: #ea580c;
+  }
+  html.can-install header .head-install {
+    display: flex;
+  }
+  html:not(.op-mode) #open-op-tool-btn {
+    display: none;
+  }
+
+  /* 자료 안내: 한 줄로 줄이고 누르면 펼침 */
+  .status-banner.info {
+    padding: 4px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  .status-banner.info.expanded {
+    white-space: normal;
+  }
+
+  /* 검색줄: [이용 목적 ▾] [검색창] [필터] */
+  .search-box {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 12px 0;
+  }
+  .setup-toggle,
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+    min-height: 44px;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .setup-toggle {
+    order: 1;
+    border: 1px solid #fdba74;
+    background: #fff8f6;
+    color: #9a3412;
+  }
+  .search-box input[type="search"] {
+    order: 2;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .filter-toggle {
+    order: 3;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #334155;
+  }
+  html.setup-open .setup-toggle,
+  html.filters-open .filter-toggle {
+    background: #ea580c;
+    border-color: #ea580c;
+    color: #fff;
+  }
+  /* 세부 지역 선택창은 필터를 펼쳤을 때만 */
+  .search-box #region-select {
+    display: none;
+  }
+  html.filters-open .search-box #region-select {
+    display: block;
+    order: 4;
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  /* 이용 목적·행사 프리셋·기준점·단체 조건은 접어 둠 */
+  html:not(.setup-open) .mode-bar,
+  html:not(.setup-open) .group-criteria-bar {
+    display: none;
+  }
+  .mode-bar {
+    padding: 8px 12px;
+  }
+  .mode-Selectors {
+    width: 100%;
+  }
+  .mode-Selectors .mode-select {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .group-criteria-bar {
+    max-height: 38dvh;
+    overflow-y: auto;
+  }
+
+  /* 지역 버튼은 한 줄(옆으로 넘김), 즐겨찾기·영업 중·종류는 필터를 펼쳤을 때만 */
+  .filter-container {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    overflow: visible;
+  }
+  .filter-container > .filter-divider {
+    display: none;
+  }
+  .filter-container > .filter-group {
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+  }
+  .filter-container > .filter-group:first-child {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-container > .filter-group:first-child::-webkit-scrollbar {
+    display: none;
+  }
+  html:not(.filters-open) .filter-container > .filter-group:not(:first-child) {
+    display: none;
+  }
+
+  /* 지도 위 버튼: 범례는 접고, 내 주변은 오른쪽 아래로 */
+  .legend {
+    cursor: pointer;
+    flex-wrap: wrap;
+    max-width: calc(100% - 24px);
+  }
+  .legend:not(.open) span {
+    display: none;
+  }
+  .legend:not(.open)::after {
+    content: '🎨 범례';
+    font-weight: 700;
+    color: #334155;
+  }
+  .locate-btn {
+    top: auto;
+    bottom: 12px;
+  }
+
+  /* 목록: 패널 전체가 스크롤되고 저작권 문구는 목록 맨 끝에 */
+  .panel {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .panel.mode-map {
+    overflow: hidden;
+  }
+  .panel-head {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+  .place-list {
+    flex: none;
+    overflow: visible;
+  }
+  .place-list li {
+    scroll-margin-top: 64px;
+  }
+  .panel-foot {
+    display: block;
+    padding: 14px 16px calc(16px + env(safe-area-inset-bottom));
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+  }
+  .panel-foot a,
+  .panel-foot button {
+    display: inline-block;
+    padding: 10px 4px;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  /* 손가락으로 누르기 좋은 버튼 크기 */
+  .place-links {
+    gap: 8px;
+  }
+  .link {
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .view-switch button {
+    min-height: 40px;
   }
 }
