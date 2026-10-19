@@ -28,6 +28,16 @@ export const SINGLE_PLACE_LEVEL = 5;
 export const MY_POS_LEVEL = 6;
 export const CLUSTER_MIN_LEVEL = 6;
 
+// 남한 범위 (제주 포함). 지도는 이 범위가 한 화면에 들어오는 단계까지만 축소되고, 이 범위 밖으로는 옮겨지지 않는다
+export const SOUTH_KOREA_VIEW_BOUNDS = { sw: { lat: 33.1, lng: 126.0 }, ne: { lat: 38.6, lng: 129.6 } };
+
+// 남한 바깥(북한·중국·일본)을 흐리게 덮을 때 뚫어 둘 남한 영역 (해안·섬을 넉넉히 포함한 대략적인 경계, [위도, 경도])
+export const SOUTH_KOREA_MASK_HOLE = [
+  [37.62, 124.4], [37.72, 126.1], [37.76, 126.62], [37.95, 126.68], [38.1, 127.1], [38.3, 127.6],
+  [38.32, 128.1], [38.62, 128.32], [38.64, 128.7], [38.64, 132.2], [36.4, 132.2], [35.35, 129.85],
+  [34.88, 129.2], [34.5, 128.95], [33.8, 128.55], [32.8, 127.9], [32.8, 124.4]
+];
+
 export const REGION_COLORS = {
   'seoul-jongno': '#2563eb',
   'gyeonggi-suwon': '#3b82f6',
