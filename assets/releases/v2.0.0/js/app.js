@@ -667,7 +667,8 @@ export class YskFoodApp {
     }
 
     if (selectedPlace && isMappablePlace(selectedPlace) && this.mapController.isReady()) {
-      if (this.mobileQuery.matches && ((this.panelMode === 'list') || (!fromList && this.panelMode === 'map'))) {
+      // 휴대폰: 목록 위주(tall·list)로 보다가 식당을 고르면 지도가 보이도록 반반으로 펼친다
+      if (this.mobileQuery.matches && ((this.panelMode === 'list') || (this.panelMode === 'tall') || (!fromList && this.panelMode === 'map'))) {
         this.setPanelMode('half');
       }
       this.mapController.focusPlaceById(strId, selectedPlace, !fromList);
@@ -1737,10 +1738,55 @@ export class YskFoodApp {
     if (panel) {
       panel.classList.toggle('mode-map', mode === 'map');
       panel.classList.toggle('mode-list', mode === 'list');
+      panel.classList.toggle('mode-tall', mode === 'tall');
     }
+    // 'tall'(목록 위주)은 반반 버튼이 눌린 것으로 보여 준다
+    const pressedMode = mode === 'tall' ? 'half' : mode;
     document.querySelectorAll('.view-switch button').forEach(btn => {
-      btn.setAttribute('aria-pressed', String(btn.dataset.mode === mode));
+      btn.setAttribute('aria-pressed', String(btn.dataset.mode === pressedMode));
     });
+  }
+
+  /**
+   * 휴대폰 목록 패널을 바텀시트처럼 위아래로 끌어 크기를 바꾼다.
+   * 손을 떼면 가장 가까운 단계(지도 / 반반 / 목록 위주 / 목록)로 맞춘다.
+   */
+  bindPanelSheetDrag(panelEl) {
+    const head = panelEl?.querySelector('.panel-head');
+    const mainEl = panelEl?.parentElement;
+    if (!head || !mainEl) return;
+
+    let drag = null;
+    head.addEventListener('pointerdown', e => {
+      if (!this.mobileQuery.matches || e.button > 0 || e.target.closest('button, a, select, input')) return;
+      drag = { pointerId: e.pointerId, startY: e.clientY, startHeight: panelEl.getBoundingClientRect().height, moved: false };
+      head.setPointerCapture?.(e.pointerId);
+    });
+    head.addEventListener('pointermove', e => {
+      if (!drag || e.pointerId !== drag.pointerId) return;
+      const dy = drag.startY - e.clientY;
+      if (!drag.moved && Math.abs(dy) < 6) return;
+      drag.moved = true;
+      const maxHeight = mainEl.getBoundingClientRect().height;
+      const height = Math.min(maxHeight, Math.max(head.offsetHeight, drag.startHeight + dy));
+      panelEl.classList.add('dragging');
+      panelEl.style.height = `${height}px`;
+    });
+    const endDrag = e => {
+      if (!drag || e.pointerId !== drag.pointerId) return;
+      const moved = drag.moved;
+      drag = null;
+      if (!moved) return;
+      const ratio = panelEl.getBoundingClientRect().height / mainEl.getBoundingClientRect().height;
+      const target = ratio < 0.3 ? 'map' : ratio < 0.7 ? 'half' : ratio < 0.9 ? 'tall' : 'list';
+      panelEl.classList.remove('dragging');
+      panelEl.style.height = '';
+      this.setPanelMode(target);
+      // 같은 높이로 돌아오면 transitionend가 없을 수 있어 한 번 더 맞춘다
+      setTimeout(() => this.mapController.relayout(), 300);
+    };
+    head.addEventListener('pointerup', endDrag);
+    head.addEventListener('pointercancel', endDrag);
   }
 
   bindStaticDomEvents() {
@@ -1906,6 +1952,16 @@ export class YskFoodApp {
       });
     }
     window.addEventListener('resize', () => this.mapController.relayout());
+    this.bindPanelSheetDrag(panelEl);
+
+    // 휴대폰은 목록 위주로 연다 (지도는 위쪽에 작게, 식당을 고르면 반반으로 펼침)
+    // 첫 크기는 애니메이션 없이 정해야 지도가 처음부터 그 크기에 맞춰 범위를 잡는다
+    if (this.mobileQuery.matches && this.panelMode === 'half' && panelEl) {
+      panelEl.classList.add('dragging');
+      this.setPanelMode('tall');
+      void panelEl.offsetHeight;
+      panelEl.classList.remove('dragging');
+    }
 
     // 9) 내 주변 위치 버튼
     const locateBtn = document.getElementById('locate-btn');

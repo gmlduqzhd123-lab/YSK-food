@@ -403,7 +403,14 @@ export class MapController {
     for (const c of plan.coordinates) {
       bounds.extend(new kakao.maps.LatLng(c.lat, c.lng));
     }
-    this.map.setBounds(bounds, 60, 40, 40, 40);
+    // 휴대폰에서 지도가 작게 보일 때는 여백도 줄여야 범위가 제대로 맞춰진다
+    const h = this.container?.clientHeight || 0;
+    if (h > 0 && h < 320) {
+      const pad = Math.max(8, Math.round(h * 0.1));
+      this.map.setBounds(bounds, pad + 8, 16, pad, 16);
+    } else {
+      this.map.setBounds(bounds, 60, 40, 40, 40);
+    }
     return { applied: true, mode: 'bounds', validCount: plan.validCount };
   }
 
