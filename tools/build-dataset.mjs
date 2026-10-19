@@ -21,6 +21,28 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 
+// 전국 초등학교 단체활동 식당 1000곳 조사(2026-10-19) 중 카카오맵에서 영업을 확인한 식당
+// (영업 표시·요일별 영업시간·최근 6개월 리뷰·전화번호를 모두 확인한 곳만 수록, 단체 수용은 미확인)
+const KAKAO_VERIFIED_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'century-guide-1000.json'), 'utf8'));
+const KAKAO_CHECK_SOURCE_ID = 'src-kakao-check-20261019';
+const LIST_SOURCES = {
+  백년가게: {
+    id: 'src-centuryshop-2022',
+    url: 'https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/baengnyeon_2022.csv',
+    attribution: '2022 백년가게 공개 명부'
+  },
+  블루리본: {
+    id: 'src-blueribbon-list',
+    url: 'https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/guide_blue.csv',
+    attribution: '블루리본 명단 (2차 공개자료)'
+  },
+  레드가이드: {
+    id: 'src-redguide-list',
+    url: 'https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/guide_red.csv',
+    attribution: '레드가이드 명단 (2차 공개자료)'
+  }
+};
+
 const GENERATED_AT = '2026-10-19T09:30:00+09:00';
 const DATASET_VERSION = DEFAULT_DATASET_VERSION;
 
@@ -137,11 +159,11 @@ const BASE_REGIONS_DEF = [
     parentCode: 'jj',
     sidoName: '제주특별자치도',
     level: 'sigungu',
-    name: '제주시',
+    name: '제주 (제주시·서귀포)',
     shortName: '제주',
-    aliases: ['제주', '제주시', '제주특별자치도 제주시'],
+    aliases: ['제주', '제주시', '제주특별자치도 제주시', '서귀포', '서귀포시', '제주특별자치도'],
     center: { lat: 33.4996, lng: 126.5312, zoomLevel: 9 },
-    bounds: { sw: { lat: 33.35, lng: 126.15 }, ne: { lat: 33.56, lng: 126.95 } }
+    bounds: { sw: { lat: 33.15, lng: 126.10 }, ne: { lat: 33.58, lng: 126.98 } }
   },
   {
     regionCode: 'gw-gangneung',
@@ -193,6 +215,10 @@ const REGIONS_DEF = [
   ...BASE_REGIONS_DEF,
   ...NATIONWIDE_EXTRA_REGIONS.filter(er => !BASE_REGIONS_DEF.some(br => br.regionCode === er.regionCode))
 ];
+// 기존 지역에 들지 않는 식당을 담는 시·도 단위 지역
+for (const reg of KAKAO_VERIFIED_1000.regions) {
+  if (!REGIONS_DEF.some(r => r.regionCode === reg.regionCode)) REGIONS_DEF.push(reg);
+}
 
 const BASE_VENUES_BY_REGION = {
   'jn-yeosu': [
@@ -338,11 +364,26 @@ function buildDataset() {
     return rest;
   });
 
+  // PDF 주소로 기존 식당의 '상세 주소 미확인'을 보강
+  const addressOverrides = new Map(KAKAO_VERIFIED_1000.addressOverrides.map(o => [o.id, o.address]));
+  for (const r of normalizedRestaurants) {
+    if (addressOverrides.has(r.id)) r.address = addressOverrides.get(r.id);
+  }
+
+  const verifiedRestaurants = KAKAO_VERIFIED_1000.restaurants.map(item => {
+    const rest = normalizeLegacyPlaceToRestaurant(item);
+    rest.location.checkedAt = '2026-10-19';
+    const listSource = LIST_SOURCES[item.source];
+    rest.groupProfile.evidenceRefs = [...(listSource ? [listSource.id] : []), KAKAO_CHECK_SOURCE_ID];
+    rest.openingHours.evidenceRefs = [KAKAO_CHECK_SOURCE_ID];
+    return rest;
+  });
+
   const restaurantsByRegion = {};
   for (const reg of REGIONS_DEF) {
     restaurantsByRegion[reg.regionCode] = [];
   }
-  for (const r of [...normalizedRestaurants, ...NATIONWIDE_ELEMENTARY_RESTAURANTS]) {
+  for (const r of [...normalizedRestaurants, ...NATIONWIDE_ELEMENTARY_RESTAURANTS, ...verifiedRestaurants]) {
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
     }
@@ -393,6 +434,35 @@ function buildDataset() {
       }
     ];
 
+    // 1000곳 조사에서 들어온 식당이 있는 지역은 출처(명부·카카오맵 확인)를 함께 적는다
+    const kakaoRests = restaurants.filter(r => r.groupProfile.evidenceRefs.includes(KAKAO_CHECK_SOURCE_ID));
+    if (kakaoRests.length) {
+      sources.push({
+        id: KAKAO_CHECK_SOURCE_ID,
+        kind: 'map_platform',
+        url: 'https://map.kakao.com',
+        obtainedAt: '2026-10-19',
+        checkedAt: '2026-10-19',
+        factScope: kakaoRests.slice(0, 5).map(r => ({ entityId: r.id, fieldPath: '/openingHours/rawLegacyText' })),
+        usageTerms: '카카오맵 장소 정보로 영업 표시·영업시간·최근 6개월 리뷰·전화번호 확인 (단체 수용·학교 이용 미검증)',
+        attribution: '카카오맵 영업 확인 (2026-10-19)'
+      });
+      for (const ls of Object.values(LIST_SOURCES)) {
+        const used = kakaoRests.filter(r => r.groupProfile.evidenceRefs.includes(ls.id));
+        if (!used.length) continue;
+        sources.push({
+          id: ls.id,
+          kind: 'public_list',
+          url: ls.url,
+          obtainedAt: '2026-10-19',
+          checkedAt: '2026-10-19',
+          factScope: used.slice(0, 5).map(r => ({ entityId: r.id, fieldPath: '/name' })),
+          usageTerms: '식당 이름·주소 목록 (현재 영업·학교 이용·학생 단체 적합성 증빙 아님)',
+          attribution: ls.attribution
+        });
+      }
+    }
+
     const regionData = {
       schemaVersion: PUBLIC_SCHEMA_VERSION,
       datasetVersion: DATASET_VERSION,
@@ -421,7 +491,7 @@ function buildDataset() {
       restaurantCount: restaurants.length,
       groupVerifiedCount,
       unverifiedCoordCount,
-      updatedAt: '2026-10-18',
+      updatedAt: kakaoRests.length ? '2026-10-19' : '2026-10-18',
       checksum: hash
     };
 

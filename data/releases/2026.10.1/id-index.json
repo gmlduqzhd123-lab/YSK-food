@@ -493,6 +493,27 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0144": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0144",
+      "regionCode": "jn-yeosu",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0172": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0172",
+      "regionCode": "jn-yeosu",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0347": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0347",
+      "regionCode": "jn-yeosu",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
+      "status": "active"
+    },
     "venue:venue-yeosu-expo": {
       "kind": "venue",
       "id": "venue-yeosu-expo",
@@ -1039,6 +1060,27 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0036": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0036",
+      "regionCode": "jn-suncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0064": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0064",
+      "regionCode": "jn-suncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0173": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0173",
+      "regionCode": "jn-suncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
+      "status": "active"
+    },
     "venue:venue-suncheon-garden": {
       "kind": "venue",
       "id": "venue-suncheon-garden",
@@ -1312,6 +1354,20 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0040": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0040",
+      "regionCode": "jn-mokpo",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0392": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0392",
+      "regionCode": "jn-mokpo",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
+      "status": "active"
+    },
     "venue:venue-mokpo-maritime": {
       "kind": "venue",
       "id": "venue-mokpo-maritime",
@@ -1410,6 +1466,48 @@
       "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0164": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0164",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0278": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0278",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0279": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0279",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0365": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0365",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0371": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0371",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0384": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0384",
+      "regionCode": "jb-jeonju",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
+      "status": "active"
+    },
     "venue:venue-jeonju-hanok": {
       "kind": "venue",
       "id": "venue-jeonju-hanok",
@@ -1466,6 +1564,34 @@
       "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0137": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0137",
+      "regionCode": "jj-jeju",
+      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0138": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0138",
+      "regionCode": "jj-jeju",
+      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0163": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0163",
+      "regionCode": "jj-jeju",
+      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0382": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0382",
+      "regionCode": "jj-jeju",
+      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
+      "status": "active"
+    },
     "venue:venue-jeju-museum": {
       "kind": "venue",
       "id": "venue-jeju-museum",
@@ -1518,6 +1644,34 @@
     "restaurant:ysk-r-nat-gangneung-6": {
       "kind": "restaurant",
       "id": "ysk-r-nat-gangneung-6",
+      "regionCode": "gw-gangneung",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0099": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0099",
+      "regionCode": "gw-gangneung",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0270": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0270",
+      "regionCode": "gw-gangneung",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0317": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0317",
+      "regionCode": "gw-gangneung",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0360": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0360",
       "regionCode": "gw-gangneung",
       "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "status": "active"
@@ -1585,6 +1739,20 @@
       "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0225": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0225",
+      "regionCode": "gb-gyeongju",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0297": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0297",
+      "regionCode": "gb-gyeongju",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
+      "status": "active"
+    },
     "venue:venue-gyeongju-museum": {
       "kind": "venue",
       "id": "venue-gyeongju-museum",
@@ -1648,6 +1816,27 @@
       "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0020": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0020",
+      "regionCode": "seoul-jongno",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0076": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0076",
+      "regionCode": "seoul-jongno",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0078": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0078",
+      "regionCode": "seoul-jongno",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
+      "status": "active"
+    },
     "venue:venue-seoul-gyeongbokgung": {
       "kind": "venue",
       "id": "venue-seoul-gyeongbokgung",
@@ -1700,6 +1889,27 @@
     "restaurant:ysk-r-nat-busan-6": {
       "kind": "restaurant",
       "id": "ysk-r-nat-busan-6",
+      "regionCode": "busan-haeundae",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0190": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0190",
+      "regionCode": "busan-haeundae",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0191": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0191",
+      "regionCode": "busan-haeundae",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0334": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0334",
       "regionCode": "busan-haeundae",
       "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
       "status": "active"
@@ -1760,6 +1970,48 @@
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0005": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0005",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0048": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0048",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0054": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0054",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0066": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0066",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0248": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0248",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0249": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0249",
+      "regionCode": "gyeonggi-suwon",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
+      "status": "active"
+    },
     "venue:venue-suwon-hwaseong": {
       "kind": "venue",
       "id": "venue-suwon-hwaseong",
@@ -1809,6 +2061,13 @@
       "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0353": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0353",
+      "regionCode": "incheon-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
+      "status": "active"
+    },
     "venue:venue-incheon-openport": {
       "kind": "venue",
       "id": "venue-incheon-openport",
@@ -1847,6 +2106,48 @@
     "restaurant:ysk-r-nat-chuncheon-5": {
       "kind": "restaurant",
       "id": "ysk-r-nat-chuncheon-5",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0057": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0057",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0093": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0093",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0094": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0094",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0263": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0263",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0318": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0318",
+      "regionCode": "gw-chuncheon",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0337": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0337",
       "regionCode": "gw-chuncheon",
       "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "status": "active"
@@ -1907,6 +2208,13 @@
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0200": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0200",
+      "regionCode": "daejeon-yuseong",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
+      "status": "active"
+    },
     "venue:venue-daejeon-science": {
       "kind": "venue",
       "id": "venue-daejeon-science",
@@ -1949,6 +2257,34 @@
       "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0162": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0162",
+      "regionCode": "cn-gongju",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0275": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0275",
+      "regionCode": "cn-gongju",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0380": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0380",
+      "regionCode": "cn-gongju",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0381": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0381",
+      "regionCode": "cn-gongju",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
+      "status": "active"
+    },
     "venue:venue-gongju-museum": {
       "kind": "venue",
       "id": "venue-gongju-museum",
@@ -1987,6 +2323,41 @@
     "restaurant:ysk-r-nat-daegu-5": {
       "kind": "restaurant",
       "id": "ysk-r-nat-daegu-5",
+      "regionCode": "daegu-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0011": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0011",
+      "regionCode": "daegu-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0120": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0120",
+      "regionCode": "daegu-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0122": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0122",
+      "regionCode": "daegu-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0124": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0124",
+      "regionCode": "daegu-junggu",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0204": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0204",
       "regionCode": "daegu-junggu",
       "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
       "status": "active"
@@ -2040,6 +2411,41 @@
       "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
       "status": "active"
     },
+    "restaurant:ysk-r-k0044": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0044",
+      "regionCode": "gn-tongyeong",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0227": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0227",
+      "regionCode": "gn-tongyeong",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0308": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0308",
+      "regionCode": "gn-tongyeong",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0309": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0309",
+      "regionCode": "gn-tongyeong",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0326": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0326",
+      "regionCode": "gn-tongyeong",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
     "venue:venue-tongyeong-yisunsin": {
       "kind": "venue",
       "id": "venue-tongyeong-yisunsin",
@@ -2052,6 +2458,1336 @@
       "id": "venue-tongyeong-stadium",
       "regionCode": "gn-tongyeong",
       "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0029": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0029",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0030": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0030",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0031": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0031",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0046": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0046",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0049": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0049",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0055": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0055",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0074": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0074",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0079": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0079",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0080": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0080",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0081": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0081",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0084": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0084",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0085": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0085",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0086": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0086",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0088": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0088",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0091": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0091",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0178": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0178",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0179": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0179",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0180": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0180",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0183": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0183",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0185": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0185",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0187": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0187",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0188": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0188",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0189": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0189",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0285": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0285",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0286": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0286",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0287": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0287",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0288": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0288",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0290": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0290",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0341": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0341",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0351": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0351",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0357": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0357",
+      "regionCode": "seoul-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0002": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0002",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0003": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0003",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0017": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0017",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0018": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0018",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0019": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0019",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0023": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0023",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0068": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0068",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0069": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0069",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0070": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0070",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0071": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0071",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0238": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0238",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0239": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0239",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0243": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0243",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0245": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0245",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0246": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0246",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0251": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0251",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0254": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0254",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0255": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0255",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0256": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0256",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0313": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0313",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0321": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0321",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0352": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0352",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0366": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0366",
+      "regionCode": "gyeonggi-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0009": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0009",
+      "regionCode": "incheon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/incheon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0065": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0065",
+      "regionCode": "incheon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/incheon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0176": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0176",
+      "regionCode": "incheon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/incheon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0021": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0021",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0022": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0022",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0095": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0095",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0097": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0097",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0098": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0098",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0259": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0259",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0260": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0260",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0262": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0262",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0264": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0264",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0265": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0265",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0266": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0266",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0267": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0267",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0268": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0268",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0269": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0269",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0349": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0349",
+      "regionCode": "gw-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0001": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0001",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0108": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0108",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0112": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0112",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0113": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0113",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0114": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0114",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0148": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0148",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0150": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0150",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0271": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0271",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0273": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0273",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0331": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0331",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0356": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0356",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0373": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0373",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0375": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0375",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0376": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0376",
+      "regionCode": "cb-all",
+      "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0115": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0115",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0116": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0116",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0117": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0117",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0156": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0156",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0157": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0157",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0158": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0158",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0159": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0159",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0161": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0161",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0325": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0325",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0377": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0377",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0378": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0378",
+      "regionCode": "cn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0053": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0053",
+      "regionCode": "daejeon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0119": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0119",
+      "regionCode": "daejeon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0201": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0201",
+      "regionCode": "daejeon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0202": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0202",
+      "regionCode": "daejeon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0203": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0203",
+      "regionCode": "daejeon-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0292": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0292",
+      "regionCode": "sejong",
+      "datasetPath": "data/releases/2026.10.1/regions/sejong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0293": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0293",
+      "regionCode": "sejong",
+      "datasetPath": "data/releases/2026.10.1/regions/sejong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0294": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0294",
+      "regionCode": "sejong",
+      "datasetPath": "data/releases/2026.10.1/regions/sejong.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0042": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0042",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0139": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0139",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0141": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0141",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0165": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0165",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0166": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0166",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0167": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0167",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0168": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0168",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0169": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0169",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0170": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0170",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0171": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0171",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0388": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0388",
+      "regionCode": "jb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0213": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0213",
+      "regionCode": "gj-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gj-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0214": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0214",
+      "regionCode": "gj-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gj-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0045": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0045",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0142": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0142",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0143": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0143",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0306": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0306",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0332": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0332",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0333": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0333",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0345": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0345",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0359": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0359",
+      "regionCode": "jn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0007": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0007",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0010": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0010",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0013": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0013",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0016": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0016",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0024": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0024",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0131": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0131",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0132": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0132",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0133": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0133",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0134": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0134",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0135": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0135",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0136": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0136",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0215": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0215",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0217": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0217",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0218": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0218",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0219": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0219",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0220": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0220",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0222": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0222",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0223": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0223",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0295": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0295",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0298": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0298",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0301": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0301",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0327": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0327",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0328": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0328",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0358": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0358",
+      "regionCode": "gb-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0008": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0008",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0127": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0127",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0128": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0128",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0130": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0130",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0206": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0206",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0207": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0207",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0208": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0208",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0209": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0209",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0211": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0211",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0212": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0212",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0299": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0299",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0302": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0302",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0303": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0303",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0304": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0304",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0339": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0339",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0346": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0346",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0354": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0354",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0361": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0361",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0363": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0363",
+      "regionCode": "daegu-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0015": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0015",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0051": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0051",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0104": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0104",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0106": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0106",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0229": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0229",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0231": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0231",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0235": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0235",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0311": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0311",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0323": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0323",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0355": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0355",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0367": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0367",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0368": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0368",
+      "regionCode": "gn-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0039": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0039",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0063": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0063",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0101": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0101",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0195": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0195",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0196": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0196",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0197": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0197",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0291": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0291",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0319": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0319",
+      "regionCode": "busan-etc",
+      "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
+      "status": "active"
+    },
+    "restaurant:ysk-r-k0283": {
+      "kind": "restaurant",
+      "id": "ysk-r-k0283",
+      "regionCode": "ulsan",
+      "datasetPath": "data/releases/2026.10.1/regions/ulsan.json",
       "status": "active"
     },
     "restaurant:ysk-r-removed-999": {

@@ -398,7 +398,7 @@
         "분식·중식"
       ],
       "menuSummary": "군만두, 칼국수",
-      "address": "여수 (상세 주소 미확인)",
+      "address": "전남광주통합특별시 여수시 통제영4길 12 1층 (중앙동)",
       "note": "",
       "hasGroupInfo": false,
       "hasVerifiedCoords": false
@@ -1124,6 +1124,54 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0144",
+      "regionCode": "jn-yeosu",
+      "name": "호남갈비",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비요리, 소갈비, 백번칼집 넣은 돼지갈비",
+      "address": "전남광주통합특별시 여수시 동문로 93-1 1층 (공화동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0172",
+      "regionCode": "jn-yeosu",
+      "name": "덕양은혜곱창 덕양본점",
+      "branchName": "덕양본점",
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "곱창전골, 돼지생막창구이, 돼지새끼보구이",
+      "address": "전남광주통합특별시 여수시 소라면 하세동길 7-1 1층 (소라면 덕양리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0347",
+      "regionCode": "jn-yeosu",
+      "name": "여정식당여문점",
+      "branchName": null,
+      "regionName": "여수시",
+      "shortRegionName": "여수",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아귀요리, 서대회, 아귀찜",
+      "address": "전남광주통합특별시 여수시 여문문화길 56 1층 (문수동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-2",
       "regionCode": "jn-suncheon",
       "name": "건봉국밥",
@@ -1438,7 +1486,7 @@
         "국밥·탕"
       ],
       "menuSummary": "막창 순대국밥",
-      "address": "순천 (상세 주소 미확인)",
+      "address": "전남광주통합특별시 순천시 장평로 50 1층 (풍덕동)",
       "note": "",
       "hasGroupInfo": false,
       "hasVerifiedCoords": false
@@ -1470,7 +1518,7 @@
         "한정식"
       ],
       "menuSummary": "제철 남도한정식",
-      "address": "순천 (상세 주소 미확인)",
+      "address": "전남광주통합특별시 순천시 남신월4길 13-26 1층 (조례동)",
       "note": "",
       "hasGroupInfo": false,
       "hasVerifiedCoords": false
@@ -2324,6 +2372,54 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0036",
+      "regionCode": "jn-suncheon",
+      "name": "박구윤회관",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "제육볶음, 꼬막정식백반, 꽃등심",
+      "address": "전남광주통합특별시 순천시 팔마2길 90 1층 (연향동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0064",
+      "regionCode": "jn-suncheon",
+      "name": "춘천명물닭갈비",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭갈비, 볶음밥",
+      "address": "전남광주통합특별시 순천시 행중길 15 (행동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0173",
+      "regionCode": "jn-suncheon",
+      "name": "The미주농원120",
+      "branchName": null,
+      "regionName": "순천시",
+      "shortRegionName": "순천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭, 오리고기, 삽겸살",
+      "address": "전남광주통합특별시 순천시 상사호길 120 가,나동 1층 (덕월동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-3",
       "regionCode": "jn-gwangyang",
       "name": "삼대광양불고기집",
@@ -2804,6 +2900,38 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0040",
+      "regionCode": "jn-mokpo",
+      "name": "관광오리탕목포본점",
+      "branchName": null,
+      "regionName": "목포시",
+      "shortRegionName": "목포",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "오리탕, 남도식 미나리 들깨오리탕, 유달산 코스",
+      "address": "전남광주통합특별시 목포시 호남로64번길 1 1층 (호남동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0392",
+      "regionCode": "jn-mokpo",
+      "name": "서울순대",
+      "branchName": null,
+      "regionName": "목포시",
+      "shortRegionName": "목포",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대, 해장국, 뼈해장국",
+      "address": "전남광주통합특별시 목포시 수문로 43-1 1층 (남교동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-gwangju-1",
       "regionCode": "gj-donggu",
       "name": "문화전당앞 무등산떡갈비정식",
@@ -2980,11 +3108,107 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0164",
+      "regionCode": "jb-jeonju",
+      "name": "그때산집",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "복어요리, 복찜, 아구찜",
+      "address": "전북특별자치도 전주시 완산구 태평5길 13-4 (태평동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0278",
+      "regionCode": "jb-jeonju",
+      "name": "만성한정식",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "떡갈비, 회, 삼합",
+      "address": "전북특별자치도 전주시 완산구 바우배기1길 31-9 2층 (효자동2가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0279",
+      "regionCode": "jb-jeonju",
+      "name": "신한양불고기",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지불고기, 삼겹살, 소불고기",
+      "address": "전북특별자치도 전주시 완산구 전주객사3길 11 1층 (중앙동1가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0365",
+      "regionCode": "jb-jeonju",
+      "name": "금양정",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 소고기, 금양정 스폐셜 한상",
+      "address": "전북특별자치도 전주시 완산구 어은로 30 (중화산동2가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0371",
+      "regionCode": "jb-jeonju",
+      "name": "가족회관",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "전주비빔밥, 전주육회비빔밥, 가족회관 정식",
+      "address": "전북특별자치도 전주시 완산구 전라감영5길 17 2층 (중앙동3가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0384",
+      "regionCode": "jb-jeonju",
+      "name": "한양불고기",
+      "branchName": null,
+      "regionName": "전주시",
+      "shortRegionName": "전주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "콩나물불고기, 돼지갈비전골, 옛날 돼지 불고기",
+      "address": "전북특별자치도 전주시 완산구 우전2길 6 1층 (효자동2가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-jeju-1",
       "regionCode": "jj-jeju",
       "name": "제주박물관앞 흑돼지돈가스하우스",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "양식·일식"
@@ -3000,7 +3224,7 @@
       "regionCode": "jj-jeju",
       "name": "한라 수제흑돼지불고기반상",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "고기"
@@ -3016,7 +3240,7 @@
       "regionCode": "jj-jeju",
       "name": "제주운동장 선수단고기국수와수육",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "면"
@@ -3032,7 +3256,7 @@
       "regionCode": "jj-jeju",
       "name": "성산 수학여행 순살갈치조림구이",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "백반·한식"
@@ -3048,7 +3272,7 @@
       "regionCode": "jj-jeju",
       "name": "애월 떡갈비와전복미역국",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "한정식"
@@ -3064,7 +3288,7 @@
       "regionCode": "jj-jeju",
       "name": "노형 한우설렁탕갈비탕",
       "branchName": null,
-      "regionName": "제주시",
+      "regionName": "제주 (제주시·서귀포)",
       "shortRegionName": "제주",
       "categories": [
         "국밥·탕"
@@ -3073,6 +3297,70 @@
       "address": "제주특별자치도 제주시 도령로 85",
       "note": "제주 동계전지훈련 및 전국대회 참가 초등 선수단 조식·석식 및 도시락 전문",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0137",
+      "regionCode": "jj-jeju",
+      "name": "신설오름",
+      "branchName": null,
+      "regionName": "제주 (제주시·서귀포)",
+      "shortRegionName": "제주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "몸국, 돔베고기, 몸국수",
+      "address": "제주특별자치도 제주시 고마로17길 2 1층 (일도이동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0138",
+      "regionCode": "jj-jeju",
+      "name": "도라지식당",
+      "branchName": null,
+      "regionName": "제주 (제주시·서귀포)",
+      "shortRegionName": "제주",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "갈치구이, 제주향토음식상차림, 갈치조림",
+      "address": "제주특별자치도 제주시 연삼로 128 (오라삼동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0163",
+      "regionCode": "jj-jeju",
+      "name": "진미명가식당",
+      "branchName": null,
+      "regionName": "제주 (제주시·서귀포)",
+      "shortRegionName": "제주",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "일본음식점, 다금바리, 붉바리",
+      "address": "제주특별자치도 서귀포시 안덕면 사계남로 167 1층 (안덕면 사계리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0382",
+      "regionCode": "jj-jeju",
+      "name": "옹포별장가든",
+      "branchName": null,
+      "regionName": "제주 (제주시·서귀포)",
+      "shortRegionName": "제주",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "전복돌솥밥, 돔베고기 수육, 전복죽",
+      "address": "제주특별자치도 제주시 한림읍 한림상로 24 (한림읍 옹포리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     },
     {
@@ -3169,6 +3457,70 @@
       "address": "강원특별자치도 강릉시 체육시설길 18",
       "note": "강릉종합운동장 인접, 초등 육상·축구·빙상 선수단 조식 및 시합 전 식사 전문",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0099",
+      "regionCode": "gw-gangneung",
+      "name": "뚱보냉면",
+      "branchName": null,
+      "regionName": "강릉시",
+      "shortRegionName": "강릉",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "생고기구이, 냉면, 평양냉면",
+      "address": "강원특별자치도 강릉시 토성로 156-2 (임당동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0270",
+      "regionCode": "gw-gangneung",
+      "name": "부산식당",
+      "branchName": null,
+      "regionName": "강릉시",
+      "shortRegionName": "강릉",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "소머리국밥, 모듬, 닭국밥",
+      "address": "강원특별자치도 강릉시 중앙시장길 22-1 (성남동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0317",
+      "regionCode": "gw-gangneung",
+      "name": "영동횟집",
+      "branchName": null,
+      "regionName": "강릉시",
+      "shortRegionName": "강릉",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "짬뽕물회, 잡어, 잡어스페셜",
+      "address": "강원특별자치도 강릉시 창해로350번길 37 (강문동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0360",
+      "regionCode": "gw-gangneung",
+      "name": "동화가든짬뽕순두부",
+      "branchName": null,
+      "regionName": "강릉시",
+      "shortRegionName": "강릉",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "짬뽕순두부, 순두부젤라또, 원조짬순",
+      "address": "강원특별자치도 강릉시 초당순두부길77번길 15 1층 (초당동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     },
     {
@@ -3284,6 +3636,38 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0225",
+      "regionCode": "gb-gyeongju",
+      "name": "주식회사 맷돌순두부",
+      "branchName": null,
+      "regionName": "경주시",
+      "shortRegionName": "경주",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "맷돌순두부, 맷돌순두부찌개, 해물파전",
+      "address": "경북 경주시 북군길 7 1층 (북군동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0297",
+      "regionCode": "gb-gyeongju",
+      "name": "주식회사 영양숯불갈비",
+      "branchName": null,
+      "regionName": "경주시",
+      "shortRegionName": "경주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "한우갈비살 구이, 한우 갈비살 양념구이, 한우 갈비살 소금구이",
+      "address": "경북 경주시 봉황로 79 1층 (서부동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-seoul-1",
       "regionCode": "seoul-jongno",
       "name": "경복궁앞 사랑채한식당",
@@ -3377,6 +3761,54 @@
       "address": "서울특별시 종로구 자하문로 28",
       "note": "달콤하고 부드러운 서울식 국물 불고기로 초등학생·교사·선수단 모두 만족도가 높은 단체식당",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0020",
+      "regionCode": "seoul-jongno",
+      "name": "용금옥",
+      "branchName": null,
+      "regionName": "서울 종로구",
+      "shortRegionName": "서울 종로",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "추어탕, 굴전, 미나리전",
+      "address": "서울 종로구 자하문로 41-2 1층 (통인동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0076",
+      "regionCode": "seoul-jongno",
+      "name": "이문설농탕",
+      "branchName": null,
+      "regionName": "서울 종로구",
+      "shortRegionName": "서울 종로",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "설렁탕, 도가니탕, 머리탕",
+      "address": "서울 종로구 우정국로 38-13 1층 (견지동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0078",
+      "regionCode": "seoul-jongno",
+      "name": "옛날집낙원아구찜",
+      "branchName": null,
+      "regionName": "서울 종로구",
+      "shortRegionName": "서울 종로",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아구찜, 아귀찜, 해물찜",
+      "address": "서울 종로구 삼일대로 436 1-2층 (낙원동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     },
     {
@@ -3476,6 +3908,54 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0190",
+      "regionCode": "busan-haeundae",
+      "name": "해운대원조할매국밥",
+      "branchName": null,
+      "regionName": "부산 해운대구",
+      "shortRegionName": "부산 해운대",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "국밥, 소고기국밥, 선지국밥",
+      "address": "부산 해운대구 구남로21번길 33 1,2층 (우동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0191",
+      "regionCode": "busan-haeundae",
+      "name": "선창횟집",
+      "branchName": null,
+      "regionName": "부산 해운대구",
+      "shortRegionName": "부산 해운대",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "회, 생선뼈찜, 선창코스",
+      "address": "부산 해운대구 달맞이길62번길 67 (중동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0334",
+      "regionCode": "busan-haeundae",
+      "name": "㈜해운대암소갈비집",
+      "branchName": null,
+      "regionName": "부산 해운대구",
+      "shortRegionName": "부산 해운대",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생갈비, 양념갈비, 등심불고기",
+      "address": "부산 해운대구 해운대해변로 333 1층 (중동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-suwon-1",
       "regionCode": "gyeonggi-suwon",
       "name": "화성행궁 왕갈비불고기반상",
@@ -3572,6 +4052,102 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0005",
+      "regionCode": "gyeonggi-suwon",
+      "name": "장수촌",
+      "branchName": null,
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "백숙, 누룽지닭백숙, 능이버섯백숙",
+      "address": "경기 용인시 수지구 동천로 631 1층 (고기동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0048",
+      "regionCode": "gyeonggi-suwon",
+      "name": "두꺼비집부대찌개 영통점",
+      "branchName": "영통점",
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 모듬구이, 소세지 구이",
+      "address": "경기 수원시 영통구 반달로 32 1층 (영통동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0054",
+      "regionCode": "gyeonggi-suwon",
+      "name": "신라갈비",
+      "branchName": null,
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "숯불 생갈비 구이, 왕생갈비, 왕양념갈비",
+      "address": "경기 수원시 영통구 동수원로 538 (원천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0066",
+      "regionCode": "gyeonggi-suwon",
+      "name": "귀래정",
+      "branchName": null,
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭백숙, 오리백숙, 능이버섯오리백숙",
+      "address": "경기 용인시 수지구 동천로 635 (고기동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0248",
+      "regionCode": "gyeonggi-suwon",
+      "name": "호남순대",
+      "branchName": null,
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대집, 순대곱창볶음, 순대국밥",
+      "address": "경기 수원시 팔달구 팔달문로 19 지동시장 순대타운 A동 5호 (지동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0249",
+      "regionCode": "gyeonggi-suwon",
+      "name": "연포갈비",
+      "branchName": null,
+      "regionName": "수원·용인",
+      "shortRegionName": "수원·용인",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비집, 양념갈비, 한우생등심",
+      "address": "경기 수원시 팔달구 정조로906번길 56-1 1층 (북수동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-incheon-1",
       "regionCode": "incheon-junggu",
       "name": "개항장 공화춘관 중화정식",
@@ -3652,6 +4228,22 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0353",
+      "regionCode": "incheon-junggu",
+      "name": "송도갈매기주식회사",
+      "branchName": null,
+      "regionName": "인천 중구·송도",
+      "shortRegionName": "인천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "전통갈매기 숯불구이, 갈매기살, 통생갈매기",
+      "address": "인천 연수구 능허대로151번길 25 1~2층 (옥련동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-chuncheon-1",
       "regionCode": "gw-chuncheon",
       "name": "춘천박물관앞 순한간장닭갈비",
@@ -3729,6 +4321,102 @@
       "address": "강원특별자치도 춘천시 이디오피아길 15",
       "note": "구워서 한 접시씩 정갈하게 배식되어 연기 없이 깔끔하게 식사 가능한 떡갈비 전문점",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0057",
+      "regionCode": "gw-chuncheon",
+      "name": "라모스버거",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "수제버거, 나고야, 뉴욕 치즈의 여신",
+      "address": "강원특별자치도 춘천시 옛경춘로 835 1층 (삼천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0093",
+      "regionCode": "gw-chuncheon",
+      "name": "춘천명물닭갈비",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭갈비, 뼈없는 닭갈비, 닭내장",
+      "address": "강원특별자치도 춘천시 옛경춘로 813 1동 (삼천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0094",
+      "regionCode": "gw-chuncheon",
+      "name": "오수물막국수",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 보쌈, 반반전",
+      "address": "강원특별자치도 춘천시 신북읍 맥국2길 15 1층 (신북읍 천전리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0263",
+      "regionCode": "gw-chuncheon",
+      "name": "실비막국수",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 2대 막국수, 1대 막국수",
+      "address": "강원특별자치도 춘천시 소양고개길 25 1층 (소양로2가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0318",
+      "regionCode": "gw-chuncheon",
+      "name": "봄담은산채",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "산채오리전골, 비빔국수, 막국수",
+      "address": "강원특별자치도 춘천시 선들길 38 (삼천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0337",
+      "regionCode": "gw-chuncheon",
+      "name": "주식회사 명가막국수",
+      "branchName": null,
+      "regionName": "춘천시",
+      "shortRegionName": "춘천",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 감자부침, 편육",
+      "address": "강원특별자치도 춘천시 신북읍 상천3길 8 1층 (신북읍 천전리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     },
     {
@@ -3828,6 +4516,22 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0200",
+      "regionCode": "daejeon-yuseong",
+      "name": "박속낙지탕 본점",
+      "branchName": "본점",
+      "regionName": "대전 유성구",
+      "shortRegionName": "대전 유성",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "낙지요리, 박속낙지탕, 산낙지회",
+      "address": "대전 유성구 하기로 153 1층 (하기동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-gongju-1",
       "regionCode": "cn-gongju",
       "name": "무령왕릉앞 백제떡갈비정식",
@@ -3905,6 +4609,70 @@
       "address": "충청남도 공주시 무령로 210",
       "note": "초등학생들이 좋아하는 고기왕만두와 부드러운 칼국수 구성",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0162",
+      "regionCode": "cn-gongju",
+      "name": "귀빈식당",
+      "branchName": null,
+      "regionName": "공주·부여",
+      "shortRegionName": "공주·부여",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "산더덕정식, 능이버섯전골, 산채정식",
+      "address": "충남 공주시 사곡면 마곡상가길 12 (사곡면 운암리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0275",
+      "regionCode": "cn-gongju",
+      "name": "토속식당",
+      "branchName": null,
+      "regionName": "공주·부여",
+      "shortRegionName": "공주·부여",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "우렁된장찌개, 토속밥상, 우렁쌈밥",
+      "address": "충남 공주시 백미고을길 5-7 1층 (금성동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0380",
+      "regionCode": "cn-gongju",
+      "name": "초가집",
+      "branchName": null,
+      "regionName": "공주·부여",
+      "shortRegionName": "공주·부여",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "칼국수, 비빔칼국수, 보리밥",
+      "address": "충남 공주시 먹자1길 19-1 1층 (중동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0381",
+      "regionCode": "cn-gongju",
+      "name": "명성불고기집",
+      "branchName": null,
+      "regionName": "공주·부여",
+      "shortRegionName": "공주·부여",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "불고기, 냉면, 비빔냉면",
+      "address": "충남 공주시 유구읍 중앙1길 107 1층 (유구읍 석남리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     },
     {
@@ -3988,6 +4756,86 @@
       "hasVerifiedCoords": true
     },
     {
+      "id": "ysk-r-k0011",
+      "regionCode": "daegu-junggu",
+      "name": "서민갈비",
+      "branchName": null,
+      "regionName": "대구 중구·수성구",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비, 한돈김재동갈비, 제주 흑돼지생구이",
+      "address": "대구 수성구 들안로 8-5 (두산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0120",
+      "regionCode": "daegu-junggu",
+      "name": "용지봉",
+      "branchName": null,
+      "regionName": "대구 중구·수성구",
+      "shortRegionName": "대구",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 정다운한정식, 연요리 특선",
+      "address": "대구 수성구 들안로 9 1층 (상동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0122",
+      "regionCode": "daegu-junggu",
+      "name": "삼수장어",
+      "branchName": null,
+      "regionName": "대구 중구·수성구",
+      "shortRegionName": "대구",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어요리, 점심특선 장어정식, 산삼장어",
+      "address": "대구 수성구 신천동로 442 2층 (수성동4가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0124",
+      "regionCode": "daegu-junggu",
+      "name": "녹양구이 두산동점",
+      "branchName": "두산동점",
+      "regionName": "대구 중구·수성구",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생고기, 숯불구이, 반반",
+      "address": "대구 수성구 무학로17길 21 1~2층 (두산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0204",
+      "regionCode": "daegu-junggu",
+      "name": "부창생갈비",
+      "branchName": null,
+      "regionName": "대구 중구·수성구",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생갈비, 한우생갈비, 안창살",
+      "address": "대구 중구 국채보상로 492-12 1층 (동산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
       "id": "ysk-r-nat-tongyeong-1",
       "regionCode": "gn-tongyeong",
       "name": "이순신공원 통영불고기백반",
@@ -4065,6 +4913,3126 @@
       "address": "경상남도 거제시 계룡로 65",
       "note": "거제 포로수용소유적공원 현장체험학습 대형버스 주차장 바로 앞 단체 전문 한식당",
       "hasGroupInfo": true,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0044",
+      "regionCode": "gn-tongyeong",
+      "name": "원조설렁탕",
+      "branchName": null,
+      "regionName": "통영·거제",
+      "shortRegionName": "통영·거제",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "설렁탕, 소꼬리 수육, 도가니탕",
+      "address": "경남 통영시 항남5길 21 1층 (항남동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0227",
+      "regionCode": "gn-tongyeong",
+      "name": "심가네해물짬뽕",
+      "branchName": null,
+      "regionName": "통영·거제",
+      "shortRegionName": "통영·거제",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 심가네 해물 특짬뽕, 하얀굴짬뽕",
+      "address": "경남 통영시 새터길 74-4 1층 (서호동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0308",
+      "regionCode": "gn-tongyeong",
+      "name": "향토집",
+      "branchName": null,
+      "regionName": "통영·거제",
+      "shortRegionName": "통영·거제",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "굴요리, 향토코스, 굴전",
+      "address": "경남 통영시 무전5길 37-41 1층 (무전동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0309",
+      "regionCode": "gn-tongyeong",
+      "name": "부일식당",
+      "branchName": null,
+      "regionName": "통영·거제",
+      "shortRegionName": "통영·거제",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "복국, 복매운탕, 복찜",
+      "address": "경남 통영시 서호시장길 45 1층 (서호동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0326",
+      "regionCode": "gn-tongyeong",
+      "name": "한려곰장어",
+      "branchName": null,
+      "regionName": "통영·거제",
+      "shortRegionName": "통영·거제",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "곰장어구이, 자연산매운탕, 쏨뱅이",
+      "address": "경남 통영시 정동4길 57 1층 (정량동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0029",
+      "regionCode": "seoul-etc",
+      "name": "베이징덕",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "북경오리, xo게살볶음밥, 모밀",
+      "address": "서울 강남구 논현로 874 1층 (신사동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0030",
+      "regionCode": "seoul-etc",
+      "name": "송가네감자탕",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "감자탕, 뚝배기감자탕, 삼겹살",
+      "address": "서울 송파구 올림픽로35길 124 장미종합상가 A동 지하1층 B07-1,B07-2,B07-4호 (신천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0031",
+      "regionCode": "seoul-etc",
+      "name": "능동아구탕",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아구탕, 아구찜, 아구수육",
+      "address": "서울 광진구 천호대로 544 1-2층 (군자동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0046",
+      "regionCode": "seoul-etc",
+      "name": "오첨지",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "오삼불고기, 오삼, 낙삼",
+      "address": "서울 관악구 남부순환로176길 18 2층 (신림동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0049",
+      "regionCode": "seoul-etc",
+      "name": "미로정",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 부대전골",
+      "address": "서울 강남구 테헤란로33길 19 2층 (역삼동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0055",
+      "regionCode": "seoul-etc",
+      "name": "홍농숯불갈비",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭갈비, 1+한돈 수제왕길비",
+      "address": "서울 양천구 신월로15길 1 1, 2층 (신월동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0074",
+      "regionCode": "seoul-etc",
+      "name": "청평매운탕",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "메기매운탕, 매운탕",
+      "address": "서울 중랑구 공릉로 46 1층 (묵동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0079",
+      "regionCode": "seoul-etc",
+      "name": "진미식당",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "육회비빔밥, 선지국밥, 오징어볶음",
+      "address": "서울 용산구 백범로90길 38 프라임펠리스 1층 101호 (문배동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0080",
+      "regionCode": "seoul-etc",
+      "name": "양자강",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 탕수육, 크림중새우",
+      "address": "서울 영등포구 63로 36 리버타워 지하 1층 105호 (여의도동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0081",
+      "regionCode": "seoul-etc",
+      "name": "송죽장",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 고추짬뽕, 고추쟁반짜장",
+      "address": "서울 영등포구 문래로 203 1층 (영등포동4가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0084",
+      "regionCode": "seoul-etc",
+      "name": "동흥관",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "탕수육, 간짜장, 꿔바로우",
+      "address": "서울 금천구 시흥대로63길 20 B동 지하1층, 1,2층 (시흥동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0085",
+      "regionCode": "seoul-etc",
+      "name": "장군갈비",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생갈비, 양념갈비, 갈비탕",
+      "address": "서울 광진구 용마산로 11 1층 (중곡동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0086",
+      "regionCode": "seoul-etc",
+      "name": "민정식당",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "설렁탕, 수육, 소모듬수육",
+      "address": "서울 광진구 아차산로42길 41-4 1층 (자양동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0088",
+      "regionCode": "seoul-etc",
+      "name": "삼양동 삼다도 아구탕",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아구찜, 아구탕",
+      "address": "서울 강북구 삼양로29길 10-14 삼양동 삼다도 아구탕 (미아동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0091",
+      "regionCode": "seoul-etc",
+      "name": "㈜삼원가든",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비, 삼원 전통 양념갈비",
+      "address": "서울 강남구 언주로 835 (신사동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0178",
+      "regionCode": "seoul-etc",
+      "name": "연서순대국",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국, 순대국밥, 돼지내장국밥",
+      "address": "서울 은평구 통일로 850 연서시장 (불광동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0179",
+      "regionCode": "seoul-etc",
+      "name": "싸리골",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "국물갈비, 삼겹살, ※ 국물 돼지갈비 ※",
+      "address": "서울 은평구 서오릉로 160 1층 (갈현동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0180",
+      "regionCode": "seoul-etc",
+      "name": "원조두꺼비집불오징어",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 불오징어, 볶음밥",
+      "address": "서울 은평구 연서로28길 5 1-2층 (대조동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0183",
+      "regionCode": "seoul-etc",
+      "name": "3대 삼계장인",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 잣 삼계탕, 녹두 삼계탕",
+      "address": "서울 서초구 반포대로28길 56-3 한라빌딩 1층 (서초동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0185",
+      "regionCode": "seoul-etc",
+      "name": "참누렁소",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "한우구이, 듬뿍갈비찜, 진갈비탕",
+      "address": "서울 노원구 공릉로63길 13 1층 (하계동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0187",
+      "regionCode": "seoul-etc",
+      "name": "섬진강민물장어 수유본점",
+      "branchName": "수유본점",
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어구이, 민물장어 비법간장구이, 장어솥밥",
+      "address": "서울 강북구 한천로 1151 1층 (수유동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0188",
+      "regionCode": "seoul-etc",
+      "name": "초롱이고모부대찌개",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 햄찜, 고모네부대전골",
+      "address": "서울 강동구 상암로11길 4 1층 (암사동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0189",
+      "regionCode": "seoul-etc",
+      "name": "별미손칼국수전문",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "손칼국수, 수제비, 콩국수",
+      "address": "서울 강동구 양재대로141길 9 1층 (명일동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0285",
+      "regionCode": "seoul-etc",
+      "name": "향호면옥",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "칼국수, 만두, 바지락칼국수",
+      "address": "서울 송파구 마천로 79 1층 (오금동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0286",
+      "regionCode": "seoul-etc",
+      "name": "청수장",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "돼지갈비, 냉면, 물냉면",
+      "address": "서울 성북구 정릉로 237-2 1층 (정릉동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0287",
+      "regionCode": "seoul-etc",
+      "name": "금강바베큐",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "바베큐치킨, 순살바베큐, 숯불바베큐",
+      "address": "서울 서초구 사평대로 349 1층 (반포동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0288",
+      "regionCode": "seoul-etc",
+      "name": "뚱뚱이할머니집",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "족발, 쟁반막국수, 혼자먹어",
+      "address": "서울 중구 장충단로 174-1 1-2층 (장충동1가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0290",
+      "regionCode": "seoul-etc",
+      "name": "평양옥",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭곰탕, 닭백숙, 해신탕",
+      "address": "서울 서대문구 통일로 107-23 (미근동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0341",
+      "regionCode": "seoul-etc",
+      "name": "을밀대",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "평양냉면, 물냉면, 녹두전",
+      "address": "서울 마포구 숭문길 24 1층 (염리동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0351",
+      "regionCode": "seoul-etc",
+      "name": "신락원",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "유니짜장, 신락면, 탕수육",
+      "address": "서울 동대문구 전농로20길 2 1층 (전농동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0357",
+      "regionCode": "seoul-etc",
+      "name": "마포나루(1호점)",
+      "branchName": null,
+      "regionName": "서울 (종로 외)",
+      "shortRegionName": "서울",
+      "categories": [
+        "짱뚱어·꼬막"
+      ],
+      "menuSummary": "건강더덕비빔밥, 벌교꼬막비빔밥, 홍천검은콩국수",
+      "address": "서울 마포구 마포대로 68 아크로타워 지하1층 102호 (도화동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0002",
+      "regionCode": "gyeonggi-etc",
+      "name": "신내보리밥",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "보리밥, 오리불고기, 닭/오리능이백숙",
+      "address": "경기 양평군 개군면 공서울길 39 (개군면 공세리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0003",
+      "regionCode": "gyeonggi-etc",
+      "name": "옥천면옥",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "냉면, 물냉면, 비빔냉면",
+      "address": "경기 양평군 옥천면 옥천길 13 1층 (옥천면 옥천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0017",
+      "regionCode": "gyeonggi-etc",
+      "name": "마루솥뚜껑와인삼겹살",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "삼겸살구이, 마루솥뚜껑삼겹살, 돼지한마리",
+      "address": "경기 안산시 단원구 광덕대로 145 2층 (고잔동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0018",
+      "regionCode": "gyeonggi-etc",
+      "name": "이천영양돌솥밥",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "영양돌솥밥, 민들레정식, 들꽃정식",
+      "address": "경기 안산시 상록구 항가울로 7 1-2층 (사동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0019",
+      "regionCode": "gyeonggi-etc",
+      "name": "궁중삼계탕 안산본점",
+      "branchName": "안산본점",
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 궁중한방삼계탕, 궁중한방옻삼계탕",
+      "address": "경기 안산시 상록구 석호공원로 69 인우빌 1층 101호 (사동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0023",
+      "regionCode": "gyeonggi-etc",
+      "name": "(주)강계봉진막국수",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 비빔막국수, 물막국수",
+      "address": "경기 여주시 대신면 천서리길 26 1층 (대신면 천서리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0068",
+      "regionCode": "gyeonggi-etc",
+      "name": "이조숯불갈비",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비, 양념소왕갈비, 한우차돌",
+      "address": "경기 군포시 산본로323번길 21 청진빌딩 2층 201~202호 (산본동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0069",
+      "regionCode": "gyeonggi-etc",
+      "name": "제일황소",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생삼겹살, 고추장주물럭, 생등심",
+      "address": "경기 군포시 군포로534번길 16 1층 (당동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0070",
+      "regionCode": "gyeonggi-etc",
+      "name": "통나무집",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 족발, 꼬리곰탕",
+      "address": "경기 과천시 새술막길 38 중앙상가 1층 105호 (중앙동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0071",
+      "regionCode": "gyeonggi-etc",
+      "name": "문산순대국",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국, 내장탕, 오소리감투",
+      "address": "경기 고양시 일산서구 고양대로 667-5 1층 (일산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0238",
+      "regionCode": "gyeonggi-etc",
+      "name": "나래궁",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "짜장면, 간짜장, 볶음밥",
+      "address": "경기 화성시 병점구 반정로 151 (반정동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0239",
+      "regionCode": "gyeonggi-etc",
+      "name": "진미식당",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "육회비빔밥, 선지국밥, 순대국밥",
+      "address": "경기 평택시 통복시장2로9번길 15 1-2층 (통복동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0243",
+      "regionCode": "gyeonggi-etc",
+      "name": "곰보(Gombo)",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "물냉면, 비빔냉면, 칼만두",
+      "address": "경기 의정부시 태평로73번길 20 의정부제일시장 나동 1층 32,44~46호 (의정부동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0245",
+      "regionCode": "gyeonggi-etc",
+      "name": "모박사부대찌개 본점",
+      "branchName": "본점",
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 이름난 부대찌개, 별미 부대전골",
+      "address": "경기 안성시 대덕면 서동대로 4653 1층 (대덕면 신령리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0246",
+      "regionCode": "gyeonggi-etc",
+      "name": "흙과사람들",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "흙과사람들정식, 사이좋은정식, 보양능이전골",
+      "address": "경기 시흥시 비둘기공원로 21 대야하이빌 201~203호 (대야동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0251",
+      "regionCode": "gyeonggi-etc",
+      "name": "참맛나리아안동찜닭 성남본점",
+      "branchName": "성남본점",
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "찜닭, 안동찜닭, 순살안동찜닭",
+      "address": "경기 성남시 수정구 시민로142번길 12-2 1층 (신흥동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0254",
+      "regionCode": "gyeonggi-etc",
+      "name": "텍사스바베큐",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "바베큐치킨, 치킨바베큐, 생목살스테이크",
+      "address": "경기 동두천시 중앙로 366 1층 (생연동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0255",
+      "regionCode": "gyeonggi-etc",
+      "name": "진미옥설농탕",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "설렁탕, 특설렁탕, 양지설렁탕",
+      "address": "경기 동두천시 생연로 185-1 1층 (생연동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0256",
+      "regionCode": "gyeonggi-etc",
+      "name": "수빈관",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "해물짜장, 낙지짬뽕, 짜장",
+      "address": "경기 김포시 통진읍 김포대로 2374 (통진읍 서암리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0313",
+      "regionCode": "gyeonggi-etc",
+      "name": "여명본점",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "간장게장, 보리굴비, 꼬막장",
+      "address": "경기 화성시 효행구 정남면 세자로303번길 11-8 1층 (정남면 보통리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0321",
+      "regionCode": "gyeonggi-etc",
+      "name": "홍두깨국시집",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "손칼국수, 만두, 부대찌개",
+      "address": "경기 포천시 정문동길 24 1층 (어룡동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0352",
+      "regionCode": "gyeonggi-etc",
+      "name": "송월관",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "떡갈비, 수제떡갈비, 수제갈비탕",
+      "address": "경기 동두천시 큰시장로 28-10 (생연동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0366",
+      "regionCode": "gyeonggi-etc",
+      "name": "군포식당",
+      "branchName": null,
+      "regionName": "경기 (수원·용인 외)",
+      "shortRegionName": "경기",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "설렁탕, 한우 양지 설렁탕, 한우 양지 수육",
+      "address": "경기 군포시 군포로556번길 6 1층 (당동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0009",
+      "regionCode": "incheon-etc",
+      "name": "초가숯불갈비",
+      "branchName": null,
+      "regionName": "인천 (중구·송도 외)",
+      "shortRegionName": "인천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비, 돼지갈비, 한우육회",
+      "address": "인천 부평구 열우물로49번길 8 1,2층 (십정동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0065",
+      "regionCode": "incheon-etc",
+      "name": "하늘가든1994",
+      "branchName": null,
+      "regionName": "인천 (중구·송도 외)",
+      "shortRegionName": "인천",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "바지락고추장찌개, 회, 하 늘 탕 [사전예약]",
+      "address": "인천 옹진군 영흥면 영흥로251번길 24 (영흥면 내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0176",
+      "regionCode": "incheon-etc",
+      "name": "단골식당",
+      "branchName": null,
+      "regionName": "인천 (중구·송도 외)",
+      "shortRegionName": "인천",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "젓국갈비, 약쑥시래기밥, 젓국갈비전골",
+      "address": "인천 강화군 화도면 마니산로 678 1층 (화도면 상방리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0021",
+      "regionCode": "gw-etc",
+      "name": "동해안대게회도매센터",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "회, 멍게, 오징어",
+      "address": "강원특별자치도 동해시 일출로 61 1층 (묵호진동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0022",
+      "regionCode": "gw-etc",
+      "name": "동막막국수",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 수육",
+      "address": "강원특별자치도 삼척시 근덕면 문의재로 3777-12 1층 (근덕면 동막리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0095",
+      "regionCode": "gw-etc",
+      "name": "용대진부령식당",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "황태해장국, 황태구이, 황태구이정식",
+      "address": "강원특별자치도 인제군 북면 진부령로 100 (북면 용대리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0097",
+      "regionCode": "gw-etc",
+      "name": "황해횟집",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "회, 물회, 곰치국",
+      "address": "강원특별자치도 동해시 일출로 189 1층 (묵호진동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0098",
+      "regionCode": "gw-etc",
+      "name": "오부자냄비물회",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "생선회, 자연산스페셜냄비물회, 자연산냄비물회",
+      "address": "강원특별자치도 동해시 일출로 151 삼양비치타워 상가 10호 (묵호진동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0259",
+      "regionCode": "gw-etc",
+      "name": "횡성조가네",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 보쌈, 1++횡성 한우 육회",
+      "address": "강원특별자치도 횡성군 횡성읍 섬강로 347 (횡성읍 내지리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0260",
+      "regionCode": "gw-etc",
+      "name": "박현자네 더덕밥",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "더덕요리, 더덕구이정식, 더덕구이고등어정식",
+      "address": "강원특별자치도 횡성군 횡성읍 횡성로 59 (횡성읍 곡교리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0262",
+      "regionCode": "gw-etc",
+      "name": "봉평메밀미가연",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "메밀요리, 메밀싹육회, 육회비빔국수",
+      "address": "강원특별자치도 평창군 봉평면 기풍로 108 1층 (봉평면 창동리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0264",
+      "regionCode": "gw-etc",
+      "name": "정선면옥",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "막국수, 칼국수, 장칼국수",
+      "address": "강원특별자치도 정선군 정선읍 봉양5길 35 1층 (정선읍 봉양리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0265",
+      "regionCode": "gw-etc",
+      "name": "민생회관",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "찜닭, 곤드레밥, 생삼겹살",
+      "address": "강원특별자치도 원주시 중앙로 46 1층 (중앙동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0266",
+      "regionCode": "gw-etc",
+      "name": "동강다슬기 영월본점",
+      "branchName": "영월본점",
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "다슬기정식, 다슬기 해장국, 다슬기 순두부",
+      "address": "강원특별자치도 영월군 영월읍 영월로 2105 (영월읍 덕포리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0267",
+      "regionCode": "gw-etc",
+      "name": "양구재래식손두부",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "두부전문, 두부전골, 짜박두부",
+      "address": "강원특별자치도 양구군 양구읍 학안로 6 1층 (양구읍 학조리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0268",
+      "regionCode": "gw-etc",
+      "name": "수원갈비",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "갈비, 특선점심돼지불고기백반, 소고기찌개",
+      "address": "강원특별자치도 속초시 엑스포로1길 28 1층 (조양동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0269",
+      "regionCode": "gw-etc",
+      "name": "돌고래회센터",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "물회, 회, 모듬회",
+      "address": "강원특별자치도 속초시 대포항희망길 49 (대포동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0349",
+      "regionCode": "gw-etc",
+      "name": "양지말화로구이",
+      "branchName": null,
+      "regionName": "강원 (강릉·춘천 외)",
+      "shortRegionName": "강원",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "고추장 화로구이, 고추장화로구이, 간장화로구이",
+      "address": "강원특별자치도 홍천군 홍천읍 양지말길 17-4 (홍천읍 하오안리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0001",
+      "regionCode": "cb-all",
+      "name": "배영숙산야초밥상",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "산채정식, 대추정식, 대추 약고추장비빔밥",
+      "address": "충북 보은군 속리산면 법주사로 251 1층 (속리산면 사내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0108",
+      "regionCode": "cb-all",
+      "name": "만나밥집",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "황태콩나물해장국, 황태구이정식, 황태구이",
+      "address": "충북 충주시 동수2길 35 (연수동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0112",
+      "regionCode": "cb-all",
+      "name": "부모산가든",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "참숯 통갈비",
+      "address": "충북 청주시 흥덕구 2순환로1167번길 25 (복대동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0113",
+      "regionCode": "cb-all",
+      "name": "금호송어장",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "송어회, 송어비빔회1KG, 송어탕수육",
+      "address": "충북 청주시 서원구 현도면 노산하석로 166 (현도면 하석리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0114",
+      "regionCode": "cb-all",
+      "name": "오박사냉면전문식당",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "냉면, 물냉면, 비빔냉면",
+      "address": "충북 진천군 진천읍 중앙동1길 2 1층 (진천읍 읍내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0148",
+      "regionCode": "cb-all",
+      "name": "연게소문",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "게장"
+      ],
+      "menuSummary": "갈비, 게장, 누드갈비",
+      "address": "충북 청주시 서원구 수곡로57번길 32-2 (수곡동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0150",
+      "regionCode": "cb-all",
+      "name": "청풍황금송어",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "송어비빔회",
+      "address": "충북 제천시 금성면 청풍호로39길 25 (금성면 성내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0271",
+      "regionCode": "cb-all",
+      "name": "경진각",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 짬뽕, 짜장면",
+      "address": "충북 옥천군 옥천읍 중앙로4길 11 1층 (옥천읍 금구리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0273",
+      "regionCode": "cb-all",
+      "name": "새재황토방",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "버섯 및 닭요리, 토종닭 백숙, 자연산 버섯전골",
+      "address": "충북 괴산군 연풍면 새재로 1833 (연풍면 원풍리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0331",
+      "regionCode": "cb-all",
+      "name": "청주왕족발, 보쌈",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "족발, 보쌈, 족발+보쌈",
+      "address": "충북 진천군 진천읍 중앙서로 21 1-2층 (진천읍 읍내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0356",
+      "regionCode": "cb-all",
+      "name": "봉우맛집",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "삼겹살, 올갱이해장국, 생삼겹살",
+      "address": "충북 충주시 봉현로 80 1층 (봉방동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0373",
+      "regionCode": "cb-all",
+      "name": "갈마가든",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "칡냉면, 해물만두전골, 두부",
+      "address": "충북 충주시 살미면 용천갈마길 45 1층 (살미면 용천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0375",
+      "regionCode": "cb-all",
+      "name": "마라도일식",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "참치회, 회, 복국",
+      "address": "충북 진천군 광혜원면 구암길 30 1층 (광혜원면 광혜원리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0376",
+      "regionCode": "cb-all",
+      "name": "곰가내",
+      "branchName": null,
+      "regionName": "충청북도",
+      "shortRegionName": "충북",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "곰진지영양돌솥밥, 영양밥정식, 전복영양밥정식",
+      "address": "충북 진천군 백곡면 백곡로 835-8 1-2층 (백곡면 구수리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0115",
+      "regionCode": "cn-etc",
+      "name": "삽다리곱창 홍성본점",
+      "branchName": "홍성본점",
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지곱창, 곱창전골, 곱창구이",
+      "address": "충남 홍성군 홍성읍 도청대로 6-1 1층 (홍성읍 대교리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0116",
+      "regionCode": "cn-etc",
+      "name": "결성칼국수",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "칼국수, 굴물회, 모듬순대",
+      "address": "충남 홍성군 결성면 구성남로 31 1층 (결성면 읍내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0117",
+      "regionCode": "cn-etc",
+      "name": "동흥대반점",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 유산슬, 탕수육",
+      "address": "충남 예산군 예산읍 예산로 220-1 (예산읍 예산리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0156",
+      "regionCode": "cn-etc",
+      "name": "칠갑산골",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "산채정식, 참게요리, 참게장 특정식",
+      "address": "충남 청양군 대치면 장곡길 147 1-2층 (대치면 장곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0157",
+      "regionCode": "cn-etc",
+      "name": "청화집순대",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국, 순대, 순대국밥",
+      "address": "충남 천안시 동남구 병천면 충절로 1749 1층 (병천면 병천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0158",
+      "regionCode": "cn-etc",
+      "name": "원조옥수사",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "칼국수, 수육",
+      "address": "충남 천안시 동남구 영성로 25-3 (사직동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0159",
+      "regionCode": "cn-etc",
+      "name": "홍콩반점",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 짬뽕, 간짜장면",
+      "address": "충남 아산시 온천대로 1507 1-2층 (온천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0161",
+      "regionCode": "cn-etc",
+      "name": "별장가든",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 청양 한우육회 비빔밥, 건강새싹 비빔밥",
+      "address": "충남 청양군 청양읍 충절로 1494 (청양읍 학당리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0325",
+      "regionCode": "cn-etc",
+      "name": "한밭식당",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "한우불고기, 돼지불고기, 생삼겹살",
+      "address": "충남 홍성군 광천읍 광천로299번길 6-1 1층 (광천읍 광천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0377",
+      "regionCode": "cn-etc",
+      "name": "신은수참병천순대집",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대볶음, 순대국밥, 병천순대",
+      "address": "충남 천안시 동남구 병천면 아우내순대길 9 1층 (병천면 병천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0378",
+      "regionCode": "cn-etc",
+      "name": "진미식당",
+      "branchName": null,
+      "regionName": "충남 (공주·부여 외)",
+      "shortRegionName": "충남",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "육회비빔밥, 선지국밥, 비빔막국수",
+      "address": "충남 서천군 판교면 종판로 885 1층 (판교면 현암리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0053",
+      "regionCode": "daejeon-etc",
+      "name": "대들보함흥면옥",
+      "branchName": null,
+      "regionName": "대전 (유성 외)",
+      "shortRegionName": "대전",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "냉면, 한우양념불고기, 회냉면",
+      "address": "대전 중구 계백로1583번길 39 1층 (유천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0119",
+      "regionCode": "daejeon-etc",
+      "name": "진로집",
+      "branchName": null,
+      "regionName": "대전 (유성 외)",
+      "shortRegionName": "대전",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "두부두루치기, 수육, 두부+오징어",
+      "address": "대전 중구 중교로 45-5 (대흥동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0201",
+      "regionCode": "daejeon-etc",
+      "name": "사리원 본점",
+      "branchName": "본점",
+      "regionName": "대전 (유성 외)",
+      "shortRegionName": "대전",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "냉면, 갈비탕, 한우 갈비살",
+      "address": "대전 서구 둔산로31번길 77 사리원빌딩 2층 (둔산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0202",
+      "regionCode": "daejeon-etc",
+      "name": "귀빈돌솥밥",
+      "branchName": null,
+      "regionName": "대전 (유성 외)",
+      "shortRegionName": "대전",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "돌솥밥, 소떡갈비, 소석갈비",
+      "address": "대전 서구 만년로68번길 21 1층 (만년동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0203",
+      "regionCode": "daejeon-etc",
+      "name": "오문창순대국밥식당",
+      "branchName": null,
+      "regionName": "대전 (유성 외)",
+      "shortRegionName": "대전",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국밥, 돼지미니족발, 술국",
+      "address": "대전 대덕구 한밭대로 1153 1층 (중리동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0292",
+      "regionCode": "sejong",
+      "name": "산장가든",
+      "branchName": null,
+      "regionName": "세종시",
+      "shortRegionName": "세종",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비, 원조숯불갈비, 매운숯불갈비",
+      "address": "세종특별자치시 연서면 도신고복로 1131-7 1-2층 (연서면 고복리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0293",
+      "regionCode": "sejong",
+      "name": "부강옥 세종 부강본점",
+      "branchName": "부강본점",
+      "regionName": "세종시",
+      "shortRegionName": "세종",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국밥, 명품순대국, 수제순대",
+      "address": "세종특별자치시 부강면 부강외천로 103 (부강면 문곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0294",
+      "regionCode": "sejong",
+      "name": "은용골농장가든",
+      "branchName": null,
+      "regionName": "세종시",
+      "shortRegionName": "세종",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "숯불오리고기, 팥두룽지 오리 백숙, 참숯 가마솥 오리훈제 한마리",
+      "address": "세종특별자치시 장군면 은용2길 71 (장군면 은용리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0042",
+      "regionCode": "jb-etc",
+      "name": "계화회관",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "백합요리, 백합죽, 백합구이",
+      "address": "전북특별자치도 부안군 행안면 변산로 95 1층 (행안면 신기리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0139",
+      "regionCode": "jb-etc",
+      "name": "레스토랑마리서사본점",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "돈가스, 생채볶음밥, 이탈리안돈까스",
+      "address": "전북특별자치도 정읍시 수성택지4길 20-12 (수성동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0141",
+      "regionCode": "jb-etc",
+      "name": "배불뚝집 어양본점",
+      "branchName": "어양본점",
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "부대찌개, 보쌈, 곱창전골",
+      "address": "전북특별자치도 익산시 하나로6길 19 1층 (어양동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0165",
+      "regionCode": "jb-etc",
+      "name": "물머리집",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "매운탕, 메기탕, 오리탕",
+      "address": "전북특별자치도 익산시 금마면 고도1길 56-5 (금마면 동고도리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0166",
+      "regionCode": "jb-etc",
+      "name": "모성",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "자연송이덮밥, 짜장면, 짬뽕",
+      "address": "전북특별자치도 익산시 하나로 453 (영등동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0167",
+      "regionCode": "jb-etc",
+      "name": "추어향",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "추어탕, 추어허브떡갈비, 추어떡갈비",
+      "address": "전북특별자치도 남원시 요천로 1455 (쌍교동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0168",
+      "regionCode": "jb-etc",
+      "name": "인산인해",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 닭볶음탕, 철판닭갈비",
+      "address": "전북특별자치도 남원시 시청동로 26 1층 (도통동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0169",
+      "regionCode": "jb-etc",
+      "name": "삼포식당",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "고추장 더덕장어구이, 고추장양념더덕장어구이, 순한더덕장어구이",
+      "address": "전북특별자치도 남원시 요천로 2264 1층 (식정동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0170",
+      "regionCode": "jb-etc",
+      "name": "빈해원",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "탕수육, 물짜장, 군산삼선짬뽕",
+      "address": "전북특별자치도 군산시 동령길 57 1층 (장미동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0171",
+      "regionCode": "jb-etc",
+      "name": "인천장가든",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "민물새우탕, 새우탕, 메기탕",
+      "address": "전북특별자치도 고창군 아산면 원평길 9 (아산면 용계리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0388",
+      "regionCode": "jb-etc",
+      "name": "유정초밥",
+      "branchName": null,
+      "regionName": "전북 (전주 외)",
+      "shortRegionName": "전북",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "초밥, 일식, 사시미정식",
+      "address": "전북특별자치도 군산시 대학로 6-4 1층 (영화동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0213",
+      "regionCode": "gj-etc",
+      "name": "송정떡갈비 1호점",
+      "branchName": "1호점",
+      "regionName": "광주 (동구 외)",
+      "shortRegionName": "광주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "떡갈비, 육회비빔밥, 한우떡갈비",
+      "address": "전남광주통합특별시 광산구 광산로29번길 1 1층 (송정동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0214",
+      "regionCode": "gj-etc",
+      "name": "새송정떡갈비",
+      "branchName": null,
+      "regionName": "광주 (동구 외)",
+      "shortRegionName": "광주",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "떡갈비, 한우전통떡갈비, 한돈떡갈비",
+      "address": "전남광주통합특별시 광산구 광산로 31 1층 (송정동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0045",
+      "regionCode": "jn-etc",
+      "name": "원조한양팥죽",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "팥죽, 동지죽, 팥칼국수",
+      "address": "전남광주통합특별시 화순군 화순읍 중앙로 36-2 1층 (화순읍 향청리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0142",
+      "regionCode": "jn-etc",
+      "name": "해남소망식당 본점",
+      "branchName": "본점",
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "뚝배기불고기, 김치찌개, 소망전복장",
+      "address": "전남광주통합특별시 해남군 해남읍 구교2길 2 1층 (해남읍 구교리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0143",
+      "regionCode": "jn-etc",
+      "name": "독천식당",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "갈낙탕, 낙지볶음, 낙지요리코스",
+      "address": "전남광주통합특별시 영암군 학산면 독천로 162-2 1층 (학산면 독천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0306",
+      "regionCode": "jn-etc",
+      "name": "주몽가든맛집",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "한방삼계탕, 능이삼계탕, 영양갈비탕",
+      "address": "전남광주통합특별시 나주시 왕곡면 예향로 3683 1층 (왕곡면 장산리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0332",
+      "regionCode": "jn-etc",
+      "name": "천일식당",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "떡갈비정식, 불고기정식",
+      "address": "전남광주통합특별시 해남군 해남읍 읍내길 20-8 1층 (해남읍 읍내리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0333",
+      "regionCode": "jn-etc",
+      "name": "지리산식당",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "산채정식, 흑돼지, 산채더덕구이정식",
+      "address": "전남광주통합특별시 구례군 마산면 화엄사로 381 1층 (마산면 황전리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0345",
+      "regionCode": "jn-etc",
+      "name": "영광굴비정식",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "굴비, 굴비정식, 굴비한정식",
+      "address": "전남광주통합특별시 영광군 법성면 법성포로3길 6-5 1층 (법성면 법성리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0359",
+      "regionCode": "jn-etc",
+      "name": "두암음식점",
+      "branchName": null,
+      "regionName": "전남 (여수·순천·광양·목포·고흥 외)",
+      "shortRegionName": "전남",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "짚불삼겹살, 칠게장보리비빔밥, 짚불구이",
+      "address": "전남광주통합특별시 무안군 몽탄면 우명길 52 1층 (몽탄면 사창리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0007",
+      "regionCode": "gb-etc",
+      "name": "금산삼계탕고디탕",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 옻삼계탕, 녹두삼계탕",
+      "address": "경북 포항시 북구 중흥로 145 1층 (죽도동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0010",
+      "regionCode": "gb-etc",
+      "name": "진주식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "비빔밥, 야채전, 도토리묵",
+      "address": "경북 포항시 북구 송라면 보경로 457-1 1층 (송라면 중산리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0013",
+      "regionCode": "gb-etc",
+      "name": "박터진흥부네 토속음식전문",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 청국장, 대추 한우 수육",
+      "address": "경북 경산시 와촌면 갈밭길 6 (와촌면 소월리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0016",
+      "regionCode": "gb-etc",
+      "name": "평양아바이순대국밥",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "순대국밥, 순대정식, 돼지국밥",
+      "address": "경북 구미시 고아읍 들성로 61 1층 (고아읍 원호리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0024",
+      "regionCode": "gb-etc",
+      "name": "김태주선산곱창 구미본점",
+      "branchName": "구미본점",
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "곱창, 곱창전골",
+      "address": "경북 구미시 송원서로 77 1층 (원평동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0131",
+      "regionCode": "gb-etc",
+      "name": "포항특미물회식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "물회, 자연산특미물회, 도다리물회",
+      "address": "경북 포항시 북구 동빈로 106 1층 (동빈1가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0132",
+      "regionCode": "gb-etc",
+      "name": "장기식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "곰탕, 수육",
+      "address": "경북 포항시 북구 죽도시장3길 9-10 (죽도동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0133",
+      "regionCode": "gb-etc",
+      "name": "길성관",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 삼선간짜장, 짜춘결",
+      "address": "경북 포항시 북구 불종로 38-1 2층 (대흥동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0134",
+      "regionCode": "gb-etc",
+      "name": "천생산오리사냥",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "오리고기, 능이한방누룽지약백숙, 불쭈스페셜",
+      "address": "경북 구미시 천생산길 38 (구평동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0135",
+      "regionCode": "gb-etc",
+      "name": "배신식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "석쇠불고기, 소금구이",
+      "address": "경북 김천시 감문면 배시내길 46 1층 (감문면 태촌리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0136",
+      "regionCode": "gb-etc",
+      "name": "궁원(비원)",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "한정식, 매화상, 보리굴비와 녹차물 정식",
+      "address": "경북 구미시 금오산로 126 궁원 (원평동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0215",
+      "regionCode": "gb-etc",
+      "name": "강산식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "아귀수육, 아귀탕, 아귀찜",
+      "address": "경북 포항시 북구 죽도로40번길 21 1층 (죽도동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0217",
+      "regionCode": "gb-etc",
+      "name": "주왕상청솔식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "더덕정식, 산채더덕구이정식, 순두부찌개",
+      "address": "경북 청송군 주왕산면 공원길 164 (주왕산면 상의리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0218",
+      "regionCode": "gb-etc",
+      "name": "정우숯불가든",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비, 육회비빔밥, 특수부위",
+      "address": "경북 청도군 청도읍 청화로 252 (청도읍 고수리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0219",
+      "regionCode": "gb-etc",
+      "name": "삼송꾼만두 영천본점",
+      "branchName": "영천본점",
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "만두, 꾼만두",
+      "address": "경북 영천시 중앙동1길 12 1층 (문외동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0220",
+      "regionCode": "gb-etc",
+      "name": "헛제사밥 (맛50년)",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "헛제사밥, 선비상, 현학금상",
+      "address": "경북 안동시 석주로 201 (상아동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0222",
+      "regionCode": "gb-etc",
+      "name": "새불고기식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "소불고기, 한우불고기, 한우특수부위",
+      "address": "경북 성주군 초전면 대고로 22 1층 (초전면 대장리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0223",
+      "regionCode": "gb-etc",
+      "name": "예천가든",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "백숙, 닭불고기, 닭백숙",
+      "address": "경북 봉화군 봉성면 진의실길 4 1층 (봉성면 우곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0295",
+      "regionCode": "gb-etc",
+      "name": "소백산생고기식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "생고기, 새우살, 꽃갈비살",
+      "address": "경북 영주시 대학로 16 소백산생고기 (휴천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0298",
+      "regionCode": "gb-etc",
+      "name": "고령금산한우성산점",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "한우구이, 육회 비빔밥, 육회",
+      "address": "경북 고령군 성산면 성산로 946-5 (성산면 어곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0301",
+      "regionCode": "gb-etc",
+      "name": "경상도추어탕",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "추어탕, 경상도 추어탕, 경상도 추어튀김",
+      "address": "경북 안동시 태사길 23-3 (북문동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0327",
+      "regionCode": "gb-etc",
+      "name": "포항할매집곰탕",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "소머리국밥, 수육, 한우소머리곰탕",
+      "address": "경북 영천시 시장4길 30 영천공설시장 1지구 1층 132~134, 136~137호 (완산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0328",
+      "regionCode": "gb-etc",
+      "name": "편대장영화식당 영천본점",
+      "branchName": "영천본점",
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "한우육회, 육회비빔밥, 육회",
+      "address": "경북 영천시 강변로 50-15 1층 (금노동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0358",
+      "regionCode": "gb-etc",
+      "name": "마라도회식당",
+      "branchName": null,
+      "regionName": "경북 (경주 외)",
+      "shortRegionName": "경북",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "물회, 회, 최강달인물회",
+      "address": "경북 포항시 북구 해안로 217-1 2층 (두호동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0008",
+      "regionCode": "daegu-etc",
+      "name": "옛맛집",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "삼겹살구이, 생삼겹살, 특수부위",
+      "address": "대구 달서구 구마로14길 111 (본동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0127",
+      "regionCode": "daegu-etc",
+      "name": "경산식당",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "메기매운탕, 찜, 돌솥닭찜",
+      "address": "대구 달성군 다사읍 강정본길 77 1층 (다사읍 죽곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0128",
+      "regionCode": "daegu-etc",
+      "name": "강원도집",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "오리직화구이, 오리불고기, 감자수제비",
+      "address": "대구 달성군 가창면 가창로176길 18 1층 (가창면 냉천리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0130",
+      "regionCode": "daegu-etc",
+      "name": "대덕식당",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "선지국밥, 선지국, 갈비탕",
+      "address": "대구 남구 앞산순환로 443 1층 (대명동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0206",
+      "regionCode": "daegu-etc",
+      "name": "용해원반점",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "불짬뽕, 해물짬뽕, 탕수육",
+      "address": "대구 북구 태전로7길 6 1층 (태전동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0207",
+      "regionCode": "daegu-etc",
+      "name": "까치산",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비, 옛고기, 돈절미",
+      "address": "대구 북구 호국로 233 (서변동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0208",
+      "regionCode": "daegu-etc",
+      "name": "블루문레스토랑",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "양식, 스테이크, 볼로네제파스타",
+      "address": "대구 동구 파계로 685 (중대동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0209",
+      "regionCode": "daegu-etc",
+      "name": "꼬꼬하우스",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "닭똥집튀김, 치킨, 모듬 똥집",
+      "address": "대구 동구 아양로 53-5 (신암동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0211",
+      "regionCode": "daegu-etc",
+      "name": "원조현풍 박소선할매집곰탕 본점",
+      "branchName": "본점",
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "곰탕, 양곰탕, 특곰탕",
+      "address": "대구 달성군 현풍읍 현풍중앙로 56-1 (현풍읍 하리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0212",
+      "regionCode": "daegu-etc",
+      "name": "동곡원조할매손칼국수식당",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "면"
+      ],
+      "menuSummary": "손칼국수, 손국수, 콩국수",
+      "address": "대구 달성군 하빈면 달구벌대로55길 97-5 1층 (하빈면 동곡리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0299",
+      "regionCode": "daegu-etc",
+      "name": "효령매운탕",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "민물매운탕, 메기매운탕, 산천어매운탕",
+      "address": "대구 군위군 효령면 치산효령로 2267-8 1층 (효령면 거매리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0302",
+      "regionCode": "daegu-etc",
+      "name": "갈비둥지로",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "돼지갈비, 소갈비, 둥지갈비",
+      "address": "대구 달서구 대명천로 198 (본리동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0303",
+      "regionCode": "daegu-etc",
+      "name": "큰나무집궁중약백숙 가창본점",
+      "branchName": "가창본점",
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "궁중약백숙, 궁중장아찌, 궁중닭백숙",
+      "address": "대구 달성군 가창면 우록길 24 1-2층 (가창면 삼산리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0304",
+      "regionCode": "daegu-etc",
+      "name": "해금강 동대구역",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "복어요리, 밀복 지리/탕, 특밀복코스",
+      "address": "대구 동구 신암남로 133 1-2층 (신암동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0339",
+      "regionCode": "daegu-etc",
+      "name": "일월정 토속한정식",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "한정식, 삼계탕, 일월정 독계탕",
+      "address": "대구 달성군 논공읍 논공로 697-5 1층 (논공읍 북리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0346",
+      "regionCode": "daegu-etc",
+      "name": "연화정삼계탕",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 황제탕, 전복삼계탕",
+      "address": "대구 달서구 구마로 116 (본동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0354",
+      "regionCode": "daegu-etc",
+      "name": "산중식당",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "곤드레정식, 쭈갈담다, 보쌈담다",
+      "address": "대구 동구 팔공산로185길 55 (용수동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0361",
+      "regionCode": "daegu-etc",
+      "name": "동봉",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "막구이, 돼지갈비, 한돈양념돼지갈비",
+      "address": "대구 동구 팔공로 995 1층 (백안동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0363",
+      "regionCode": "daegu-etc",
+      "name": "대우족발",
+      "branchName": null,
+      "regionName": "대구 (중구·수성구 외)",
+      "shortRegionName": "대구",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "족발, 한방족발, 맛족발",
+      "address": "대구 북구 중앙대로 509-1 1층 (칠성동2가)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0015",
+      "regionCode": "gn-etc",
+      "name": "재두식당",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "한정식"
+      ],
+      "menuSummary": "멸치쌈밥, 멸치조림쌈밥, 수제도토리묵",
+      "address": "경남 남해군 상주면 남해대로 918-6 1층 (상주면 상주리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0051",
+      "regionCode": "gn-etc",
+      "name": "대가삼계탕",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "삼계탕, 한방삼계탕, 참옻삼계탕",
+      "address": "경남 창원시 마산합포구 자산삼거리로 24 (자산동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0104",
+      "regionCode": "gn-etc",
+      "name": "강변횟집",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "\u001a 어회, 향어회, 바다장어구이",
+      "address": "경남 창원시 마산회원구 석전동16길 25 1층 (석전동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0106",
+      "regionCode": "gn-etc",
+      "name": "손두부전문점",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "백반·한식"
+      ],
+      "menuSummary": "손두부, 파전, 순두부찌개",
+      "address": "경남 양산시 신기1길 13 1층 (신기동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0229",
+      "regionCode": "gn-etc",
+      "name": "임진각식당",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "소불고기, 소국밥, 소따로국밥",
+      "address": "경남 창원시 의창구 팔용로 515 1-2층 (팔용동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0231",
+      "regionCode": "gn-etc",
+      "name": "덕합반점",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "중화요리, 사천탕수육, 덕합자장",
+      "address": "경남 사천시 사천읍 읍내1길 81 1층 (사천읍 수석리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0235",
+      "regionCode": "gn-etc",
+      "name": "가야왕족 본점",
+      "branchName": "본점",
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "고기"
+      ],
+      "menuSummary": "족발, 철판짜글이족발, 철판가야왕족",
+      "address": "경남 김해시 분성로 54 1,2층 (외동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0311",
+      "regionCode": "gn-etc",
+      "name": "미래특수통닭",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "치킨, 양념치킨, 후라이드치킨",
+      "address": "경남 사천시 팔포3길 3 1층 (서금동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0323",
+      "regionCode": "gn-etc",
+      "name": "향옥정",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "장어요리, 메기매운탕, 선암장어 소금",
+      "address": "경남 김해시 김해대로 2787-21 1층 (불암동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0355",
+      "regionCode": "gn-etc",
+      "name": "산삼장어구이 앤 시장횟집",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "장어"
+      ],
+      "menuSummary": "산삼장어구이, 산삼배양주, 산삼동동주",
+      "address": "경남 밀양시 영남루2길 7 1층 (내일동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0367",
+      "regionCode": "gn-etc",
+      "name": "구강춘",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "잡채, 탕수육, 라조육",
+      "address": "경남 김해시 진영읍 진영로 150 1층 (진영읍 진영리)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0368",
+      "regionCode": "gn-etc",
+      "name": "경화춘",
+      "branchName": null,
+      "regionName": "경남 (통영·거제 외)",
+      "shortRegionName": "경남",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "탕수육, 짬뽕, A코스",
+      "address": "경남 김해시 분성로335번길 8-1 1층 (동상동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0039",
+      "regionCode": "busan-etc",
+      "name": "원조꼬리곰집",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "꼬리탕, 모듬수육, 한우꼬리탕",
+      "address": "부산 동래구 온천장로 52 (온천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0063",
+      "regionCode": "busan-etc",
+      "name": "남천낙지",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "낙지요리, 낙곱새, 낙지",
+      "address": "부산 수영구 남천동로9번길 31 1층 (남천동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0101",
+      "regionCode": "busan-etc",
+      "name": "신발원",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "분식·중식"
+      ],
+      "menuSummary": "만두, 고기만두, 군만두",
+      "address": "부산 동구 대영로243번길 62 1층 (초량동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0195",
+      "regionCode": "busan-etc",
+      "name": "경양식 달과6펜스",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "양식·일식"
+      ],
+      "menuSummary": "돈가스, 치즈까스, 고구마 치즈까스",
+      "address": "부산 동구 중앙대로226번길 7-2 1층 (초량동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0196",
+      "regionCode": "busan-etc",
+      "name": "궁중해물탕조씨집",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "해물탕, 백년해물탕, 백년A코스",
+      "address": "부산 남구 진남로 7-11 조씨집 (대연동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0197",
+      "regionCode": "busan-etc",
+      "name": "하동집",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "오리불고기, 오리한방백숙, 단호박오리숯불구이",
+      "address": "부산 금정구 오륜대로 260 (오륜동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0291",
+      "regionCode": "busan-etc",
+      "name": "태화육개장",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "국밥·탕"
+      ],
+      "menuSummary": "육개장, 수육, 양무침",
+      "address": "부산 부산진구 서면문화로 18 1층 (부전동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0319",
+      "regionCode": "busan-etc",
+      "name": "희망통닭",
+      "branchName": null,
+      "regionName": "부산 (해운대 외)",
+      "shortRegionName": "부산",
+      "categories": [
+        "닭요리"
+      ],
+      "menuSummary": "치킨, 반반통닭, 닭똥집",
+      "address": "부산 동래구 명륜로98번길 94 1층 (낙민동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
+      "hasVerifiedCoords": true
+    },
+    {
+      "id": "ysk-r-k0283",
+      "regionCode": "ulsan",
+      "name": "정자참가자미",
+      "branchName": null,
+      "regionName": "울산광역시",
+      "shortRegionName": "울산",
+      "categories": [
+        "해산물"
+      ],
+      "menuSummary": "참가자미회, 물회+매운탕, 참가자미미역국",
+      "address": "울산 남구 왕생로45번길 3 1층 (달동)",
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "hasGroupInfo": false,
       "hasVerifiedCoords": true
     }
   ]
