@@ -33,7 +33,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
       "stats": {
-        "totalRestaurants": 73,
+        "totalRestaurants": 75,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 43,
         "updatedAt": "2026-10-19"
@@ -105,10 +105,10 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jn-gwangyang.json",
       "stats": {
-        "totalRestaurants": 21,
+        "totalRestaurants": 22,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 20,
-        "updatedAt": "2026-10-18"
+        "updatedAt": "2026-10-19"
       }
     },
     {
@@ -248,10 +248,10 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
       "stats": {
-        "totalRestaurants": 5,
+        "totalRestaurants": 6,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
-        "updatedAt": "2026-10-18"
+        "updatedAt": "2026-10-19"
       }
     },
     {
@@ -285,7 +285,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "stats": {
-        "totalRestaurants": 12,
+        "totalRestaurants": 16,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -323,7 +323,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
       "stats": {
-        "totalRestaurants": 10,
+        "totalRestaurants": 12,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -360,7 +360,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "stats": {
-        "totalRestaurants": 10,
+        "totalRestaurants": 13,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -396,7 +396,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
       "stats": {
-        "totalRestaurants": 9,
+        "totalRestaurants": 13,
         "groupVerifiedCount": 7,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -432,7 +432,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
       "stats": {
-        "totalRestaurants": 9,
+        "totalRestaurants": 13,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -468,7 +468,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
       "stats": {
-        "totalRestaurants": 9,
+        "totalRestaurants": 18,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -507,7 +507,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
       "stats": {
-        "totalRestaurants": 12,
+        "totalRestaurants": 17,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -544,7 +544,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
       "stats": {
-        "totalRestaurants": 6,
+        "totalRestaurants": 7,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -580,7 +580,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "stats": {
-        "totalRestaurants": 11,
+        "totalRestaurants": 18,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -618,7 +618,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
       "stats": {
-        "totalRestaurants": 7,
+        "totalRestaurants": 10,
         "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -656,7 +656,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
       "stats": {
-        "totalRestaurants": 9,
+        "totalRestaurants": 12,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -692,7 +692,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
       "stats": {
-        "totalRestaurants": 10,
+        "totalRestaurants": 19,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -730,7 +730,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
       "stats": {
-        "totalRestaurants": 10,
+        "totalRestaurants": 16,
         "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -748,23 +748,23 @@
         "서울특별시"
       ],
       "center": {
-        "lat": 37.5509,
-        "lng": 126.9926,
+        "lat": 37.5585,
+        "lng": 126.9755,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 37.405,
-          "lng": 126.792
+          "lat": 37.393,
+          "lng": 126.758
         },
         "ne": {
-          "lat": 37.697,
+          "lat": 37.724,
           "lng": 127.193
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
       "stats": {
-        "totalRestaurants": 31,
+        "totalRestaurants": 133,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -783,7 +783,7 @@
       ],
       "center": {
         "lat": 37.4551,
-        "lng": 127.0673,
+        "lng": 127.0858,
         "zoomLevel": 11
       },
       "bounds": {
@@ -793,12 +793,12 @@
         },
         "ne": {
           "lat": 37.963,
-          "lng": 127.599
+          "lng": 127.636
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
       "stats": {
-        "totalRestaurants": 23,
+        "totalRestaurants": 61,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -816,8 +816,8 @@
         "인천광역시"
       ],
       "center": {
-        "lat": 37.4459,
-        "lng": 126.5616,
+        "lat": 37.4889,
+        "lng": 126.5802,
         "zoomLevel": 11
       },
       "bounds": {
@@ -826,13 +826,13 @@
           "lng": 126.373
         },
         "ne": {
-          "lat": 37.684,
-          "lng": 126.75
+          "lat": 37.77,
+          "lng": 126.787
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/incheon-etc.json",
       "stats": {
-        "totalRestaurants": 3,
+        "totalRestaurants": 13,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -851,13 +851,13 @@
       ],
       "center": {
         "lat": 37.7033,
-        "lng": 128.5355,
+        "lng": 128.2743,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
           "lat": 37.133,
-          "lng": 127.781
+          "lng": 127.259
         },
         "ne": {
           "lat": 38.274,
@@ -866,7 +866,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
       "stats": {
-        "totalRestaurants": 15,
+        "totalRestaurants": 32,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -884,23 +884,23 @@
         "충청북도"
       ],
       "center": {
-        "lat": 36.6651,
-        "lng": 127.7747,
+        "lat": 36.6559,
+        "lng": 127.9396,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 36.25,
+          "lat": 36.075,
           "lng": 127.319
         },
         "ne": {
-          "lat": 37.08,
-          "lng": 128.23
+          "lat": 37.237,
+          "lng": 128.56
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
       "stats": {
-        "totalRestaurants": 14,
+        "totalRestaurants": 38,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -918,23 +918,23 @@
         "충청남도"
       ],
       "center": {
-        "lat": 36.4774,
-        "lng": 126.9237,
+        "lat": 36.509,
+        "lng": 126.9239,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 36.104,
-          "lng": 126.498
+          "lat": 36.051,
+          "lng": 126.301
         },
         "ne": {
-          "lat": 36.851,
-          "lng": 127.349
+          "lat": 36.967,
+          "lng": 127.547
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
       "stats": {
-        "totalRestaurants": 11,
+        "totalRestaurants": 23,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -952,23 +952,23 @@
         "대전광역시"
       ],
       "center": {
-        "lat": 36.343,
-        "lng": 127.402,
+        "lat": 36.3286,
+        "lng": 127.4062,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 36.27,
-          "lng": 127.327
+          "lat": 36.241,
+          "lng": 127.301
         },
         "ne": {
           "lat": 36.416,
-          "lng": 127.477
+          "lng": 127.511
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
       "stats": {
-        "totalRestaurants": 5,
+        "totalRestaurants": 11,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -986,7 +986,7 @@
         "세종특별자치시"
       ],
       "center": {
-        "lat": 36.5418,
+        "lat": 36.5797,
         "lng": 127.2881,
         "zoomLevel": 11
       },
@@ -996,13 +996,13 @@
           "lng": 127.147
         },
         "ne": {
-          "lat": 36.65,
+          "lat": 36.726,
           "lng": 127.429
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/sejong.json",
       "stats": {
-        "totalRestaurants": 3,
+        "totalRestaurants": 6,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1020,23 +1020,23 @@
         "전북특별자치도"
       ],
       "center": {
-        "lat": 35.7003,
-        "lng": 127.0312,
+        "lat": 35.7031,
+        "lng": 127.1165,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 35.353,
+          "lat": 35.35,
           "lng": 126.578
         },
         "ne": {
-          "lat": 36.048,
-          "lng": 127.485
+          "lat": 36.056,
+          "lng": 127.655
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
       "stats": {
-        "totalRestaurants": 11,
+        "totalRestaurants": 30,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1054,23 +1054,23 @@
         "광주광역시"
       ],
       "center": {
-        "lat": 35.139,
-        "lng": 126.7949,
+        "lat": 35.164,
+        "lng": 126.8225,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
           "lat": 35.089,
-          "lng": 126.745
+          "lng": 126.741
         },
         "ne": {
-          "lat": 35.189,
-          "lng": 126.845
+          "lat": 35.239,
+          "lng": 126.904
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gj-etc.json",
       "stats": {
-        "totalRestaurants": 2,
+        "totalRestaurants": 7,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1104,7 +1104,7 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
       "stats": {
-        "totalRestaurants": 8,
+        "totalRestaurants": 12,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1122,23 +1122,23 @@
         "경상북도"
       ],
       "center": {
-        "lat": 36.2749,
-        "lng": 128.8089,
+        "lat": 36.348,
+        "lng": 128.7196,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
           "lat": 35.587,
-          "lng": 128.181
+          "lng": 127.967
         },
         "ne": {
-          "lat": 36.963,
-          "lng": 129.437
+          "lat": 37.109,
+          "lng": 129.472
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
       "stats": {
-        "totalRestaurants": 24,
+        "totalRestaurants": 38,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1156,7 +1156,7 @@
         "대구광역시"
       ],
       "center": {
-        "lat": 35.9225,
+        "lat": 35.8428,
         "lng": 128.5562,
         "zoomLevel": 11
       },
@@ -1166,13 +1166,13 @@
           "lng": 128.368
         },
         "ne": {
-          "lat": 36.2,
+          "lat": 36.041,
           "lng": 128.745
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
       "stats": {
-        "totalRestaurants": 19,
+        "totalRestaurants": 21,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1190,23 +1190,23 @@
         "경상남도"
       ],
       "center": {
-        "lat": 35.1164,
-        "lng": 128.5143,
+        "lat": 35.2124,
+        "lng": 128.4782,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
           "lat": 34.69,
-          "lng": 127.935
+          "lng": 127.863
         },
         "ne": {
-          "lat": 35.543,
+          "lat": 35.735,
           "lng": 129.094
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
       "stats": {
-        "totalRestaurants": 12,
+        "totalRestaurants": 27,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1224,23 +1224,23 @@
         "부산광역시"
       ],
       "center": {
-        "lat": 35.181,
-        "lng": 129.0774,
+        "lat": 35.1765,
+        "lng": 129.0594,
         "zoomLevel": 11
       },
       "bounds": {
         "sw": {
-          "lat": 35.065,
-          "lng": 128.989
+          "lat": 35.019,
+          "lng": 128.912
         },
         "ne": {
-          "lat": 35.297,
-          "lng": 129.166
+          "lat": 35.334,
+          "lng": 129.206
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
       "stats": {
-        "totalRestaurants": 8,
+        "totalRestaurants": 48,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
@@ -1258,23 +1258,23 @@
         "울산광역시"
       ],
       "center": {
-        "lat": 35.5373,
-        "lng": 129.3312,
-        "zoomLevel": 7
+        "lat": 35.5511,
+        "lng": 129.2265,
+        "zoomLevel": 11
       },
       "bounds": {
         "sw": {
           "lat": 35.487,
-          "lng": 129.281
+          "lng": 129.072
         },
         "ne": {
-          "lat": 35.587,
+          "lat": 35.615,
           "lng": 129.381
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/ulsan.json",
       "stats": {
-        "totalRestaurants": 1,
+        "totalRestaurants": 4,
         "groupVerifiedCount": 0,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"

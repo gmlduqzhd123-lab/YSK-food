@@ -2189,216 +2189,6 @@
       "businessStatus": "open"
     },
     {
-      "id": "ysk-r-k0299",
-      "legacyId": null,
-      "name": "효령매운탕",
-      "branchName": null,
-      "regionCode": "daegu-etc",
-      "legacyCity": "대구 군위군",
-      "address": "대구 군위군 효령면 치산효령로 2267-8 1층 (효령면 거매리)",
-      "categoryIds": [
-        "해산물"
-      ],
-      "menuSummary": "민물매운탕, 메기매운탕, 산천어매운탕",
-      "rawPriceText": null,
-      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
-      "phone": "054-383-9088",
-      "image": null,
-      "mapLinks": {
-        "kakaoPlaceUrl": "https://place.map.kakao.com/9618974",
-        "kakaoPlaceId": "9618974"
-      },
-      "location": {
-        "lat": 36.150356,
-        "lng": 128.594879,
-        "status": "verified",
-        "checkedAt": "2026-10-19"
-      },
-      "groupProfile": {
-        "availability": "unknown",
-        "totalSeats": null,
-        "simultaneousCapacity": null,
-        "mealWaves": {
-          "availability": "unknown",
-          "maxWaves": null,
-          "turnaroundMinutes": null,
-          "minMealMinutes": null,
-          "servingMinutes": null
-        },
-        "room": {
-          "privateRoom": "unknown",
-          "roomFeeKRW": null
-        },
-        "preOrder": {
-          "required": "unknown",
-          "leadTimeNote": null
-        },
-        "earlyBreakfast": {
-          "availability": "unknown",
-          "earliestTime": null,
-          "note": null
-        },
-        "lunchbox": {
-          "availability": "unknown",
-          "orderDeadline": null,
-          "pickupTimeWindow": null,
-          "pickupLocation": null,
-          "minOrderQty": null,
-          "unitPriceKRW": null,
-          "pickupMethod": null,
-          "handlingNotes": null
-        },
-        "parking": {
-          "busEntry": "unknown",
-          "busParkingSpaces": null,
-          "dropoff": "unknown",
-          "dropoffLocation": null,
-          "walkingDistanceMeters": null,
-          "walkingNotes": null
-        },
-        "accessibility": {
-          "stairs": null,
-          "entryNote": null,
-          "restroom": null
-        },
-        "checkedAt": null,
-        "evidenceRefs": [
-          "src-centuryshop-2022",
-          "src-kakao-check-20261019"
-        ]
-      },
-      "menus": [
-        {
-          "id": "ysk-r-k0299-menu-1",
-          "name": "민물매운탕",
-          "priceKRW": null,
-          "priceBasis": "unknown",
-          "servingUnitText": null,
-          "minOrder": null,
-          "studentPortion": "unknown",
-          "spiceAdjustment": "unknown",
-          "extraRice": "unknown",
-          "altMenuInquiry": "unknown",
-          "ingredientResponse": {
-            "status": "unknown",
-            "answerText": null,
-            "cookingProcessNote": null,
-            "checkedAt": null
-          },
-          "checkedAt": null,
-          "evidenceRefs": []
-        },
-        {
-          "id": "ysk-r-k0299-menu-2",
-          "name": "메기매운탕",
-          "priceKRW": null,
-          "priceBasis": "unknown",
-          "servingUnitText": null,
-          "minOrder": null,
-          "studentPortion": "unknown",
-          "spiceAdjustment": "unknown",
-          "extraRice": "unknown",
-          "altMenuInquiry": "unknown",
-          "ingredientResponse": {
-            "status": "unknown",
-            "answerText": null,
-            "cookingProcessNote": null,
-            "checkedAt": null
-          },
-          "checkedAt": null,
-          "evidenceRefs": []
-        },
-        {
-          "id": "ysk-r-k0299-menu-3",
-          "name": "산천어매운탕",
-          "priceKRW": null,
-          "priceBasis": "unknown",
-          "servingUnitText": null,
-          "minOrder": null,
-          "studentPortion": "unknown",
-          "spiceAdjustment": "unknown",
-          "extraRice": "unknown",
-          "altMenuInquiry": "unknown",
-          "ingredientResponse": {
-            "status": "unknown",
-            "answerText": null,
-            "cookingProcessNote": null,
-            "checkedAt": null
-          },
-          "checkedAt": null,
-          "evidenceRefs": []
-        }
-      ],
-      "openingHours": {
-        "timezone": "Asia/Seoul",
-        "status": "legacy_parsed",
-        "is24Hours": false,
-        "weeklyIntervals": [
-          {
-            "day": 2,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          },
-          {
-            "day": 3,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          },
-          {
-            "day": 4,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          },
-          {
-            "day": 5,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          },
-          {
-            "day": 6,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          },
-          {
-            "day": 7,
-            "startTime": "11:00",
-            "endTime": "20:00",
-            "endDayOffset": 0,
-            "lastOrderTime": null,
-            "lastOrderDayOffset": null
-          }
-        ],
-        "dateOverrides": [],
-        "groupMealWindows": [],
-        "rawLegacyText": "11:00-20:00",
-        "rawClosedText": "월",
-        "regularClosedDays": [
-          1
-        ],
-        "irregularClosedNote": null,
-        "evidenceRefs": [
-          "src-kakao-check-20261019"
-        ]
-      },
-      "officialDesignations": [],
-      "businessStatus": "open"
-    },
-    {
       "id": "ysk-r-k0302",
       "legacyId": null,
       "name": "갈비둥지로",
@@ -4113,6 +3903,746 @@
       },
       "officialDesignations": [],
       "businessStatus": "open"
+    },
+    {
+      "id": "ysk-r-k0411",
+      "legacyId": null,
+      "name": "버들식당",
+      "branchName": null,
+      "regionCode": "daegu-etc",
+      "legacyCity": "대구 달서구",
+      "address": "대구 달서구 두류공원로28길 8 1층 (성당동)",
+      "categoryIds": [
+        "국밥·탕"
+      ],
+      "menuSummary": "곱창전골, 환상의맛, 대창전골",
+      "rawPriceText": null,
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "phone": "053-656-1991",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://place.map.kakao.com/7885718",
+        "kakaoPlaceId": "7885718"
+      },
+      "location": {
+        "lat": 35.847922,
+        "lng": 128.566782,
+        "status": "verified",
+        "checkedAt": "2026-10-19"
+      },
+      "groupProfile": {
+        "availability": "unknown",
+        "totalSeats": null,
+        "simultaneousCapacity": null,
+        "mealWaves": {
+          "availability": "unknown",
+          "maxWaves": null,
+          "turnaroundMinutes": null,
+          "minMealMinutes": null,
+          "servingMinutes": null
+        },
+        "room": {
+          "privateRoom": "unknown",
+          "roomFeeKRW": null
+        },
+        "preOrder": {
+          "required": "unknown",
+          "leadTimeNote": null
+        },
+        "earlyBreakfast": {
+          "availability": "unknown",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "unknown",
+          "orderDeadline": null,
+          "pickupTimeWindow": null,
+          "pickupLocation": null,
+          "minOrderQty": null,
+          "unitPriceKRW": null,
+          "pickupMethod": null,
+          "handlingNotes": null
+        },
+        "parking": {
+          "busEntry": "unknown",
+          "busParkingSpaces": null,
+          "dropoff": "unknown",
+          "dropoffLocation": null,
+          "walkingDistanceMeters": null,
+          "walkingNotes": null
+        },
+        "accessibility": {
+          "stairs": null,
+          "entryNote": null,
+          "restroom": null
+        },
+        "checkedAt": null,
+        "evidenceRefs": [
+          "src-centuryshop-2022",
+          "src-kakao-check-20261019"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-k0411-menu-1",
+          "name": "곱창전골",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0411-menu-2",
+          "name": "환상의맛",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0411-menu-3",
+          "name": "대창전골",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        }
+      ],
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "legacy_parsed",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 1,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 2,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 2,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 3,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 3,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 4,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 4,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 5,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 5,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 6,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 6,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 7,
+            "startTime": "11:30",
+            "endTime": "15:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 7,
+            "startTime": "17:00",
+            "endTime": "22:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "11:30-15:00, 17:00-22:00",
+        "rawClosedText": "연중무휴",
+        "regularClosedDays": [],
+        "irregularClosedNote": null,
+        "evidenceRefs": [
+          "src-kakao-check-20261019"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open"
+    },
+    {
+      "id": "ysk-r-k0620",
+      "legacyId": null,
+      "name": "정화네하우스",
+      "branchName": null,
+      "regionCode": "daegu-etc",
+      "legacyCity": "대구 북구",
+      "address": "대구 북구 칠성남로 216 1층 (칠성동1가)",
+      "categoryIds": [
+        "고기"
+      ],
+      "menuSummary": "석쇠불고기, 석쇠돼지불고기, 석쇠고추장불고기",
+      "rawPriceText": null,
+      "note": "백년가게(2022) 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "phone": "053-423-2503",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://place.map.kakao.com/15699268",
+        "kakaoPlaceId": "15699268"
+      },
+      "location": {
+        "lat": 35.87622,
+        "lng": 128.603794,
+        "status": "verified",
+        "checkedAt": "2026-10-19"
+      },
+      "groupProfile": {
+        "availability": "unknown",
+        "totalSeats": null,
+        "simultaneousCapacity": null,
+        "mealWaves": {
+          "availability": "unknown",
+          "maxWaves": null,
+          "turnaroundMinutes": null,
+          "minMealMinutes": null,
+          "servingMinutes": null
+        },
+        "room": {
+          "privateRoom": "unknown",
+          "roomFeeKRW": null
+        },
+        "preOrder": {
+          "required": "unknown",
+          "leadTimeNote": null
+        },
+        "earlyBreakfast": {
+          "availability": "unknown",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "unknown",
+          "orderDeadline": null,
+          "pickupTimeWindow": null,
+          "pickupLocation": null,
+          "minOrderQty": null,
+          "unitPriceKRW": null,
+          "pickupMethod": null,
+          "handlingNotes": null
+        },
+        "parking": {
+          "busEntry": "unknown",
+          "busParkingSpaces": null,
+          "dropoff": "unknown",
+          "dropoffLocation": null,
+          "walkingDistanceMeters": null,
+          "walkingNotes": null
+        },
+        "accessibility": {
+          "stairs": null,
+          "entryNote": null,
+          "restroom": null
+        },
+        "checkedAt": null,
+        "evidenceRefs": [
+          "src-centuryshop-2022",
+          "src-kakao-check-20261019"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-k0620-menu-1",
+          "name": "석쇠불고기",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0620-menu-2",
+          "name": "석쇠돼지불고기",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0620-menu-3",
+          "name": "석쇠고추장불고기",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        }
+      ],
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "legacy_parsed",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 2,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 3,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 4,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 5,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 6,
+            "startTime": "10:00",
+            "endTime": "21:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "10:00-21:00",
+        "rawClosedText": "일",
+        "regularClosedDays": [
+          7
+        ],
+        "irregularClosedNote": null,
+        "evidenceRefs": [
+          "src-kakao-check-20261019"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open"
+    },
+    {
+      "id": "ysk-r-k0783",
+      "legacyId": null,
+      "name": "비스트로 카라사",
+      "branchName": null,
+      "regionCode": "daegu-etc",
+      "legacyCity": "대구 북구",
+      "address": "대구 북구 학정로110길 28 1층 (학정동)",
+      "categoryIds": [
+        "양식·일식"
+      ],
+      "menuSummary": "돌문어 파스타, 시금치새우크림파스타, 포터하우스 스테이크",
+      "rawPriceText": null,
+      "note": "블루리본 서베이 수록 · 카카오맵 영업 확인(2026-10-19)",
+      "phone": "0507-1383-1995",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://place.map.kakao.com/1399148709",
+        "kakaoPlaceId": "1399148709"
+      },
+      "location": {
+        "lat": 35.952392,
+        "lng": 128.567433,
+        "status": "verified",
+        "checkedAt": "2026-10-19"
+      },
+      "groupProfile": {
+        "availability": "unknown",
+        "totalSeats": null,
+        "simultaneousCapacity": null,
+        "mealWaves": {
+          "availability": "unknown",
+          "maxWaves": null,
+          "turnaroundMinutes": null,
+          "minMealMinutes": null,
+          "servingMinutes": null
+        },
+        "room": {
+          "privateRoom": "unknown",
+          "roomFeeKRW": null
+        },
+        "preOrder": {
+          "required": "unknown",
+          "leadTimeNote": null
+        },
+        "earlyBreakfast": {
+          "availability": "unknown",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "unknown",
+          "orderDeadline": null,
+          "pickupTimeWindow": null,
+          "pickupLocation": null,
+          "minOrderQty": null,
+          "unitPriceKRW": null,
+          "pickupMethod": null,
+          "handlingNotes": null
+        },
+        "parking": {
+          "busEntry": "unknown",
+          "busParkingSpaces": null,
+          "dropoff": "unknown",
+          "dropoffLocation": null,
+          "walkingDistanceMeters": null,
+          "walkingNotes": null
+        },
+        "accessibility": {
+          "stairs": null,
+          "entryNote": null,
+          "restroom": null
+        },
+        "checkedAt": null,
+        "evidenceRefs": [
+          "src-blueribbon-list",
+          "src-kakao-check-20261019"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-k0783-menu-1",
+          "name": "돌문어 파스타",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0783-menu-2",
+          "name": "시금치새우크림파스타",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        },
+        {
+          "id": "ysk-r-k0783-menu-3",
+          "name": "포터하우스 스테이크",
+          "priceKRW": null,
+          "priceBasis": "unknown",
+          "servingUnitText": null,
+          "minOrder": null,
+          "studentPortion": "unknown",
+          "spiceAdjustment": "unknown",
+          "extraRice": "unknown",
+          "altMenuInquiry": "unknown",
+          "ingredientResponse": {
+            "status": "unknown",
+            "answerText": null,
+            "cookingProcessNote": null,
+            "checkedAt": null
+          },
+          "checkedAt": null,
+          "evidenceRefs": []
+        }
+      ],
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "legacy_parsed",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 2,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 2,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 3,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 3,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 4,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 4,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 5,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 5,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 6,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 6,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 7,
+            "startTime": "12:00",
+            "endTime": "14:00",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          },
+          {
+            "day": 7,
+            "startTime": "17:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": null,
+            "lastOrderDayOffset": null
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "12:00-14:00, 17:30-20:30",
+        "rawClosedText": "월",
+        "regularClosedDays": [
+          1
+        ],
+        "irregularClosedNote": null,
+        "evidenceRefs": [
+          "src-kakao-check-20261019"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open"
     }
   ],
   "venues": [],
@@ -4211,6 +4741,21 @@
       ],
       "usageTerms": "식당 이름·주소 목록 (현재 영업·학교 이용·학생 단체 적합성 증빙 아님)",
       "attribution": "2022 백년가게 공개 명부"
+    },
+    {
+      "id": "src-blueribbon-list",
+      "kind": "public_list",
+      "url": "https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/guide_blue.csv",
+      "obtainedAt": "2026-10-19",
+      "checkedAt": "2026-10-19",
+      "factScope": [
+        {
+          "entityId": "ysk-r-k0783",
+          "fieldPath": "/name"
+        }
+      ],
+      "usageTerms": "식당 이름·주소 목록 (현재 영업·학교 이용·학생 단체 적합성 증빙 아님)",
+      "attribution": "블루리본 명단 (2차 공개자료)"
     }
   ]
 }
