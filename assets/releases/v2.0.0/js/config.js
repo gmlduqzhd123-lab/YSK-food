@@ -22,41 +22,141 @@ export const MAX_COMPARE_COUNT = 3;
 export const MAX_SHARE_URL_LENGTH = 2000;
 export const STALE_DAYS_THRESHOLD = 180;
 
-export const DEFAULT_CENTER = { lat: 34.8500, lng: 127.6000 };
-export const DEFAULT_LEVEL = 9;
+export const DEFAULT_CENTER = { lat: 36.2000, lng: 127.8000 };
+export const DEFAULT_LEVEL = 12;
 export const SINGLE_PLACE_LEVEL = 5;
 export const MY_POS_LEVEL = 6;
 export const CLUSTER_MIN_LEVEL = 6;
 
 export const REGION_COLORS = {
+  'seoul-jongno': '#2563eb',
+  'gyeonggi-suwon': '#3b82f6',
+  'incheon-junggu': '#0284c7',
+  'gw-gangneung': '#0d9488',
+  'gw-chuncheon': '#14b8a6',
+  'daejeon-yuseong': '#7c3aed',
+  'cn-gongju': '#8b5cf6',
+  'gb-gyeongju': '#d97706',
+  'daegu-junggu': '#ea580c',
+  'busan-haeundae': '#0891b2',
+  'gn-tongyeong': '#06b6d4',
+  'jb-jeonju': '#16a34a',
+  'gj-donggu': '#15803d',
+  'jn-mokpo': '#2563eb',
+  'jn-goheung': '#059669',
+  'jn-boseong': '#65a30d',
+  'jj-jeju': '#f97316',
   'jn-yeosu': '#1e88e5',
   'jn-suncheon': '#43a047',
   'jn-gwangyang': '#fb8c00',
+  '서울 종로': '#2563eb',
+  '수원·용인': '#3b82f6',
+  '인천': '#0284c7',
+  '강릉': '#0d9488',
+  '춘천': '#14b8a6',
+  '대전 유성': '#7c3aed',
+  '공주·부여': '#8b5cf6',
+  '경주': '#d97706',
+  '대구': '#ea580c',
+  '부산 해운대': '#0891b2',
+  '통영·거제': '#06b6d4',
+  '전주': '#16a34a',
+  '광주 동구': '#15803d',
+  '목포': '#2563eb',
+  '고흥군': '#059669',
+  '제주': '#f97316',
   '여수': '#1e88e5',
   '순천': '#43a047',
   '광양': '#fb8c00'
 };
 export const DEFAULT_MARKER_COLOR = '#475569';
 
+export const REGION_GROUPS = {
+  nationwide: {
+    code: 'nationwide',
+    label: '전국 전체 (초등 체험학습·수학여행·선수단)',
+    shortLabel: '전국 전체',
+    regionCodes: null, // 모든 등록 지역
+    center: { lat: 36.25, lng: 127.85, zoomLevel: 12 },
+    bounds: { sw: { lat: 33.35, lng: 126.15 }, ne: { lat: 37.95, lng: 129.50 } }
+  },
+  'seoul-metro': {
+    code: 'seoul-metro',
+    label: '서울·수도권 (서울·수원·용인·인천)',
+    shortLabel: '서울·수도권',
+    regionCodes: ['seoul-jongno', 'gyeonggi-suwon', 'incheon-junggu'],
+    center: { lat: 37.45, lng: 126.90, zoomLevel: 9 },
+    bounds: { sw: { lat: 37.20, lng: 126.58 }, ne: { lat: 37.63, lng: 127.22 } }
+  },
+  'gw-all': {
+    code: 'gw-all',
+    label: '강원권 (강릉·춘천)',
+    shortLabel: '강원 (강릉·춘천)',
+    regionCodes: ['gw-gangneung', 'gw-chuncheon'],
+    center: { lat: 37.82, lng: 128.30, zoomLevel: 10 },
+    bounds: { sw: { lat: 37.60, lng: 127.65 }, ne: { lat: 37.95, lng: 129.05 } }
+  },
+  'cc-all': {
+    code: 'cc-all',
+    label: '대전·충청권 (대전 과학관·공주·부여)',
+    shortLabel: '대전·충청',
+    regionCodes: ['daejeon-yuseong', 'cn-gongju'],
+    center: { lat: 36.41, lng: 127.25, zoomLevel: 9 },
+    bounds: { sw: { lat: 36.26, lng: 126.88 }, ne: { lat: 36.52, lng: 127.42 } }
+  },
+  'gb-all': {
+    code: 'gb-all',
+    label: '대구·경북권 (경주·대구)',
+    shortLabel: '경주·대구',
+    regionCodes: ['gb-gyeongju', 'daegu-junggu'],
+    center: { lat: 35.85, lng: 128.91, zoomLevel: 9 },
+    bounds: { sw: { lat: 35.70, lng: 128.54 }, ne: { lat: 36.05, lng: 129.50 } }
+  },
+  'pk-all': {
+    code: 'pk-all',
+    label: '부산·경남권 (부산·통영·거제)',
+    shortLabel: '부산·통영',
+    regionCodes: ['busan-haeundae', 'gn-tongyeong'],
+    center: { lat: 35.01, lng: 128.80, zoomLevel: 9 },
+    bounds: { sw: { lat: 34.78, lng: 128.36 }, ne: { lat: 35.22, lng: 129.22 } }
+  },
+  'honam-west': {
+    code: 'honam-west',
+    label: '전북·광주·목포·고흥 (전주·광주·목포·고흥)',
+    shortLabel: '전주·광주·목포',
+    regionCodes: ['jb-jeonju', 'gj-donggu', 'jn-mokpo', 'jn-goheung'],
+    center: { lat: 35.15, lng: 126.95, zoomLevel: 10 },
+    bounds: { sw: { lat: 34.40, lng: 126.32 }, ne: { lat: 35.90, lng: 127.55 } }
+  },
+  all: {
+    code: 'all',
+    label: '전남 동부 (여수·순천·광양)',
+    shortLabel: '여수·순천·광양',
+    regionCodes: ['jn-yeosu', 'jn-suncheon', 'jn-gwangyang'],
+    center: { lat: 34.85, lng: 127.60, zoomLevel: 9 },
+    bounds: { sw: { lat: 34.60, lng: 127.30 }, ne: { lat: 35.12, lng: 127.82 } }
+  }
+};
+
 export const APP_MODES = [
   { id: 'general', label: '일반 맛집', shortLabel: '일반', desc: '전국 지역·메뉴별 맛집과 영업시간 탐색' },
-  { id: 'school', label: '학교 단체식사', shortLabel: '학교행사', desc: '체험학습·수련회·수학여행 인원·예산·버스 조건 비교' },
-  { id: 'athlete', label: '선수단 식사', shortLabel: '선수단', desc: '대회·전지훈련 조식·도시락·분산 식사·일정 변경 관리' }
+  { id: 'school', label: '학교 단체식사', shortLabel: '학교행사', desc: '초등학교 선생님·초등학생 현장체험학습·수학여행 맞춤 식사 (술집·카페 자동 제외)' },
+  { id: 'athlete', label: '선수단 식사', shortLabel: '선수단', desc: '초등 스포츠클럽·전국소년체전·전지훈련 영양 식사 (술집·카페 자동 제외)' }
 ];
 
 export const EVENT_PRESETS = {
   field_trip: {
     id: 'field_trip',
-    label: '현장체험학습',
+    label: '현장체험학습 (초등)',
     mode: 'school',
     seatingPolicy: 'simultaneous_required',
     providerType: 'restaurant',
     highlightFields: ['simultaneousCapacity', 'busEntry', 'busParkingSpaces', 'servingMinutes'],
-    guideText: '동시 식사 가능 인원, 대형버스 진입·주차·승하차 위치, 배식 소요시간을 우선 확인합니다.'
+    guideText: '초등학생·선생님 동시 착석 인원, 대형버스 승하차 위치, 안 매운 어린이 맞춤 메뉴(돈가스·불고기·떡갈비·백반)를 우선 추천합니다.'
   },
   retreat: {
     id: 'retreat',
-    label: '수련회',
+    label: '수련활동',
     mode: 'school',
     seatingPolicy: 'simultaneous_required',
     providerType: 'lodging',
@@ -65,12 +165,12 @@ export const EVENT_PRESETS = {
   },
   school_trip: {
     id: 'school_trip',
-    label: '수학여행',
+    label: '수학여행 (초등)',
     mode: 'school',
     seatingPolicy: 'simultaneous_required',
     providerType: 'restaurant',
     highlightFields: ['simultaneousCapacity', 'mealWaves', 'busParkingSpaces', 'preOrder'],
-    guideText: '일정별 방문지와 숙소 동선에 맞춰 외부 식당 및 숙소 식사를 함께 구성합니다.'
+    guideText: '경주·서울·수원·강릉·전주·제주 등 수학여행지별 대형버스 주차와 초등학생 맞춤 반상·돈가스·떡갈비 식당을 우선 추천합니다.'
   },
   school_sports_club: {
     id: 'school_sports_club',
@@ -79,7 +179,25 @@ export const EVENT_PRESETS = {
     seatingPolicy: 'waves_allowed',
     providerType: 'restaurant',
     highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
-    guideText: '경기장 기준 거리, 경기 시간 변경 시 재확인, 도시락 수령 및 회차별 분산 식사를 지원합니다.'
+    guideText: '경기장 기준 거리, 경기 시간 변경 시 재확인, 도시락 수령 및 선수단 영양 식사(불고기·갈비탕·설렁탕·돈가스)를 우선 추천합니다.'
+  },
+  national_youth_sports: {
+    id: 'national_youth_sports',
+    label: '전국소년체육대회',
+    mode: 'athlete',
+    seatingPolicy: 'waves_allowed',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
+    guideText: '초등부·중등부 선수단 경기장 인근의 이른 아침식사(조식)·도시락 및 단백질 보충 식사(갈비탕·불고기·삼계탕·떡갈비)를 우선 추천합니다.'
+  },
+  national_sports_festival: {
+    id: 'national_sports_festival',
+    label: '전국체육대회',
+    mode: 'athlete',
+    seatingPolicy: 'waves_allowed',
+    providerType: 'restaurant',
+    highlightFields: ['earlyBreakfast', 'lunchbox', 'mealWaves', 'venueDistance'],
+    guideText: '개최지 경기장 기준점 설정과 이른 조식·도시락·선수단 회차 배정을 지원합니다.'
   },
   national_sports: {
     id: 'national_sports',
@@ -101,7 +219,7 @@ export const EVENT_PRESETS = {
   },
   training_camp: {
     id: 'training_camp',
-    label: '전지훈련',
+    label: '수련활동·전지훈련',
     mode: 'athlete',
     seatingPolicy: 'simultaneous_required',
     providerType: 'restaurant',

@@ -1,5 +1,5 @@
 // 지역·색인 로드, 버전·체크섬 묶음 검증, 경합 방지(AC07), 구버전 폴백(AC39), ID 상태 구분(AC40)
-import { APP_BASE, resolveAppUrl } from '../config.js';
+import { APP_BASE, REGION_GROUPS, resolveAppUrl } from '../config.js';
 import {
   validateManifest,
   validateRegionsFile,
@@ -216,6 +216,17 @@ export class DatasetRepository {
   }
 
   getRegionMeta(regionCode) {
+    if (REGION_GROUPS[regionCode]) {
+      const g = REGION_GROUPS[regionCode];
+      return {
+        regionCode: g.code,
+        sidoName: '',
+        name: g.label,
+        shortName: g.shortLabel,
+        center: g.center,
+        bounds: g.bounds
+      };
+    }
     return this.getRegionsList().find(r => r.regionCode === regionCode) || null;
   }
 
@@ -263,7 +274,7 @@ export class DatasetRepository {
   }
 
   /**
-   * 사용자가 선택한 지역(또는 'all' 기본 여순광 묶음)을 로드한다.
+   * 사용자가 선택한 지역('nationwide' 전국 전체, 권역 묶음, 'all' 여순광 묶음, 또는 개별 시·군·구 코드)을 로드한다.
    * - 요청 경합(AC07) 발생 시 늦게 도착한 이전 요청은 폐기한다.
    * - 선택 지역 JSON 실패 시 다른 지역 캐시를 현재 지역으로 표시하지 않는다(AC08).
    * - 새 묶음의 지역 파일이 실패했을 때 같은 지역을 포함한 이전 완전한 묶음이 있으면 묶음 전체를 이전 버전으로 일관되게 전환한다(AC39).
@@ -289,17 +300,20 @@ export class DatasetRepository {
       bundle = coreRes.bundle;
     }
 
-    // 'all'(여순광 기본 보기) 또는 개별 시·군·구 코드 처리
-    const targetCodes = regionCode === 'all'
-      ? ['jn-yeosu', 'jn-suncheon', 'jn-gwangyang']
-      : [regionCode];
+    let targetCodes;
+    if (regionCode === 'nationwide') {
+      targetCodes = (bundle.regionsFile.regions || []).map(r => r.regionCode);
+    } else if (REGION_GROUPS[regionCode]?.regionCodes) {
+      targetCodes = REGION_GROUPS[regionCode].regionCodes;
+    } else {
+      targetCodes = [regionCode];
+    }
 
     try {
-      const loadedRegions = [];
-      for (const code of targetCodes) {
-        const res = await this.fetchRegionDatasetForBundle(bundle, code);
-        loadedRegions.push(res.regionData);
-      }
+      const loadedResults = await Promise.all(
+        targetCodes.map(code => this.fetchRegionDatasetForBundle(bundle, code))
+      );
+      const loadedRegions = loadedResults.map(res => res.regionData);
 
       if (requestSeq !== this.activeRegionSeq) {
         return { stale: true, regionCode };

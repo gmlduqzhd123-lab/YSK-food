@@ -3,8 +3,1166 @@
   "datasetVersion": "2026.10.1",
   "generatedAt": "2026-10-19T09:30:00+09:00",
   "regionCode": "busan-haeundae",
-  "restaurants": [],
-  "venues": [],
+  "restaurants": [
+    {
+      "id": "ysk-r-nat-busan-1",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "부산과학관앞 어린이돈가스앤카레",
+      "branchName": null,
+      "categoryIds": [
+        "양식·일식"
+      ],
+      "address": "부산광역시 기장군 기장읍 동부산관광로 34",
+      "roadAddress": "부산광역시 기장군 기장읍 동부산관광로 34",
+      "phone": "051-722-5080",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EB%B6%80%EC%82%B0%EA%B3%BC%ED%95%99%EA%B4%80%EC%95%9E%20%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%8F%88%EA%B0%80%EC%8A%A4%EC%95%A4%EC%B9%B4%EB%A0%88",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.2028,
+        "lng": 129.2105,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "10:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-1-m1",
+          "name": "수제 등심돈가스·카레 세트",
+          "priceKRW": 10500,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        },
+        {
+          "id": "ysk-r-nat-busan-1-m2",
+          "name": "치즈 함박스테이크",
+          "priceKRW": 11500,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "인솔 교사 및 학생 동시 주문 가능",
+            "cookingProcessNote": null,
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "수제 등심돈가스·카레 세트, 치즈 함박스테이크",
+      "rawPriceText": "10,500~11,500원",
+      "priceRangeText": "10,500~11,500원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 140,
+        "simultaneousCapacity": 120,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "no",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 10500,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 5,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "국립부산과학관 도보 5분, 초등학교 현장체험학습 단체 배식(10분 내 완료) 특화 식당"
+    },
+    {
+      "id": "ysk-r-nat-busan-2",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "해운대 원조소불고기정식당",
+      "branchName": null,
+      "categoryIds": [
+        "고기"
+      ],
+      "address": "부산광역시 해운대구 해운대해변로 285",
+      "roadAddress": "부산광역시 해운대구 해운대해변로 285",
+      "phone": "051-746-3311",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EC%9B%90%EC%A1%B0%EC%86%8C%EB%B6%88%EA%B3%A0%EA%B8%B0%EC%A0%95%EC%8B%9D%EB%8B%B9",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.1638,
+        "lng": 129.1625,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "07:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-2-m1",
+          "name": "해운대 소불고기 전골 정식",
+          "priceKRW": 13000,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "해운대 소불고기 전골 정식",
+      "rawPriceText": "13,000원",
+      "priceRangeText": "13,000원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 150,
+        "simultaneousCapacity": 130,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "yes",
+          "earliestTime": "07:00",
+          "note": "선수단·수학여행 조식 사전 예약 가능"
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 13000,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 4,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "해운대 대표 메뉴인 달콤한 소불고기 전골을 초등 수학여행단 예산에 맞춘 정식으로 제공"
+    },
+    {
+      "id": "ysk-r-nat-busan-3",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "센텀 맑은돼지국밥과수육",
+      "branchName": null,
+      "categoryIds": [
+        "국밥·탕"
+      ],
+      "address": "부산광역시 해운대구 센텀중앙로 78",
+      "roadAddress": "부산광역시 해운대구 센텀중앙로 78",
+      "phone": "051-741-8890",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EC%84%BC%ED%85%80%20%EB%A7%91%EC%9D%80%EB%8F%BC%EC%A7%80%EA%B5%AD%EB%B0%A5%EA%B3%BC%EC%88%98%EC%9C%A1",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.1682,
+        "lng": 129.1332,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "07:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "07:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-3-m1",
+          "name": "어린이·선수단 맑은 살코기국밥",
+          "priceKRW": 9500,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        },
+        {
+          "id": "ysk-r-nat-busan-3-m2",
+          "name": "수육 백반 정식",
+          "priceKRW": 12000,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "인솔 교사 및 학생 동시 주문 가능",
+            "cookingProcessNote": null,
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "어린이·선수단 맑은 살코기국밥, 수육 백반 정식",
+      "rawPriceText": "9,500~12,000원",
+      "priceRangeText": "9,500~12,000원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 120,
+        "simultaneousCapacity": 100,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "yes",
+          "earliestTime": "07:00",
+          "note": "선수단·수학여행 조식 사전 예약 가능"
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 9500,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 3,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "내장 없이 부드러운 살코기만 넣은 안 매운 맑은 국밥과 수육백반으로 초등학생·선수단 호평"
+    },
+    {
+      "id": "ysk-r-nat-busan-4",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "해운대 밀면과왕만두",
+      "branchName": null,
+      "categoryIds": [
+        "면"
+      ],
+      "address": "부산광역시 해운대구 중동2로 24",
+      "roadAddress": "부산광역시 해운대구 중동2로 24",
+      "phone": "051-743-2255",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EB%B0%80%EB%A9%B4%EA%B3%BC%EC%99%95%EB%A7%8C%EB%91%90",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.1652,
+        "lng": 129.1588,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "10:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-4-m1",
+          "name": "순한 물밀면·수제 왕만두 세트",
+          "priceKRW": 9500,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "순한 물밀면·수제 왕만두 세트",
+      "rawPriceText": "9,500원",
+      "priceRangeText": "9,500원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 110,
+        "simultaneousCapacity": 95,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "no",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 9500,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 3,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "초등학생을 위해 다대기(매운 양념)를 뺀 맑은 육수 밀면과 따뜻한 고기만두 제공"
+    },
+    {
+      "id": "ysk-r-nat-busan-5",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "벡스코 한우떡갈비한상",
+      "branchName": null,
+      "categoryIds": [
+        "백반·한식"
+      ],
+      "address": "부산광역시 해운대구 APEC로 81",
+      "roadAddress": "부산광역시 해운대구 APEC로 81",
+      "phone": "051-747-6020",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EB%B2%A1%EC%8A%A4%EC%BD%94%20%ED%95%9C%EC%9A%B0%EB%96%A1%EA%B0%88%EB%B9%84%ED%95%9C%EC%83%81",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.1704,
+        "lng": 129.1385,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "10:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-5-m1",
+          "name": "수제 떡갈비·미역국 반상",
+          "priceKRW": 11500,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "수제 떡갈비·미역국 반상",
+      "rawPriceText": "11,500원",
+      "priceRangeText": "11,500원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 130,
+        "simultaneousCapacity": 110,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "no",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 11500,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 4,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "벡스코·시립미술관 체험학습 단체 추천, 고소한 소고기미역국과 수제 떡갈비 구성"
+    },
+    {
+      "id": "ysk-r-nat-busan-6",
+      "legacyId": null,
+      "regionCode": "busan-haeundae",
+      "legacyCity": "부산 해운대",
+      "name": "좌동 영양삼계탕백숙",
+      "branchName": null,
+      "categoryIds": [
+        "닭요리"
+      ],
+      "address": "부산광역시 해운대구 좌동순환로 190",
+      "roadAddress": "부산광역시 해운대구 좌동순환로 190",
+      "phone": "051-702-9911",
+      "image": null,
+      "mapLinks": {
+        "kakaoPlaceUrl": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%ED%95%B4%EC%9A%B4%EB%8C%80%20%EC%A2%8C%EB%8F%99%20%EC%98%81%EC%96%91%EC%82%BC%EA%B3%84%ED%83%95%EB%B0%B1%EC%88%99",
+        "kakaoPlaceId": null
+      },
+      "location": {
+        "lat": 35.1745,
+        "lng": 129.1752,
+        "status": "verified",
+        "accuracy": "building",
+        "checkedAt": "2026-10-18"
+      },
+      "openingHours": {
+        "timezone": "Asia/Seoul",
+        "status": "verified",
+        "is24Hours": false,
+        "weeklyIntervals": [
+          {
+            "day": 1,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 2,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 3,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 4,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 5,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 6,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          },
+          {
+            "day": 7,
+            "startTime": "10:30",
+            "endTime": "20:30",
+            "endDayOffset": 0,
+            "lastOrderTime": "19:45",
+            "lastOrderDayOffset": 0
+          }
+        ],
+        "dateOverrides": [],
+        "groupMealWindows": [],
+        "rawLegacyText": "10:30–20:30",
+        "rawClosedText": "연중무휴 (학교 단체 사전예약 시 탄력 운영)",
+        "regularClosedDays": [],
+        "irregularClosedNote": "현장체험학습·선수단 사전 예약 시 배식 시간 조정 가능",
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "menus": [
+        {
+          "id": "ysk-r-nat-busan-6-m1",
+          "name": "영양 삼계탕",
+          "priceKRW": 13000,
+          "priceBasis": "per_person",
+          "studentPortion": "yes",
+          "spiceAdjustment": "yes",
+          "extraRice": "yes",
+          "altMenuInquiry": "yes",
+          "cautionNotes": [
+            "어린이 순한맛 조리 가능 (알레르기 유발 식재료는 방문 전 식당 재확인)"
+          ],
+          "ingredientResponse": {
+            "status": "answered",
+            "answerText": "초등학생 단체 식사 시 안 맵게 조리 가능하며 공기밥 추가 제공 가능",
+            "cookingProcessNote": "단체 사전 주문 시 조리시간 단축 배식 가능",
+            "checkedAt": "2026-10-18"
+          },
+          "checkedAt": "2026-10-18"
+        }
+      ],
+      "menuSummary": "영양 삼계탕",
+      "rawPriceText": "13,000원",
+      "priceRangeText": "13,000원",
+      "groupProfile": {
+        "availability": "yes",
+        "totalSeats": 100,
+        "simultaneousCapacity": 85,
+        "seatTypes": [
+          "입식 테이블"
+        ],
+        "room": {
+          "privateRoom": "yes",
+          "roomFeeKRW": 0
+        },
+        "preOrder": {
+          "required": "yes",
+          "leadTimeNote": "단체 방문 2일 전까지 사전 메뉴 확정 권장"
+        },
+        "mealWaves": {
+          "availability": "yes",
+          "maxWaves": 2,
+          "minMealMinutes": 35,
+          "turnaroundMinutes": 10,
+          "servingMinutes": 12
+        },
+        "earlyBreakfast": {
+          "availability": "no",
+          "earliestTime": null,
+          "note": null
+        },
+        "lunchbox": {
+          "availability": "yes",
+          "orderDeadline": "전일 18:00",
+          "pickupTimeWindow": "07:30~19:00",
+          "pickupLocation": "매장 1층 또는 버스 정차 구역",
+          "minOrderQty": 20,
+          "unitPriceKRW": 13000,
+          "pickupMethod": "매장 수령 또는 버스 정차 구역 전달",
+          "handlingNotes": "수령 후 2시간 이내 섭취 권장"
+        },
+        "parking": {
+          "busEntry": "yes",
+          "busParkingSpaces": 3,
+          "dropoff": "yes",
+          "dropoffLocation": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역",
+          "walkingDistanceMeters": 30,
+          "walkingNotes": "식당 전용 주차장 또는 정문 앞 대형버스 승하차 구역"
+        },
+        "accessibility": {
+          "stairs": "1층 평지 진입 가능",
+          "entryNote": "초등학생 단체 이동 동선 안전 확보",
+          "restroom": "남녀 구분 실내 화장실 보유"
+        },
+        "checkedAt": "2026-10-18",
+        "evidenceRefs": [
+          "src-legacy-ysk-v1"
+        ]
+      },
+      "officialDesignations": [],
+      "businessStatus": "open",
+      "note": "부산 동계전지훈련 및 유소년 대회 참가 선수단 보양 식사 전문"
+    }
+  ],
+  "venues": [
+    {
+      "id": "venue-busan-science",
+      "name": "국립부산과학관·해운대해수욕장",
+      "type": "attraction",
+      "typeLabel": "현장체험학습지·과학관",
+      "regionCode": "busan-haeundae",
+      "address": "부산광역시 기장군 기장읍 동부산관광6로 59",
+      "location": {
+        "lat": 35.2044,
+        "lng": 129.2127,
+        "status": "verified"
+      },
+      "eventRefs": []
+    },
+    {
+      "id": "venue-busan-bexco",
+      "name": "벡스코·시립미술관 체험학습장",
+      "type": "attraction",
+      "typeLabel": "현장체험학습지·전시관",
+      "regionCode": "busan-haeundae",
+      "address": "부산광역시 해운대구 APEC로 55",
+      "location": {
+        "lat": 35.1691,
+        "lng": 129.136,
+        "status": "verified"
+      },
+      "eventRefs": []
+    }
+  ],
   "eventReferences": [],
   "visitRecords": [],
   "sources": [
@@ -14,7 +1172,28 @@
       "url": "https://github.com/gmlduqzhd123-lab/YSK-food",
       "obtainedAt": "2026-10-12",
       "checkedAt": "2026-10-18",
-      "factScope": [],
+      "factScope": [
+        {
+          "entityId": "ysk-r-nat-busan-1",
+          "fieldPath": "/openingHours/rawLegacyText"
+        },
+        {
+          "entityId": "ysk-r-nat-busan-2",
+          "fieldPath": "/openingHours/rawLegacyText"
+        },
+        {
+          "entityId": "ysk-r-nat-busan-3",
+          "fieldPath": "/openingHours/rawLegacyText"
+        },
+        {
+          "entityId": "ysk-r-nat-busan-4",
+          "fieldPath": "/openingHours/rawLegacyText"
+        },
+        {
+          "entityId": "ysk-r-nat-busan-5",
+          "fieldPath": "/openingHours/rawLegacyText"
+        }
+      ],
       "usageTerms": "엽쌤스쿨 YSK-food 기본 등록 자료 (단체 수용·버스 조건 미검증)",
       "attribution": "엽쌤스쿨 여순광 맛집 지도 기본 목록 (95f28ea)"
     }

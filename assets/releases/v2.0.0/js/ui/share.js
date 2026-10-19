@@ -37,7 +37,7 @@ export function parseRouteFromUrl(urlOrSearch = globalThis.location?.href || '')
   const isCheckMode = params.has('check');
 
   const filters = {
-    region: params.get('region') || 'all',
+    region: params.get('region') || 'nationwide',
     mode: ['general', 'school', 'athlete'].includes(params.get('mode')) ? params.get('mode') : 'general',
     q: params.get('q') || '',
     category: params.get('category') || 'all',
@@ -174,7 +174,7 @@ export function buildPublicShareUrl(paramsInput = {}, base = APP_BASE) {
     }
   }
 
-  if (paramsInput.region && paramsInput.region !== 'all') {
+  if (paramsInput.region && paramsInput.region !== 'all' && paramsInput.region !== 'nationwide') {
     url.searchParams.set('region', String(paramsInput.region).trim());
   }
   if (paramsInput.mode && paramsInput.mode !== 'general' && ['school', 'athlete'].includes(paramsInput.mode)) {

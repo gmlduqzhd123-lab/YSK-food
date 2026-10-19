@@ -7,6 +7,7 @@ import {
   MAX_COMPARE_COUNT,
   PAGE_SIZE,
   REGION_COLORS,
+  REGION_GROUPS,
   resolveAppUrl
 } from './config.js';
 import {
@@ -25,7 +26,7 @@ import {
   evaluateMealWaves,
   generateRestaurantInquiryText
 } from './domain/schedule.js';
-import { filterAndClassifyRestaurants } from './domain/search.js';
+import { filterAndClassifyRestaurants, getCategoriesForMode } from './domain/search.js';
 import {
   PersonalStorageManager,
   buildShareEnvelope,
@@ -71,7 +72,7 @@ export class YskFoodApp {
     this.state = {
       mode: 'general', // 'general' | 'school' | 'athlete'
       presetId: '',
-      regionCode: 'all',
+      regionCode: 'nationwide',
       category: 'all',
       query: '',
       favOnly: false,
@@ -241,7 +242,7 @@ export class YskFoodApp {
     // 필터 복원
     if (route.filters) {
       this.state.mode = route.filters.mode || 'general';
-      this.state.regionCode = route.filters.region || 'all';
+      this.state.regionCode = route.filters.region || 'nationwide';
       this.state.category = route.filters.category || 'all';
       this.state.query = route.filters.q || '';
       this.state.favOnly = Boolean(route.filters.fav);
@@ -264,7 +265,7 @@ export class YskFoodApp {
       const res = await this.repository.resolveRestaurantById(route.restaurantId);
 
       if (res.status === 'found' && res.restaurant) {
-        if (this.state.regionCode !== 'all' && this.state.regionCode !== res.regionCode) {
+        if (this.state.regionCode !== 'all' && this.state.regionCode !== 'nationwide' && this.state.regionCode !== res.regionCode) {
           this.state.regionCode = res.regionCode;
         }
         await this.loadSelectedRegionData(this.state.regionCode);
@@ -377,6 +378,7 @@ export class YskFoodApp {
 
     this.renderCategoryButtons();
     this.renderReferencePointSelector();
+    this.renderLegend();
     this.renderRegionDatasetStatusBanner(res);
 
     const openFilterBtn = document.getElementById('open-filter');
@@ -412,8 +414,11 @@ export class YskFoodApp {
 
     banner.hidden = false;
     banner.className = 'status-banner info';
-    const regTitle = regMeta ? `${regMeta.sidoName || ''} ${regMeta.name}`.trim() : '여수·순천·광양 전체';
-    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 단체 수용 확인 ${groupVerifiedCount}곳 · 최근 갱신 2026-10-18`;
+    const regTitle = regMeta ? `${regMeta.sidoName || ''} ${regMeta.name}`.trim() : '전국 전체';
+    const modeFilterText = this.state.mode !== 'general'
+      ? ' · 🏫 초등·선수단 맞춤 추천 (술집·포차·카페 자동 제외)'
+      : '';
+    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 초등·단체 수용 확인 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-18`;
   }
 
   showBannerAlert(message, level = 'warn') {
@@ -446,6 +451,7 @@ export class YskFoodApp {
     const result = filterAndClassifyRestaurants(
       this.currentRestaurants,
       {
+        mode: this.state.mode,
         regionCode: this.state.regionCode,
         city: 'all',
         category: this.state.category,
@@ -1443,25 +1449,46 @@ export class YskFoodApp {
     const regions = this.repository.getRegionsList();
     selectEl.innerHTML = '';
 
-    const allOpt = document.createElement('option');
-    allOpt.value = 'all';
-    allOpt.textContent = '전남 동부 (여수·순천·광양 166곳)';
-    selectEl.appendChild(allOpt);
+    const totalAllCount = regions.reduce((sum, r) => sum + (r.stats?.totalRestaurants ?? 0), 0);
 
+    const natOpt = document.createElement('option');
+    natOpt.value = 'nationwide';
+    natOpt.textContent = `🌏 전국 전체 (초등·교사·선수단 추천 포함 ${totalAllCount}곳)`;
+    selectEl.appendChild(natOpt);
+
+    const groupOptGroup = document.createElement('optgroup');
+    groupOptGroup.label = '권역별 묶음 보기';
+    for (const [groupKey, groupDef] of Object.entries(REGION_GROUPS)) {
+      if (groupKey === 'nationwide') continue;
+      const gCount = (groupDef.regionCodes || []).reduce((s, rc) => {
+        const found = regions.find(r => r.regionCode === rc);
+        return s + (found?.stats?.totalRestaurants ?? 0);
+      }, 0);
+      const opt = document.createElement('option');
+      opt.value = groupKey;
+      opt.textContent = `${groupDef.label} (${gCount}곳)`;
+      groupOptGroup.appendChild(opt);
+    }
+    selectEl.appendChild(groupOptGroup);
+
+    const indivOptGroup = document.createElement('optgroup');
+    indivOptGroup.label = '시·군·구 개별 선택';
     for (const reg of regions) {
       const opt = document.createElement('option');
       opt.value = reg.regionCode;
       const count = reg.stats?.totalRestaurants ?? 0;
       opt.textContent = `${reg.sidoName || ''} ${reg.name} (${count}곳)`.trim();
-      selectEl.appendChild(opt);
+      indivOptGroup.appendChild(opt);
     }
+    selectEl.appendChild(indivOptGroup);
+
     selectEl.value = this.state.regionCode;
   }
 
   renderReferencePointSelector() {
     const selectEl = document.getElementById('ref-point-select');
     if (!selectEl) return;
-    selectEl.innerHTML = '<option value="">기준점 없음 (이름순)</option>';
+    selectEl.innerHTML = '<option value="">📍 기준점 없음 (추천·적합도순)</option>';
     for (const v of this.currentVenues) {
       const opt = document.createElement('option');
       opt.value = v.id;
@@ -1473,11 +1500,12 @@ export class YskFoodApp {
   renderCategoryButtons() {
     const group = document.getElementById('category-group');
     if (!group) return;
-    const categories = [
-      ...new Set(
-        this.currentRestaurants.flatMap(p => (Array.isArray(p.categoryIds) ? p.categoryIds : [p.category])).filter(Boolean)
-      )
-    ].sort((a, b) => a.localeCompare(b, 'ko'));
+    const categories = getCategoriesForMode(this.currentRestaurants, this.state.mode);
+
+    // 만약 이전에 선택한 카테고리(예: 포차·술집, 카페·디저트)가 현재 모드(학교 단체식사·선수단 식사)에서 제외된 경우 'all'로 자동 복귀
+    if (this.state.category !== 'all' && !categories.includes(this.state.category)) {
+      this.state.category = 'all';
+    }
 
     group.innerHTML = '';
     ['all', ...categories].forEach(cat => {
@@ -1487,7 +1515,7 @@ export class YskFoodApp {
       btn.className = `filter-btn category${isActive ? ' active' : ''}`;
       btn.dataset.category = cat;
       btn.setAttribute('aria-pressed', String(isActive));
-      btn.textContent = cat === 'all' ? '전체 종류' : cat;
+      btn.textContent = cat === 'all' ? '전체 식사종류' : cat;
       btn.addEventListener('click', () => {
         this.state.category = cat;
         this.state.visibleLimit = PAGE_SIZE;
@@ -1502,19 +1530,44 @@ export class YskFoodApp {
     const legend = document.getElementById('legend');
     if (!legend) return;
     legend.innerHTML = '';
-    for (const [city, color] of [
-      ['여수', REGION_COLORS['여수']],
-      ['순천', REGION_COLORS['순천']],
-      ['광양', REGION_COLORS['광양']]
-    ]) {
+
+    let entries = [];
+    if (this.state.regionCode === 'nationwide') {
+      entries = [
+        ['서울·수도권', REGION_COLORS['seoul-jongno']],
+        ['강릉·춘천', REGION_COLORS['gw-gangneung']],
+        ['대전·공주', REGION_COLORS['daejeon-yuseong']],
+        ['경주·대구', REGION_COLORS['gb-gyeongju']],
+        ['부산·통영', REGION_COLORS['busan-haeundae']],
+        ['전주·광주·전남', REGION_COLORS['jb-jeonju']],
+        ['제주', REGION_COLORS['jj-jeju']]
+      ];
+    } else if (this.state.regionCode === 'all') {
+      entries = [
+        ['여수', REGION_COLORS['여수']],
+        ['순천', REGION_COLORS['순천']],
+        ['광양', REGION_COLORS['광양']]
+      ];
+    } else {
+      const cities = [...new Set(this.currentRestaurants.map(p => p.city || p.regionCode).filter(Boolean))].slice(0, 6);
+      entries = cities.map(c => [c, getRegionColor(c)]);
+    }
+
+    for (const [label, color] of entries) {
       const span = document.createElement('span');
       span.style.setProperty('--c', color);
-      span.textContent = city;
+      span.textContent = label;
       legend.appendChild(span);
     }
   }
 
   renderHomeStats() {
+    const regions = this.repository.getRegionsList();
+    const byRegionCode = {};
+    for (const reg of regions) {
+      byRegionCode[reg.regionCode] = reg.stats?.totalRestaurants ?? 0;
+    }
+
     const byCity = {};
     this.currentRestaurants.forEach(p => {
       const key = p.city || p.regionCode;
@@ -1523,12 +1576,16 @@ export class YskFoodApp {
 
     document.querySelectorAll('[data-count-city]').forEach(t => {
       const city = t.dataset.countCity;
-      t.textContent = `${city} · ${byCity[city] || 0}곳`;
+      const count = byCity[city] || 0;
+      t.textContent = `${city} · ${count}곳`;
     });
+
+    const totalAllCount = regions.reduce((sum, r) => sum + (r.stats?.totalRestaurants ?? 0), 0);
+    const elemVerifiedCount = regions.reduce((sum, r) => sum + (r.stats?.groupVerifiedCount ?? 0), 0);
 
     const leadEl = document.getElementById('home-lead');
     if (leadEl) {
-      leadEl.textContent = `전국 맛집 탐색과 학교행사·선수단 단체식사 준비를 한 곳에서. (여수·순천·광양 ${this.currentRestaurants.length}곳 기본 등록 · 출처·확인일·미확인 항목 투명 제공)`;
+      leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 20개 지역 총 ${totalAllCount}곳 · 초등·교사 단체 맞춤 ${elemVerifiedCount}곳 수록)`;
     }
 
     const openCount = this.currentRestaurants.filter(p => getOpenStatus(p) === true).length;
@@ -1541,10 +1598,16 @@ export class YskFoodApp {
     if (catsBox) {
       catsBox.innerHTML = '';
       const HOME_CATS = [
-        ['게장', '🦀'], ['해산물', '🐟'], ['국밥·탕', '🍲'], ['고기', '🥩'],
-        ['한정식', '🍱'], ['백반·한식', '🍚'], ['닭요리', '🍗'], ['카페·디저트', '☕']
+        ['양식·일식', '🍛', '돈가스·카레'],
+        ['고기', '🥩', '불고기·떡갈비'],
+        ['백반·한식', '🍚', '백반·비빔밥'],
+        ['국밥·탕', '🍲', '갈비탕·설렁탕'],
+        ['면', '🍜', '칼국수·만두'],
+        ['한정식', '🍱', '단체 반상'],
+        ['닭요리', '🍗', '삼계탕·닭갈비'],
+        ['분식·중식', '🥟', '짜장·탕수육']
       ];
-      HOME_CATS.forEach(([cat, icon]) => {
+      HOME_CATS.forEach(([cat, icon, label]) => {
         const n = this.currentRestaurants.filter(p => p.category === cat).length;
         if (!n) return;
         const btn = document.createElement('button');
@@ -1553,7 +1616,7 @@ export class YskFoodApp {
         const iconB = document.createElement('b');
         iconB.setAttribute('aria-hidden', 'true');
         iconB.textContent = icon;
-        const labelText = document.createTextNode(cat.replace('·디저트', ''));
+        const labelText = document.createTextNode(label);
         const countSpan = document.createElement('span');
         countSpan.textContent = `${n}곳`;
         btn.append(iconB, labelText, countSpan);
@@ -1564,11 +1627,31 @@ export class YskFoodApp {
   }
 
   async openMapFromHome({ regionCode, city, category, query, openOnly, mode, presetId } = {}) {
-    const cityMap = { '여수': 'jn-yeosu', '순천': 'jn-suncheon', '광양': 'jn-gwangyang' };
+    const cityMap = {
+      '서울': 'seoul-metro',
+      '수원': 'gyeonggi-suwon',
+      '인천': 'incheon-junggu',
+      '강릉': 'gw-all',
+      '춘천': 'gw-chuncheon',
+      '대전': 'cc-all',
+      '공주': 'cn-gongju',
+      '경주': 'gb-all',
+      '대구': 'daegu-junggu',
+      '부산': 'pk-all',
+      '통영': 'gn-tongyeong',
+      '전주': 'honam-west',
+      '광주': 'gj-donggu',
+      '목포': 'jn-mokpo',
+      '고흥': 'jn-goheung',
+      '제주': 'jj-jeju',
+      '여수': 'jn-yeosu',
+      '순천': 'jn-suncheon',
+      '광양': 'jn-gwangyang'
+    };
     if (mode) this.state.mode = mode;
     if (presetId) this.applyPresetSettings(presetId);
 
-    const nextRegion = regionCode || (city && cityMap[city]) || this.state.regionCode || 'all';
+    const nextRegion = regionCode || (city && cityMap[city]) || this.state.regionCode || 'nationwide';
     this.state.regionCode = nextRegion;
     this.state.category = category || 'all';
     this.state.query = query || '';
@@ -1672,11 +1755,14 @@ export class YskFoodApp {
       });
     }
 
-    // 2) 이용 모드 전환 (일반 맛집 / 학교 단체식사 / 선수단 식사 - 모드 전환 시 선택 지역·검색어·담아둔 식당 유지 - FR01)
+    // 2) 이용 모드 전환 (일반 맛집 / 학교 단체식사 / 선수단 식사 - 모드 전환 시 부적합 카테고리 자동 정리 및 맞춤 추천 - FR01)
     document.querySelectorAll('.mode-tab[data-mode]').forEach(btn => {
       btn.addEventListener('click', () => {
         this.state.mode = btn.dataset.mode;
+        this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
+        this.renderCategoryButtons();
+        this.renderRegionDatasetStatusBanner({ status: 'ok' });
         this.applyFilters(false);
       });
     });
@@ -1687,7 +1773,10 @@ export class YskFoodApp {
       presetSelect.addEventListener('change', e => {
         if (e.target.value) {
           this.applyPresetSettings(e.target.value);
+          this.state.visibleLimit = PAGE_SIZE;
           this.syncFilterControlsFromState();
+          this.renderCategoryButtons();
+          this.renderRegionDatasetStatusBanner({ status: 'ok' });
           this.applyFilters(false);
         }
       });

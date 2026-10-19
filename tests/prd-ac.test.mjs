@@ -60,6 +60,8 @@ import {
   evaluateMenuSafetyDisplay,
   evaluateOfficialDesignations,
   aggregateVisitRecordsForRestaurant,
+  isSuitableForMode,
+  getCategoriesForMode,
   filterAndClassifyRestaurants
 } from '../assets/releases/v2.0.0/js/domain/search.js';
 
@@ -1089,4 +1091,70 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.equal(fbCore.usingFallbackBundle, true);
     assert.equal(fbCore.datasetVersion, '2026.10.1');
   });
+
+  test('전국 확장 및 모드별 추천 검증: 선수단·학교 단체식사 모드에서 포차·술집·카페 완전 배제 및 전국 초등·선수단 맞춤 식당 추천', async () => {
+    const repo = new DatasetRepository({
+      appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
+      fetchFn: createLocalFileFetch()
+    });
+
+    // 1. 전국 전체('nationwide') 로드 시 20개 지역 254곳(기존 여순광 166 + 전국 16개 권역 초등·선수단 88곳) 반환
+    const nwRes = await repo.selectRegion('nationwide');
+    assert.equal(nwRes.status, 'ok');
+    assert.equal(nwRes.restaurants.length, 254);
+    const regionSet = new Set(nwRes.restaurants.map(r => r.regionCode));
+    assert.ok(regionSet.has('seoul-jongno'));
+    assert.ok(regionSet.has('gb-gyeongju'));
+    assert.ok(regionSet.has('gw-gangneung'));
+    assert.ok(regionSet.has('daejeon-yuseong'));
+    assert.ok(regionSet.has('busan-haeundae'));
+    assert.ok(regionSet.has('jb-jeonju'));
+    assert.ok(regionSet.has('jj-jeju'));
+    assert.equal(regionSet.size, 19); // 20개 지역 중 보성군(0곳 테스트용) 제외한 19개 지역에 식당 존재
+
+    // 2. 학교·선수단 모드 카테고리 목록에서 '포차·술집', '카페·디저트' 배제 확인
+    const schoolCats = getCategoriesForMode(nwRes.restaurants, 'school');
+    const athleteCats = getCategoriesForMode(nwRes.restaurants, 'athlete');
+    assert.equal(schoolCats.includes('포차·술집'), false);
+    assert.equal(schoolCats.includes('카페·디저트'), false);
+    assert.equal(athleteCats.includes('포차·술집'), false);
+    assert.equal(athleteCats.includes('카페·디저트'), false);
+
+    // 3. 선수단 식사('athlete') 및 학교 단체식사('school') 모드에서 41번포차 등 술집·카페가 추천 목록에서 100% 제외되는지 검증
+    const athleteFiltered = filterAndClassifyRestaurants(nwRes.restaurants, {
+      mode: 'athlete',
+      regionCode: 'nationwide'
+    });
+    const schoolFiltered = filterAndClassifyRestaurants(nwRes.restaurants, {
+      mode: 'school',
+      regionCode: 'nationwide'
+    });
+
+    for (const r of athleteFiltered.combinedList) {
+      assert.notEqual(r.category, '포차·술집', `선수단 모드에 술집(${r.name})이 포함됨`);
+      assert.notEqual(r.category, '카페·디저트', `선수단 모드에 카페(${r.name})가 포함됨`);
+      assert.equal(r.name.includes('포차'), false, `선수단 모드에 포차(${r.name})가 포함됨`);
+      assert.equal(isSuitableForMode(r, 'athlete'), true);
+    }
+
+    for (const r of schoolFiltered.combinedList) {
+      assert.notEqual(r.category, '포차·술집', `학교 단체식사 모드에 술집(${r.name})이 포함됨`);
+      assert.notEqual(r.category, '카페·디저트', `학교 단체식사 모드에 카페(${r.name})가 포함됨`);
+      assert.equal(r.name.includes('포차'), false, `학교 단체식사 모드에 포차(${r.name})가 포함됨`);
+      assert.equal(isSuitableForMode(r, 'school'), true);
+    }
+
+    // 4. 상위 추천 식당이 단체 수용 검증(availability === 'yes')된 초등·선수단 적합 식당인지 검증
+    assert.equal(athleteFiltered.combinedList[0].groupProfile.availability, 'yes');
+    assert.equal(schoolFiltered.combinedList[0].groupProfile.availability, 'yes');
+
+    // 5. 일반 모드('general')에서도 숫자 시작 술집(41번포차)이 최상단 1위로 노출되지 않는지 검증
+    const generalFiltered = filterAndClassifyRestaurants(nwRes.restaurants, {
+      mode: 'general',
+      regionCode: 'nationwide'
+    });
+    assert.notEqual(generalFiltered.combinedList[0].name, '41번포차');
+    assert.notEqual(generalFiltered.combinedList[0].category, '포차·술집');
+  });
 });
+

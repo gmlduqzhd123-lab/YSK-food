@@ -1,5 +1,5 @@
 // 전국·지역 필터, 단체 조건 4단계 판정(조건 미설정/충족/확인 필요/불충족), 이용 기록 집계(AC19, AC56), 메뉴·공식 지정 판정(AC17, AC18), 기준점 직선거리 정렬(FR04)
-import { STALE_DAYS_THRESHOLD } from '../config.js';
+import { REGION_GROUPS, STALE_DAYS_THRESHOLD } from '../config.js';
 import { getPlaceCoords, isMappablePlace, parseSafeNonNegativeInt } from '../data/normalize.js';
 import { evaluateMealWindowHours, getOpenStatus, getKoreaDateTimeParts } from './hours.js';
 
@@ -496,12 +496,146 @@ export function evaluateOfficialDesignations(restaurant, referenceDateStr = null
 }
 
 /**
+ * 이용 모드(일반 맛집 / 학교 단체식사 / 선수단 식사)별 업종·메뉴 적합성 판정
+ * - 초등학교 선생님·초등학생 방문 및 선수단 식사 모드('school' | 'athlete')에서는
+ *   포차·술집, 주류 중심 업소, 단순 커피/디저트 카페, 날생선회/술안주 위주 업소를 추천에서 제외한다.
+ */
+const EXCLUDED_CATEGORIES_FOR_GROUP_MODES = new Set(['포차·술집', '카페·디저트']);
+const ALCOHOL_OR_BAR_REGEX = /포차|술집|주점|양조장|호프|이자카야|맥주|소주|와인|막걸리/;
+const RAW_FISH_OR_ADULT_MENU_REGEX = /선어회|삼치회|활어회|전어회|물회|사시미|해물삼합|돌문어삼합|딱새우회|낙지탕탕이|흑염소/;
+
+export function isSuitableForMode(place, mode = 'general') {
+  if (!place || typeof place !== 'object') return false;
+  if (!mode || mode === 'general') return true;
+
+  const categories = Array.isArray(place.categoryIds)
+    ? place.categoryIds
+    : (place.category ? [place.category] : []);
+
+  // 1) 포차·술집 및 카페·디저트 카테고리 제외
+  if (categories.some(c => EXCLUDED_CATEGORIES_FOR_GROUP_MODES.has(c))) {
+    return false;
+  }
+
+  const nameAndMenu = `${place.name || ''} ${place.menuSummary || ''} ${place.menu || ''}`;
+
+  // 2) 상호나 메뉴에 포차·술집·양조장·주류가 포함된 곳 제외 (예: 41번포차, 교동포차 등)
+  if (ALCOHOL_OR_BAR_REGEX.test(nameAndMenu)) {
+    return false;
+  }
+
+  // 3) 초등학생·선수단 단체 식사에 부적합한 날생선회·술안주 전용 업소 제외
+  if (RAW_FISH_OR_ADULT_MENU_REGEX.test(nameAndMenu)) {
+    return false;
+  }
+
+  // 4) 선수단 식사 모드에서는 간식성 매점 단품 업소 제외
+  if (mode === 'athlete' && /매점|꼬마김밥/.test(nameAndMenu)) {
+    return false;
+  }
+
+  return true;
+}
+
+/**
+ * 현재 선택된 모드에 적합한 카테고리 버튼 목록 및 추천 순서 반환
+ */
+const PREFERRED_CATEGORY_ORDER_BY_MODE = {
+  school: ['백반·한식', '양식·일식', '고기', '한정식', '국밥·탕', '면', '분식·중식', '닭요리'],
+  athlete: ['고기', '백반·한식', '국밥·탕', '닭요리', '한정식', '양식·일식', '면', '분식·중식'],
+  general: ['백반·한식', '고기', '양식·일식', '국밥·탕', '한정식', '면', '닭요리', '분식·중식', '해산물', '게장', '짱뚱어·꼬막', '장어', '재첩', '카페·디저트', '포차·술집']
+};
+
+export function getCategoriesForMode(restaurantsOrMode = [], mode = 'general') {
+  if (typeof restaurantsOrMode === 'string') {
+    const m = restaurantsOrMode;
+    return [...(PREFERRED_CATEGORY_ORDER_BY_MODE[m] || PREFERRED_CATEGORY_ORDER_BY_MODE.general)];
+  }
+  const restaurants = Array.isArray(restaurantsOrMode) ? restaurantsOrMode : [];
+  const suitablePlaces = restaurants.filter(p => isSuitableForMode(p, mode));
+  const rawCats = [
+    ...new Set(
+      suitablePlaces
+        .flatMap(p => (Array.isArray(p.categoryIds) ? p.categoryIds : [p.category]))
+        .filter(Boolean)
+    )
+  ].filter(cat => (mode === 'general' ? true : !EXCLUDED_CATEGORIES_FOR_GROUP_MODES.has(cat)));
+
+  const orderList = PREFERRED_CATEGORY_ORDER_BY_MODE[mode] || PREFERRED_CATEGORY_ORDER_BY_MODE.general;
+  return rawCats.sort((a, b) => {
+    const ia = orderList.indexOf(a);
+    const ib = orderList.indexOf(b);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return a.localeCompare(b, 'ko');
+  });
+}
+
+/**
+ * 초등학교 선생님·초등학생 및 선수단 모드별 맞춤 추천 우선순위 점수 계산 (높을수록 상단 추천)
+ */
+export function computeModeRecommendationScore(place, mode = 'general') {
+  let score = 0;
+  const categories = Array.isArray(place.categoryIds) ? place.categoryIds : [place.category];
+  const primaryCat = categories[0] || '';
+  const text = `${place.name || ''} ${place.menuSummary || ''} ${place.menu || ''} ${place.note || ''}`;
+
+  // 1) 단체 수용 확인 완료(초등·선수단 맞춤 큐레이션 식당) 최우선
+  if (place.groupProfile?.availability === 'yes') {
+    score += 300;
+  }
+
+  // 2) 지도 좌표가 확인된 식당 우선
+  if (isMappablePlace(place)) {
+    score += 40;
+  }
+
+  if (mode === 'school') {
+    // 초등학교 선생님과 초등학생이 가장 선호하는 대표 식사 메뉴 가산점
+    if (/돈가스|돈까스|함박스테이크|카레|떡갈비|불고기|수제버거|오므라이스/.test(text)) {
+      score += 120;
+    } else if (/백반|정식|비빔밥|칼국수|만두|수제비|밀면|냉면|짜장|탕수육|보쌈|삼계탕|간장닭갈비|순살/.test(text)) {
+      score += 80;
+    }
+    const catRank = PREFERRED_CATEGORY_ORDER_BY_MODE.school.indexOf(primaryCat);
+    if (catRank !== -1) {
+      score += (10 - catRank) * 5;
+    }
+  } else if (mode === 'athlete') {
+    // 초등 선수단 영양·단백질 보충 식사 메뉴 가산점
+    if (/불고기|떡갈비|갈비탕|설렁탕|곰탕|삼계탕|백숙|돼지갈비|삼겹살|수육|보쌈|돈가스|돈까스/.test(text)) {
+      score += 130;
+    } else if (/백반|한정식|국밥|닭갈비|닭구이|오리|칼국수|만두/.test(text)) {
+      score += 85;
+    }
+    if (place.groupProfile?.earlyBreakfast?.availability === 'yes') {
+      score += 25;
+    }
+    const catRank = PREFERRED_CATEGORY_ORDER_BY_MODE.athlete.indexOf(primaryCat);
+    if (catRank !== -1) {
+      score += (10 - catRank) * 5;
+    }
+  } else {
+    // 일반 모드에서도 포차·술집이나 숫자 시작 상호가 무조건 최상단에 오지 않도록 식사 업종 우선
+    if (primaryCat === '포차·술집') {
+      score -= 100;
+    } else if (/돈가스|돈까스|불고기|떡갈비|백반|한정식|갈비탕|설렁탕|칼국수/.test(text)) {
+      score += 50;
+    }
+  }
+
+  return score;
+}
+
+/**
  * 검색·필터·단체 조건 분류·정렬 통합 실행(FR01, FR03, FR04)
  * - 단체 조건이 입력된 경우 결과를 '확인된 조건 충족(confirmedMetList)'과 '추가 확인 필요(needsCheckList)'로 분리한다.
  * - 확인된 필수 조건 불충족(unmet)은 기본 결과에서 제외하되 제외 건수를 반환한다.
  */
 export function filterAndClassifyRestaurants(restaurants = [], filterState = {}, visitRecords = []) {
   const {
+    mode = 'general',
     regionCode = 'all',
     city = 'all',
     category = 'all',
@@ -520,6 +654,12 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
   const normalizedCriteria = normalizeGroupSearchCriteria(groupCriteria);
   const q = String(query || '').trim().toLowerCase();
 
+  // 권역 묶음 코드('nationwide', 'seoul-metro', 'all' 등) 해석
+  const groupDef = REGION_GROUPS[regionCode] || null;
+  const allowedRegionSet = groupDef
+    ? (groupDef.regionCodes ? new Set(groupDef.regionCodes) : null)
+    : (regionCode && regionCode !== 'all' && regionCode !== 'nationwide' ? new Set([regionCode]) : null);
+
   const allEvaluated = [];
   const confirmedMetList = [];
   const needsCheckList = [];
@@ -527,8 +667,11 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
 
   for (const place of restaurants) {
     // 지역 필터
-    if (regionCode !== 'all' && place.regionCode !== regionCode) continue;
+    if (allowedRegionSet && !allowedRegionSet.has(place.regionCode)) continue;
     if (city !== 'all' && place.city !== city && place.regionCode !== city) continue;
+
+    // 이용 모드별 적합 업종·메뉴 필터 (학교 단체식사·선수단 식사에서 술집·포차·카페·날생선회 자동 제외)
+    if (!isSuitableForMode(place, mode)) continue;
 
     // 종류 필터
     const placeCategories = Array.isArray(place.categoryIds) ? place.categoryIds : [place.category];
@@ -571,6 +714,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     const groupMatch = evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr });
     const visitSummary = aggregateVisitRecordsForRestaurant(visitRecords, place.id, referenceDateStr);
     const designationSummary = evaluateOfficialDesignations(place, referenceDateStr);
+    const modeScore = computeModeRecommendationScore(place, mode);
 
     const enriched = {
       ...place,
@@ -579,7 +723,8 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       straightDistanceLabel: formatStraightDistance(straightDistanceKm),
       groupMatch,
       visitSummary,
-      designationSummary
+      designationSummary,
+      modeScore
     };
 
     if (groupMatch.status === 'unmet') {
@@ -621,6 +766,10 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       const ca = a.groupProfile?.checkedAt || '';
       const cb = b.groupProfile?.checkedAt || '';
       if (ca !== cb) return cb.localeCompare(ca);
+    }
+    // 기본 정렬 시 모드별 초등학생·교사·선수단 추천 적합도 점수 우선 적용
+    if (sortBy === 'default' && a.modeScore !== b.modeScore) {
+      return b.modeScore - a.modeScore;
     }
     return a.name.localeCompare(b.name, 'ko');
   };

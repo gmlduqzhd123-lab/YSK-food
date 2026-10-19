@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   normalizeLegacyPlaceToRestaurant,
@@ -10,6 +11,11 @@ import {
   DEFAULT_DATASET_VERSION,
   PUBLIC_SCHEMA_VERSION
 } from '../assets/releases/v2.0.0/js/config.js';
+import {
+  NATIONWIDE_EXTRA_REGIONS,
+  NATIONWIDE_VENUES_BY_REGION,
+  NATIONWIDE_ELEMENTARY_RESTAURANTS
+} from './nationwide-elementary-data.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,16 +30,20 @@ function sha256Hex(content) {
 
 function extractFallbackRestaurantsFromGitHead() {
   const indexPath = path.join(ROOT_DIR, 'index.html');
-  const html = fs.readFileSync(indexPath, 'utf8');
-  const match = html.match(/const FALLBACK_RESTAURANTS = (\[[\s\S]*?\]);/);
+  let html = fs.readFileSync(indexPath, 'utf8');
+  let match = html.match(/const FALLBACK_RESTAURANTS = (\[[\s\S]*?\]);/);
   if (!match) {
-    throw new Error('index.html에서 FALLBACK_RESTAURANTS를 찾지 못했습니다.');
+    html = execSync('git show 95f28ea:index.html', { cwd: ROOT_DIR, encoding: 'utf8' });
+    match = html.match(/const FALLBACK_RESTAURANTS = (\[[\s\S]*?\]);/);
+  }
+  if (!match) {
+    throw new Error('FALLBACK_RESTAURANTS를 찾지 못했습니다.');
   }
   const fn = new Function(`return ${match[1]};`);
   return fn();
 }
 
-const REGIONS_DEF = [
+const BASE_REGIONS_DEF = [
   {
     regionCode: 'jn-yeosu',
     parentCode: 'jn',
@@ -179,7 +189,12 @@ const REGIONS_DEF = [
   }
 ];
 
-const VENUES_BY_REGION = {
+const REGIONS_DEF = [
+  ...BASE_REGIONS_DEF,
+  ...NATIONWIDE_EXTRA_REGIONS.filter(er => !BASE_REGIONS_DEF.some(br => br.regionCode === er.regionCode))
+];
+
+const BASE_VENUES_BY_REGION = {
   'jn-yeosu': [
     {
       id: 'venue-yeosu-expo',
@@ -278,6 +293,11 @@ const VENUES_BY_REGION = {
   ]
 };
 
+const VENUES_BY_REGION = {
+  ...NATIONWIDE_VENUES_BY_REGION,
+  ...BASE_VENUES_BY_REGION
+};
+
 const EVENT_REFS_BY_REGION = {
   'jn-suncheon': [
     {
@@ -322,7 +342,7 @@ function buildDataset() {
   for (const reg of REGIONS_DEF) {
     restaurantsByRegion[reg.regionCode] = [];
   }
-  for (const r of normalizedRestaurants) {
+  for (const r of [...normalizedRestaurants, ...NATIONWIDE_ELEMENTARY_RESTAURANTS]) {
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
     }
