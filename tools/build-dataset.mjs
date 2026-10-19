@@ -13,8 +13,7 @@ import {
 } from '../assets/releases/v2.0.0/js/config.js';
 import {
   NATIONWIDE_EXTRA_REGIONS,
-  NATIONWIDE_VENUES_BY_REGION,
-  NATIONWIDE_ELEMENTARY_RESTAURANTS
+  NATIONWIDE_VENUES_BY_REGION
 } from './nationwide-elementary-data.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -234,23 +233,13 @@ const BASE_VENUES_BY_REGION = {
     },
     {
       id: 'venue-yeosu-jinnam',
-      name: '여수진남종합운동장',
+      name: '여수 진남종합운동장 (진남체육공원)',
       type: 'stadium',
       typeLabel: '운동장·체육관',
       regionCode: 'jn-yeosu',
       address: '전라남도 여수시 진남체육관길 74',
-      location: { lat: 34.7568, lng: 127.7176, status: 'verified' },
+      location: { lat: 34.7616, lng: 127.7275, status: 'verified' },
       eventRefs: ['evref-2026-sports-jn']
-    },
-    {
-      id: 'venue-yeosu-youth-hostel',
-      name: '여수유스호스텔 수련관',
-      type: 'lodging',
-      typeLabel: '수련시설·숙소',
-      regionCode: 'jn-yeosu',
-      address: '전라남도 여수시 돌산읍 진모1길 29',
-      location: { lat: 34.7261, lng: 127.6488, status: 'verified' },
-      eventRefs: []
     }
   ],
   'jn-suncheon': [
@@ -286,12 +275,12 @@ const BASE_VENUES_BY_REGION = {
     },
     {
       id: 'venue-suncheon-youth',
-      name: '순천청소년수련원 숙소동',
+      name: '순천시청소년수련원',
       type: 'lodging',
       typeLabel: '수련시설·숙소',
       regionCode: 'jn-suncheon',
-      address: '전라남도 순천시 상사면 수련원길 20',
-      location: { lat: 34.9182, lng: 127.4480, status: 'verified' },
+      address: '전라남도 순천시 서면 청소년수련원길 167',
+      location: { lat: 35.0457, lng: 127.4738, status: 'verified' },
       eventRefs: []
     }
   ],
@@ -302,18 +291,18 @@ const BASE_VENUES_BY_REGION = {
       type: 'stadium',
       typeLabel: '운동장·체육관',
       regionCode: 'jn-gwangyang',
-      address: '전라남도 광양시 백운로 1641',
-      location: { lat: 34.9331, lng: 127.6914, status: 'verified' },
+      address: '전라남도 광양시 광양읍 매천로 695-20',
+      location: { lat: 34.9844, lng: 127.5761, status: 'verified' },
       eventRefs: ['evref-2026-sports-jn']
     },
     {
       id: 'venue-gwangyang-retreat',
-      name: '광양백운산수련관',
+      name: '백운산자연휴양림',
       type: 'lodging',
       typeLabel: '수련시설·숙소',
       regionCode: 'jn-gwangyang',
-      address: '전라남도 광양시 옥룡면 백운로 455',
-      location: { lat: 35.0612, lng: 127.6182, status: 'verified' },
+      address: '전라남도 광양시 옥룡면 백계로 337',
+      location: { lat: 35.0537, lng: 127.5974, status: 'verified' },
       eventRefs: []
     }
   ]
@@ -383,7 +372,9 @@ function buildDataset() {
   for (const reg of REGIONS_DEF) {
     restaurantsByRegion[reg.regionCode] = [];
   }
-  for (const r of [...normalizedRestaurants, ...NATIONWIDE_ELEMENTARY_RESTAURANTS, ...verifiedRestaurants]) {
+  // NATIONWIDE_ELEMENTARY_RESTAURANTS(88곳)는 카카오맵에 같은 이름의 식당이 하나도 없고 전화번호도 다른 업체 번호여서
+  // 실제 식당 자료가 아닌 것으로 확인되어 공개 자료에서 뺀다 (2026-10-19 확인).
+  for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
     }

@@ -542,13 +542,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
       "status": "active"
     },
-    "venue:venue-yeosu-youth-hostel": {
-      "kind": "venue",
-      "id": "venue-yeosu-youth-hostel",
-      "regionCode": "jn-yeosu",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-yeosu.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-2": {
       "kind": "restaurant",
       "id": "ysk-r-2",
@@ -1305,74 +1298,11 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-gwangyang.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-goheung-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-goheung-1",
-      "regionCode": "jn-goheung",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-goheung-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-goheung-2",
-      "regionCode": "jn-goheung",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-goheung-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-goheung-3",
-      "regionCode": "jn-goheung",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-goheung-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-goheung-4",
-      "regionCode": "jn-goheung",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
-      "status": "active"
-    },
     "venue:venue-goheung-naro": {
       "kind": "venue",
       "id": "venue-goheung-naro",
       "regionCode": "jn-goheung",
       "datasetPath": "data/releases/2026.10.1/regions/jn-goheung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-mokpo-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-mokpo-1",
-      "regionCode": "jn-mokpo",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-mokpo-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-mokpo-2",
-      "regionCode": "jn-mokpo",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-mokpo-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-mokpo-3",
-      "regionCode": "jn-mokpo",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-mokpo-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-mokpo-4",
-      "regionCode": "jn-mokpo",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-mokpo-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-mokpo-5",
-      "regionCode": "jn-mokpo",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0040": {
@@ -1403,41 +1333,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-mokpo.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-gwangju-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gwangju-1",
-      "regionCode": "gj-donggu",
-      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gwangju-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gwangju-2",
-      "regionCode": "gj-donggu",
-      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gwangju-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gwangju-3",
-      "regionCode": "gj-donggu",
-      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gwangju-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gwangju-4",
-      "regionCode": "gj-donggu",
-      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gwangju-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gwangju-5",
-      "regionCode": "gj-donggu",
-      "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0895": {
       "kind": "restaurant",
       "id": "ysk-r-k0895",
@@ -1450,48 +1345,6 @@
       "id": "venue-gwangju-acc",
       "regionCode": "gj-donggu",
       "datasetPath": "data/releases/2026.10.1/regions/gj-donggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-1",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-2",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-3",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-4",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-5",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeonju-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeonju-6",
-      "regionCode": "jb-jeonju",
-      "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0164": {
@@ -1578,48 +1431,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-jeju-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-1",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeju-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-2",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeju-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-3",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeju-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-4",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeju-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-5",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-jeju-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-jeju-6",
-      "regionCode": "jj-jeju",
-      "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0137": {
       "kind": "restaurant",
       "id": "ysk-r-k0137",
@@ -1674,48 +1485,6 @@
       "id": "venue-jeju-stadium",
       "regionCode": "jj-jeju",
       "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-1",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-2",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-3",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-4",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-5",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gangneung-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gangneung-6",
-      "regionCode": "gw-gangneung",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0099": {
@@ -1781,55 +1550,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-gyeongju-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-1",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-2",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-3",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-4",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-5",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-6",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gyeongju-7": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gyeongju-7",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0225": {
       "kind": "restaurant",
       "id": "ysk-r-k0225",
@@ -1893,48 +1613,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-seoul-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-1",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-seoul-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-2",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-seoul-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-3",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-seoul-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-4",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-seoul-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-5",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-seoul-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-seoul-6",
-      "regionCode": "seoul-jongno",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0020": {
       "kind": "restaurant",
       "id": "ysk-r-k0020",
@@ -1996,48 +1674,6 @@
       "id": "venue-seoul-history-museum",
       "regionCode": "seoul-jongno",
       "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-1",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-2",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-3",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-4",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-5",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-busan-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-busan-6",
-      "regionCode": "busan-haeundae",
-      "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0190": {
@@ -2138,48 +1774,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/busan-haeundae.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-suwon-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-1",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-suwon-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-2",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-suwon-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-3",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-suwon-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-4",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-suwon-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-5",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-suwon-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-suwon-6",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0005": {
       "kind": "restaurant",
       "id": "ysk-r-k0005",
@@ -2271,41 +1865,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-incheon-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-incheon-1",
-      "regionCode": "incheon-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-incheon-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-incheon-2",
-      "regionCode": "incheon-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-incheon-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-incheon-3",
-      "regionCode": "incheon-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-incheon-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-incheon-4",
-      "regionCode": "incheon-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-incheon-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-incheon-5",
-      "regionCode": "incheon-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0353": {
       "kind": "restaurant",
       "id": "ysk-r-k0353",
@@ -2325,41 +1884,6 @@
       "id": "venue-incheon-openport",
       "regionCode": "incheon-junggu",
       "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-chuncheon-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-chuncheon-1",
-      "regionCode": "gw-chuncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-chuncheon-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-chuncheon-2",
-      "regionCode": "gw-chuncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-chuncheon-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-chuncheon-3",
-      "regionCode": "gw-chuncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-chuncheon-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-chuncheon-4",
-      "regionCode": "gw-chuncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-chuncheon-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-chuncheon-5",
-      "regionCode": "gw-chuncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0057": {
@@ -2467,48 +1991,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "status": "active"
     },
-    "restaurant:ysk-r-nat-daejeon-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-1",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daejeon-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-2",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daejeon-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-3",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daejeon-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-4",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daejeon-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-5",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daejeon-6": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daejeon-6",
-      "regionCode": "daejeon-yuseong",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-k0200": {
       "kind": "restaurant",
       "id": "ysk-r-k0200",
@@ -2542,41 +2024,6 @@
       "id": "venue-daejeon-science",
       "regionCode": "daejeon-yuseong",
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gongju-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gongju-1",
-      "regionCode": "cn-gongju",
-      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gongju-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gongju-2",
-      "regionCode": "cn-gongju",
-      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gongju-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gongju-3",
-      "regionCode": "cn-gongju",
-      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gongju-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gongju-4",
-      "regionCode": "cn-gongju",
-      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-gongju-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-gongju-5",
-      "regionCode": "cn-gongju",
-      "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0162": {
@@ -2633,41 +2080,6 @@
       "id": "venue-gongju-museum",
       "regionCode": "cn-gongju",
       "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daegu-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daegu-1",
-      "regionCode": "daegu-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daegu-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daegu-2",
-      "regionCode": "daegu-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daegu-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daegu-3",
-      "regionCode": "daegu-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daegu-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daegu-4",
-      "regionCode": "daegu-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-daegu-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-daegu-5",
-      "regionCode": "daegu-junggu",
-      "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0011": {
@@ -2780,41 +2192,6 @@
       "id": "venue-daegu-stadium",
       "regionCode": "daegu-junggu",
       "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-tongyeong-1": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-tongyeong-1",
-      "regionCode": "gn-tongyeong",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-tongyeong-2": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-tongyeong-2",
-      "regionCode": "gn-tongyeong",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-tongyeong-3": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-tongyeong-3",
-      "regionCode": "gn-tongyeong",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-tongyeong-4": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-tongyeong-4",
-      "regionCode": "gn-tongyeong",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-nat-tongyeong-5": {
-      "kind": "restaurant",
-      "id": "ysk-r-nat-tongyeong-5",
-      "regionCode": "gn-tongyeong",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-tongyeong.json",
       "status": "active"
     },
     "restaurant:ysk-r-k0044": {

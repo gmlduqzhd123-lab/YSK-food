@@ -15184,33 +15184,19 @@
     },
     {
       "id": "venue-yeosu-jinnam",
-      "name": "여수진남종합운동장",
+      "name": "여수 진남종합운동장 (진남체육공원)",
       "type": "stadium",
       "typeLabel": "운동장·체육관",
       "regionCode": "jn-yeosu",
       "address": "전라남도 여수시 진남체육관길 74",
       "location": {
-        "lat": 34.7568,
-        "lng": 127.7176,
+        "lat": 34.7616,
+        "lng": 127.7275,
         "status": "verified"
       },
       "eventRefs": [
         "evref-2026-sports-jn"
       ]
-    },
-    {
-      "id": "venue-yeosu-youth-hostel",
-      "name": "여수유스호스텔 수련관",
-      "type": "lodging",
-      "typeLabel": "수련시설·숙소",
-      "regionCode": "jn-yeosu",
-      "address": "전라남도 여수시 돌산읍 진모1길 29",
-      "location": {
-        "lat": 34.7261,
-        "lng": 127.6488,
-        "status": "verified"
-      },
-      "eventRefs": []
     }
   ],
   "eventReferences": [],
