@@ -25,6 +25,9 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const KAKAO_VERIFIED_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'century-guide-1000.json'), 'utf8'));
 const KAKAO_CHECK_SOURCE_ID = 'src-kakao-check-20261019';
 
+// 연락처 있는 전국 식당 1,000곳(전국맛집가이드, 2026-10-20) 중 카카오맵에서 영업을 확인한 식당 (같은 기준으로 확인)
+const KOFOOD_GUIDE_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'kofood-guide-1000.json'), 'utf8'));
+
 // 카카오맵 장소 상세의 편의시설·좌석 옵션(단체석·룸·주차·예약·포장 등, 일부 AI 요약 포함) 수집 결과
 const KAKAO_FACILITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-facilities-20261019.json'), 'utf8'));
 const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
@@ -34,7 +37,7 @@ const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
  * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
  */
 function applyKakaoFacilities(rest) {
-  const f = KAKAO_FACILITIES.facilities[rest.id];
+  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id];
   if (!f) return;
   const gp = rest.groupProfile;
   if (f.group) {
@@ -70,6 +73,11 @@ const LIST_SOURCES = {
     id: 'src-redguide-list',
     url: 'https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/guide_red.csv',
     attribution: '레드가이드 명단 (2차 공개자료)'
+  },
+  전국맛집가이드: {
+    id: 'src-kofood-guide',
+    url: 'https://www.kofood.net',
+    attribution: '전국맛집가이드 음식별 목록 (연락처 있는 전국 식당 1,000곳, 2026-10-20 조회)'
   }
 };
 
@@ -390,7 +398,7 @@ function buildDataset() {
     if (addressOverrides.has(r.id)) r.address = addressOverrides.get(r.id);
   }
 
-  const verifiedRestaurants = KAKAO_VERIFIED_1000.restaurants.map(item => {
+  const verifiedRestaurants = [...KAKAO_VERIFIED_1000.restaurants, ...KOFOOD_GUIDE_1000.restaurants].map(item => {
     const rest = normalizeLegacyPlaceToRestaurant(item);
     rest.location.checkedAt = '2026-10-19';
     const listSource = LIST_SOURCES[item.source];
