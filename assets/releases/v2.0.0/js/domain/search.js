@@ -96,6 +96,10 @@ export function normalizeGroupSearchCriteria(raw = {}) {
   const privateRoomRequired = Boolean(raw.privateRoomRequired);
   const earlyBreakfastRequired = Boolean(raw.earlyBreakfastRequired);
   const lunchboxRequired = Boolean(raw.lunchboxRequired);
+  // 카카오맵 편의시설 정보로 확인 가능한 조건 (단체석·주차·예약)
+  const groupSeatRequired = Boolean(raw.groupSeatRequired);
+  const parkingRequired = Boolean(raw.parkingRequired);
+  const reservationRequired = Boolean(raw.reservationRequired);
   const mealWindow = raw.mealWindow && raw.mealWindow.valid ? raw.mealWindow : null;
 
   const hasAnyCriterion = Boolean(
@@ -106,7 +110,10 @@ export function normalizeGroupSearchCriteria(raw = {}) {
     mealWindow !== null ||
     privateRoomRequired ||
     earlyBreakfastRequired ||
-    lunchboxRequired
+    lunchboxRequired ||
+    groupSeatRequired ||
+    parkingRequired ||
+    reservationRequired
   );
 
   return {
@@ -124,6 +131,9 @@ export function normalizeGroupSearchCriteria(raw = {}) {
     privateRoomRequired,
     earlyBreakfastRequired,
     lunchboxRequired,
+    groupSeatRequired,
+    parkingRequired,
+    reservationRequired,
     mealWindow
   };
 }
@@ -176,6 +186,9 @@ export function evaluateRestaurantGroupMatch(restaurant, rawCriteria = {}, optio
 
     if (gp.availability === 'no') {
       recordItem('capacity', '단체 수용', 'unmet', '단체 식사 미수용 식당');
+    } else if (simCap === null && gp.availability === 'yes' && (gp.seatTypes || []).includes('단체석')) {
+      // 좌석 수는 모르지만 카카오맵에 단체석이 있다고 나온 식당은 인원 조건을 충족으로 본다 (인원은 전화 확인)
+      recordItem('capacity', '단체석', 'met', `단체석 있음 · ${total}명 수용은 전화 확인`);
     } else if (criteria.seatingPolicy === 'simultaneous_required') {
       if (simCap === null) {
         recordItem('capacity', '동시 식사 인원', 'needs_check', `요청 ${total}명 · 동시 수용 인원 미확인`);
@@ -300,6 +313,21 @@ export function evaluateRestaurantGroupMatch(restaurant, rawCriteria = {}, optio
     if (lb === 'yes') recordItem('lunchbox', '단체 도시락·포장', 'met', `도시락·포장 가능 (${gp.lunchbox?.pickupMethod || '사전 주문'})`);
     else if (lb === 'no') recordItem('lunchbox', '단체 도시락·포장', 'unmet', '단체 도시락·포장 불가');
     else recordItem('lunchbox', '단체 도시락·포장', 'needs_check', '단체 도시락 주문 가능 여부 미확인');
+  }
+
+  // 6) 카카오맵 편의시설 정보 기반 조건 (정보가 없으면 '확인 필요'로 두고 목록에서 빼지 않는다)
+  if (criteria.groupSeatRequired) {
+    if (gp.availability === 'yes') recordItem('groupSeat', '단체석', 'met', '단체석 있음 (인원은 전화 확인)');
+    else if (gp.availability === 'no') recordItem('groupSeat', '단체석', 'unmet', '단체 식사 미수용');
+    else recordItem('groupSeat', '단체석', 'needs_check', '단체석 정보 없음');
+  }
+  if (criteria.parkingRequired) {
+    if (gp.parking?.busEntry === 'yes' || gp.parking?.walkingNotes) recordItem('parking', '주차', 'met', gp.parking?.walkingNotes || '주차 가능');
+    else recordItem('parking', '주차', 'needs_check', '주차 정보 없음');
+  }
+  if (criteria.reservationRequired) {
+    if (gp.preOrder?.leadTimeNote) recordItem('reservation', '예약', 'met', gp.preOrder.leadTimeNote);
+    else recordItem('reservation', '예약', 'needs_check', '예약 가능 여부 정보 없음');
   }
 
   let overallStatus = 'met';

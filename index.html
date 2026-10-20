@@ -170,52 +170,70 @@
     <!-- 지역 자료 상태 안내 배너 (갱신일·좌표 미확인 수·이전 버전 대체 안내) -->
     <div class="status-banner info" id="dataset-status-banner" role="status" aria-live="polite" hidden></div>
 
-    <!-- 이용 모드 전환 및 행사 프리셋·기준점 선택 바 (FR01, FR02, FR04) -->
-    <div class="mode-bar" role="region" aria-label="이용 모드 및 행사 프리셋">
-        <div class="mode-tabs" role="group" aria-label="이용 모드 선택">
-            <button type="button" class="mode-tab active" data-mode="general" aria-pressed="true">🍽️ 일반 맛집</button>
-            <button type="button" class="mode-tab" data-mode="school" aria-pressed="false">🏫 학교 단체식사</button>
-            <button type="button" class="mode-tab" data-mode="athlete" aria-pressed="false">🏃 선수단 식사</button>
+    <!-- 이용 목적·조건 설정 (휴대폰에서는 화면 위에 겹쳐 뜨는 창, PC에서는 그대로 펼침) -->
+    <div class="setup-backdrop" id="setup-backdrop" aria-hidden="true"></div>
+    <section class="setup-sheet" id="setup-sheet" aria-label="이용 목적·식사 조건 설정">
+        <div class="setup-sheet-head">
+            <strong>이용 목적·조건</strong>
+            <button type="button" class="setup-close" id="setup-close" aria-label="설정 닫기">✕</button>
         </div>
-        <div class="mode-Selectors">
-            <select id="event-preset-select" class="mode-select" aria-label="행사 프리셋 선택">
-                <option value="">🎯 행사 프리셋 선택 (기본 안내)</option>
-                <option value="field_trip">현장체험학습 (1일)</option>
-                <option value="school_trip">수학여행 (다일)</option>
-                <option value="training_camp">수련활동</option>
-                <option value="school_sports_club">학교스포츠클럽 대회</option>
-                <option value="national_youth_sports">전국소년체육대회</option>
-                <option value="national_sports_festival">전국체육대회</option>
-            </select>
+
+        <!-- 이용 모드 전환 및 행사 프리셋 (FR01, FR02) -->
+        <div class="mode-bar" role="region" aria-label="이용 모드 및 행사 프리셋">
+            <div class="mode-tabs" role="group" aria-label="이용 모드 선택">
+                <button type="button" class="mode-tab active" data-mode="general" aria-pressed="true">🍽️ 일반 맛집</button>
+                <button type="button" class="mode-tab" data-mode="school" aria-pressed="false">🏫 학교 단체식사</button>
+                <button type="button" class="mode-tab" data-mode="athlete" aria-pressed="false">🏃 선수단 식사</button>
+            </div>
+            <div class="mode-Selectors">
+                <select id="event-preset-select" class="mode-select" aria-label="행사 종류 선택">
+                    <option value="">🎯 행사 종류 선택 (선택 사항)</option>
+                    <option value="field_trip">현장체험학습 (1일)</option>
+                    <option value="school_trip">수학여행 (다일)</option>
+                    <option value="training_camp">수련활동</option>
+                    <option value="school_sports_club">학교스포츠클럽 대회</option>
+                    <option value="national_youth_sports">전국소년체육대회</option>
+                    <option value="national_sports_festival">전국체육대회</option>
+                </select>
+            </div>
+            <div class="preset-guide-note" id="preset-guide-note" hidden></div>
+        </div>
+
+        <!-- 단체 식사 조건 (학교·선수단 모드에서만 보임 - FR03): 실제 자료로 확인 가능한 조건만 -->
+        <div class="group-criteria-bar" id="group-criteria-bar" role="region" aria-label="단체 식사 조건" hidden>
+            <div class="gc-grid">
+                <label class="gc-field">총 인원 <input type="number" id="gc-students" min="0" max="2000" inputmode="numeric" placeholder="명"></label>
+                <label class="gc-field budget">1인 예산 <input type="number" id="gc-budget" min="0" step="1000" inputmode="numeric" placeholder="원 (예: 12000)"></label>
+                <div class="gc-chips" role="group" aria-label="식사 시간">
+                    <span class="gc-label">식사</span>
+                    <button type="button" class="gc-chip" data-meal="breakfast" aria-pressed="false">아침</button>
+                    <button type="button" class="gc-chip" data-meal="lunch" aria-pressed="false">점심</button>
+                    <button type="button" class="gc-chip" data-meal="dinner" aria-pressed="false">저녁</button>
+                </div>
+                <div class="gc-chips" role="group" aria-label="필요 조건">
+                    <span class="gc-label">필요</span>
+                    <button type="button" class="gc-chip" data-need="groupSeatRequired" aria-pressed="false">단체석</button>
+                    <button type="button" class="gc-chip" data-need="parkingRequired" aria-pressed="false">주차</button>
+                    <button type="button" class="gc-chip" data-need="lunchboxRequired" aria-pressed="false">포장</button>
+                    <button type="button" class="gc-chip" data-need="reservationRequired" aria-pressed="false">예약</button>
+                </div>
+                <p class="gc-hint">좌석 수·대형버스 주차는 자료가 없어 식당 상세에서 '전화 확인'으로 안내합니다.</p>
+            </div>
+        </div>
+
+        <!-- 기준점(체험처·경기장·숙소)은 필요할 때만 펼침 (FR04) -->
+        <details class="setup-more">
+            <summary>📍 기준점으로 가까운 순 보기 (선택)</summary>
             <select id="ref-point-select" class="mode-select" aria-label="기준점(체험처·경기장·숙소) 선택">
                 <option value="">📍 기준점 선택 (체험처·경기장·숙소)</option>
             </select>
-        </div>
-        <div class="preset-guide-note" id="preset-guide-note" hidden></div>
-    </div>
+        </details>
 
-    <!-- 단체 조건 입력 바 (학교·선수단 모드 시 표시 - FR03) -->
-    <div class="group-criteria-bar" id="group-criteria-bar" role="region" aria-label="단체 식사 조건 필터" hidden>
-        <div class="gc-grid">
-            <label class="gc-field">학생·선수 <input type="number" id="gc-students" min="0" max="2000" placeholder="명"></label>
-            <label class="gc-field">인솔·지도자 <input type="number" id="gc-staff" min="0" max="500" placeholder="명"></label>
-            <label class="gc-field budget">1인 예산(원) <input type="number" id="gc-budget" min="0" step="1000" placeholder="예: 12000"></label>
-            <label class="gc-field">버스(대) <input type="number" id="gc-buses" min="0" max="50" placeholder="대"></label>
-            <label class="gc-field">좌석방식
-                <select id="gc-seating-policy">
-                    <option value="simultaneous_required">동시 착석 필수</option>
-                    <option value="split_waves_allowed">시간차(교대) 허용</option>
-                </select>
-            </label>
-            <label class="gc-field">방문일 <input type="date" id="gc-visit-date"></label>
-            <label class="gc-field">시작 <input type="time" id="gc-start-time"></label>
-            <label class="gc-field">종료 <input type="time" id="gc-end-time"></label>
-            <label class="gc-check"><input type="checkbox" id="gc-bus-parking"> 대형버스 주차 필수</label>
-            <label class="gc-check"><input type="checkbox" id="gc-early-breakfast"> 이른 아침식사 필수</label>
-            <label class="gc-check"><input type="checkbox" id="gc-lunchbox"> 도시락·포장 필수</label>
+        <div class="setup-sheet-foot">
             <button type="button" class="gc-reset-btn" id="gc-reset-btn">조건 초기화</button>
+            <button type="button" class="setup-apply" id="setup-apply">적용</button>
         </div>
-    </div>
+    </section>
 
     <!-- 전국 지역 드롭다운 + 검색창 -->
     <div class="search-box">
@@ -320,6 +338,11 @@
                 if (root.classList.contains('menu-open') && !header.contains(e.target)) setOpen(menuBtn, 'menu-open', false);
             }, true);
             setupBtn.addEventListener('click', function () { toggle(setupBtn, 'setup-open'); });
+            // 설정 창: [적용]·닫기·바깥 누르면 닫고 지도·목록으로 돌아간다
+            ['setup-apply', 'setup-close', 'setup-backdrop'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el) el.addEventListener('click', function () { setOpen(setupBtn, 'setup-open', false); });
+            });
             filterBtn.addEventListener('click', function () { toggle(filterBtn, 'filters-open'); });
 
             // 자료 안내 한 줄은 누르면 전체 문구가 펼쳐진다
@@ -337,7 +360,15 @@
             var regionSelect = document.getElementById('region-select');
             function refresh() {
                 var active = document.querySelector('.mode-tab.active');
-                setupLabel.textContent = modeShort[active && active.dataset.mode] || modeShort.general;
+                var label = modeShort[active && active.dataset.mode] || modeShort.general;
+                // 학교·선수단 모드에서 고른 조건을 짧게 덧붙인다 (예: 🏫 학교 · 40명 · 2)
+                if (active && active.dataset.mode !== 'general') {
+                    var people = document.getElementById('gc-students').value;
+                    var picked = document.querySelectorAll('.gc-chip[aria-pressed="true"]').length + (document.getElementById('gc-budget').value ? 1 : 0);
+                    if (people) label += ' · ' + people + '명';
+                    if (picked) label += ' · ' + picked;
+                }
+                setupLabel.textContent = label;
                 var n = document.querySelectorAll('#fav-filter.active, #open-filter.active, .filter-btn.category.active:not([data-category=""]):not([data-category="all"])').length;
                 var quick = document.querySelector('.filter-btn[data-region].active');
                 if (!quick && regionSelect.value) n += 1;
@@ -347,6 +378,9 @@
             var filters = document.querySelector('.filter-container');
             var mo = new MutationObserver(refresh);
             mo.observe(bar, { attributes: true, subtree: true, attributeFilter: ['class'] });
+            mo.observe(document.getElementById('group-criteria-bar'), { attributes: true, subtree: true, attributeFilter: ['aria-pressed'] });
+            ['gc-students', 'gc-budget'].forEach(function (id) { document.getElementById(id).addEventListener('input', refresh); });
+            document.getElementById('gc-reset-btn').addEventListener('click', function () { setTimeout(refresh, 0); });
             mo.observe(filters, { attributes: true, childList: true, subtree: true, attributeFilter: ['class'] });
             regionSelect.addEventListener('change', refresh);
             refresh();

@@ -273,6 +273,76 @@ header .head-action-btn.active {
   cursor: pointer;
 }
 
+/* 단체 조건 버튼(식사 시간·필요 조건) */
+.gc-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.gc-label {
+  min-width: 34px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+}
+.gc-chip {
+  min-height: 36px;
+  padding: 4px 12px;
+  border: 1px solid #fdba74;
+  border-radius: 999px;
+  background: #fff;
+  color: #9a3412;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.gc-chip[aria-pressed="true"] {
+  background: #ea580c;
+  border-color: #ea580c;
+  color: #fff;
+}
+.gc-hint {
+  width: 100%;
+  margin: 0;
+  grid-column: 1 / -1;
+  color: #64748b;
+  font-size: 11px;
+}
+/* 설정 창의 머리·꼬리·배경은 휴대폰에서만 (PC는 펼친 상태 그대로) */
+.setup-backdrop,
+.setup-sheet-head,
+.setup-apply {
+  display: none;
+}
+.setup-sheet-foot {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 16px 8px;
+  background: #f8fafc;
+}
+.setup-more {
+  padding: 6px 16px;
+  font-size: 13px;
+  color: #475569;
+}
+.setup-more summary {
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 32px;
+  line-height: 32px;
+}
+.setup-more .mode-select {
+  width: 100%;
+  margin-top: 6px;
+}
+/* 행사 안내문은 한 줄로 */
+.preset-guide-note {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* 검색창 및 지역 선택 바 */
 .search-box {
   padding: 8px 16px 0;
@@ -1478,8 +1548,7 @@ html.op-mode #open-op-tool-btn {
   header { order: 1; }
   .status-banner { order: 2; }
   .search-box { order: 3; }
-  .mode-bar { order: 4; }
-  .group-criteria-bar { order: 5; }
+  .setup-sheet { order: 4; }
   .filter-container { order: 6; }
   main { order: 7; }
   .site-footer { display: none; }
@@ -1614,13 +1683,98 @@ html.op-mode #open-op-tool-btn {
     width: 100%;
   }
 
-  /* 이용 목적·행사 프리셋·기준점·단체 조건은 접어 둠 */
-  html:not(.setup-open) .mode-bar,
-  html:not(.setup-open) .group-criteria-bar {
-    display: none;
+  /* 이용 목적·조건 설정은 화면 아래에서 올라오는 창으로 띄워 지도·목록을 밀어내지 않음 */
+  .setup-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    max-height: 82dvh;
+    overflow-y: auto;
+    border-radius: 18px 18px 0 0;
+    background: #fff;
+    box-shadow: 0 -10px 30px rgba(15,23,42,0.25);
+    transform: translateY(105%);
+    transition: transform 0.22s ease;
+    -webkit-overflow-scrolling: touch;
+  }
+  html.setup-open .setup-sheet {
+    transform: translateY(0);
+  }
+  .setup-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 59;
+    background: rgba(15,23,42,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  html.setup-open .setup-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .setup-sheet-head {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px 6px;
+    background: #fff;
+    font-size: 15px;
+  }
+  .setup-close {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .setup-sheet-foot {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    gap: 8px;
+    padding: 10px 16px calc(12px + env(safe-area-inset-bottom));
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  .setup-sheet-foot .gc-reset-btn {
+    min-height: 48px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+  .setup-apply {
+    display: block;
+    flex: 1;
+    min-height: 48px;
+    border: none;
+    border-radius: 12px;
+    background: #ea580c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
   }
   .mode-bar {
-    padding: 8px 12px;
+    padding: 4px 16px 10px;
+    border-bottom: none;
+    background: #fff;
+  }
+  .setup-sheet .group-criteria-bar {
+    padding: 10px 16px;
+    background: #fff8f3;
+    border-top: 1px solid #fed7aa;
+    border-bottom: 1px solid #fed7aa;
+  }
+  .setup-more {
+    padding: 8px 16px;
   }
   .mode-Selectors {
     width: 100%;
@@ -1629,9 +1783,28 @@ html.op-mode #open-op-tool-btn {
     flex: 1 1 100%;
     width: 100%;
   }
-  .group-criteria-bar {
-    max-height: 38dvh;
-    overflow-y: auto;
+  .gc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .gc-field {
+    flex-direction: column;
+    align-items: stretch;
+    font-size: 13px;
+  }
+  .gc-field input[type="number"],
+  .gc-field.budget input[type="number"] {
+    width: 100%;
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .gc-chips {
+    grid-column: 1 / -1;
+  }
+  .gc-chip {
+    flex: 1;
+    min-height: 44px;
   }
 
   /* 지역 버튼은 한 줄(옆으로 넘김), 즐겨찾기·영업 중·종류는 필터를 펼쳤을 때만 */
