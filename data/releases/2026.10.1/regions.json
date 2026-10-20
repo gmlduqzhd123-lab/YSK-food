@@ -105,8 +105,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jn-gwangyang.json",
       "stats": {
-        "totalRestaurants": 22,
-        "groupVerifiedCount": 20,
+        "totalRestaurants": 23,
+        "groupVerifiedCount": 21,
         "unverifiedCoordCount": 20,
         "updatedAt": "2026-10-19"
       }
@@ -285,8 +285,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "stats": {
-        "totalRestaurants": 10,
-        "groupVerifiedCount": 10,
+        "totalRestaurants": 15,
+        "groupVerifiedCount": 15,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -323,8 +323,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jj-jeju.json",
       "stats": {
-        "totalRestaurants": 6,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 44,
+        "groupVerifiedCount": 34,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -360,8 +360,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "stats": {
-        "totalRestaurants": 7,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 9,
+        "groupVerifiedCount": 8,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -396,8 +396,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
       "stats": {
-        "totalRestaurants": 6,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 11,
+        "groupVerifiedCount": 8,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -432,8 +432,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-jongno.json",
       "stats": {
-        "totalRestaurants": 7,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 14,
+        "groupVerifiedCount": 12,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -507,8 +507,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
       "stats": {
-        "totalRestaurants": 11,
-        "groupVerifiedCount": 10,
+        "totalRestaurants": 37,
+        "groupVerifiedCount": 32,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -544,8 +544,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/incheon-junggu.json",
       "stats": {
-        "totalRestaurants": 2,
-        "groupVerifiedCount": 2,
+        "totalRestaurants": 5,
+        "groupVerifiedCount": 5,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -580,8 +580,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "stats": {
-        "totalRestaurants": 13,
-        "groupVerifiedCount": 12,
+        "totalRestaurants": 14,
+        "groupVerifiedCount": 13,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -618,8 +618,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
       "stats": {
-        "totalRestaurants": 4,
-        "groupVerifiedCount": 4,
+        "totalRestaurants": 10,
+        "groupVerifiedCount": 10,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -656,8 +656,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/cn-gongju.json",
       "stats": {
-        "totalRestaurants": 7,
-        "groupVerifiedCount": 4,
+        "totalRestaurants": 13,
+        "groupVerifiedCount": 10,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -692,8 +692,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daegu-junggu.json",
       "stats": {
-        "totalRestaurants": 14,
-        "groupVerifiedCount": 13,
+        "totalRestaurants": 15,
+        "groupVerifiedCount": 14,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -764,8 +764,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
       "stats": {
-        "totalRestaurants": 133,
-        "groupVerifiedCount": 93,
+        "totalRestaurants": 287,
+        "groupVerifiedCount": 226,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -798,8 +798,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
       "stats": {
-        "totalRestaurants": 61,
-        "groupVerifiedCount": 53,
+        "totalRestaurants": 163,
+        "groupVerifiedCount": 140,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -832,8 +832,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/incheon-etc.json",
       "stats": {
-        "totalRestaurants": 13,
-        "groupVerifiedCount": 11,
+        "totalRestaurants": 42,
+        "groupVerifiedCount": 36,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -866,8 +866,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gw-etc.json",
       "stats": {
-        "totalRestaurants": 32,
-        "groupVerifiedCount": 28,
+        "totalRestaurants": 48,
+        "groupVerifiedCount": 41,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -900,8 +900,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/cb-all.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 31,
+        "totalRestaurants": 63,
+        "groupVerifiedCount": 54,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -934,8 +934,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/cn-etc.json",
       "stats": {
-        "totalRestaurants": 23,
-        "groupVerifiedCount": 21,
+        "totalRestaurants": 41,
+        "groupVerifiedCount": 36,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -968,8 +968,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
       "stats": {
-        "totalRestaurants": 11,
-        "groupVerifiedCount": 9,
+        "totalRestaurants": 35,
+        "groupVerifiedCount": 30,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1002,8 +1002,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/sejong.json",
       "stats": {
-        "totalRestaurants": 6,
-        "groupVerifiedCount": 5,
+        "totalRestaurants": 7,
+        "groupVerifiedCount": 6,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1036,8 +1036,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jb-etc.json",
       "stats": {
-        "totalRestaurants": 30,
-        "groupVerifiedCount": 26,
+        "totalRestaurants": 36,
+        "groupVerifiedCount": 32,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1104,8 +1104,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/jn-etc.json",
       "stats": {
-        "totalRestaurants": 12,
-        "groupVerifiedCount": 10,
+        "totalRestaurants": 13,
+        "groupVerifiedCount": 11,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1138,8 +1138,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gb-etc.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 37,
+        "totalRestaurants": 66,
+        "groupVerifiedCount": 60,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1172,8 +1172,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/daegu-etc.json",
       "stats": {
-        "totalRestaurants": 21,
-        "groupVerifiedCount": 19,
+        "totalRestaurants": 36,
+        "groupVerifiedCount": 32,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1206,8 +1206,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
       "stats": {
-        "totalRestaurants": 27,
-        "groupVerifiedCount": 21,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 44,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1240,8 +1240,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/busan-etc.json",
       "stats": {
-        "totalRestaurants": 48,
-        "groupVerifiedCount": 33,
+        "totalRestaurants": 75,
+        "groupVerifiedCount": 55,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1274,8 +1274,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/ulsan.json",
       "stats": {
-        "totalRestaurants": 4,
-        "groupVerifiedCount": 3,
+        "totalRestaurants": 12,
+        "groupVerifiedCount": 9,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
