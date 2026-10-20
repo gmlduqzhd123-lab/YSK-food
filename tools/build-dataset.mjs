@@ -393,7 +393,7 @@ function buildDataset() {
   });
 
   // PDF 주소로 기존 식당의 '상세 주소 미확인'을 보강
-  const addressOverrides = new Map(KAKAO_VERIFIED_1000.addressOverrides.map(o => [o.id, o.address]));
+  const addressOverrides = new Map([...KAKAO_VERIFIED_1000.addressOverrides, ...(KOFOOD_GUIDE_1000.addressOverrides || [])].map(o => [o.id, o.address]));
   for (const r of normalizedRestaurants) {
     if (addressOverrides.has(r.id)) r.address = addressOverrides.get(r.id);
   }
