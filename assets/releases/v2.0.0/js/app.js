@@ -97,7 +97,10 @@ export class YskFoodApp {
         endNextDay: false,
         privateRoomRequired: false,
         earlyBreakfastRequired: false,
-        lunchboxRequired: false
+        lunchboxRequired: false,
+        groupSeatRequired: false,
+        parkingRequired: false,
+        reservationRequired: false
       },
       hasUnsavedEventEdits: false
     };
@@ -1884,6 +1887,40 @@ export class YskFoodApp {
     bindCriteriaInput('gc-early-breakfast', 'earlyBreakfastRequired', true);
     bindCriteriaInput('gc-lunchbox', 'lunchboxRequired', true);
 
+    // 식사 시간(아침·점심·저녁)과 필요 조건(단체석·주차·포장·예약)은 누르는 버튼으로 고른다
+    const MEAL_TIMES = { breakfast: ['07:00', '09:00'], lunch: ['11:30', '13:30'], dinner: ['17:30', '19:30'] };
+    const todayText = () => {
+      const d = new Date();
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    };
+    const mealChips = [...document.querySelectorAll('.gc-chip[data-meal]')];
+    mealChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const on = chip.getAttribute('aria-pressed') !== 'true';
+        mealChips.forEach(c => c.setAttribute('aria-pressed', String(c === chip && on)));
+        const gc = this.state.groupCriteria;
+        if (on) {
+          [gc.startTime, gc.endTime] = MEAL_TIMES[chip.dataset.meal];
+          gc.visitDate = todayText();
+        } else {
+          gc.startTime = '';
+          gc.endTime = '';
+          gc.visitDate = '';
+        }
+        this.state.visibleLimit = PAGE_SIZE;
+        this.applyFilters(false);
+      });
+    });
+    document.querySelectorAll('.gc-chip[data-need]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const on = chip.getAttribute('aria-pressed') !== 'true';
+        chip.setAttribute('aria-pressed', String(on));
+        this.state.groupCriteria[chip.dataset.need] = on;
+        this.state.visibleLimit = PAGE_SIZE;
+        this.applyFilters(false);
+      });
+    });
+
     const resetCriteriaBtn = document.getElementById('gc-reset-btn');
     if (resetCriteriaBtn) {
       resetCriteriaBtn.addEventListener('click', () => {
@@ -1901,8 +1938,12 @@ export class YskFoodApp {
           endNextDay: false,
           privateRoomRequired: false,
           earlyBreakfastRequired: false,
-          lunchboxRequired: false
+          lunchboxRequired: false,
+          groupSeatRequired: false,
+          parkingRequired: false,
+          reservationRequired: false
         });
+        document.querySelectorAll('.gc-chip').forEach(chip => chip.setAttribute('aria-pressed', 'false'));
         ['gc-students', 'gc-staff', 'gc-budget', 'gc-buses', 'gc-visit-date', 'gc-start-time', 'gc-end-time'].forEach(id => {
           const input = document.getElementById(id);
           if (input) input.value = '';
