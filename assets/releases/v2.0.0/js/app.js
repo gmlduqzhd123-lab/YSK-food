@@ -1591,7 +1591,10 @@ export class YskFoodApp {
     document.querySelectorAll('[data-count-group]').forEach(t => {
       // 권역 묶음이 아니면(예: 제주) 그 지역 하나로 센다
       const codes = REGION_GROUPS[t.dataset.countGroup]?.regionCodes || [t.dataset.countGroup];
-      t.textContent = String(codes.reduce((sum, rc) => sum + (byRegionCode[rc] ?? 0), 0));
+      const total = codes.reduce((sum, rc) => sum + (byRegionCode[rc] ?? 0), 0);
+      t.textContent = String(total);
+      // 작은 타일은 네 자리 숫자가 아이콘에 붙지 않게 글자를 줄인다
+      if (t.tagName.toLowerCase() === 'text') t.setAttribute('font-size', total >= 1000 ? '14' : '17');
     });
 
     const totalAllCount = regions.reduce((sum, r) => sum + (r.stats?.totalRestaurants ?? 0), 0);

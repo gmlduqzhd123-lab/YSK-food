@@ -348,6 +348,11 @@ export class MapController {
   syncMarkers(places = []) {
     if (!this.isReady()) return { markerCount: 0 };
 
+    const mappable = filterMappablePlaces(places);
+    // 식당이 수천 곳이라 지도 표시를 다시 그리는 데 시간이 걸리므로, 보여 줄 식당이 그대로면 건너뛴다
+    const markerKey = mappable.map(p => String(p.id)).join('|');
+    if (markerKey === this.lastMarkerKey) return { markerCount: this.lastMarkerCount, skipped: true };
+
     // 기존 마커 정리
     if (this.clusterer) {
       this.clusterer.clear();
@@ -357,7 +362,6 @@ export class MapController {
       }
     }
 
-    const mappable = filterMappablePlaces(places);
     const activeMarkers = [];
 
     for (const place of mappable) {
@@ -385,11 +389,15 @@ export class MapController {
     }
 
     if (this.clusterer) {
-      this.clusterer.addMarkers(activeMarkers);
+      // 다 넣은 뒤 한 번만 다시 그린다
+      this.clusterer.addMarkers(activeMarkers, true);
+      this.clusterer.redraw();
     } else {
       activeMarkers.forEach(m => m.setMap(this.map));
     }
 
+    this.lastMarkerKey = markerKey;
+    this.lastMarkerCount = activeMarkers.length;
     return { markerCount: activeMarkers.length };
   }
 
