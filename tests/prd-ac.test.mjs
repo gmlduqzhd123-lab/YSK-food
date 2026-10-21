@@ -106,7 +106,8 @@ const isLegacyId = id => /^ysk-r-\d+$/.test(String(id));
 // 1000곳 조사 중 카카오맵에서 영업을 확인해 추가한 식당 자료
 const CENTURY_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/century-guide-1000.json'), 'utf8'));
 const KOFOOD_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kofood-guide-1000.json'), 'utf8'));
-const KAKAO_VERIFIED = { restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants] };
+const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodprice-3000.json'), 'utf8'));
+const KAKAO_VERIFIED = { restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants] };
 
 function createLocalFileFetch(rootDir = ROOT) {
   return async (urlStr) => {

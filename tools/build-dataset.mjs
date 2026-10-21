@@ -27,6 +27,9 @@ const KAKAO_CHECK_SOURCE_ID = 'src-kakao-check-20261019';
 
 // 연락처 있는 전국 식당 1,000곳(전국맛집가이드, 2026-10-20) 중 카카오맵에서 영업을 확인한 식당 (같은 기준으로 확인)
 const KOFOOD_GUIDE_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'kofood-guide-1000.json'), 'utf8'));
+// 초등학생 동반 전국 식당 3,000곳(착한가격업소·브랜드 매장·지자체 맛집) 중 카카오맵에서 위치를 찾고 폐업 표시가 없는 식당
+// (영업시간·리뷰가 없어도 수록하며, 엑셀의 메뉴 가격을 1인 예산 비교에 쓴다)
+const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'goodprice-3000.json'), 'utf8'));
 
 // 카카오맵 장소 상세의 편의시설·좌석 옵션(단체석·룸·주차·예약·포장 등, 일부 AI 요약 포함) 수집 결과
 const KAKAO_FACILITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-facilities-20261019.json'), 'utf8'));
@@ -37,7 +40,7 @@ const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
  * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
  */
 function applyKakaoFacilities(rest) {
-  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id];
+  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id];
   if (!f) return;
   const gp = rest.groupProfile;
   if (f.group) {
@@ -73,6 +76,21 @@ const LIST_SOURCES = {
     id: 'src-redguide-list',
     url: 'https://github.com/yeodusung-ux/korea-restaurant-certs/blob/main/build/guide_red.csv',
     attribution: '레드가이드 명단 (2차 공개자료)'
+  },
+  착한가격업소: {
+    id: 'src-goodprice-mois',
+    url: 'https://www.data.go.kr',
+    attribution: '행정안전부 착한가격업소 현황 (2026-09-30)'
+  },
+  브랜드매장: {
+    id: 'src-brand-store',
+    url: 'https://www.kukinamu.com',
+    attribution: '브랜드 공식 매장안내 (메뉴·가격은 브랜드 공통, 지점별 확인)'
+  },
+  지자체맛집: {
+    id: 'src-local-gov-guide',
+    url: 'https://www.daejeon.go.kr',
+    attribution: '지자체 공식 맛집 안내 (대전의 맛·울산 큰애기맛집·강원 으뜸음식점 등)'
   },
   전국맛집가이드: {
     id: 'src-kofood-guide',
@@ -393,13 +411,22 @@ function buildDataset() {
   });
 
   // PDF 주소로 기존 식당의 '상세 주소 미확인'을 보강
-  const addressOverrides = new Map([...KAKAO_VERIFIED_1000.addressOverrides, ...(KOFOOD_GUIDE_1000.addressOverrides || [])].map(o => [o.id, o.address]));
+  const addressOverrides = new Map([...KAKAO_VERIFIED_1000.addressOverrides, ...(KOFOOD_GUIDE_1000.addressOverrides || []), ...(GOODPRICE_3000.addressOverrides || [])].map(o => [o.id, o.address]));
   for (const r of normalizedRestaurants) {
     if (addressOverrides.has(r.id)) r.address = addressOverrides.get(r.id);
   }
 
-  const verifiedRestaurants = [...KAKAO_VERIFIED_1000.restaurants, ...KOFOOD_GUIDE_1000.restaurants].map(item => {
+  const verifiedRestaurants = [...KAKAO_VERIFIED_1000.restaurants, ...KOFOOD_GUIDE_1000.restaurants, ...GOODPRICE_3000.restaurants].map(item => {
     const rest = normalizeLegacyPlaceToRestaurant(item);
+    // 엑셀에 적힌 메뉴 가격(1인 메뉴 기준으로 사용, 세트·조건 가격일 수 있음)
+    if (item.priceKRW) {
+      const target = rest.menus.find(m => m.name === item.priceMenu) || rest.menus[0];
+      if (target) {
+        target.priceKRW = item.priceKRW;
+        target.priceBasis = 'per_person';
+      }
+      rest.rawPriceText = `${item.priceKRW.toLocaleString('ko-KR')}원${target && target.name ? ` (${target.name})` : ''}`;
+    }
     rest.location.checkedAt = '2026-10-19';
     const listSource = LIST_SOURCES[item.source];
     rest.groupProfile.evidenceRefs = [...(listSource ? [listSource.id] : []), KAKAO_CHECK_SOURCE_ID];
@@ -521,7 +548,8 @@ function buildDataset() {
 
     regionDatasets[code] = regionData;
 
-    const jsonText = JSON.stringify(regionData, null, 2) + '\n';
+    // 식당이 많아져 들여쓰기 없이 저장한다 (전국 보기 로딩 크기 줄이기)
+    const jsonText = JSON.stringify(regionData) + '\n';
     fs.writeFileSync(path.join(ROOT_DIR, relPath), jsonText, 'utf8');
     const hash = sha256Hex(jsonText);
     checksums[relPath] = hash;
@@ -622,7 +650,7 @@ function buildDataset() {
     generatedAt: GENERATED_AT,
     entries: searchIndexEntries
   };
-  const searchIndexJson = JSON.stringify(searchIndex, null, 2) + '\n';
+  const searchIndexJson = JSON.stringify(searchIndex) + '\n';
   fs.writeFileSync(path.join(ROOT_DIR, searchIndexPath), searchIndexJson, 'utf8');
   checksums[searchIndexPath] = sha256Hex(searchIndexJson);
 
