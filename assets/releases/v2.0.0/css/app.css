@@ -1969,3 +1969,152 @@ html.op-mode #open-op-tool-btn {
   padding: 8px 11px;
   font-size: 12px;
 }
+
+/* 홈 화면: 목적 우선 + 권역 순위 막대 */
+.home-layout {
+  gap: 18px;
+}
+.home-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.home-chip,
+.home-chip.home-live {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: white;
+  color: #1d2330;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: none;
+  cursor: pointer;
+}
+.home-chip:hover,
+.home-chip:focus-visible {
+  border-color: #ff5722;
+  outline: none;
+}
+.home-chip.home-live i {
+  width: 7px;
+  height: 7px;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+}
+.home-bigmodes {
+  display: grid;
+  gap: 8px;
+}
+.home-bm {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #eceff3;
+  border-radius: 16px;
+  background: white;
+  color: #1d2330;
+  text-align: left;
+  cursor: pointer;
+}
+.home-bm:hover,
+.home-bm:focus-visible {
+  border-color: #ff5722;
+  outline: none;
+}
+.home-bm .ic {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg, #f1f5f9);
+  font-size: 22px;
+}
+.home-bm .tx {
+  min-width: 0;
+}
+.home-bm strong {
+  display: block;
+  font-size: 15px;
+}
+.home-bm .tx span {
+  color: #64748b;
+  font-size: 12.5px;
+}
+.home-bm .go {
+  margin-left: auto;
+  color: #cbd5e1;
+  font-size: 22px;
+}
+.home-bars {
+  padding: 6px 12px;
+  border: 1px solid #eceff3;
+  border-radius: 16px;
+  background: white;
+}
+.home-bar {
+  display: grid;
+  grid-template-columns: 24px minmax(88px, auto) 1fr 48px;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 0;
+  border: none;
+  background: none;
+  color: #1d2330;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+.home-bar + .home-bar {
+  border-top: 1px solid #f3f4f6;
+}
+.home-bar:hover .n,
+.home-bar:focus-visible .n {
+  color: #ff5722;
+}
+.home-bar:focus-visible {
+  outline: 2px solid #ff5722;
+  outline-offset: 2px;
+}
+.home-bar .track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f1f5f9;
+}
+.home-bar .track i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s;
+}
+.home-bar b {
+  text-align: right;
+  font-size: 13.5px;
+}
+@media (min-width: 900px) {
+  .home-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 40px;
+  }
+  .home-intro,
+  .home-bigmodes {
+    grid-column: 1;
+  }
+  .home-regions {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}

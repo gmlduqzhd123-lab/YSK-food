@@ -1588,17 +1588,28 @@ export class YskFoodApp {
     document.querySelectorAll('[data-count-region]').forEach(t => {
       t.textContent = String(byRegionCode[t.dataset.countRegion] ?? 0);
     });
+    const groupTotals = {};
     document.querySelectorAll('[data-count-group]').forEach(t => {
       // 권역 묶음이 아니면(예: 제주) 그 지역 하나로 센다
       const codes = REGION_GROUPS[t.dataset.countGroup]?.regionCodes || [t.dataset.countGroup];
       const total = codes.reduce((sum, rc) => sum + (byRegionCode[rc] ?? 0), 0);
-      t.textContent = String(total);
-      // 작은 타일은 네 자리 숫자가 아이콘에 붙지 않게 글자를 줄인다
-      if (t.tagName.toLowerCase() === 'text') t.setAttribute('font-size', total >= 1000 ? '14' : '17');
+      groupTotals[t.dataset.countGroup] = total;
+      t.textContent = total.toLocaleString();
+    });
+    // 권역 막대 길이: 가장 많은 권역을 100%로
+    const maxGroup = Math.max(1, ...Object.values(groupTotals));
+    document.querySelectorAll('[data-bar-group]').forEach(bar => {
+      const total = groupTotals[bar.dataset.barGroup] ?? 0;
+      bar.style.width = `${Math.max(3, Math.round((total / maxGroup) * 100))}%`;
     });
 
     const totalAllCount = regions.reduce((sum, r) => sum + (r.stats?.totalRestaurants ?? 0), 0);
     const elemVerifiedCount = regions.reduce((sum, r) => sum + (r.stats?.groupVerifiedCount ?? 0), 0);
+
+    const totalEl = document.getElementById('home-total');
+    if (totalEl) totalEl.textContent = `${totalAllCount.toLocaleString()}곳`;
+    const groupChipText = document.getElementById('home-group-text');
+    if (groupChipText && elemVerifiedCount > 0) groupChipText.textContent = `단체석 ${elemVerifiedCount.toLocaleString()}곳`;
 
     const leadEl = document.getElementById('home-lead');
     if (leadEl) {
@@ -1645,7 +1656,7 @@ export class YskFoodApp {
     }
   }
 
-  async openMapFromHome({ regionCode, city, category, query, openOnly, mode, presetId } = {}) {
+  async openMapFromHome({ regionCode, city, category, query, openOnly, mode, presetId, needs } = {}) {
     const cityMap = {
       '서울': 'seoul-metro',
       '수원': 'gyeonggi-suwon',
@@ -1669,6 +1680,11 @@ export class YskFoodApp {
     };
     if (mode) this.state.mode = mode;
     if (presetId) this.applyPresetSettings(presetId);
+    // 홈 빠른 조건(예: 단체석)은 설정 칩도 함께 켠다
+    (needs || []).forEach(need => {
+      this.state.groupCriteria[need] = true;
+      document.querySelector(`.gc-chip[data-need="${need}"]`)?.setAttribute('aria-pressed', 'true');
+    });
 
     const nextRegion = regionCode || (city && cityMap[city]) || this.state.regionCode || 'nationwide';
     this.state.regionCode = nextRegion;
@@ -2044,8 +2060,11 @@ export class YskFoodApp {
       b.addEventListener('click', () => this.openMapFromHome({ mode: b.dataset.homeMode || undefined, presetId: b.dataset.homePreset || undefined }));
     });
     document.getElementById('home-live')?.addEventListener('click', () => this.openMapFromHome({ openOnly: true }));
-    document.querySelectorAll('.home-pick').forEach(b => {
-      b.addEventListener('click', () => this.openMapFromHome({ query: b.dataset.query }));
+    document.querySelectorAll('[data-home-need]').forEach(b => {
+      b.addEventListener('click', () => this.openMapFromHome({ mode: 'school', needs: [b.dataset.homeNeed] }));
+    });
+    document.querySelectorAll('[data-home-query]').forEach(b => {
+      b.addEventListener('click', () => this.openMapFromHome({ query: b.dataset.homeQuery }));
     });
     document.querySelectorAll('.city-pin').forEach(pin => {
       const go = () => this.openMapFromHome(pin.dataset.region ? { regionCode: pin.dataset.region } : { city: pin.dataset.city });

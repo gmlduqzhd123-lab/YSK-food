@@ -42,95 +42,40 @@
             </div>
 
             <div class="home-layout">
-                <div class="home-map tiles">
-                    <!-- 전국 권역 타일: 권역을 실제 위치대로 배치, 여수·순천·광양은 대표 권역으로 크게 -->
-                    <svg viewBox="0 0 400 300" role="group" aria-label="전국 권역별 맛집 수">
-                        <defs>
-                            <filter id="tile-shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.10"/></filter>
-                            <linearGradient id="tile-hot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7043"/><stop offset="1" stop-color="#f4511e"/></linearGradient>
-                            <linearGradient id="tile-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4ee"/><stop offset="1" stop-color="#fdeee6"/></linearGradient>
-                        </defs>
-                        <rect width="400" height="300" fill="url(#tile-bg)"/>
-                        <g font-family="inherit">
-                            <g class="city-pin region-tile" data-region="seoul-metro" role="button" tabindex="0" aria-label="서울·수도권 맛집 보기">
-                                <rect x="114" y="16" width="82" height="60" rx="14" fill="#fff" stroke="#1e88e5" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="114" y="24" width="4" height="44" rx="2" fill="#1e88e5"/>
-                                <text x="127" y="38" font-size="15" aria-hidden="true">🏛️</text><text x="186" y="39" text-anchor="end" font-size="14" font-weight="800" fill="#1e88e5" data-count-group="seoul-metro">1529</text>
-                                <text x="127" y="62" font-size="12" font-weight="700" fill="#1d2330">서울·수도권</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="gw-all" role="button" tabindex="0" aria-label="강원 맛집 보기">
-                                <rect x="206" y="16" width="82" height="60" rx="14" fill="#fff" stroke="#00897b" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="206" y="24" width="4" height="44" rx="2" fill="#00897b"/>
-                                <text x="219" y="38" font-size="15" aria-hidden="true">🏔️</text><text x="278" y="39" text-anchor="end" font-size="17" font-weight="800" fill="#00897b" data-count-group="gw-all">217</text>
-                                <text x="219" y="62" font-size="12" font-weight="700" fill="#1d2330">강원</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="cc-all" role="button" tabindex="0" aria-label="대전·충청 맛집 보기">
-                                <rect x="114" y="84" width="82" height="60" rx="14" fill="#fff" stroke="#7e57c2" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="114" y="92" width="4" height="44" rx="2" fill="#7e57c2"/>
-                                <text x="127" y="106" font-size="15" aria-hidden="true">🔬</text><text x="186" y="107" text-anchor="end" font-size="17" font-weight="800" fill="#7e57c2" data-count-group="cc-all">584</text>
-                                <text x="127" y="130" font-size="12" font-weight="700" fill="#1d2330">대전·충청</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="gb-all" role="button" tabindex="0" aria-label="대구·경북 맛집 보기">
-                                <rect x="206" y="84" width="82" height="60" rx="14" fill="#fff" stroke="#f4511e" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="206" y="92" width="4" height="44" rx="2" fill="#f4511e"/>
-                                <text x="219" y="106" font-size="15" aria-hidden="true">🏯</text><text x="278" y="107" text-anchor="end" font-size="17" font-weight="800" fill="#f4511e" data-count-group="gb-all">420</text>
-                                <text x="219" y="130" font-size="12" font-weight="700" fill="#1d2330">대구·경북</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="honam-west" role="button" tabindex="0" aria-label="전북·광주·전남 맛집 보기">
-                                <rect x="22" y="152" width="82" height="60" rx="14" fill="#fff" stroke="#6d4c41" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="22" y="160" width="4" height="44" rx="2" fill="#6d4c41"/>
-                                <text x="35" y="174" font-size="15" aria-hidden="true">🌾</text><text x="94" y="175" text-anchor="end" font-size="17" font-weight="800" fill="#6d4c41" data-count-group="honam-west">303</text>
-                                <text x="35" y="198" font-size="10" font-weight="700" fill="#1d2330">전북·광주·전남</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="pk-all" role="button" tabindex="0" aria-label="부산·울산·경남 맛집 보기">
-                                <rect x="298" y="152" width="82" height="60" rx="14" fill="#fff" stroke="#039be5" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="298" y="160" width="4" height="44" rx="2" fill="#039be5"/>
-                                <text x="311" y="174" font-size="15" aria-hidden="true">🌊</text><text x="370" y="175" text-anchor="end" font-size="17" font-weight="800" fill="#039be5" data-count-group="pk-all">690</text>
-                                <text x="311" y="198" font-size="10" font-weight="700" fill="#1d2330">부산·울산·경남</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="jj-jeju" role="button" tabindex="0" aria-label="제주 맛집 보기">
-                                <rect x="22" y="220" width="82" height="60" rx="14" fill="#fff" stroke="#fb8c00" stroke-opacity="0.25" filter="url(#tile-shadow)"/><rect x="22" y="228" width="4" height="44" rx="2" fill="#fb8c00"/>
-                                <text x="35" y="242" font-size="15" aria-hidden="true">🍊</text><text x="94" y="243" text-anchor="end" font-size="17" font-weight="800" fill="#fb8c00" data-count-group="jj-jeju">113</text>
-                                <text x="35" y="266" font-size="12" font-weight="700" fill="#1d2330">제주</text>
-                            </g>
-                            <g class="city-pin region-tile" data-region="all" role="button" tabindex="0" aria-label="여수·순천·광양 맛집 보기">
-                                <rect x="114" y="152" width="174" height="128" rx="18" fill="url(#tile-hot)" filter="url(#tile-shadow)"/>
-                                <text x="130" y="179" font-size="12" font-weight="700" fill="#fff" opacity="0.92">⭐ 대표 권역</text>
-                                <text x="130" y="205" font-size="17" font-weight="800" fill="#fff">여수·순천·광양</text>
-                                <text x="130" y="247" font-size="38" font-weight="800" fill="#fff"><tspan data-count-group="all">204</tspan><tspan font-size="15" dx="3">곳</tspan></text>
-                                <text x="130" y="268" font-size="10.5" font-weight="600" fill="#fff" opacity="0.92">여수 <tspan data-count-region="jn-yeosu">88</tspan> · 순천 <tspan data-count-region="jn-suncheon">82</tspan> · 광양 <tspan data-count-region="jn-gwangyang">34</tspan></text>
-                                <text x="274" y="198" text-anchor="end" font-size="34" aria-hidden="true">🦀</text>
-                            </g>
-                        </g>
-                    </svg>
-                    <button type="button" class="home-live" id="home-live" hidden><i aria-hidden="true"></i><span id="home-live-text"></span></button>
-                    <button type="button" class="home-map-open" data-home-open>지도 보기 →</button>
-                </div>
-
-                <div>
-                    <h1>전국 맛집 탐색과<br><span>초등 현장체험·선수단 식사</span></h1>
-                    <p class="home-lead" id="home-lead">전국 맛집을 지도로 한눈에. 영업시간·전화·길찾기까지 카카오맵에서 확인한 정보로 안내합니다.</p>
-                    <div class="home-mode-cards" role="group" aria-label="이용 목적별 바로가기">
-                        <button type="button" class="home-mode-card" data-home-open data-home-mode="general">🍽️ 일반 맛집 탐색</button>
-                        <button type="button" class="home-mode-card" data-home-open data-home-mode="school" data-home-preset="field_trip">🏫 <span class="nowrap">현장체험·수학여행</span></button>
-                        <button type="button" class="home-mode-card" data-home-open data-home-mode="athlete" data-home-preset="school_sports_club">🏃 초등 선수단 식사 준비</button>
-                    </div>
+                <div class="home-intro">
+                    <h1>전국 맛집 <span id="home-total">4,060곳</span>,<br>목적에 맞게 찾기</h1>
                     <form class="home-search" id="home-search" role="search">
                         <span aria-hidden="true">🔍</span>
-                        <input type="search" id="home-search-input" placeholder="식당·메뉴·지역 검색 (예: 돈가스, 불고기, 설렁탕, 경주)" aria-label="맛집 검색" autocomplete="off">
+                        <input type="search" id="home-search-input" placeholder="식당·메뉴·지역 검색 (예: 돈가스, 짜장면, 칼국수)" aria-label="맛집 검색" autocomplete="off">
                         <button type="submit">검색</button>
                     </form>
-                </div>
-
-                <div>
-                    <h2>무엇이 당기세요? <small>종류별 바로가기</small></h2>
-                    <div class="home-cats" id="home-cats"></div>
-                </div>
-
-                <div>
-                    <h2>초등 선생님·학생 선호 대표 메뉴 <small>옆으로 넘겨보기 →</small></h2>
-                    <div class="home-picks">
-                        <button type="button" class="home-pick" data-query="돈가스" style="--bg:#e8f0fe; --c:#1e88e5"><span class="art" aria-hidden="true">🍛</span><span class="body"><em>전국 초등 1순위</em><strong>수제 돈가스·함박</strong></span></button>
-                        <button type="button" class="home-pick" data-query="불고기" style="--bg:#fdf0e3; --c:#fb8c00"><span class="art" aria-hidden="true">🥩</span><span class="body"><em>단체 정식·선수단</em><strong>소불고기·떡갈비</strong></span></button>
-                        <button type="button" class="home-pick" data-query="설렁탕" style="--bg:#e6f6ee; --c:#43a047"><span class="art" aria-hidden="true">🍲</span><span class="body"><em>든든한 국물·아침</em><strong>설렁탕·갈비탕</strong></span></button>
-                        <button type="button" class="home-pick" data-query="간장닭갈비" style="--bg:#f3e5f5; --c:#8e24aa"><span class="art" aria-hidden="true">🍗</span><span class="body"><em>안 매운 어린이 메뉴</em><strong>순한 간장닭갈비</strong></span></button>
-                        <button type="button" class="home-pick" data-query="칼국수" style="--bg:#e0f7fa; --c:#00acc1"><span class="art" aria-hidden="true">🥟</span><span class="body"><em>빠른 배식·간편식</em><strong>사골 칼국수·만두</strong></span></button>
+                    <div class="home-chips" role="group" aria-label="빠른 조건">
+                        <button type="button" class="home-chip home-live" id="home-live" hidden><i aria-hidden="true"></i><span id="home-live-text"></span></button>
+                        <button type="button" class="home-chip" data-home-need="groupSeatRequired">👥 <span id="home-group-text">단체석 있는 곳</span></button>
+                        <button type="button" class="home-chip" data-home-query="착한가격">💰 착한가격 식당</button>
                     </div>
-                    <div class="home-cta"><button type="button" data-home-open>🗺️ 전국 맛집 지도 열기</button></div>
+                    <p class="home-lead" id="home-lead" hidden></p>
+                </div>
+
+                <div class="home-bigmodes" role="group" aria-label="이용 목적별 바로가기">
+                    <button type="button" class="home-bm" data-home-open data-home-mode="general" style="--bg:#fff1ea"><span class="ic" aria-hidden="true">🍽️</span><span class="tx"><strong>일반 맛집 탐색</strong><span>지역·메뉴·영업 중으로 바로 찾기</span></span><span class="go" aria-hidden="true">›</span></button>
+                    <button type="button" class="home-bm" data-home-open data-home-mode="school" data-home-preset="field_trip" style="--bg:#e8f0fe"><span class="ic" aria-hidden="true">🏫</span><span class="tx"><strong>현장체험·수학여행</strong><span>단체석·주차·1인 예산으로 거르기</span></span><span class="go" aria-hidden="true">›</span></button>
+                    <button type="button" class="home-bm" data-home-open data-home-mode="athlete" data-home-preset="school_sports_club" style="--bg:#e6f6ee"><span class="ic" aria-hidden="true">🏃</span><span class="tx"><strong>초등 선수단 식사</strong><span>경기장 근처·든든한 메뉴 추천</span></span><span class="go" aria-hidden="true">›</span></button>
+                </div>
+
+                <div class="home-regions">
+                    <h2>권역별 맛집 <small>누르면 그 권역 지도로</small></h2>
+                    <div class="home-bars">
+                        <button type="button" class="home-bar city-pin" data-region="seoul-metro" aria-label="서울·수도권 맛집 보기"><span class="e" aria-hidden="true">🏛️</span><span class="n">서울·수도권</span><span class="track"><i data-bar-group="seoul-metro" style="width:100%;background:#1e88e5"></i></span><b data-count-group="seoul-metro">1529</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="pk-all" aria-label="부산·울산·경남 맛집 보기"><span class="e" aria-hidden="true">🌊</span><span class="n">부산·울산·경남</span><span class="track"><i data-bar-group="pk-all" style="width:45%;background:#039be5"></i></span><b data-count-group="pk-all">690</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="cc-all" aria-label="대전·충청 맛집 보기"><span class="e" aria-hidden="true">🔬</span><span class="n">대전·충청</span><span class="track"><i data-bar-group="cc-all" style="width:38%;background:#7e57c2"></i></span><b data-count-group="cc-all">584</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="gb-all" aria-label="대구·경북 맛집 보기"><span class="e" aria-hidden="true">🏯</span><span class="n">대구·경북</span><span class="track"><i data-bar-group="gb-all" style="width:27%;background:#f4511e"></i></span><b data-count-group="gb-all">420</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="honam-west" aria-label="전북·광주·전남 맛집 보기"><span class="e" aria-hidden="true">🌾</span><span class="n">전북·광주·전남</span><span class="track"><i data-bar-group="honam-west" style="width:20%;background:#6d4c41"></i></span><b data-count-group="honam-west">303</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="gw-all" aria-label="강원 맛집 보기"><span class="e" aria-hidden="true">🏔️</span><span class="n">강원</span><span class="track"><i data-bar-group="gw-all" style="width:14%;background:#00897b"></i></span><b data-count-group="gw-all">217</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="all" aria-label="여수·순천·광양 맛집 보기"><span class="e" aria-hidden="true">🦀</span><span class="n">여수·순천·광양</span><span class="track"><i data-bar-group="all" style="width:13%;background:#ff5722"></i></span><b data-count-group="all">204</b></button>
+                        <button type="button" class="home-bar city-pin" data-region="jj-jeju" aria-label="제주 맛집 보기"><span class="e" aria-hidden="true">🍊</span><span class="n">제주</span><span class="track"><i data-bar-group="jj-jeju" style="width:7%;background:#fb8c00"></i></span><b data-count-group="jj-jeju">113</b></button>
+                    </div>
+                    <div class="home-cta"><button type="button" data-home-open>🗺️ 전국 지도 열기</button></div>
                     <p class="home-foot">© 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/">엽쌤의 다른 앱 보기 →</a></p>
                 </div>
             </div>
