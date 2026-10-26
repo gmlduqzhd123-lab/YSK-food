@@ -332,3 +332,119 @@ export function buildVerifiedReportDraft(rawInput = {}) {
     serializedJson: JSON.stringify(publicPreview, null, 2)
   };
 }
+
+/**
+ * 쿨메신저·단톡방 투표용 후보 비교 문구 생성(#1)
+ * - 동학년 협의회·교직원 메신저에 그대로 붙여넣어 투표할 수 있는 간결한 텍스트와 비교 링크를 반환한다.
+ */
+export function buildMessengerVoteText(places = [], options = {}) {
+  const limited = (places || []).slice(0, MAX_COMPARE_COUNT);
+  const mode = options.mode || 'school';
+  const criteria = options.criteria || {};
+  const region = options.region || 'nationwide';
+
+  const shareRes = options.shareUrl
+    ? { valid: true, url: options.shareUrl }
+    : buildPublicShareUrl({
+        restaurantIds: limited.map(p => p.id),
+        region,
+        mode
+      });
+
+  const headerTitle = mode === 'athlete'
+    ? '🗳️ [선수단 단체식사 후보 식당 투표]'
+    : mode === 'school'
+      ? '🗳️ [현장체험·수학여행 식당 후보 투표]'
+      : '🗳️ [모임·협의회 식당 후보 투표]';
+
+  const condParts = [];
+  if (criteria.totalHeadcount) condParts.push(`인원 ${criteria.totalHeadcount}명`);
+  if (criteria.budgetPerPersonKRW) condParts.push(`1인 예산 ${Number(criteria.budgetPerPersonKRW).toLocaleString()}원`);
+
+  const lines = [headerTitle];
+  if (condParts.length > 0) {
+    lines.push(`(${condParts.join(' · ')} 기준)`);
+  }
+  lines.push('');
+
+  limited.forEach((p, idx) => {
+    const gp = p.groupProfile || {};
+    const cat = p.category || (Array.isArray(p.categoryIds) ? p.categoryIds[0] : '') || '식당';
+    const menuText = p.menu || p.menuSummary || (Array.isArray(p.menus) && p.menus[0]?.name) || '메뉴 상세 참조';
+    const priceText = p.price || p.priceRangeText || (Array.isArray(p.menus) && p.menus[0]?.priceKRW ? `${Number(p.menus[0].priceKRW).toLocaleString()}원` : '단가 확인 필요');
+
+    const groupFeatures = [];
+    if (gp.availability === 'yes') {
+      groupFeatures.push(gp.simultaneousCapacity ? `단체 ${gp.simultaneousCapacity}명 가능` : '단체석 있음');
+    } else {
+      groupFeatures.push('단체 여부 전화확인');
+    }
+    if (gp.room?.privateRoom === 'yes') groupFeatures.push('룸 보유');
+    if (gp.parking?.busEntry === 'yes' || gp.parking?.walkingNotes) {
+      groupFeatures.push(gp.parking?.busParkingSpaces ? `버스주차 ${gp.parking.busParkingSpaces}대` : '주차 가능');
+    }
+    if (p.kidFriendlySummary?.isKidFriendlyNonSpicy) {
+      groupFeatures.push('초등 선호(안 매움)');
+    }
+
+    lines.push(`${idx + 1}안) ${p.name} (${p.city || p.regionCode} · ${cat})`);
+    lines.push(` • 메뉴/단가: ${menuText} (${priceText})`);
+    lines.push(` • 여건: ${groupFeatures.join(' · ')}${p.phone ? ` / ☎ ${p.phone}` : ''}`);
+    lines.push('');
+  });
+
+  if (shareRes.valid && shareRes.url) {
+    lines.push('👉 지도·메뉴·단체조건 한눈에 비교하기:');
+    lines.push(shareRes.url);
+  }
+
+  return lines.join('\n').trim();
+}
+
+/**
+ * 에듀파인 품의·기안문 및 사전답사 결과보고서 붙여넣기용 문구 생성(#4)
+ */
+export function buildOfficialDocDraftText(place, options = {}) {
+  if (!place) return '';
+  const gp = place.groupProfile || {};
+  const criteria = options.criteria || {};
+  const cat = place.category || (Array.isArray(place.categoryIds) ? place.categoryIds[0] : '') || '일반음식점';
+  const addr = place.roadAddress || place.address || place.city || '상세 주소 전화 확인';
+  const phone = place.phone || '전화번호 미등록';
+  const primaryMenu = Array.isArray(place.menus) && place.menus.length > 0 ? place.menus[0] : null;
+  const menuName = primaryMenu?.name || place.menu || place.menuSummary || '식사 메뉴';
+  const unitPriceKRW = primaryMenu?.priceKRW ?? null;
+  const priceLabel = unitPriceKRW !== null
+    ? `1인 ${Number(unitPriceKRW).toLocaleString()}원`
+    : (place.price || place.priceRangeText || '단가 전화 확인');
+
+  const headcount = criteria.totalHeadcount || null;
+  let budgetLine = `${priceLabel} (인원 확정에 따라 정산)`;
+  if (headcount && unitPriceKRW !== null) {
+    const totalKRW = headcount * unitPriceKRW;
+    budgetLine = `금 ${totalKRW.toLocaleString()}원 (${Number(unitPriceKRW).toLocaleString()}원 × ${headcount}명 기준)`;
+  } else if (headcount) {
+    budgetLine = `총 ${headcount}명 예정 (${priceLabel})`;
+  }
+
+  const seatNote = gp.availability === 'yes'
+    ? (gp.simultaneousCapacity ? `동시 수용 약 ${gp.simultaneousCapacity}명 (총 ${gp.totalSeats || gp.simultaneousCapacity}석)` : '단체석 보유 (세부 인원 사전 확인)')
+    : '방문 전 단체석 수용 인원 전화 확인';
+  const parkingNote = gp.parking?.busParkingSpaces
+    ? `대형버스 ${gp.parking.busParkingSpaces}대 주차 가능`
+    : (gp.parking?.walkingNotes || (gp.parking?.dropoff === 'yes' ? `승하차 가능 (${gp.parking.dropoffLocation || '인근 하차'})` : '주차 여건 사전 확인'));
+
+  const designations = Array.isArray(place.officialDesignations) && place.officialDesignations.length > 0
+    ? place.officialDesignations.map(d => `${d.designationType || '공식지정'}(${d.agency || '기관'})`).join(', ')
+    : '일반음식점 (영업 확인됨)';
+
+  return [
+    '[현장체험학습·단체식사 예정 업소 현황 (기안·품의서 첨부용)]',
+    `1. 업 소 명: ${place.name} (${cat})`,
+    `2. 소 재 지: ${addr} (연락처: ${phone})`,
+    `3. 주 메 뉴: ${menuName} (${priceLabel})`,
+    `4. 소요예산: ${budgetLine}`,
+    `5. 수용여건: ${seatNote} / ${parkingNote}`,
+    `6. 행정사항: ${designations} · 사전 예약 및 학교법인카드(또는 계좌이체) 결제 가능 여부 사전 확인`
+  ].join('\n');
+}

@@ -26,7 +26,11 @@ import {
   evaluateMealWaves,
   generateRestaurantInquiryText
 } from './domain/schedule.js';
-import { filterAndClassifyRestaurants, getCategoriesForMode } from './domain/search.js';
+import {
+  filterAndClassifyRestaurants,
+  getCategoriesForMode,
+  matchVenueFromQuery
+} from './domain/search.js';
 import {
   PersonalStorageManager,
   buildShareEnvelope,
@@ -39,6 +43,7 @@ import { MapController } from './ui/map.js';
 import {
   computePaginatedSlice,
   createGroupMatchBadge,
+  createKidFriendlyBadge,
   createMapOverlayDom,
   createOpenStatusBadge,
   createPlaceActionButtons,
@@ -56,6 +61,8 @@ import {
   verifyOfflineReadiness
 } from './ui/event.js';
 import {
+  buildMessengerVoteText,
+  buildOfficialDocDraftText,
   buildPublicQrSvg,
   buildPublicShareUrl,
   buildVerifiedReportDraft,
@@ -463,6 +470,7 @@ export class YskFoodApp {
         openOnly: this.state.openOnly,
         favoriteIds: this.favoriteIds,
         referencePoint: this.state.referencePoint,
+        venues: this.currentVenues,
         sortBy: this.state.sortBy,
         includeNeedsCheck: this.state.includeNeedsCheck,
         groupCriteria: {
@@ -476,6 +484,8 @@ export class YskFoodApp {
     this.lastFilterResult = result;
 
     if (this.mapController.isReady()) {
+      const activeRef = result.effectiveReferencePoint || this.state.referencePoint;
+      this.mapController.setReferencePointMarker(activeRef || null);
       this.mapController.syncMarkers(result.combinedList);
       if (fitMap) {
         const regMeta = this.repository.getRegionMeta(this.state.regionCode);
@@ -500,7 +510,8 @@ export class YskFoodApp {
     const ul = document.getElementById('place-list');
     if (!ul) return;
 
-    const { combinedList, counts, hasGroupCriteria } = filterResult;
+    const { combinedList, counts, hasGroupCriteria, effectiveReferencePoint } = filterResult;
+    const activeRefPoint = effectiveReferencePoint || this.state.referencePoint;
     const pageSlice = computePaginatedSlice(combinedList, this.state.visibleLimit);
 
     if (countEl) {
@@ -509,8 +520,8 @@ export class YskFoodApp {
         : `맛집 ${counts.totalMatched}곳 (표시 ${pageSlice.shownCount}곳)`;
     }
     if (sortNoteEl) {
-      sortNoteEl.textContent = this.state.referencePoint
-        ? `${this.state.referencePoint.label} 기준 직선거리 순`
+      sortNoteEl.textContent = activeRefPoint
+        ? `${activeRefPoint.label} 기준 직선거리 순`
         : '';
     }
 
@@ -566,7 +577,7 @@ export class YskFoodApp {
       mainBtn.type = 'button';
       mainBtn.className = 'place-main';
 
-      if (this.state.referencePoint) {
+      if (activeRefPoint) {
         const distSpan = document.createElement('span');
         distSpan.className = 'place-dist';
         distSpan.textContent = place.straightDistanceLabel || '거리 미확인';
@@ -602,11 +613,15 @@ export class YskFoodApp {
         mainBtn.appendChild(menuRow);
       }
 
-      // 학교·선수단 모드이거나 단체 조건이 입력된 경우 단체 배지 및 이용 사례 배지 표시
+      // 학교·선수단 모드이거나 단체 조건이 입력된 경우 단체 배지, 초등 선호(안 매움) 배지(#9) 및 이용 사례 배지 표시
       if (this.state.mode !== 'general' || hasGroupCriteria) {
         const groupRow = document.createElement('div');
         groupRow.className = 'place-group-badges';
         groupRow.appendChild(createGroupMatchBadge(place.groupMatch));
+        const kidBadge = createKidFriendlyBadge(place);
+        if (kidBadge) {
+          groupRow.appendChild(kidBadge);
+        }
         if (place.visitSummary) {
           const vBadge = document.createElement('span');
           vBadge.className = `badge ${place.visitSummary.hasRepeatVisitBadge ? 'visit-repeat' : 'visit-none'}`;
@@ -904,12 +919,34 @@ export class YskFoodApp {
 
   openPlaceDetailModal(place) {
     const body = renderPlaceDetailContent(place, this.currentSources, this.getPlaceActionHandlers());
+
+    const copyDocBtn = document.createElement('button');
+    copyDocBtn.type = 'button';
+    copyDocBtn.className = 'link sub';
+    copyDocBtn.textContent = '📄 기안·품의 문구 복사';
+    copyDocBtn.addEventListener('click', async () => {
+      const docText = buildOfficialDocDraftText(place, {
+        criteria: this.lastFilterResult?.criteria || {},
+        mode: this.state.mode
+      });
+      try {
+        await navigator.clipboard.writeText(docText);
+        this.showToast('에듀파인 품의·기안문용 식당 내역을 복사했어요!');
+      } catch {
+        prompt('에듀파인 품의·기안문용 문구:', docText);
+      }
+    });
+
     const qrBtn = document.createElement('button');
     qrBtn.type = 'button';
     qrBtn.className = 'link sub';
     qrBtn.textContent = '📱 이 식당 공개 QR 보기';
     qrBtn.addEventListener('click', () => {
-      const shareRes = buildPublicShareUrl({ restaurantId: place.id });
+      const shareRes = buildPublicShareUrl({
+        restaurantId: place.id,
+        region: place.regionCode || this.state.regionCode,
+        mode: this.state.mode
+      });
       if (shareRes.valid) {
         this.openPublicQrModal(shareRes.url, `${place.name} (${place.city || place.regionCode})`);
       }
@@ -923,7 +960,7 @@ export class YskFoodApp {
       this.handleAddPlaceToActiveEvent(place);
     });
 
-    this.openModal(`${place.name} — 단체·상세 정보`, body, [qrBtn, addEventBtn]);
+    this.openModal(`${place.name} — 단체·상세 정보`, body, [copyDocBtn, qrBtn, addEventBtn]);
   }
 
   async openCandidateCompareModal(placesOverride = null) {
@@ -946,6 +983,34 @@ export class YskFoodApp {
         onAddToEvent: place => this.handleAddPlaceToActiveEvent(place)
       }
     );
+
+    const voteTextBtn = document.createElement('button');
+    voteTextBtn.type = 'button';
+    voteTextBtn.className = 'link';
+    voteTextBtn.textContent = '🗳️ 메신저 투표 문구 복사';
+    voteTextBtn.addEventListener('click', async () => {
+      if (!places || places.length === 0) {
+        this.showToast(' 먼저 식당을 비교함에 담아 주세요.');
+        return;
+      }
+      const shareRes = buildPublicShareUrl({
+        restaurantIds: this.state.compareIds,
+        region: this.state.regionCode,
+        mode: this.state.mode
+      });
+      const voteText = buildMessengerVoteText(places, {
+        mode: this.state.mode,
+        region: this.state.regionCode,
+        criteria: this.lastFilterResult?.criteria || {},
+        shareUrl: shareRes.valid ? shareRes.url : APP_BASE
+      });
+      try {
+        await navigator.clipboard.writeText(voteText);
+        this.showToast('쿨메신저·단톡방 투표용 문구와 비교 링크를 복사했어요!');
+      } catch {
+        prompt('메신저 투표용 문구:', voteText);
+      }
+    });
 
     const shareCompareBtn = document.createElement('button');
     shareCompareBtn.type = 'button';
@@ -971,13 +1036,17 @@ export class YskFoodApp {
     qrCompareBtn.className = 'link sub';
     qrCompareBtn.textContent = '📱 비교 후보 QR 보기';
     qrCompareBtn.addEventListener('click', () => {
-      const shareRes = buildPublicShareUrl({ restaurantIds: this.state.compareIds });
+      const shareRes = buildPublicShareUrl({
+        restaurantIds: this.state.compareIds,
+        region: this.state.regionCode,
+        mode: this.state.mode
+      });
       if (shareRes.valid) {
         this.openPublicQrModal(shareRes.url, `후보 식당 ${this.state.compareIds.length}곳 비교`);
       }
     });
 
-    this.openModal('⚖️ 후보 식당 비교 (최대 3곳)', body, [shareCompareBtn, qrCompareBtn]);
+    this.openModal('⚖️ 후보 식당 비교 (최대 3곳)', body, [voteTextBtn, shareCompareBtn, qrCompareBtn]);
   }
 
   openAmbiguousLegacyPlaceModal(placeName, candidates = []) {
@@ -1010,6 +1079,53 @@ export class YskFoodApp {
     this.openModal('공유 식당 지점 선택', wrap);
   }
 
+  /**
+   * 교무실 PC에서 보던 지역·모드·비교후보·선택식당을 휴대폰으로 바로 이어보는 QR 생성(#10)
+   */
+  buildCurrentStateQrTarget() {
+    const homeEl = document.getElementById('home');
+    const isHomeVisible = homeEl && !homeEl.hidden;
+
+    if (isHomeVisible && this.state.compareIds.length === 0 && !this.state.selectedId) {
+      return { url: APP_BASE, label: '전국 맛집 지도' };
+    }
+
+    const payload = {
+      region: this.state.regionCode,
+      mode: this.state.mode,
+      q: this.state.query,
+      category: this.state.category,
+      fav: this.state.favOnly,
+      open: this.state.openOnly
+    };
+
+    let labelParts = [];
+    if (this.state.compareIds.length > 0) {
+      payload.restaurantIds = this.state.compareIds;
+      labelParts.push(`후보 비교 ${this.state.compareIds.length}곳`);
+    } else if (this.state.selectedId) {
+      payload.restaurantId = this.state.selectedId;
+      const selPlace = this.currentRestaurants.find(p => String(p.id) === String(this.state.selectedId));
+      labelParts.push(selPlace ? selPlace.name : '선택 식당');
+    } else {
+      const regMeta = this.repository.getRegionMeta(this.state.regionCode);
+      const regName = regMeta ? regMeta.name : (REGION_GROUPS[this.state.regionCode]?.label || '전국 전체');
+      labelParts.push(regName);
+      if (this.state.mode === 'school') labelParts.push('학교 단체식사');
+      else if (this.state.mode === 'athlete') labelParts.push('선수단 식사');
+      if (this.state.query) labelParts.push(`'${this.state.query}'`);
+    }
+
+    const shareRes = buildPublicShareUrl(payload);
+    if (!shareRes.valid || shareRes.url === APP_BASE) {
+      return { url: APP_BASE, label: '전국 맛집 지도' };
+    }
+    return {
+      url: shareRes.url,
+      label: `📲 휴대폰 이어보기 (${labelParts.join(' · ')})`
+    };
+  }
+
   openPublicQrModal(url = APP_BASE, label = '전국 맛집 지도') {
     const box = document.createElement('div');
     box.style.textAlign = 'center';
@@ -1024,9 +1140,21 @@ export class YskFoodApp {
     urlP.textContent = url;
     const hint = document.createElement('p');
     hint.className = 'detail-sub-note';
-    hint.textContent = '공개 식당 ID와 일반 검색 조건만 포함된 안전한 공개 QR입니다. (개인 행사 메모 미포함)';
+    hint.textContent = url === APP_BASE
+      ? '휴대폰 카메라로 스캔하면 전국 맛집 지도 첫 화면이 열립니다.'
+      : '교무실 PC에서 고른 후보 식당·지역·모드 설정이 휴대폰에 그대로 이어서 열립니다. (개인 메모 미포함)';
     box.append(nameP, svgWrap, urlP, hint);
-    this.openModal('📱 카메라로 찍어서 들어와요', box);
+
+    const footerBtns = [];
+    if (url !== APP_BASE) {
+      const switchHomeBtn = document.createElement('button');
+      switchHomeBtn.type = 'button';
+      switchHomeBtn.className = 'link sub';
+      switchHomeBtn.textContent = '🏠 기본 앱 첫 화면 QR 보기';
+      switchHomeBtn.addEventListener('click', () => this.openPublicQrModal(APP_BASE, '전국 맛집 지도'));
+      footerBtns.push(switchHomeBtn);
+    }
+    this.openModal('📱 카메라로 찍어서 들어와요', box, footerBtns);
   }
 
   /**
@@ -1824,14 +1952,25 @@ export class YskFoodApp {
   }
 
   bindStaticDomEvents() {
-    // 1) 검색 입력 (짧은 디바운스 적용 - Section 9)
+    // 1) 검색 입력 (짧은 디바운스 적용 - Section 9, 타 지역 체험처·박물관 검색 시 자동 지역 전환 #7)
     const searchInput = document.getElementById('search');
     if (searchInput) {
       searchInput.addEventListener('input', e => {
         this.state.query = e.target.value;
         this.state.visibleLimit = PAGE_SIZE;
         clearTimeout(this.searchDebounceTimer);
-        this.searchDebounceTimer = setTimeout(() => this.applyFilters(true), 220);
+        this.searchDebounceTimer = setTimeout(async () => {
+          const matched = matchVenueFromQuery(this.state.query, this.currentVenues);
+          if (matched?.venue?.regionCode && this.state.regionCode !== 'nationwide') {
+            const groupCodes = REGION_GROUPS[this.state.regionCode]?.regionCodes || [this.state.regionCode];
+            if (!groupCodes.includes(matched.venue.regionCode)) {
+              this.state.regionCode = matched.venue.regionCode;
+              this.syncFilterControlsFromState();
+              await this.loadSelectedRegionData(this.state.regionCode);
+            }
+          }
+          this.applyFilters(true);
+        }, 220);
       });
     }
 
@@ -2051,7 +2190,8 @@ export class YskFoodApp {
       const qrBtn = e.target.closest?.('[data-qr]');
       if (qrBtn) {
         e.preventDefault();
-        this.openPublicQrModal(APP_BASE, '전국 맛집 지도');
+        const target = this.buildCurrentStateQrTarget();
+        this.openPublicQrModal(target.url, target.label);
       }
     });
 

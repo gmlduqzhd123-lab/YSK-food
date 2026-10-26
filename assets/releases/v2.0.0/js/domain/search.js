@@ -601,6 +601,137 @@ export function getCategoriesForMode(restaurantsOrMode = [], mode = 'general') {
 }
 
 /**
+ * 초등 저학년·학생 선호(안 매운 메뉴) 자동 태그 판정(#9)
+ * - AC17 준수: 알레르기·식품 안전 보장이 아니라 초등학생이 먹기 편한 안 매운 대표 식사 메뉴 보유 여부를 안내한다.
+ */
+const KID_FRIENDLY_NON_SPICY_MENU_REGEX = /돈가스|돈까스|함박|오므라이스|카레|수제버거|떡갈비|불고기|설렁탕|곰탕|갈비탕|삼계탕|백숙|칼국수|만두|우동|자장|짜장|탕수육|생선구이|고등어구이|가자미구이|삼치구이|순살|미역국|하얀순두부|맑은순두부|콩나물국밥|보쌈|수육|전복죽|유부초밥|계란말이/;
+const SPICY_ONLY_HEAVY_REGEX = /불닭|마라탕|마라샹궈|엽기떡볶이|매운갈비찜|낙지볶음|쭈꾸미볶음|주꾸미볶음|곱창전골|막창|닭발|아구찜|해물찜/;
+
+export function evaluateElementaryMenuFriendliness(place) {
+  if (!place || typeof place !== 'object') {
+    return { isKidFriendlyNonSpicy: false, badgeLabel: null };
+  }
+  if (!isSuitableForMode(place, 'school')) {
+    return { isKidFriendlyNonSpicy: false, badgeLabel: null };
+  }
+
+  const menuNames = Array.isArray(place.menus) ? place.menus.map(m => m.name).join(' ') : '';
+  const text = `${place.name || ''} ${place.menu || ''} ${place.menuSummary || ''} ${menuNames} ${place.note || ''}`;
+
+  const hasNonSpicyStaple = KID_FRIENDLY_NON_SPICY_MENU_REGEX.test(text);
+  const hasSpiceAdjustment = Array.isArray(place.menus) && place.menus.some(m => m.spiceAdjustment === 'yes');
+  const isHeavySpicyOnly = SPICY_ONLY_HEAVY_REGEX.test(text) && !hasNonSpicyStaple && !hasSpiceAdjustment;
+
+  if (isHeavySpicyOnly) {
+    return { isKidFriendlyNonSpicy: false, badgeLabel: null };
+  }
+
+  if (hasNonSpicyStaple || hasSpiceAdjustment) {
+    return {
+      isKidFriendlyNonSpicy: true,
+      badgeLabel: '🧒 초등 선호(안 매움)'
+    };
+  }
+
+  return { isKidFriendlyNonSpicy: false, badgeLabel: null };
+}
+
+/**
+ * 일반 검색창에서 체험처·박물관·경기장 이름으로 바로 검색할 때 기준점 자동 매칭(#7)
+ */
+const FALLBACK_SCHOOL_TRIP_LANDMARKS = [
+  { id: 'lm-gyeongbokgung', name: '경복궁·국립고궁박물관', regionCode: 'seoul-jongno', lat: 37.5796, lng: 126.9770, keywords: ['경복궁', '국립고궁박물관', '고궁박물관'] },
+  { id: 'lm-seoul-history', name: '서울역사박물관·광화문광장', regionCode: 'seoul-jongno', lat: 37.5704, lng: 126.9706, keywords: ['서울역사박물관', '광화문광장', '광화문'] },
+  { id: 'lm-suwon-hwaseong', name: '수원화성 행궁·박물관', regionCode: 'gyeonggi-suwon', lat: 37.2827, lng: 127.0136, keywords: ['수원화성', '화성행궁'] },
+  { id: 'lm-folk-village', name: '한국민속촌·경기도어린이박물관', regionCode: 'gyeonggi-suwon', lat: 37.2588, lng: 127.1178, keywords: ['한국민속촌', '민속촌', '경기도어린이박물관'] },
+  { id: 'lm-incheon-openport', name: '인천개항박물관·차이나타운', regionCode: 'incheon-junggu', lat: 37.4735, lng: 126.6215, keywords: ['인천개항박물관', '개항박물관', '차이나타운'] },
+  { id: 'lm-ojukheon', name: '오죽헌·강릉시립박물관', regionCode: 'gw-gangneung', lat: 37.7791, lng: 128.8794, keywords: ['오죽헌', '강릉시립박물관'] },
+  { id: 'lm-chuncheon-museum', name: '국립춘천박물관', regionCode: 'gw-chuncheon', lat: 37.8639, lng: 127.7532, keywords: ['국립춘천박물관', '춘천박물관', '애니메이션박물관'] },
+  { id: 'lm-science-museum', name: '국립중앙과학관·엑스포과학공원', regionCode: 'daejeon-yuseong', lat: 36.3756, lng: 127.3765, keywords: ['국립중앙과학관', '중앙과학관', '대전과학관', '엑스포과학공원'] },
+  { id: 'lm-gongju-tomb', name: '무령왕릉·공산성·국립공주박물관', regionCode: 'cn-gongju', lat: 36.4658, lng: 127.1135, keywords: ['무령왕릉', '공산성', '국립공주박물관', '국립부여박물관', '백제문화단지'] },
+  { id: 'lm-bulguksa', name: '불국사·동궁과월지·첨성대', regionCode: 'gb-gyeongju', lat: 35.7898, lng: 129.3320, keywords: ['불국사', '국립경주박물관', '첨성대', '대릉원', '동궁과월지', '보문단지'] },
+  { id: 'lm-daegu-museum', name: '국립대구박물관·근대역사관', regionCode: 'daegu-junggu', lat: 35.8458, lng: 128.6375, keywords: ['국립대구박물관', '대구근대역사관', '대구어린이세상'] },
+  { id: 'lm-haeundae', name: '해운대해수욕장·부산아쿠아리움', regionCode: 'busan-haeundae', lat: 35.1587, lng: 129.1604, keywords: ['부산아쿠아리움', '씨라이프', '국립해양박물관', '동백섬'] },
+  { id: 'lm-tongyeong-cable', name: '통영케이블카·이순신공원', regionCode: 'gn-tongyeong', lat: 34.8286, lng: 128.4235, keywords: ['통영케이블카', '스카이라인루지', '이순신공원'] },
+  { id: 'lm-jeonju-hanok', name: '전주한옥마을·국립전주박물관', regionCode: 'jb-jeonju', lat: 35.8147, lng: 127.1526, keywords: ['전주한옥마을', '국립전주박물관', '경기전'] },
+  { id: 'lm-gwangju-acc', name: '국립아시아문화전당·국립광주박물관', regionCode: 'gj-donggu', lat: 35.1468, lng: 126.9202, keywords: ['국립아시아문화전당', '아시아문화전당', '국립광주박물관'] },
+  { id: 'lm-mokpo-cable', name: '국립해양유물전시관·목포해상케이블카', regionCode: 'jn-mokpo', lat: 34.7932, lng: 126.3792, keywords: ['국립해양유물전시관', '목포해상케이블카', '목포자연사박물관'] },
+  { id: 'lm-naro-space', name: '나로우주센터 우주과학관', regionCode: 'jn-goheung', lat: 34.4392, lng: 127.5305, keywords: ['나로우주센터', '우주과학관'] },
+  { id: 'lm-yeosu-expo', name: '여수세계박람회장', regionCode: 'jn-yeosu', lat: 34.7495, lng: 127.7475, keywords: ['여수세계박람회장', '여수엑스포', '아쿠아플라넷여수', '진남종합운동장', '진남관'] },
+  { id: 'lm-suncheon-garden', name: '순천만국가정원', regionCode: 'jn-suncheon', lat: 34.9286, lng: 127.4988, keywords: ['순천만국가정원', '순천만습지', '팔마종합운동장', '순천만'] },
+  { id: 'lm-gwangyang-stadium', name: '광양공설운동장', regionCode: 'jn-gwangyang', lat: 34.9844, lng: 127.5761, keywords: ['광양공설운동장', '백운산자연휴양림'] },
+  { id: 'lm-jeju-stadium', name: '제주종합경기장·성산일출봉', regionCode: 'jj-jeju', lat: 33.4996, lng: 126.5152, keywords: ['제주종합경기장', '성산일출봉', '국립제주박물관'] }
+];
+
+const GENERIC_VENUE_STOPWORDS = new Set(['박물관', '과학관', '운동장', '종합운동장', '체육관', '공원', '광장', '해수욕장', '관광지', '유적지']);
+
+export function matchVenueFromQuery(query = '', venues = []) {
+  const rawQ = String(query || '').trim();
+  if (!rawQ || rawQ.length < 2) return null;
+  const lowerQ = rawQ.toLowerCase();
+
+  const candidateEntries = [];
+
+  for (const v of venues || []) {
+    if (!v || !v.name || !Number.isFinite(v.location?.lat) || !Number.isFinite(v.location?.lng)) continue;
+    const rawTokens = v.name
+      .split(/[·()/\s]+/)
+      .map(t => t.trim())
+      .filter(t => t.length >= 2 && !GENERIC_VENUE_STOPWORDS.has(t));
+    candidateEntries.push({
+      id: v.id,
+      name: v.name,
+      regionCode: v.regionCode || null,
+      lat: v.location.lat,
+      lng: v.location.lng,
+      type: v.type || 'attraction',
+      keywords: [v.name, ...rawTokens]
+    });
+  }
+
+  for (const lm of FALLBACK_SCHOOL_TRIP_LANDMARKS) {
+    candidateEntries.push({
+      id: lm.id,
+      name: lm.name,
+      regionCode: lm.regionCode,
+      lat: lm.lat,
+      lng: lm.lng,
+      type: 'attraction',
+      keywords: lm.keywords
+    });
+  }
+
+  let bestMatch = null;
+  let matchedKeyword = '';
+
+  for (const entry of candidateEntries) {
+    for (const kw of entry.keywords) {
+      const lkw = kw.toLowerCase();
+      if (lkw.length >= 2 && lowerQ.includes(lkw)) {
+        if (!bestMatch || lkw.length > matchedKeyword.length) {
+          bestMatch = entry;
+          matchedKeyword = lkw;
+        }
+      }
+    }
+  }
+
+  if (!bestMatch) return null;
+
+  const remainingQuery = lowerQ
+    .replace(matchedKeyword, ' ')
+    .replace(/\b(근처|주변|인근|앞|맛집|식당|추천|단체식사|단체)\b/g, ' ')
+    .replace(/(근처|주변|인근|맛집|식당)/g, ' ')
+    .trim();
+
+  return {
+    venue: bestMatch,
+    matchedKeyword,
+    remainingQuery
+  };
+}
+
+/**
  * 초등학교 선생님·초등학생 및 선수단 모드별 맞춤 추천 우선순위 점수 계산 (높을수록 상단 추천)
  */
 export function computeModeRecommendationScore(place, mode = 'general') {
@@ -672,6 +803,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     openOnly = false,
     favoriteIds = new Set(),
     referencePoint = null, // { lat, lng, label, type }
+    venues = [],           // 검색창에서 체험처·박물관·경기장 이름 검색 시 자동 매칭용(#7)
     sortBy = 'default',    // 'default' | 'distance' | 'price' | 'checkedAt'
     includeNeedsCheck = true,
     groupCriteria = {},
@@ -681,6 +813,16 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
 
   const normalizedCriteria = normalizeGroupSearchCriteria(groupCriteria);
   const q = String(query || '').trim().toLowerCase();
+
+  // 검색창에 체험처·박물관·경기장 이름을 입력한 경우 기준점 자동 인식(#7)
+  const venueMatch = q ? matchVenueFromQuery(query, venues) : null;
+  const effectiveRefPoint = referencePoint || (venueMatch ? {
+    lat: venueMatch.venue.lat,
+    lng: venueMatch.venue.lng,
+    label: venueMatch.venue.name,
+    type: venueMatch.venue.type || 'attraction',
+    autoMatchedFromQuery: true
+  } : null);
 
   // 권역 묶음 코드('nationwide', 'seoul-metro', 'all' 등) 해석
   const groupDef = REGION_GROUPS[regionCode] || null;
@@ -712,7 +854,16 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     // 영업 중 필터
     if (openOnly && getOpenStatus(place, now) !== true) continue;
 
-    // 검색어(이름·지점명·메뉴·주소·지역·공개 메모)
+    // 기준점 직선거리 계산(FR04 및 #7 체험처 검색 자동 기준점)
+    let straightDistanceKm = null;
+    if (effectiveRefPoint && Number.isFinite(effectiveRefPoint.lat) && Number.isFinite(effectiveRefPoint.lng)) {
+      const coords = getPlaceCoords(place);
+      if (coords) {
+        straightDistanceKm = distanceKm(effectiveRefPoint, coords);
+      }
+    }
+
+    // 검색어(이름·지점명·메뉴·주소·지역·공개 메모 + 체험처·박물관·경기장 반경 매칭 #7)
     if (q) {
       const menuNames = Array.isArray(place.menus) ? place.menus.map(m => m.name).join(' ') : (place.menu || '');
       const haystack = [
@@ -727,21 +878,25 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
         .filter(Boolean)
         .join(' ')
         .toLowerCase();
-      if (!haystack.includes(q)) continue;
-    }
 
-    // 기준점 직선거리 계산(FR04)
-    let straightDistanceKm = null;
-    if (referencePoint && Number.isFinite(referencePoint.lat) && Number.isFinite(referencePoint.lng)) {
-      const coords = getPlaceCoords(place);
-      if (coords) {
-        straightDistanceKm = distanceKm(referencePoint, coords);
+      const literalMatch = haystack.includes(q);
+      let landmarkRadiusMatch = false;
+      if (!literalMatch && venueMatch) {
+        const coords = getPlaceCoords(place);
+        const distFromVenue = coords ? distanceKm(venueMatch.venue, coords) : null;
+        const isNearVenue = (distFromVenue !== null && distFromVenue <= 15) ||
+          (!coords && venueMatch.venue.regionCode && place.regionCode === venueMatch.venue.regionCode);
+        if (isNearVenue) {
+          landmarkRadiusMatch = !venueMatch.remainingQuery || haystack.includes(venueMatch.remainingQuery);
+        }
       }
+      if (!literalMatch && !landmarkRadiusMatch) continue;
     }
 
     const groupMatch = evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr });
     const visitSummary = aggregateVisitRecordsForRestaurant(visitRecords, place.id, referenceDateStr);
     const designationSummary = evaluateOfficialDesignations(place, referenceDateStr);
+    const kidFriendlySummary = evaluateElementaryMenuFriendliness(place);
     const modeScore = computeModeRecommendationScore(place, mode);
 
     const enriched = {
@@ -752,6 +907,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       groupMatch,
       visitSummary,
       designationSummary,
+      kidFriendlySummary,
       modeScore
     };
 
@@ -782,7 +938,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       if (a.groupMatch.status === 'met') return -1;
       if (b.groupMatch.status === 'met') return 1;
     }
-    if (sortBy === 'distance' || referencePoint) {
+    if (sortBy === 'distance' || effectiveRefPoint) {
       if (a.distance !== b.distance) return a.distance - b.distance;
     }
     if (sortBy === 'price') {
@@ -809,6 +965,8 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
   return {
     hasGroupCriteria: normalizedCriteria.hasAnyCriterion,
     criteria: normalizedCriteria,
+    effectiveReferencePoint: effectiveRefPoint,
+    matchedVenue: venueMatch?.venue || null,
     combinedList: allEvaluated,
     confirmedMetList,
     needsCheckList,

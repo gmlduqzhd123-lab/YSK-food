@@ -57,11 +57,13 @@ import {
   normalizeGroupSearchCriteria,
   evaluateRestaurantGroupMatch,
   evaluateDataFreshness,
+  evaluateElementaryMenuFriendliness,
   evaluateMenuSafetyDisplay,
   evaluateOfficialDesignations,
   aggregateVisitRecordsForRestaurant,
   isSuitableForMode,
   getCategoriesForMode,
+  matchVenueFromQuery,
   filterAndClassifyRestaurants
 } from '../assets/releases/v2.0.0/js/domain/search.js';
 
@@ -91,7 +93,9 @@ import {
   parseRouteFromUrl,
   buildPublicShareUrl,
   buildPublicQrSvg,
-  buildVerifiedReportDraft
+  buildVerifiedReportDraft,
+  buildMessengerVoteText,
+  buildOfficialDocDraftText
 } from '../assets/releases/v2.0.0/js/ui/share.js';
 
 import { MapController } from '../assets/releases/v2.0.0/js/ui/map.js';
@@ -1182,6 +1186,78 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     });
     assert.notEqual(generalFiltered.combinedList[0].name, '41번포차');
     assert.notEqual(generalFiltered.combinedList[0].category, '포차·술집');
+  });
+
+  test('선생님 편의 5대 기능 검증: (#1) 메신저 투표 문구 복사, (#4) 에듀파인 기안·품의 문구 복사, (#7) 체험처·박물관 이름 직접 검색, (#9) 초등 선호(안 매움) 자동 배지, (#10) 현재 상태 QR 이어보기', async () => {
+    const repo = new DatasetRepository({
+      appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
+      fetchFn: createLocalFileFetch()
+    });
+    const nwRes = await repo.selectRegion('nationwide');
+
+    // (#9) 초등 선호(안 매움) 자동 배지 판정 검증
+    const donkatsuPlace = nwRes.restaurants.find(r => /돈가스|돈까스|불고기|설렁탕/.test(`${r.name} ${r.menu || ''}`));
+    assert.ok(donkatsuPlace);
+    const kidEval = evaluateElementaryMenuFriendliness(donkatsuPlace);
+    assert.equal(kidEval.isKidFriendlyNonSpicy, true);
+    assert.equal(kidEval.badgeLabel, '🧒 초등 선호(안 매움)');
+
+    const pochaPlace = nwRes.restaurants.find(r => r.category === '포차·술집');
+    if (pochaPlace) {
+      assert.equal(evaluateElementaryMenuFriendliness(pochaPlace).isKidFriendlyNonSpicy, false);
+    }
+
+    // (#7) 일반 검색창에서 체험처·박물관·경기장 이름으로 바로 검색 시 반경 내 식당 직선거리 순 추천 검증
+    const matchSci = matchVenueFromQuery('국립중앙과학관 근처 돈가스', nwRes.venues);
+    assert.ok(matchSci);
+    assert.equal(matchSci.venue.regionCode, 'daejeon-yuseong');
+    assert.equal(matchSci.remainingQuery, '돈가스');
+
+    const sciResult = filterAndClassifyRestaurants(nwRes.restaurants, {
+      mode: 'school',
+      regionCode: 'nationwide',
+      query: '국립중앙과학관',
+      venues: nwRes.venues
+    });
+    assert.ok(sciResult.combinedList.length > 0, '국립중앙과학관 검색 결과가 1곳 이상이어야 함');
+    assert.ok(sciResult.effectiveReferencePoint);
+    assert.ok(sciResult.effectiveReferencePoint.label.includes('국립중앙과학관'));
+    assert.ok(sciResult.combinedList[0].straightDistanceKm <= 15);
+    if (sciResult.combinedList.length >= 2) {
+      assert.ok(sciResult.combinedList[0].distance <= sciResult.combinedList[1].distance);
+    }
+
+    // (#1) 쿨메신저·단톡방 투표용 후보 비교 문구 생성 검증
+    const sampleCandidates = sciResult.combinedList.slice(0, 2);
+    const voteText = buildMessengerVoteText(sampleCandidates, {
+      mode: 'school',
+      region: 'daejeon-yuseong',
+      criteria: { totalHeadcount: 85, budgetPerPersonKRW: 11000 }
+    });
+    assert.ok(voteText.includes('🗳️ [현장체험·수학여행 식당 후보 투표]'));
+    assert.ok(voteText.includes('인원 85명 · 1인 예산 11,000원'));
+    assert.ok(voteText.includes(`1안) ${sampleCandidates[0].name}`));
+    assert.ok(voteText.includes(`2안) ${sampleCandidates[1].name}`));
+    assert.ok(voteText.includes('restaurantIds='));
+
+    // (#4) 에듀파인 품의·기안문 및 사전답사 결과보고서 문구 생성 검증
+    const docText = buildOfficialDocDraftText(sampleCandidates[0], {
+      criteria: { totalHeadcount: 40 }
+    });
+    assert.ok(docText.includes('[현장체험학습·단체식사 예정 업소 현황 (기안·품의서 첨부용)]'));
+    assert.ok(docText.includes(`1. 업 소 명: ${sampleCandidates[0].name}`));
+    assert.ok(docText.includes('학교법인카드'));
+
+    // (#10) 교무실 PC ↔ 휴대폰 현재 상태 QR 이어보기 URL 및 SVG 생성 검증
+    const stateShare = buildPublicShareUrl({
+      restaurantIds: sampleCandidates.map(c => c.id),
+      region: 'daejeon-yuseong',
+      mode: 'school'
+    });
+    assert.equal(stateShare.valid, true);
+    const stateQrSvg = buildPublicQrSvg(stateShare.url, '📲 휴대폰 이어보기 (후보 비교 2곳)');
+    assert.ok(stateQrSvg.startsWith('<svg'));
+    assert.ok(stateQrSvg.includes('휴대폰 이어보기'));
   });
 });
 

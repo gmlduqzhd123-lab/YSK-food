@@ -13,6 +13,7 @@ import {
 import { formatHoursSummary, getOpenStatus } from '../domain/hours.js';
 import {
   evaluateDataFreshness,
+  evaluateElementaryMenuFriendliness,
   evaluateMenuSafetyDisplay,
   evaluateOfficialDesignations
 } from '../domain/search.js';
@@ -47,6 +48,12 @@ export function createGroupMatchBadge(groupMatch) {
     return el('span', 'badge group-check', `추가 확인 필요 (${groupMatch.unverifiedReasons.length}건)`);
   }
   return el('span', 'badge group-unmet', '필수 조건 불충족');
+}
+
+export function createKidFriendlyBadge(place) {
+  const summary = place?.kidFriendlySummary || evaluateElementaryMenuFriendliness(place);
+  if (!summary || !summary.isKidFriendlyNonSpicy) return null;
+  return el('span', 'badge kid-friendly', summary.badgeLabel || '🧒 초등 선호(안 매움)');
 }
 
 /**
@@ -254,6 +261,8 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
 
   const badgeRow = el('div', 'detail-badges');
   badgeRow.appendChild(createGroupMatchBadge(place.groupMatch));
+  const kidBadge = createKidFriendlyBadge(place);
+  if (kidBadge) badgeRow.appendChild(kidBadge);
   const freshBadge = el(
     'span',
     `badge ${freshness.isStale ? 'stale-warn' : 'fresh-info'}`,
