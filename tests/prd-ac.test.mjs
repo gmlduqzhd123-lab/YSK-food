@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import {
   APP_VERSION,
   DEFAULT_DATASET_VERSION,
+  EVENT_PRESETS,
   PAGE_SIZE,
   resolveAppBase,
   resolveAppUrl
@@ -35,6 +36,7 @@ import {
 import { DatasetRepository } from '../assets/releases/v2.0.0/js/data/repository.js';
 
 import {
+  addDaysToKoreaDateStr,
   buildPlannedMealWindow,
   evaluateMealWindowHours,
   getOpenStatus
@@ -47,6 +49,7 @@ import {
 } from '../assets/releases/v2.0.0/js/domain/budget.js';
 
 import {
+  copyMealPlanToDate,
   evaluateMealWaves,
   evaluateMealPlanStatus,
   applyEventAttendeeGroupsChange,
@@ -1258,6 +1261,44 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     const stateQrSvg = buildPublicQrSvg(stateShare.url, '📲 휴대폰 이어보기 (후보 비교 2곳)');
     assert.ok(stateQrSvg.startsWith('<svg'));
     assert.ok(stateQrSvg.includes('휴대폰 이어보기'));
+  });
+
+  test('버그 수정 회귀 검증: 프리셋 모드 일치(수련활동=school, 전지훈련=athlete), 월말 다음 날 복사, 타 지역 선택 중 전국 시설 검색, 단일 식당 포커스 시 기존 마커 보존', async () => {
+    // 1. index.html의 #event-preset-select 옵션과 EVENT_PRESETS 정의 일치 검증
+    const indexHtml = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+    const selectMatch = indexHtml.match(/<select id="event-preset-select"[\s\S]*?<\/select>/);
+    assert.ok(selectMatch, '#event-preset-select 요소가 존재해야 함');
+    const optionValues = [...selectMatch[0].matchAll(/<option value="([^"]*)">/g)]
+      .map(m => m[1])
+      .filter(Boolean);
+    assert.ok(optionValues.includes('retreat'), '수련활동(retreat) 옵션이 포함되어야 함');
+    assert.ok(optionValues.includes('training_camp'), '전지훈련(training_camp) 옵션이 포함되어야 함');
+    for (const val of optionValues) {
+      assert.ok(EVENT_PRESETS[val], `프리셋 '${val}'이 EVENT_PRESETS에 정의되어 있어야 함`);
+    }
+    assert.equal(EVENT_PRESETS.retreat.mode, 'school');
+    assert.equal(EVENT_PRESETS.training_camp.mode, 'athlete');
+
+    // 2. 월말(28일~31일) 다음 날 복사 시 날짜 역전·고정 버그 없이 정상 이월되는지 검증
+    assert.equal(addDaysToKoreaDateStr('2026-10-28', 1), '2026-10-29');
+    assert.equal(addDaysToKoreaDateStr('2026-10-31', 1), '2026-11-01');
+    const ev = createNewPersonalEvent({ title: '수학여행', startDate: '2026-10-31' });
+    const nextDate = addDaysToKoreaDateStr(ev.mealPlans[0].date, 1);
+    const copiedMeal = copyMealPlanToDate(ev.mealPlans[0], nextDate);
+    assert.equal(copiedMeal.date, '2026-11-01');
+
+    // 3. 특정 지역(여수)으로 전환한 뒤에도 getAllLoadedVenues()로 타 지역 경기장·시설(춘천송암스포츠타운) 검색이 동작하는지 검증
+    const repo = new DatasetRepository({
+      appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
+      fetchFn: createLocalFileFetch()
+    });
+    await repo.selectRegion('nationwide');
+    const yeosuRes = await repo.selectRegion('jn-yeosu');
+    assert.equal(matchVenueFromQuery('춘천송암스포츠타운', yeosuRes.venues), null);
+    const allVenues = repo.getAllLoadedVenues();
+    const crossMatched = matchVenueFromQuery('춘천송암스포츠타운', allVenues);
+    assert.ok(crossMatched, '개별 지역 선택 상태에서도 전국 시설 검색이 매칭되어야 함');
+    assert.equal(crossMatched.venue.regionCode, 'gw-chuncheon');
   });
 });
 

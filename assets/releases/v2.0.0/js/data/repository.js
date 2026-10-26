@@ -215,6 +215,22 @@ export class DatasetRepository {
     return bundle?.regionsFile?.regions || [];
   }
 
+  getAllLoadedVenues() {
+    const bundle = this.getActiveBundle();
+    if (!bundle) return [];
+    const seen = new Set();
+    const venues = [];
+    for (const rData of bundle.regions.values()) {
+      for (const v of rData.venues || []) {
+        if (v?.id && !seen.has(v.id)) {
+          seen.add(v.id);
+          venues.push(v);
+        }
+      }
+    }
+    return venues;
+  }
+
   getRegionMeta(regionCode) {
     if (REGION_GROUPS[regionCode]) {
       const g = REGION_GROUPS[regionCode];

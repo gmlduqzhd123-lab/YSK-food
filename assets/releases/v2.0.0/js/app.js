@@ -18,7 +18,7 @@ import {
   validateRegionDataset
 } from './data/normalize.js';
 import { DatasetRepository } from './data/repository.js';
-import { buildPlannedMealWindow, formatHoursSummary, getOpenStatus } from './domain/hours.js';
+import { addDaysToKoreaDateStr, buildPlannedMealWindow, formatHoursSummary, getOpenStatus } from './domain/hours.js';
 import { evaluateMealPlanCost } from './domain/budget.js';
 import {
   copyMealPlanToDate,
@@ -128,6 +128,7 @@ export class YskFoodApp {
     this.searchDebounceTimer = null;
     this.lastFocusedElement = null;
     this.waitingServiceWorker = null;
+    this.userDismissedHome = false;
 
     this.mapController = new MapController({
       onSelectPlace: (placeId, fromList) => this.selectPlace(placeId, fromList),
@@ -248,6 +249,9 @@ export class YskFoodApp {
   async applyRouteFromLocation({ isInitialLoad = false, fromPopstate = false } = {}) {
     const route = parseRouteFromUrl(window.location.href);
     const homeEl = document.getElementById('home');
+    if (fromPopstate && route.showHome) {
+      this.userDismissedHome = false;
+    }
 
     // 필터 복원
     if (route.filters) {
@@ -263,7 +267,8 @@ export class YskFoodApp {
     // 1) 모호한 링크(restaurantId와 restaurantIds가 동시에 있는 경우 - FR01)
     if (route.status === 'ambiguous_link') {
       if (homeEl) homeEl.hidden = true;
-      await this.loadSelectedRegionData(this.state.regionCode);
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
       this.applyFilters(false);
       this.showBannerAlert(route.message, 'warn');
       return;
@@ -278,7 +283,8 @@ export class YskFoodApp {
         if (this.state.regionCode !== 'all' && this.state.regionCode !== 'nationwide' && this.state.regionCode !== res.regionCode) {
           this.state.regionCode = res.regionCode;
         }
-        await this.loadSelectedRegionData(this.state.regionCode);
+        const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+        if (loadRes?.stale) return;
         this.applyFilters(false);
         this.selectPlace(res.restaurant.id, true, { skipHistoryPush: true });
         this.openPlaceDetailModal(res.restaurant);
@@ -297,7 +303,8 @@ export class YskFoodApp {
       }
 
       // ID 미등록 / 공개자료 제거 / 색인 실패 / 지역 실패 / 오프라인 미저장 구분 표시(FR01, AC40)
-      await this.loadSelectedRegionData(this.state.regionCode);
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
       this.applyFilters(false);
       this.showBannerAlert(res.message || `식당(${route.restaurantId})을 열 수 없습니다 (${res.status}).`, 'warn');
       return;
@@ -306,7 +313,8 @@ export class YskFoodApp {
     // 3) 공개 후보 비교 링크 (?restaurantIds=ID1&restaurantIds=ID2...)
     if (route.view === 'compare' && Array.isArray(route.restaurantIds)) {
       if (homeEl) homeEl.hidden = true;
-      await this.loadSelectedRegionData(this.state.regionCode);
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
       const resolvedList = await this.repository.resolveMultipleRestaurantsByIds(route.restaurantIds);
       const foundPlaces = resolvedList.filter(r => r.status === 'found' && r.restaurant).map(r => r.restaurant);
       this.state.compareIds = foundPlaces.map(p => String(p.id));
@@ -323,7 +331,8 @@ export class YskFoodApp {
     // 4) 구형 ?place=식당이름 링크 호환 및 정규화(Section 8.6, AC02)
     if (route.view === 'legacy_place' && route.legacyPlaceName) {
       if (homeEl) homeEl.hidden = true;
-      await this.loadSelectedRegionData(this.state.regionCode);
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
       const aliasRes = this.repository.resolveLegacyPlaceName(route.legacyPlaceName);
 
       if (aliasRes.status === 'resolved' && aliasRes.restaurantId) {
@@ -351,11 +360,12 @@ export class YskFoodApp {
     }
 
     // 5) 홈 화면 또는 일반 지도 화면
-    await this.loadSelectedRegionData(this.state.regionCode);
+    const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+    if (loadRes?.stale) return;
     this.applyFilters(true);
     this.renderHomeStats();
 
-    if (route.showHome) {
+    if (route.showHome && !this.userDismissedHome) {
       if (homeEl) {
         homeEl.hidden = false;
         homeEl.scrollTop = 0;
@@ -1363,7 +1373,7 @@ export class YskFoodApp {
       copyDayBtn.className = 'link sub';
       copyDayBtn.textContent = '📆 다음 날로 식단·인원 복사';
       copyDayBtn.addEventListener('click', async () => {
-        const nextDate = `${mp.date.slice(0, 8)}${String(Math.min(28, Number(mp.date.slice(8, 10)) + 1)).padStart(2, '0')}`;
+        const nextDate = addDaysToKoreaDateStr(mp.date, 1) || mp.date;
         const copiedMeal = copyMealPlanToDate(mp, nextDate);
         activeEvent.mealPlans.push(copiedMeal);
         if (!activeEvent.dates.includes(nextDate)) activeEvent.dates.push(nextDate);
@@ -1785,6 +1795,10 @@ export class YskFoodApp {
   }
 
   async openMapFromHome({ regionCode, city, category, query, openOnly, mode, presetId, needs } = {}) {
+    this.userDismissedHome = true;
+    const homeEl = document.getElementById('home');
+    if (homeEl) homeEl.hidden = true;
+
     const cityMap = {
       '서울': 'seoul-metro',
       '수원': 'gyeonggi-suwon',
@@ -1807,14 +1821,22 @@ export class YskFoodApp {
       '광양': 'jn-gwangyang'
     };
     if (mode) this.state.mode = mode;
-    if (presetId) this.applyPresetSettings(presetId);
-    // 홈 빠른 조건(예: 단체석)은 설정 칩도 함께 켠다
+    if (presetId) {
+      this.applyPresetSettings(presetId);
+    } else {
+      this.applyPresetSettings('');
+    }
+    // 홈 빠른 조건(예: 단체석)은 이전 선택과 겹치지 않게 초기화 후 설정 칩도 함께 켠다
+    ['groupSeatRequired', 'busParkingRequired', 'reservationRequired', 'parkingRequired', 'lunchboxRequired'].forEach(k => {
+      this.state.groupCriteria[k] = false;
+    });
     (needs || []).forEach(need => {
       this.state.groupCriteria[need] = true;
-      document.querySelector(`.gc-chip[data-need="${need}"]`)?.setAttribute('aria-pressed', 'true');
     });
 
-    const nextRegion = regionCode || (city && cityMap[city]) || this.state.regionCode || 'nationwide';
+    const allVenues = this.repository.getAllLoadedVenues();
+    const matchedVenue = query ? matchVenueFromQuery(query, allVenues.length ? allVenues : this.currentVenues) : null;
+    const nextRegion = regionCode || (city && cityMap[city]) || matchedVenue?.venue?.regionCode || (query ? 'nationwide' : this.state.regionCode) || 'nationwide';
     this.state.regionCode = nextRegion;
     this.state.category = category || 'all';
     this.state.query = query || '';
@@ -1823,11 +1845,9 @@ export class YskFoodApp {
     this.state.visibleLimit = PAGE_SIZE;
 
     this.syncFilterControlsFromState();
-    await this.loadSelectedRegionData(this.state.regionCode);
+    const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+    if (loadRes?.stale) return;
     this.applyFilters(true);
-
-    const homeEl = document.getElementById('home');
-    if (homeEl) homeEl.hidden = true;
 
     const urlRes = buildPublicShareUrl({
       region: this.state.regionCode,
@@ -1843,13 +1863,21 @@ export class YskFoodApp {
   }
 
   applyPresetSettings(presetId) {
+    const guideEl = document.getElementById('preset-guide-note');
+    if (!presetId) {
+      this.state.presetId = '';
+      if (guideEl) {
+        guideEl.hidden = true;
+        guideEl.textContent = '';
+      }
+      return;
+    }
     const preset = EVENT_PRESETS[presetId];
     if (!preset) return;
     this.state.presetId = presetId;
     this.state.mode = preset.mode;
     // 사용자가 이미 입력한 인원·예산은 덮어쓰지 않고 좌석 기본 정책만 안내에 맞게 설정(FR02)
     this.state.groupCriteria.seatingPolicy = preset.seatingPolicy;
-    const guideEl = document.getElementById('preset-guide-note');
     if (guideEl) {
       guideEl.hidden = false;
       guideEl.textContent = `💡 [${preset.label}] ${preset.guideText}`;
@@ -1863,6 +1891,9 @@ export class YskFoodApp {
     const regionSelect = document.getElementById('region-select');
     if (regionSelect) regionSelect.value = this.state.regionCode;
 
+    const presetSelect = document.getElementById('event-preset-select');
+    if (presetSelect) presetSelect.value = this.state.presetId || '';
+
     document.querySelectorAll('.filter-btn[data-region]').forEach(btn => {
       const active = btn.dataset.region === this.state.regionCode;
       btn.classList.toggle('active', active);
@@ -1873,6 +1904,11 @@ export class YskFoodApp {
       const active = btn.dataset.mode === this.state.mode;
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-pressed', String(active));
+    });
+
+    document.querySelectorAll('.gc-chip[data-need]').forEach(chip => {
+      const active = Boolean(this.state.groupCriteria[chip.dataset.need]);
+      chip.setAttribute('aria-pressed', String(active));
     });
 
     const groupBar = document.getElementById('group-criteria-bar');
@@ -1960,13 +1996,15 @@ export class YskFoodApp {
         this.state.visibleLimit = PAGE_SIZE;
         clearTimeout(this.searchDebounceTimer);
         this.searchDebounceTimer = setTimeout(async () => {
-          const matched = matchVenueFromQuery(this.state.query, this.currentVenues);
+          const allVenues = this.repository.getAllLoadedVenues();
+          const matched = matchVenueFromQuery(this.state.query, allVenues.length ? allVenues : this.currentVenues);
           if (matched?.venue?.regionCode && this.state.regionCode !== 'nationwide') {
             const groupCodes = REGION_GROUPS[this.state.regionCode]?.regionCodes || [this.state.regionCode];
             if (!groupCodes.includes(matched.venue.regionCode)) {
               this.state.regionCode = matched.venue.regionCode;
               this.syncFilterControlsFromState();
-              await this.loadSelectedRegionData(this.state.regionCode);
+              const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+              if (loadRes?.stale) return;
             }
           }
           this.applyFilters(true);
@@ -1978,6 +2016,9 @@ export class YskFoodApp {
     document.querySelectorAll('.mode-tab[data-mode]').forEach(btn => {
       btn.addEventListener('click', () => {
         this.state.mode = btn.dataset.mode;
+        if (this.state.presetId && EVENT_PRESETS[this.state.presetId]?.mode !== this.state.mode) {
+          this.applyPresetSettings('');
+        }
         this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
         this.renderCategoryButtons();
@@ -1990,14 +2031,12 @@ export class YskFoodApp {
     const presetSelect = document.getElementById('event-preset-select');
     if (presetSelect) {
       presetSelect.addEventListener('change', e => {
-        if (e.target.value) {
-          this.applyPresetSettings(e.target.value);
-          this.state.visibleLimit = PAGE_SIZE;
-          this.syncFilterControlsFromState();
-          this.renderCategoryButtons();
-          this.renderRegionDatasetStatusBanner({ status: 'ok' });
-          this.applyFilters(false);
-        }
+        this.applyPresetSettings(e.target.value);
+        this.state.visibleLimit = PAGE_SIZE;
+        this.syncFilterControlsFromState();
+        this.renderCategoryButtons();
+        this.renderRegionDatasetStatusBanner({ status: 'ok' });
+        this.applyFilters(false);
       });
     }
 
@@ -2008,7 +2047,8 @@ export class YskFoodApp {
         this.state.regionCode = e.target.value;
         this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
-        await this.loadSelectedRegionData(this.state.regionCode);
+        const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+        if (loadRes?.stale) return;
         this.applyFilters(true);
       });
     }
@@ -2018,7 +2058,8 @@ export class YskFoodApp {
         this.state.regionCode = btn.dataset.region;
         this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
-        await this.loadSelectedRegionData(this.state.regionCode);
+        const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+        if (loadRes?.stale) return;
         this.applyFilters(true);
       });
     });
@@ -2225,6 +2266,7 @@ export class YskFoodApp {
     document.querySelector('header h1')?.addEventListener('click', () => {
       const homeEl = document.getElementById('home');
       if (homeEl) {
+        this.userDismissedHome = false;
         this.renderHomeStats();
         homeEl.hidden = false;
         homeEl.scrollTop = 0;

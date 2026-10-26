@@ -438,8 +438,25 @@ export class MapController {
 
     let entry = this.entries.get(strId);
     if (!entry && placeObj && isMappablePlace(placeObj)) {
-      this.syncMarkers([placeObj]);
-      entry = this.entries.get(strId);
+      const coords = getPlaceCoords(placeObj);
+      if (coords) {
+        const position = new kakao.maps.LatLng(coords.lat, coords.lng);
+        const marker = new kakao.maps.Marker({
+          position,
+          title: placeObj.name,
+          image: this.getMarkerImage(placeObj.regionCode || placeObj.city)
+        });
+        kakao.maps.event.addListener(marker, 'click', () => {
+          this.onSelectPlace(strId, false);
+        });
+        entry = { place: placeObj, marker, overlay: null, content: null, position };
+        this.entries.set(strId, entry);
+        if (this.clusterer?.addMarker) {
+          this.clusterer.addMarker(marker);
+        } else {
+          marker.setMap(this.map);
+        }
+      }
     }
 
     if (!entry || !isMappablePlace(entry.place)) {
