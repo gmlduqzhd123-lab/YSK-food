@@ -114,7 +114,8 @@ const isLegacyId = id => /^ysk-r-\d+$/.test(String(id));
 const CENTURY_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/century-guide-1000.json'), 'utf8'));
 const KOFOOD_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kofood-guide-1000.json'), 'utf8'));
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodprice-3000.json'), 'utf8'));
-const KAKAO_VERIFIED = { restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants] };
+const ELEM_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-1000.json'), 'utf8'));
+const KAKAO_VERIFIED = { restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants] };
 
 function createLocalFileFetch(rootDir = ROOT) {
   return async (urlStr) => {
@@ -1292,13 +1293,24 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
       fetchFn: createLocalFileFetch()
     });
-    await repo.selectRegion('nationwide');
+    const nwRes = await repo.selectRegion('nationwide');
     const yeosuRes = await repo.selectRegion('jn-yeosu');
     assert.equal(matchVenueFromQuery('춘천송암스포츠타운', yeosuRes.venues), null);
     const allVenues = repo.getAllLoadedVenues();
     const crossMatched = matchVenueFromQuery('춘천송암스포츠타운', allVenues);
     assert.ok(crossMatched, '개별 지역 선택 상태에서도 전국 시설 검색이 매칭되어야 함');
     assert.equal(crossMatched.venue.regionCode, 'gw-chuncheon');
+
+    // 4. 초등·교사 맞춤 1,000곳 추가 및 연락처(phone) 미기재 업소 0곳 검증
+    assert.equal(ELEM_1000.restaurants.length, 1000, '초등·교사 맞춤 식당이 정확히 1,000곳이어야 함');
+    const noPhoneCount = nwRes.restaurants.filter(r => !r.phone || !String(r.phone).trim()).length;
+    assert.equal(noPhoneCount, 0, '연락처 정보가 없는 업소는 데이터셋에 0곳이어야 함');
+
+    const target8Cats = ['백반·한식', '한정식', '양식·일식', '고기', '국밥·탕', '면', '분식·중식', '닭요리'];
+    for (const cat of target8Cats) {
+      const catCount = nwRes.restaurants.filter(r => r.category === cat).length;
+      assert.ok(catCount >= 100, `8대 식사 카테고리(${cat})가 최소 100곳 이상 균형 배치되어야 함 (현재: ${catCount}곳)`);
+    }
   });
 });
 

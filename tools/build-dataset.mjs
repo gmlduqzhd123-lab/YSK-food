@@ -30,6 +30,8 @@ const KOFOOD_GUIDE_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'kofoo
 // 초등학생 동반 전국 식당 3,000곳(착한가격업소·브랜드 매장·지자체 맛집) 중 카카오맵에서 위치를 찾고 폐업 표시가 없는 식당
 // (영업시간·리뷰가 없어도 수록하며, 엑셀의 메뉴 가격을 1인 예산 비교에 쓴다)
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'goodprice-3000.json'), 'utf8'));
+// 초등학생·초등교사 맞춤 전국 맛집 1,000곳 (8대 식사 카테고리 균형 분류 및 연락처 필수 검증, 2026-10-27)
+const ELEM_TEACHER_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'elem-teacher-1000.json'), 'utf8'));
 
 // 카카오맵 장소 상세의 편의시설·좌석 옵션(단체석·룸·주차·예약·포장 등, 일부 AI 요약 포함) 수집 결과
 const KAKAO_FACILITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-facilities-20261019.json'), 'utf8'));
@@ -40,7 +42,7 @@ const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
  * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
  */
 function applyKakaoFacilities(rest) {
-  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id];
+  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id] || ELEM_TEACHER_1000.facilities?.[rest.id];
   if (!f) return;
   const gp = rest.groupProfile;
   if (f.group) {
@@ -96,6 +98,11 @@ const LIST_SOURCES = {
     id: 'src-kofood-guide',
     url: 'https://www.kofood.net',
     attribution: '전국맛집가이드 음식별 목록 (연락처 있는 전국 식당 1,000곳, 2026-10-20 조회)'
+  },
+  '초등·교사선정맛집': {
+    id: 'src-elem-teacher-1000',
+    url: 'https://map.kakao.com',
+    attribution: '초등학생·초등교사 현장체험·단체식사 추천 1,000곳 (카카오맵 영업·연락처 확인, 2026-10-27)'
   }
 };
 
@@ -410,14 +417,37 @@ function buildDataset() {
     return rest;
   });
 
-  // PDF 주소로 기존 식당의 '상세 주소 미확인'을 보강
+  // PDF 주소 및 카카오맵 확인 연락처로 기존 식당 보강
   const addressOverrides = new Map([...KAKAO_VERIFIED_1000.addressOverrides, ...(KOFOOD_GUIDE_1000.addressOverrides || []), ...(GOODPRICE_3000.addressOverrides || [])].map(o => [o.id, o.address]));
+  const legacyPhones = ELEM_TEACHER_1000.legacyPhones || {};
   for (const r of normalizedRestaurants) {
     if (addressOverrides.has(r.id)) r.address = addressOverrides.get(r.id);
+    if ((!r.phone || !String(r.phone).trim()) && legacyPhones[r.id]?.phone) {
+      r.phone = legacyPhones[r.id].phone;
+      if ((!r.address || r.address.includes('미확인')) && legacyPhones[r.id].address) {
+        r.address = legacyPhones[r.id].address;
+      }
+    }
   }
 
-  const verifiedRestaurants = [...KAKAO_VERIFIED_1000.restaurants, ...KOFOOD_GUIDE_1000.restaurants, ...GOODPRICE_3000.restaurants].map(item => {
-    const rest = normalizeLegacyPlaceToRestaurant(item);
+  const refineElementaryCategory = (item) => {
+    if (item.source === '초등·교사선정맛집') return item.category;
+    const text = `${item.name || ''} ${item.menu || ''} ${item.priceMenu || ''}`;
+    if (/한정식|수라상|정찬|반상/.test(text)) return '한정식';
+    if (/삼계탕|닭갈비|백숙|찜닭|닭곰탕|닭한마리|치킨|통닭/.test(text)) return '닭요리';
+    if (/불고기|떡갈비|돼지갈비|소갈비|삼겹살|목살|오리불고기|오리구이|숯불갈비/.test(text) && !/갈비탕|갈비만두/.test(text)) return '고기';
+    if (/백반|보리밥|비빔밥|쌈밥|생선구이|청국장|된장찌개|김치찌개|순두부|두부전골|가정식/.test(text) && !/돈가스|돈까스|초밥|우동|칼국수|짜장|짬뽕/.test(text)) return '백반·한식';
+    return item.category;
+  };
+
+  const verifiedRestaurants = [
+    ...KAKAO_VERIFIED_1000.restaurants,
+    ...KOFOOD_GUIDE_1000.restaurants,
+    ...GOODPRICE_3000.restaurants,
+    ...ELEM_TEACHER_1000.restaurants
+  ].map(item => {
+    const refinedItem = { ...item, category: refineElementaryCategory(item) };
+    const rest = normalizeLegacyPlaceToRestaurant(refinedItem);
     // 엑셀에 적힌 메뉴 가격(1인 메뉴 기준으로 사용, 세트·조건 가격일 수 있음)
     if (item.priceKRW) {
       const target = rest.menus.find(m => m.name === item.priceMenu) || rest.menus[0];
@@ -438,9 +468,9 @@ function buildDataset() {
   for (const reg of REGIONS_DEF) {
     restaurantsByRegion[reg.regionCode] = [];
   }
-  // NATIONWIDE_ELEMENTARY_RESTAURANTS(88곳)는 카카오맵에 같은 이름의 식당이 하나도 없고 전화번호도 다른 업체 번호여서
-  // 실제 식당 자료가 아닌 것으로 확인되어 공개 자료에서 뺀다 (2026-10-19 확인).
+  // 연락처(phone) 정보가 없는 업소는 전면 제외한다.
   for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
+    if (!r.phone || !String(r.phone).trim()) continue;
     applyKakaoFacilities(r);
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
