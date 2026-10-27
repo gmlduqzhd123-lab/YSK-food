@@ -1313,6 +1313,16 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
       const catCount = nwRes.restaurants.filter(r => r.category === cat).length;
       assert.ok(catCount >= 250, `8대 식사 카테고리(${cat})가 최소 250곳 이상 균형 배치되어야 함 (현재: ${catCount}곳)`);
     }
+
+    // 5. 지점명('제주점', '경주점', '전주점' 등)이 '주점(술집)'으로 오판되어 학교·선수단 모드에서 누락되지 않는지 검증
+    const jejuBranch = { id: 'test-jeju', name: '홍익돈까스 신제주점', category: '양식·일식', menu: '수제돈가스, 우동' };
+    const barPlace = { id: 'test-bar', name: '역전할머니맥주 전주점', category: '포차·술집', menu: '생맥주, 마른안주' };
+    const yoriJujeom = { id: 'test-jujeom', name: '달빛요리주점', category: '백반·한식', menu: '모둠전' };
+    assert.equal(isSuitableForMode(jejuBranch, 'school'), true);
+    assert.equal(isSuitableForMode(jejuBranch, 'athlete'), true);
+    assert.equal(evaluateElementaryMenuFriendliness(jejuBranch).isKidFriendlyNonSpicy, true);
+    assert.equal(isSuitableForMode(barPlace, 'school'), false);
+    assert.equal(isSuitableForMode(yoriJujeom, 'school'), false);
   });
 });
 

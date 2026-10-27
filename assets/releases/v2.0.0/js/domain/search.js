@@ -529,7 +529,7 @@ export function evaluateOfficialDesignations(restaurant, referenceDateStr = null
  *   포차·술집, 주류 중심 업소, 단순 커피/디저트 카페, 날생선회/술안주 위주 업소를 추천에서 제외한다.
  */
 const EXCLUDED_CATEGORIES_FOR_GROUP_MODES = new Set(['포차·술집', '카페·디저트']);
-const ALCOHOL_OR_BAR_REGEX = /포차|술집|주점|양조장|호프|이자카야|맥주|소주|와인|막걸리/;
+const ALCOHOL_OR_BAR_REGEX = /포차|술집|(?<![제경전진원청충여광상무나파양공영성완])주점|양조장|호프|이자카야|맥주|소주|와인|막걸리/;
 const RAW_FISH_OR_ADULT_MENU_REGEX = /선어회|삼치회|활어회|전어회|물회|사시미|해물삼합|돌문어삼합|딱새우회|낙지탕탕이|흑염소/;
 
 export function isSuitableForMode(place, mode = 'general') {
