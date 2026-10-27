@@ -32,6 +32,8 @@ const KOFOOD_GUIDE_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'kofoo
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'goodprice-3000.json'), 'utf8'));
 // 초등학생·초등교사 맞춤 전국 맛집 1,000곳 (8대 식사 카테고리 균형 분류 및 연락처 필수 검증, 2026-10-27)
 const ELEM_TEACHER_1000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'elem-teacher-1000.json'), 'utf8'));
+// 초등학생·초등교사 맞춤 전국 맛집 2차 1,000곳 (2026-10-27)
+const ELEM_TEACHER_2000 = JSON.parse(fs.readFileSync(path.join(__dirname, 'elem-teacher-2000.json'), 'utf8'));
 
 // 카카오맵 장소 상세의 편의시설·좌석 옵션(단체석·룸·주차·예약·포장 등, 일부 AI 요약 포함) 수집 결과
 const KAKAO_FACILITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-facilities-20261019.json'), 'utf8'));
@@ -42,7 +44,7 @@ const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
  * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
  */
 function applyKakaoFacilities(rest) {
-  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id] || ELEM_TEACHER_1000.facilities?.[rest.id];
+  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id] || ELEM_TEACHER_1000.facilities?.[rest.id] || ELEM_TEACHER_2000.facilities?.[rest.id];
   if (!f) return;
   const gp = rest.groupProfile;
   if (f.group) {
@@ -444,7 +446,8 @@ function buildDataset() {
     ...KAKAO_VERIFIED_1000.restaurants,
     ...KOFOOD_GUIDE_1000.restaurants,
     ...GOODPRICE_3000.restaurants,
-    ...ELEM_TEACHER_1000.restaurants
+    ...ELEM_TEACHER_1000.restaurants,
+    ...ELEM_TEACHER_2000.restaurants
   ].map(item => {
     const refinedItem = { ...item, category: refineElementaryCategory(item) };
     const rest = normalizeLegacyPlaceToRestaurant(refinedItem);
