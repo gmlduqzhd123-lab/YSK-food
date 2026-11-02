@@ -390,6 +390,8 @@ export function parseLegacyDaysToIso(spec) {
   if (!spec) return null;
   const trimmed = String(spec).trim();
   if (!trimmed) return null;
+  // '매일'의 '일'을 일요일로 읽지 않도록 먼저 처리한다
+  if (trimmed.includes('매일')) return [...ISO_WEEK_ORDER];
   if (trimmed.includes('평일')) return [1, 2, 3, 4, 5];
   if (trimmed.includes('주말')) return [6, 7];
   const range = /([일월화수목금토])\s*[~-]\s*([일월화수목금토])/.exec(trimmed);
@@ -666,8 +668,89 @@ export function normalizeLegacyPlaceToRestaurant(raw) {
  * UI 및 기존 코드에서 편리하게 읽을 수 있도록 Restaurant 객체를 보강(hydration)한다.
  * 원본 중첩 필드는 그대로 유지한다.
  */
+// ============================================================================
+// 지역 자료 기본값 생략 저장 (파일 크기·첫 화면 불러오기 시간 절감)
+// 빌드 도구는 기본값과 같은 항목(미확인·null 등)을 빼고 저장하고, 앱은 읽을 때 기본값을 다시 채운다.
+// 모든 항목이 있는 예전 형식 파일도 그대로 읽힌다(채울 항목이 없으므로).
+// ============================================================================
+
+let restaurantDefaultsCache = null;
+
+/** 식당·메뉴 기본값 틀(normalizeLegacyPlaceToRestaurant가 만드는 미확인 기본값) */
+export function getRestaurantDefaults() {
+  if (!restaurantDefaultsCache) {
+    const restaurant = normalizeLegacyPlaceToRestaurant({ id: 'ysk-r-0', name: '', menu: '-' });
+    const menu = restaurant.menus[0];
+    for (const key of ['id', 'name']) delete menu[key];
+    for (const key of ['id', 'legacyId', 'name', 'regionCode', 'address', 'menus']) delete restaurant[key];
+    restaurantDefaultsCache = { restaurant, menu };
+  }
+  return restaurantDefaultsCache;
+}
+
+const isPlainObject = v => v !== null && typeof v === 'object' && !Array.isArray(v);
+
+function sameJson(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+function omitDefaults(value, template) {
+  if (!isPlainObject(value) || !isPlainObject(template)) return value;
+  const out = {};
+  for (const [key, v] of Object.entries(value)) {
+    if (key in template && sameJson(v, template[key])) continue;
+    out[key] = key in template ? omitDefaults(v, template[key]) : v;
+  }
+  return out;
+}
+
+// 기본값 틀은 숫자·문자·null·빈 배열·일반 객체뿐이라 가벼운 복사로 충분하다
+function cloneDefault(v) {
+  if (Array.isArray(v)) return v.map(cloneDefault);
+  if (isPlainObject(v)) {
+    const out = {};
+    for (const key in v) out[key] = cloneDefault(v[key]);
+    return out;
+  }
+  return v;
+}
+
+function fillDefaults(value, template) {
+  if (value === undefined) return cloneDefault(template);
+  if (!isPlainObject(value) || !isPlainObject(template)) return value;
+  const out = {};
+  for (const key of Object.keys(template)) out[key] = fillDefaults(value[key], template[key]);
+  for (const [key, v] of Object.entries(value)) {
+    if (!(key in template)) out[key] = v;
+  }
+  return out;
+}
+
+/** 저장용: 기본값과 같은 항목을 뺀 식당 객체 */
+export function compactRestaurantForStorage(rest) {
+  const { restaurant, menu } = getRestaurantDefaults();
+  const out = omitDefaults(rest, restaurant);
+  if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => omitDefaults(m, menu));
+  return out;
+}
+
+/** 읽기용: 빠진 기본값을 다시 채운 식당 객체 */
+export function expandStoredRestaurant(rest) {
+  const { restaurant, menu } = getRestaurantDefaults();
+  const out = fillDefaults(rest, restaurant);
+  if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => fillDefaults(m, menu));
+  return out;
+}
+
+/** 지역 자료 파일의 식당 목록에 기본값을 다시 채운다 */
+export function expandStoredRegionDataset(data) {
+  if (!isPlainObject(data) || !Array.isArray(data.restaurants)) return data;
+  return { ...data, restaurants: data.restaurants.map(r => (isPlainObject(r) ? expandStoredRestaurant(r) : r)) };
+}
+
 export function hydrateRestaurantForUi(rest, regionMeta = null) {
-  const r = structuredClone(rest);
+  // 화면용 필드만 위쪽에 덧붙이므로 얕은 복사로 충분하다 (6천여 곳 깊은 복사 비용 절감)
+  const r = { ...rest };
   if (!r.categoryIds || !Array.isArray(r.categoryIds)) {
     r.categoryIds = r.category ? [r.category] : ['기타'];
   }
