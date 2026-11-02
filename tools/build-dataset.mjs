@@ -5,6 +5,8 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
   buildOpeningHoursFromLegacy,
+  compactRestaurantForStorage,
+  expandStoredRestaurant,
   normalizeLegacyPlaceToRestaurant,
   validateDatasetBundleCrossReferences
 } from '../assets/releases/v2.0.0/js/data/normalize.js';
@@ -78,6 +80,9 @@ function applyKakaoFacilities(rest) {
 // 카카오맵 장소 상세 재수집(2026-11-02): 영업시간·메뉴판 가격·편의시설·좌석 옵션
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-refresh-20261102.json'), 'utf8'));
 const REFRESH_SOURCE_ID = 'src-kakao-refresh-20261102';
+// 매달 정기 재확인 결과(tools/kakao-recheck.mjs, GitHub Actions) — 장소 페이지가 사라진 식당 목록
+const KAKAO_RECHECK_PATH = path.join(__dirname, 'kakao-recheck-latest.json');
+const KAKAO_RECHECK = fs.existsSync(KAKAO_RECHECK_PATH) ? JSON.parse(fs.readFileSync(KAKAO_RECHECK_PATH, 'utf8')) : { missing: {} };
 const normMenuName = s => String(s || '').replace(/\s+|\(.*?\)/g, '');
 
 /**
@@ -113,7 +118,11 @@ function applyKakaoRefresh(rest) {
     const used = new Set();
     for (const m of rest.menus) {
       const key = normMenuName(m.name);
-      const hit = e.menus.find(k => !used.has(k.name) && key && (normMenuName(k.name) === key || normMenuName(k.name).includes(key)));
+      const free = e.menus.filter(k => !used.has(k.name) && key);
+      // 이름이 똑같은 메뉴, 그다음 이름을 포함하는 1인 메뉴, 마지막으로 이름을 포함하는 메뉴 순으로 고른다
+      const hit = free.find(k => normMenuName(k.name) === key)
+        || free.find(k => k.priceBasis === 'per_person' && normMenuName(k.name).includes(key))
+        || free.find(k => normMenuName(k.name).includes(key));
       if (!hit) continue;
       used.add(hit.name);
       Object.assign(m, { priceKRW: hit.priceKRW, priceBasis: hit.priceBasis, checkedAt: KAKAO_REFRESH.checkedAt, evidenceRefs: [REFRESH_SOURCE_ID] });
@@ -189,6 +198,19 @@ const LIST_SOURCES = {
 
 const GENERATED_AT = '2026-10-19T09:30:00+09:00';
 const DATASET_VERSION = DEFAULT_DATASET_VERSION;
+
+// 키 순서와 상관없이 두 JSON 값이 같은지 비교한다
+function sameShape(a, b) {
+  if (Array.isArray(a) || Array.isArray(b)) {
+    return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((x, i) => sameShape(x, b[i]));
+  }
+  if (a && b && typeof a === 'object' && typeof b === 'object') {
+    const ka = Object.keys(a).filter(k => a[k] !== undefined);
+    const kb = Object.keys(b).filter(k => b[k] !== undefined);
+    return ka.length === kb.length && ka.every(k => sameShape(a[k], b[k]));
+  }
+  return a === b;
+}
 
 function sha256Hex(content) {
   return crypto.createHash('sha256').update(content, 'utf8').digest('hex');
@@ -553,8 +575,8 @@ function buildDataset() {
   // 연락처(phone) 정보가 없는 업소는 전면 제외한다.
   for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
     if (!r.phone || !String(r.phone).trim()) continue;
-    // 2026-11-02 재수집 때 카카오맵 장소 페이지가 사라진 식당(폐업·삭제 추정)은 뺀다
-    if (KAKAO_REFRESH.places[r.id]?.notFound) continue;
+    // 카카오맵 장소 페이지가 사라진 식당(폐업·삭제 추정)은 뺀다: 2026-11-02 재수집 + 매달 정기 재확인 결과
+    if (KAKAO_REFRESH.places[r.id]?.notFound || KAKAO_RECHECK.missing?.[r.id]) continue;
     applyKakaoRefresh(r);
     applyKakaoFacilities(r);
     if (!restaurantsByRegion[r.regionCode]) {
@@ -677,8 +699,14 @@ function buildDataset() {
 
     regionDatasets[code] = regionData;
 
-    // 식당이 많아져 들여쓰기 없이 저장한다 (전국 보기 로딩 크기 줄이기)
-    const jsonText = JSON.stringify(regionData) + '\n';
+    // 식당이 많아져 들여쓰기 없이, 기본값(미확인·null)과 같은 항목은 빼고 저장한다 (전국 보기 로딩 크기 줄이기)
+    const storedRestaurants = restaurants.map(compactRestaurantForStorage);
+    storedRestaurants.forEach((stored, i) => {
+      if (!sameShape(expandStoredRestaurant(stored), restaurants[i])) {
+        throw new Error(`기본값 생략 저장 후 복원 결과가 원본과 다릅니다: ${restaurants[i].id}`);
+      }
+    });
+    const jsonText = JSON.stringify({ ...regionData, restaurants: storedRestaurants }) + '\n';
     fs.writeFileSync(path.join(ROOT_DIR, relPath), jsonText, 'utf8');
     const hash = sha256Hex(jsonText);
     checksums[relPath] = hash;

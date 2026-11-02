@@ -11,6 +11,7 @@ import {
   validateIdIndexFile,
   validateLegacyAliasesFile,
   validateRegionDataset,
+  expandStoredRegionDataset,
   validateDatasetBundleCrossReferences
 } from '../assets/releases/v2.0.0/js/data/normalize.js';
 
@@ -85,7 +86,8 @@ export function runDatasetValidation(rootDir = ROOT) {
   if (regionsFile && Array.isArray(regionsFile.regions)) {
     for (const reg of regionsFile.regions) {
       const regRelPath = reg.datasetPath || manifest.regionFiles?.[reg.regionCode]?.path;
-      const regData = loadAndVerifyFile(regRelPath);
+      const storedRegData = loadAndVerifyFile(regRelPath);
+      const regData = storedRegData && expandStoredRegionDataset(storedRegData);
       if (regData) {
         const regVal = validateRegionDataset(regData, reg.regionCode, dsVersion);
         if (!regVal.valid) errors.push(...regVal.errors);

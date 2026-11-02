@@ -7,6 +7,7 @@ import {
   validateIdIndexFile,
   validateLegacyAliasesFile,
   validateRegionDataset,
+  expandStoredRegionDataset,
   hydrateRestaurantForUi,
   isValidEntityId
 } from './normalize.js';
@@ -273,7 +274,7 @@ export class DatasetRepository {
     }
 
     const expectedHash = bundle.manifest.checksums?.[regionFileMeta.path] || regionFileMeta.checksum || null;
-    const data = await this.fetchJsonVerified(regionFileMeta.path, expectedHash);
+    const data = expandStoredRegionDataset(await this.fetchJsonVerified(regionFileMeta.path, expectedHash));
     const vReg = validateRegionDataset(data, regionCode, bundle.manifest.datasetVersion);
     if (!vReg.valid) {
       const err = new Error(`지역 자료(${regionCode}) 검증 실패: ${vReg.errors.join('; ')}`);
