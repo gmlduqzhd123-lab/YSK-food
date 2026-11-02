@@ -116,7 +116,12 @@ const KOFOOD_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kofood-gui
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodprice-3000.json'), 'utf8'));
 const ELEM_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-1000.json'), 'utf8'));
 const ELEM_2000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-2000.json'), 'utf8'));
-const KAKAO_VERIFIED = { restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants, ...ELEM_2000.restaurants] };
+// 2026-11-02 카카오맵 재수집에서 장소 페이지가 사라진 식당은 공개 자료에서 빠진다
+const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kakao-refresh-20261102.json'), 'utf8'));
+const KAKAO_VERIFIED = {
+  restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants, ...ELEM_2000.restaurants]
+    .filter(r => !KAKAO_REFRESH.places[r.id]?.notFound)
+};
 
 function createLocalFileFetch(rootDir = ROOT) {
   return async (urlStr) => {
@@ -189,7 +194,7 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     // AC05: 단체 항목은 근거(카카오맵 편의시설 정보)가 있을 때만 'yes'이고, 그 밖에는 'unknown' 또는 null로 보존됨
     for (const r of res.restaurants) {
       assert.ok(r.id.startsWith('ysk-r-'));
-      const hasFacilityEvidence = r.groupProfile.evidenceRefs.includes('src-kakao-facility-20261019');
+      const hasFacilityEvidence = ['src-kakao-facility-20261019', 'src-kakao-refresh-20261102'].some(ref => r.groupProfile.evidenceRefs.includes(ref));
       assert.equal(r.groupProfile.availability, hasFacilityEvidence && r.groupProfile.seatTypes?.includes('단체석') ? 'yes' : 'unknown');
       assert.equal(r.groupProfile.totalSeats, null);
       assert.equal(r.groupProfile.simultaneousCapacity, null);

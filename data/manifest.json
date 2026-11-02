@@ -9,28 +9,28 @@
       "regionCode": "jn-yeosu",
       "path": "data/releases/2026.10.1/regions/jn-yeosu.json",
       "restaurantCount": 142,
-      "groupVerifiedCount": 59,
+      "groupVerifiedCount": 98,
       "unverifiedCoordCount": 43,
       "updatedAt": "2026-10-19",
-      "checksum": "bbc8d90f8f3e4c934bdd7b32d3f12d0007c568135b81d0fff26955ad325e0c51"
+      "checksum": "79d5525f4c3ded22d13300d7c3d2994b2a835876749b6832dde71df02f445d88"
     },
     "jn-suncheon": {
       "regionCode": "jn-suncheon",
       "path": "data/releases/2026.10.1/regions/jn-suncheon.json",
-      "restaurantCount": 133,
-      "groupVerifiedCount": 69,
+      "restaurantCount": 132,
+      "groupVerifiedCount": 103,
       "unverifiedCoordCount": 43,
       "updatedAt": "2026-10-19",
-      "checksum": "ca6a2e36165100885a37c3bf8fc24bc40faaaf06c68a4d456e8181fd81897007"
+      "checksum": "a579914a2577ecb6a8541624d58e2c9a9d40e5a67d4997756c83751fa07a03fc"
     },
     "jn-gwangyang": {
       "regionCode": "jn-gwangyang",
       "path": "data/releases/2026.10.1/regions/jn-gwangyang.json",
       "restaurantCount": 89,
-      "groupVerifiedCount": 25,
+      "groupVerifiedCount": 51,
       "unverifiedCoordCount": 20,
       "updatedAt": "2026-10-19",
-      "checksum": "218ad38155080cc4b3dbb3ee24cb546406c2d6b297a05d22da191fa9ad326d2f"
+      "checksum": "dcccf30f9db3911b2972e74ebcf2d8efdb136cab2485795565ec691ec3e2cc63"
     },
     "jn-boseong": {
       "regionCode": "jn-boseong",
@@ -45,235 +45,235 @@
       "regionCode": "jn-goheung",
       "path": "data/releases/2026.10.1/regions/jn-goheung.json",
       "restaurantCount": 24,
-      "groupVerifiedCount": 4,
+      "groupVerifiedCount": 6,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "d8ec373adb06b7af24ca9ce46c85b1123b7550f42c5c708301b34fc80128343c"
+      "checksum": "4007405b902557dd9a4b2141f26dd94d5ebcb3a58fc35653b5469e06a019eb19"
     },
     "jn-mokpo": {
       "regionCode": "jn-mokpo",
       "path": "data/releases/2026.10.1/regions/jn-mokpo.json",
       "restaurantCount": 70,
-      "groupVerifiedCount": 4,
+      "groupVerifiedCount": 37,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "dee8f579f09a4b7f1af56c78fc2f6e91f7d9b4ba8d2f51c51a5521e122630f77"
+      "checksum": "e02ebf288822b71efceb564dc7ee2594999481d8adfb01305eb08d4b2d87cb99"
     },
     "gj-donggu": {
       "regionCode": "gj-donggu",
       "path": "data/releases/2026.10.1/regions/gj-donggu.json",
       "restaurantCount": 61,
-      "groupVerifiedCount": 4,
+      "groupVerifiedCount": 31,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "1ba18da2e463e31d203e6f3f32f3e0a5fb6515f98b778b3e3238434b933295c2"
+      "checksum": "150919317d7a21c3b322771de8bdebfedabaea34949959981163894eb6e638be"
     },
     "jb-jeonju": {
       "regionCode": "jb-jeonju",
       "path": "data/releases/2026.10.1/regions/jb-jeonju.json",
       "restaurantCount": 78,
-      "groupVerifiedCount": 18,
+      "groupVerifiedCount": 48,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "d6ceabbef303f3cda22ee236570ed7529d1687e9294f5316dacf44331bfd2fb8"
+      "checksum": "9758c15b39940fd41a3262b6007cabbe40fc73150aafb869fd0a28a8467aaeb4"
     },
     "jj-jeju": {
       "regionCode": "jj-jeju",
       "path": "data/releases/2026.10.1/regions/jj-jeju.json",
       "restaurantCount": 168,
-      "groupVerifiedCount": 62,
+      "groupVerifiedCount": 99,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "d3a3f20d4e4b40fcac8df4f3b2ea13688ae59a6f767758cd1f3662e2e63f8a7c"
+      "checksum": "4fb87d83e9cc8f0b75604a9152f9ac7aeb0e9a5039fe70b2d78cb6c2fae4bf5b"
     },
     "gw-gangneung": {
       "regionCode": "gw-gangneung",
       "path": "data/releases/2026.10.1/regions/gw-gangneung.json",
       "restaurantCount": 95,
-      "groupVerifiedCount": 15,
+      "groupVerifiedCount": 53,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "70b1a5be23dcdb77ff6731d2324b37228ff0a4d315ab40027400e4c099932923"
+      "checksum": "b5fd67f565824887a8bc21009b72c7ea68321f74226d4da4ee324777241e7f2e"
     },
     "gb-gyeongju": {
       "regionCode": "gb-gyeongju",
       "path": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "restaurantCount": 87,
-      "groupVerifiedCount": 13,
+      "restaurantCount": 86,
+      "groupVerifiedCount": 57,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "ab2cd09454c90ff5a3f16919b6e044008acb9b53431d0b3873206204e738428b"
+      "checksum": "0b80a08afccbc4e6e5febb31d006960da40119b6f7755cea79beb01511a177fc"
     },
     "seoul-jongno": {
       "regionCode": "seoul-jongno",
       "path": "data/releases/2026.10.1/regions/seoul-jongno.json",
       "restaurantCount": 110,
-      "groupVerifiedCount": 18,
+      "groupVerifiedCount": 79,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "e1f87c22c8e11ef6da569ffe6d5134111f1d70964f0ede6711834699136a568a"
+      "checksum": "6fd2c3c481448c5b4cee8b6208dbc6eee3b7c56694ab2aae6b7ae4df7fe27cf2"
     },
     "busan-haeundae": {
       "regionCode": "busan-haeundae",
       "path": "data/releases/2026.10.1/regions/busan-haeundae.json",
       "restaurantCount": 80,
-      "groupVerifiedCount": 11,
+      "groupVerifiedCount": 48,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "7dab16dd4cb1c400b80f1c6292d16a31e7dc4fe0c85d159a57789ce118cc6232"
+      "checksum": "5407df649a003dc747db709512b91aaec754dc551361bbdf5fc57e973178c9dd"
     },
     "gyeonggi-suwon": {
       "regionCode": "gyeonggi-suwon",
       "path": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "restaurantCount": 172,
-      "groupVerifiedCount": 51,
+      "restaurantCount": 171,
+      "groupVerifiedCount": 95,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "d4a042e1890392a5c9a20e847ff35303208a516425ba7db5ee96ee2c2891a2b9"
+      "checksum": "0b4c91af6252b0304ff73f9657775c18bd7a8e6a2fdbf6e00eaff30921830222"
     },
     "incheon-junggu": {
       "regionCode": "incheon-junggu",
       "path": "data/releases/2026.10.1/regions/incheon-junggu.json",
       "restaurantCount": 23,
-      "groupVerifiedCount": 10,
+      "groupVerifiedCount": 13,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "15c0acaeadb5bd2e2f3377c646edec44e91b9a972c91f340f8662e3cfc7c7498"
+      "checksum": "90faca26ff94547e8cc2834ed97908093408ff997eb9bed3152f5d383eec3b01"
     },
     "gw-chuncheon": {
       "regionCode": "gw-chuncheon",
       "path": "data/releases/2026.10.1/regions/gw-chuncheon.json",
       "restaurantCount": 100,
-      "groupVerifiedCount": 18,
+      "groupVerifiedCount": 64,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "2ed65bd0f5f0452f4cf45520e2eaeae75cb03736fd2a26dd8f7cc9169b623446"
+      "checksum": "121e05a52f92354b1228d8e4d80b8a598ae02262b820690c69b776491a782e32"
     },
     "daejeon-yuseong": {
       "regionCode": "daejeon-yuseong",
       "path": "data/releases/2026.10.1/regions/daejeon-yuseong.json",
       "restaurantCount": 96,
-      "groupVerifiedCount": 20,
+      "groupVerifiedCount": 63,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "1ca088b39f7881dbdf75e23519f23840e94512bb5b0195758882b62e60b6757b"
+      "checksum": "5281ecfae83a22998da9bb08a273f7ece96174f3b8d14a7673a5aae59495d614"
     },
     "cn-gongju": {
       "regionCode": "cn-gongju",
       "path": "data/releases/2026.10.1/regions/cn-gongju.json",
       "restaurantCount": 95,
-      "groupVerifiedCount": 16,
+      "groupVerifiedCount": 50,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "f272d23f98022ad876db52e8a26af8487a8d2258fb6da78fbca734e4dbecf03e"
+      "checksum": "9beb6cff935714c4af3528fa453971568ace549d87208a04f8710eb914facd3e"
     },
     "daegu-junggu": {
       "regionCode": "daegu-junggu",
       "path": "data/releases/2026.10.1/regions/daegu-junggu.json",
       "restaurantCount": 118,
-      "groupVerifiedCount": 32,
+      "groupVerifiedCount": 83,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "11531056e6f76a0ad4a507de5ac9bc6d8824751b6689605825e13016b4d78147"
+      "checksum": "97a240c50d4ce781ba67220617d5b83a0e44848d8587301c9f190499bd5f7f5b"
     },
     "gn-tongyeong": {
       "regionCode": "gn-tongyeong",
       "path": "data/releases/2026.10.1/regions/gn-tongyeong.json",
       "restaurantCount": 88,
-      "groupVerifiedCount": 13,
+      "groupVerifiedCount": 46,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "1d8a084f5e22bfbe3fe5858ed9ebb89795c502dfdde459fa8bb3f272783da192"
+      "checksum": "f0b8cc9e85cbf6bd6ef1a3be548cdd88afbc84cdb7567bd52bbd8823b0776885"
     },
     "seoul-etc": {
       "regionCode": "seoul-etc",
       "path": "data/releases/2026.10.1/regions/seoul-etc.json",
-      "restaurantCount": 767,
-      "groupVerifiedCount": 345,
+      "restaurantCount": 765,
+      "groupVerifiedCount": 407,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "96da68edec843ddfb262df9a9370eba565570a5b1bbadb62c3e0e5550192a7a4"
+      "checksum": "3ad504db2eac96a5c24f7d208ad2c71e1f5886d6b2b60185bc6340182f5ce8fc"
     },
     "gyeonggi-etc": {
       "regionCode": "gyeonggi-etc",
       "path": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
-      "restaurantCount": 574,
-      "groupVerifiedCount": 235,
+      "restaurantCount": 573,
+      "groupVerifiedCount": 287,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "7c9b45608e03c8d9502d7661501e9d24730f6b1ebdb6b840626738afadf8c5c3"
+      "checksum": "17e22fdb9a444fae0aba3a5f95045f2463c556d2c392168cce97d67c5940195a"
     },
     "incheon-etc": {
       "regionCode": "incheon-etc",
       "path": "data/releases/2026.10.1/regions/incheon-etc.json",
       "restaurantCount": 248,
-      "groupVerifiedCount": 87,
+      "groupVerifiedCount": 133,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "2e380e8f95f95b80c82626bcee4310fc2d746fbefbd26aac7cfdc79c6b36dc09"
+      "checksum": "ec832855d6fdf476cb812ef97ae583c166330a03ddaa44a01befafde90e0e131"
     },
     "gw-etc": {
       "regionCode": "gw-etc",
       "path": "data/releases/2026.10.1/regions/gw-etc.json",
       "restaurantCount": 228,
-      "groupVerifiedCount": 76,
+      "groupVerifiedCount": 117,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "97f42bc3405349647415f579064d82506715c3569d6e6e8a48ee4fab3ea9858c"
+      "checksum": "b2c5f8ed5810b921469dda12893573f611e31817905f85c0f478b65a8b86ecb1"
     },
     "cb-all": {
       "regionCode": "cb-all",
       "path": "data/releases/2026.10.1/regions/cb-all.json",
       "restaurantCount": 240,
-      "groupVerifiedCount": 76,
+      "groupVerifiedCount": 120,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "b6ec3e8f7a522f7e1e6112fb007af9f61cc0768452f2e5925ae21440a3da59db"
+      "checksum": "1c5aa3994f27904494a5547032970dfeb2aae56f94c04de72c8e279b718e0ef9"
     },
     "cn-etc": {
       "regionCode": "cn-etc",
       "path": "data/releases/2026.10.1/regions/cn-etc.json",
       "restaurantCount": 230,
-      "groupVerifiedCount": 80,
+      "groupVerifiedCount": 129,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "1b76e14559170ef8e743b9f6d91a29cfb98a7d22ec137cf8661e60ee7f2c8a25"
+      "checksum": "94ddf5b6d4fe827118bf4b5de671c240d9fa5711c97630b3ab8adea4a623d14e"
     },
     "daejeon-etc": {
       "regionCode": "daejeon-etc",
       "path": "data/releases/2026.10.1/regions/daejeon-etc.json",
-      "restaurantCount": 217,
-      "groupVerifiedCount": 81,
+      "restaurantCount": 214,
+      "groupVerifiedCount": 129,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "fa5e58b83126cece557edc207fca71ec3d116051672ea38b4b0d06ca10d67ae7"
+      "checksum": "8389110278cac20c4b76b4c35650fcb3e0615943704d71a1946ae8252de13ab2"
     },
     "sejong": {
       "regionCode": "sejong",
       "path": "data/releases/2026.10.1/regions/sejong.json",
       "restaurantCount": 94,
-      "groupVerifiedCount": 12,
+      "groupVerifiedCount": 55,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "799ed6c5b57f48cb32d1a12303f8c807c9ab13e70fc27a3c0e54f26f0a8cec54"
+      "checksum": "567191671fb5d74ca16492e5aad5828a216f5eb0e7a826cae828b945c9967e11"
     },
     "jb-etc": {
       "regionCode": "jb-etc",
       "path": "data/releases/2026.10.1/regions/jb-etc.json",
       "restaurantCount": 180,
-      "groupVerifiedCount": 59,
+      "groupVerifiedCount": 95,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "2bd79a844548422064120cb7e173378a20baca84ab5a1d9bd62ad2ac4e8f2bed"
+      "checksum": "0e86b2c25faa2b9ec79faf10f4f5d42108a10e1d035b60ea3e823f2d1c1e9e4d"
     },
     "gj-etc": {
       "regionCode": "gj-etc",
       "path": "data/releases/2026.10.1/regions/gj-etc.json",
       "restaurantCount": 100,
-      "groupVerifiedCount": 23,
+      "groupVerifiedCount": 63,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "4d84fc547b67c7680a1d2fe5378bf3784959f94c030b09465130758bfab103e2"
+      "checksum": "58a80a202d438790c98902381c7fbd7505ecb6c74370e431f7cc4b88f1bcbcd7"
     },
     "jn-etc": {
       "regionCode": "jn-etc",
@@ -282,97 +282,97 @@
       "groupVerifiedCount": 35,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "36601fe20be833c2c2d1863dfcd48a6edfcc0e8eba811131ab9179ca929ff57e"
+      "checksum": "134d01c16c50608e6ea9cd1185b9954c469e7a7d50522aa908c6d05540e9f67c"
     },
     "gb-etc": {
       "regionCode": "gb-etc",
       "path": "data/releases/2026.10.1/regions/gb-etc.json",
       "restaurantCount": 248,
-      "groupVerifiedCount": 86,
+      "groupVerifiedCount": 114,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "442e2fb0edda180ff744e8bbe6d970248d304483f2990f0ecd200a75982d1efa"
+      "checksum": "c087a1e36b80b49f95c0a00170c11b317f1d341f34e9f7fcd9c469d30af23b5a"
     },
     "daegu-etc": {
       "regionCode": "daegu-etc",
       "path": "data/releases/2026.10.1/regions/daegu-etc.json",
       "restaurantCount": 213,
-      "groupVerifiedCount": 67,
+      "groupVerifiedCount": 113,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "27013c52a106b3d56107b4e7d635374f7d4fdb0b20e464aa0f2c062ceba759c9"
+      "checksum": "5cb92f3147c420bb29ec30a2c9fce049d1dde6bf17d7e7a5448a21ccb95542a8"
     },
     "gn-etc": {
       "regionCode": "gn-etc",
       "path": "data/releases/2026.10.1/regions/gn-etc.json",
-      "restaurantCount": 304,
-      "groupVerifiedCount": 101,
+      "restaurantCount": 303,
+      "groupVerifiedCount": 130,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "61756cdae02736883108e1ba5125a44350b302a17772f80e0daec2ea268d429d"
+      "checksum": "95ffeb1cad6577bd61265644f58b406e270428787d004895f152263e4fcab33b"
     },
     "busan-etc": {
       "regionCode": "busan-etc",
       "path": "data/releases/2026.10.1/regions/busan-etc.json",
       "restaurantCount": 375,
-      "groupVerifiedCount": 139,
+      "groupVerifiedCount": 180,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "6017365d936ed9be604b235343f05951f9b4a3cf7982b54d131eef677ffed43c"
+      "checksum": "e8cb07fd848c80b3f9053e24fcddf2bba91091a572fc1d2440850a8a17591f94"
     },
     "ulsan": {
       "regionCode": "ulsan",
       "path": "data/releases/2026.10.1/regions/ulsan.json",
       "restaurantCount": 131,
-      "groupVerifiedCount": 34,
+      "groupVerifiedCount": 72,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "a12e2d6410faa3765f7c58103a73bd15594611ddb290614718addae53e1e66b3"
+      "checksum": "49ec04f90c908158c73d4fb35fc2b5e55edc4df2eeed829e20fb31751bf1b610"
     }
   },
   "searchIndexPath": "data/releases/2026.10.1/search-index.json",
   "idIndexPath": "data/releases/2026.10.1/id-index.json",
   "legacyAliasesPath": "data/releases/2026.10.1/legacy-aliases.json",
   "checksums": {
-    "data/releases/2026.10.1/regions/jn-yeosu.json": "bbc8d90f8f3e4c934bdd7b32d3f12d0007c568135b81d0fff26955ad325e0c51",
-    "data/releases/2026.10.1/regions/jn-suncheon.json": "ca6a2e36165100885a37c3bf8fc24bc40faaaf06c68a4d456e8181fd81897007",
-    "data/releases/2026.10.1/regions/jn-gwangyang.json": "218ad38155080cc4b3dbb3ee24cb546406c2d6b297a05d22da191fa9ad326d2f",
+    "data/releases/2026.10.1/regions/jn-yeosu.json": "79d5525f4c3ded22d13300d7c3d2994b2a835876749b6832dde71df02f445d88",
+    "data/releases/2026.10.1/regions/jn-suncheon.json": "a579914a2577ecb6a8541624d58e2c9a9d40e5a67d4997756c83751fa07a03fc",
+    "data/releases/2026.10.1/regions/jn-gwangyang.json": "dcccf30f9db3911b2972e74ebcf2d8efdb136cab2485795565ec691ec3e2cc63",
     "data/releases/2026.10.1/regions/jn-boseong.json": "0b32052e6e7e0d78c46973b06110bbc1c68c7d3147cbb65fb1aaf951c3c843f9",
-    "data/releases/2026.10.1/regions/jn-goheung.json": "d8ec373adb06b7af24ca9ce46c85b1123b7550f42c5c708301b34fc80128343c",
-    "data/releases/2026.10.1/regions/jn-mokpo.json": "dee8f579f09a4b7f1af56c78fc2f6e91f7d9b4ba8d2f51c51a5521e122630f77",
-    "data/releases/2026.10.1/regions/gj-donggu.json": "1ba18da2e463e31d203e6f3f32f3e0a5fb6515f98b778b3e3238434b933295c2",
-    "data/releases/2026.10.1/regions/jb-jeonju.json": "d6ceabbef303f3cda22ee236570ed7529d1687e9294f5316dacf44331bfd2fb8",
-    "data/releases/2026.10.1/regions/jj-jeju.json": "d3a3f20d4e4b40fcac8df4f3b2ea13688ae59a6f767758cd1f3662e2e63f8a7c",
-    "data/releases/2026.10.1/regions/gw-gangneung.json": "70b1a5be23dcdb77ff6731d2324b37228ff0a4d315ab40027400e4c099932923",
-    "data/releases/2026.10.1/regions/gb-gyeongju.json": "ab2cd09454c90ff5a3f16919b6e044008acb9b53431d0b3873206204e738428b",
-    "data/releases/2026.10.1/regions/seoul-jongno.json": "e1f87c22c8e11ef6da569ffe6d5134111f1d70964f0ede6711834699136a568a",
-    "data/releases/2026.10.1/regions/busan-haeundae.json": "7dab16dd4cb1c400b80f1c6292d16a31e7dc4fe0c85d159a57789ce118cc6232",
-    "data/releases/2026.10.1/regions/gyeonggi-suwon.json": "d4a042e1890392a5c9a20e847ff35303208a516425ba7db5ee96ee2c2891a2b9",
-    "data/releases/2026.10.1/regions/incheon-junggu.json": "15c0acaeadb5bd2e2f3377c646edec44e91b9a972c91f340f8662e3cfc7c7498",
-    "data/releases/2026.10.1/regions/gw-chuncheon.json": "2ed65bd0f5f0452f4cf45520e2eaeae75cb03736fd2a26dd8f7cc9169b623446",
-    "data/releases/2026.10.1/regions/daejeon-yuseong.json": "1ca088b39f7881dbdf75e23519f23840e94512bb5b0195758882b62e60b6757b",
-    "data/releases/2026.10.1/regions/cn-gongju.json": "f272d23f98022ad876db52e8a26af8487a8d2258fb6da78fbca734e4dbecf03e",
-    "data/releases/2026.10.1/regions/daegu-junggu.json": "11531056e6f76a0ad4a507de5ac9bc6d8824751b6689605825e13016b4d78147",
-    "data/releases/2026.10.1/regions/gn-tongyeong.json": "1d8a084f5e22bfbe3fe5858ed9ebb89795c502dfdde459fa8bb3f272783da192",
-    "data/releases/2026.10.1/regions/seoul-etc.json": "96da68edec843ddfb262df9a9370eba565570a5b1bbadb62c3e0e5550192a7a4",
-    "data/releases/2026.10.1/regions/gyeonggi-etc.json": "7c9b45608e03c8d9502d7661501e9d24730f6b1ebdb6b840626738afadf8c5c3",
-    "data/releases/2026.10.1/regions/incheon-etc.json": "2e380e8f95f95b80c82626bcee4310fc2d746fbefbd26aac7cfdc79c6b36dc09",
-    "data/releases/2026.10.1/regions/gw-etc.json": "97f42bc3405349647415f579064d82506715c3569d6e6e8a48ee4fab3ea9858c",
-    "data/releases/2026.10.1/regions/cb-all.json": "b6ec3e8f7a522f7e1e6112fb007af9f61cc0768452f2e5925ae21440a3da59db",
-    "data/releases/2026.10.1/regions/cn-etc.json": "1b76e14559170ef8e743b9f6d91a29cfb98a7d22ec137cf8661e60ee7f2c8a25",
-    "data/releases/2026.10.1/regions/daejeon-etc.json": "fa5e58b83126cece557edc207fca71ec3d116051672ea38b4b0d06ca10d67ae7",
-    "data/releases/2026.10.1/regions/sejong.json": "799ed6c5b57f48cb32d1a12303f8c807c9ab13e70fc27a3c0e54f26f0a8cec54",
-    "data/releases/2026.10.1/regions/jb-etc.json": "2bd79a844548422064120cb7e173378a20baca84ab5a1d9bd62ad2ac4e8f2bed",
-    "data/releases/2026.10.1/regions/gj-etc.json": "4d84fc547b67c7680a1d2fe5378bf3784959f94c030b09465130758bfab103e2",
-    "data/releases/2026.10.1/regions/jn-etc.json": "36601fe20be833c2c2d1863dfcd48a6edfcc0e8eba811131ab9179ca929ff57e",
-    "data/releases/2026.10.1/regions/gb-etc.json": "442e2fb0edda180ff744e8bbe6d970248d304483f2990f0ecd200a75982d1efa",
-    "data/releases/2026.10.1/regions/daegu-etc.json": "27013c52a106b3d56107b4e7d635374f7d4fdb0b20e464aa0f2c062ceba759c9",
-    "data/releases/2026.10.1/regions/gn-etc.json": "61756cdae02736883108e1ba5125a44350b302a17772f80e0daec2ea268d429d",
-    "data/releases/2026.10.1/regions/busan-etc.json": "6017365d936ed9be604b235343f05951f9b4a3cf7982b54d131eef677ffed43c",
-    "data/releases/2026.10.1/regions/ulsan.json": "a12e2d6410faa3765f7c58103a73bd15594611ddb290614718addae53e1e66b3",
-    "data/releases/2026.10.1/regions.json": "309228b8b1956d418ef5ce887aee5c434792df737affa276e8705ce77f24f83c",
-    "data/releases/2026.10.1/search-index.json": "95a66cbf2c87291ca8d8e839a1154de26fb781e742f81e31768a9e464ccf26ef",
-    "data/releases/2026.10.1/id-index.json": "206386ecd399389cec3e81a312293b332baa1d9123f06b6ad3d2ecb8544bc008",
+    "data/releases/2026.10.1/regions/jn-goheung.json": "4007405b902557dd9a4b2141f26dd94d5ebcb3a58fc35653b5469e06a019eb19",
+    "data/releases/2026.10.1/regions/jn-mokpo.json": "e02ebf288822b71efceb564dc7ee2594999481d8adfb01305eb08d4b2d87cb99",
+    "data/releases/2026.10.1/regions/gj-donggu.json": "150919317d7a21c3b322771de8bdebfedabaea34949959981163894eb6e638be",
+    "data/releases/2026.10.1/regions/jb-jeonju.json": "9758c15b39940fd41a3262b6007cabbe40fc73150aafb869fd0a28a8467aaeb4",
+    "data/releases/2026.10.1/regions/jj-jeju.json": "4fb87d83e9cc8f0b75604a9152f9ac7aeb0e9a5039fe70b2d78cb6c2fae4bf5b",
+    "data/releases/2026.10.1/regions/gw-gangneung.json": "b5fd67f565824887a8bc21009b72c7ea68321f74226d4da4ee324777241e7f2e",
+    "data/releases/2026.10.1/regions/gb-gyeongju.json": "0b80a08afccbc4e6e5febb31d006960da40119b6f7755cea79beb01511a177fc",
+    "data/releases/2026.10.1/regions/seoul-jongno.json": "6fd2c3c481448c5b4cee8b6208dbc6eee3b7c56694ab2aae6b7ae4df7fe27cf2",
+    "data/releases/2026.10.1/regions/busan-haeundae.json": "5407df649a003dc747db709512b91aaec754dc551361bbdf5fc57e973178c9dd",
+    "data/releases/2026.10.1/regions/gyeonggi-suwon.json": "0b4c91af6252b0304ff73f9657775c18bd7a8e6a2fdbf6e00eaff30921830222",
+    "data/releases/2026.10.1/regions/incheon-junggu.json": "90faca26ff94547e8cc2834ed97908093408ff997eb9bed3152f5d383eec3b01",
+    "data/releases/2026.10.1/regions/gw-chuncheon.json": "121e05a52f92354b1228d8e4d80b8a598ae02262b820690c69b776491a782e32",
+    "data/releases/2026.10.1/regions/daejeon-yuseong.json": "5281ecfae83a22998da9bb08a273f7ece96174f3b8d14a7673a5aae59495d614",
+    "data/releases/2026.10.1/regions/cn-gongju.json": "9beb6cff935714c4af3528fa453971568ace549d87208a04f8710eb914facd3e",
+    "data/releases/2026.10.1/regions/daegu-junggu.json": "97a240c50d4ce781ba67220617d5b83a0e44848d8587301c9f190499bd5f7f5b",
+    "data/releases/2026.10.1/regions/gn-tongyeong.json": "f0b8cc9e85cbf6bd6ef1a3be548cdd88afbc84cdb7567bd52bbd8823b0776885",
+    "data/releases/2026.10.1/regions/seoul-etc.json": "3ad504db2eac96a5c24f7d208ad2c71e1f5886d6b2b60185bc6340182f5ce8fc",
+    "data/releases/2026.10.1/regions/gyeonggi-etc.json": "17e22fdb9a444fae0aba3a5f95045f2463c556d2c392168cce97d67c5940195a",
+    "data/releases/2026.10.1/regions/incheon-etc.json": "ec832855d6fdf476cb812ef97ae583c166330a03ddaa44a01befafde90e0e131",
+    "data/releases/2026.10.1/regions/gw-etc.json": "b2c5f8ed5810b921469dda12893573f611e31817905f85c0f478b65a8b86ecb1",
+    "data/releases/2026.10.1/regions/cb-all.json": "1c5aa3994f27904494a5547032970dfeb2aae56f94c04de72c8e279b718e0ef9",
+    "data/releases/2026.10.1/regions/cn-etc.json": "94ddf5b6d4fe827118bf4b5de671c240d9fa5711c97630b3ab8adea4a623d14e",
+    "data/releases/2026.10.1/regions/daejeon-etc.json": "8389110278cac20c4b76b4c35650fcb3e0615943704d71a1946ae8252de13ab2",
+    "data/releases/2026.10.1/regions/sejong.json": "567191671fb5d74ca16492e5aad5828a216f5eb0e7a826cae828b945c9967e11",
+    "data/releases/2026.10.1/regions/jb-etc.json": "0e86b2c25faa2b9ec79faf10f4f5d42108a10e1d035b60ea3e823f2d1c1e9e4d",
+    "data/releases/2026.10.1/regions/gj-etc.json": "58a80a202d438790c98902381c7fbd7505ecb6c74370e431f7cc4b88f1bcbcd7",
+    "data/releases/2026.10.1/regions/jn-etc.json": "134d01c16c50608e6ea9cd1185b9954c469e7a7d50522aa908c6d05540e9f67c",
+    "data/releases/2026.10.1/regions/gb-etc.json": "c087a1e36b80b49f95c0a00170c11b317f1d341f34e9f7fcd9c469d30af23b5a",
+    "data/releases/2026.10.1/regions/daegu-etc.json": "5cb92f3147c420bb29ec30a2c9fce049d1dde6bf17d7e7a5448a21ccb95542a8",
+    "data/releases/2026.10.1/regions/gn-etc.json": "95ffeb1cad6577bd61265644f58b406e270428787d004895f152263e4fcab33b",
+    "data/releases/2026.10.1/regions/busan-etc.json": "e8cb07fd848c80b3f9053e24fcddf2bba91091a572fc1d2440850a8a17591f94",
+    "data/releases/2026.10.1/regions/ulsan.json": "49ec04f90c908158c73d4fb35fc2b5e55edc4df2eeed829e20fb31751bf1b610",
+    "data/releases/2026.10.1/regions.json": "a1c38e034aee55a3cb8e7750de9002010deaac84fd0c0383bece96ea8fdbf91f",
+    "data/releases/2026.10.1/search-index.json": "7e0bbd49b7ebaf43b86223d9b4de41c8672ae86eabef6494aedb4391fd78f948",
+    "data/releases/2026.10.1/id-index.json": "03117cee302e98f96bb6674a6314c71590701c39511f498934f591daecf6f1c8",
     "data/releases/2026.10.1/legacy-aliases.json": "51eb46a982437618ff0cb96766e6f54b815ed152cc49deeaec32a6e179fae5d3"
   },
   "changeSummary": "기존 여수(70)·순천(75)·광양(21) 총 166개 식당을 영구 ID(ysk-r-*) 및 schemaVersion 2 지역 분할 구조로 이전"

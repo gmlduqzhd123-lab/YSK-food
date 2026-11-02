@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import {
+  buildOpeningHoursFromLegacy,
   normalizeLegacyPlaceToRestaurant,
   validateDatasetBundleCrossReferences
 } from '../assets/releases/v2.0.0/js/data/normalize.js';
@@ -44,8 +45,14 @@ const FACILITY_SOURCE_ID = 'src-kakao-facility-20261019';
  * 좌석 수·동시 수용 인원·대형버스 진입은 카카오맵에 없으므로 비워 둔다(전화 확인).
  */
 function applyKakaoFacilities(rest) {
-  const f = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id] || ELEM_TEACHER_1000.facilities?.[rest.id] || ELEM_TEACHER_2000.facilities?.[rest.id];
-  if (!f) return;
+  const earlier = KAKAO_FACILITIES.facilities[rest.id] || KOFOOD_GUIDE_1000.facilities?.[rest.id] || GOODPRICE_3000.facilities?.[rest.id] || ELEM_TEACHER_1000.facilities?.[rest.id] || ELEM_TEACHER_2000.facilities?.[rest.id];
+  const refreshed = KAKAO_REFRESH.places[rest.id]?.facilities;
+  if (!earlier && !refreshed) return;
+  // 먼저 모은 정보를 우선하고, 재수집에서 새로 확인된 항목(단체석·주차 등)을 더한다
+  const f = { ...(refreshed || {}), ...(earlier || {}) };
+  for (const key of ['group', 'room', 'parking', 'freeParking', 'reserve', 'takeout', 'kidChair', 'wheelchair']) {
+    if (refreshed?.[key]) f[key] = true;
+  }
   const gp = rest.groupProfile;
   if (f.group) {
     gp.availability = 'yes';
@@ -62,8 +69,80 @@ function applyKakaoFacilities(rest) {
   }
   const access = [f.wheelchair ? '휠체어 이용 가능' : null, f.kidChair ? '유아의자 있음' : null].filter(Boolean);
   if (access.length) gp.accessibility.entryNote = access.join(' · ');
-  gp.checkedAt = KAKAO_FACILITIES.checkedAt;
-  if (!gp.evidenceRefs.includes(FACILITY_SOURCE_ID)) gp.evidenceRefs.push(FACILITY_SOURCE_ID);
+  const sourceId = earlier ? FACILITY_SOURCE_ID : REFRESH_SOURCE_ID;
+  gp.checkedAt = earlier ? KAKAO_FACILITIES.checkedAt : KAKAO_REFRESH.checkedAt;
+  if (!gp.evidenceRefs.includes(sourceId)) gp.evidenceRefs.push(sourceId);
+  if (earlier && refreshed && !gp.evidenceRefs.includes(REFRESH_SOURCE_ID)) gp.evidenceRefs.push(REFRESH_SOURCE_ID);
+}
+
+// 카카오맵 장소 상세 재수집(2026-11-02): 영업시간·메뉴판 가격·편의시설·좌석 옵션
+const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-refresh-20261102.json'), 'utf8'));
+const REFRESH_SOURCE_ID = 'src-kakao-refresh-20261102';
+const normMenuName = s => String(s || '').replace(/\s+|\(.*?\)/g, '');
+
+/**
+ * 비어 있는 영업시간과 메뉴 가격을 카카오맵 재수집 결과로 채운다.
+ * 이미 있는 영업시간·가격은 바꾸지 않는다.
+ */
+function applyKakaoRefresh(rest) {
+  const e = KAKAO_REFRESH.places[rest.id];
+  if (!e || e.notFound) return;
+  if (!rest.mapLinks.kakaoPlaceId && e.kakaoPlaceId) {
+    rest.mapLinks.kakaoPlaceId = e.kakaoPlaceId;
+    rest.mapLinks.kakaoPlaceUrl = `https://place.map.kakao.com/${e.kakaoPlaceId}`;
+  }
+  if (rest.openingHours.status === 'unknown' && e.hours) {
+    const oh = buildOpeningHoursFromLegacy(e.hours, e.closed);
+    if (oh.status !== 'unknown') {
+      const dayChars = ['', '월', '화', '수', '목', '금', '토', '일'];
+      for (const iv of oh.weeklyIntervals) {
+        const lo = e.lastOrder?.[dayChars[iv.day]];
+        // 라스트오더는 그날 마지막 영업 구간에만 붙인다
+        const isLast = !oh.weeklyIntervals.some(o => o.day === iv.day && o.startTime > iv.startTime);
+        if (lo && isLast) {
+          iv.lastOrderTime = lo;
+          iv.lastOrderDayOffset = lo < iv.startTime ? 1 : 0;
+        }
+      }
+      oh.evidenceRefs = [REFRESH_SOURCE_ID];
+      rest.openingHours = oh;
+    }
+  }
+  const hasPrice = rest.menus.some(m => m.priceKRW !== null && m.priceKRW !== undefined);
+  if (!hasPrice && e.menus?.length) {
+    const used = new Set();
+    for (const m of rest.menus) {
+      const key = normMenuName(m.name);
+      const hit = e.menus.find(k => !used.has(k.name) && key && (normMenuName(k.name) === key || normMenuName(k.name).includes(key)));
+      if (!hit) continue;
+      used.add(hit.name);
+      Object.assign(m, { priceKRW: hit.priceKRW, priceBasis: hit.priceBasis, checkedAt: KAKAO_REFRESH.checkedAt, evidenceRefs: [REFRESH_SOURCE_ID] });
+    }
+    // 이름이 맞는 메뉴가 없으면 카카오맵 메뉴판의 1인 메뉴를 최대 5개 덧붙인다
+    if (!rest.menus.some(m => m.priceBasis === 'per_person' && m.priceKRW !== null)) {
+      const extra = e.menus.filter(k => !used.has(k.name) && k.priceBasis === 'per_person').slice(0, 5);
+      extra.forEach((k, i) => {
+        rest.menus.push({
+          ...rest.menus[0],
+          id: `${rest.id}-kmenu-${i + 1}`,
+          name: k.name,
+          priceKRW: k.priceKRW,
+          priceBasis: k.priceBasis,
+          servingUnitText: null,
+          minOrder: null,
+          studentPortion: 'unknown',
+          spiceAdjustment: 'unknown',
+          extraRice: 'unknown',
+          altMenuInquiry: 'unknown',
+          ingredientResponse: { status: 'unknown', answerText: null, cookingProcessNote: null, checkedAt: null },
+          checkedAt: KAKAO_REFRESH.checkedAt,
+          evidenceRefs: [REFRESH_SOURCE_ID]
+        });
+      });
+    }
+    const cheapest = rest.menus.filter(m => m.priceBasis === 'per_person' && m.priceKRW !== null).sort((a, b) => a.priceKRW - b.priceKRW)[0];
+    if (cheapest && !rest.rawPriceText) rest.rawPriceText = `${cheapest.priceKRW.toLocaleString('ko-KR')}원 (${cheapest.name})`;
+  }
 }
 const LIST_SOURCES = {
   백년가게: {
@@ -474,6 +553,9 @@ function buildDataset() {
   // 연락처(phone) 정보가 없는 업소는 전면 제외한다.
   for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
     if (!r.phone || !String(r.phone).trim()) continue;
+    // 2026-11-02 재수집 때 카카오맵 장소 페이지가 사라진 식당(폐업·삭제 추정)은 뺀다
+    if (KAKAO_REFRESH.places[r.id]?.notFound) continue;
+    applyKakaoRefresh(r);
     applyKakaoFacilities(r);
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
@@ -537,6 +619,20 @@ function buildDataset() {
         factScope: facilityRests.slice(0, 5).map(r => ({ entityId: r.id, fieldPath: '/groupProfile/availability' })),
         usageTerms: '카카오맵 편의시설·좌석 옵션(단체석·룸·주차·예약·포장, 일부 AI 요약) · 좌석 수·대형버스는 미확인, 방문 전 전화 확인',
         attribution: '카카오맵 편의시설 정보 (2026-10-19)'
+      });
+    }
+    const usesRefresh = r => r.groupProfile.evidenceRefs.includes(REFRESH_SOURCE_ID) || r.openingHours.evidenceRefs.includes(REFRESH_SOURCE_ID) || r.menus.some(m => m.evidenceRefs.includes(REFRESH_SOURCE_ID));
+    const refreshRests = restaurants.filter(usesRefresh);
+    if (refreshRests.length) {
+      sources.push({
+        id: REFRESH_SOURCE_ID,
+        kind: 'map_platform',
+        url: 'https://map.kakao.com',
+        obtainedAt: KAKAO_REFRESH.checkedAt,
+        checkedAt: KAKAO_REFRESH.checkedAt,
+        factScope: refreshRests.slice(0, 5).map(r => ({ entityId: r.id, fieldPath: '/openingHours/weeklyIntervals' })),
+        usageTerms: '카카오맵 장소 상세의 영업시간·메뉴판 가격·편의시설·좌석 옵션(일부 AI 요약) 재수집 · 메뉴 가격의 1인/세트 기준은 메뉴 이름으로 추정, 방문 전 전화 확인',
+        attribution: '카카오맵 장소 상세 재수집 (2026-11-02)'
       });
     }
     const kakaoRests = restaurants.filter(r => r.groupProfile.evidenceRefs.includes(KAKAO_CHECK_SOURCE_ID));
