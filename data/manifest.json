@@ -147,7 +147,7 @@
       "groupVerifiedCount": 18,
       "unverifiedCoordCount": 0,
       "updatedAt": "2026-10-19",
-      "checksum": "57f974b6b8bb2bd4eab87120cb344a5283cdafb3c2a059352ad429e41bd1184c"
+      "checksum": "2ed65bd0f5f0452f4cf45520e2eaeae75cb03736fd2a26dd8f7cc9169b623446"
     },
     "daejeon-yuseong": {
       "regionCode": "daejeon-yuseong",
@@ -349,7 +349,7 @@
     "data/releases/2026.10.1/regions/busan-haeundae.json": "7dab16dd4cb1c400b80f1c6292d16a31e7dc4fe0c85d159a57789ce118cc6232",
     "data/releases/2026.10.1/regions/gyeonggi-suwon.json": "d4a042e1890392a5c9a20e847ff35303208a516425ba7db5ee96ee2c2891a2b9",
     "data/releases/2026.10.1/regions/incheon-junggu.json": "15c0acaeadb5bd2e2f3377c646edec44e91b9a972c91f340f8662e3cfc7c7498",
-    "data/releases/2026.10.1/regions/gw-chuncheon.json": "57f974b6b8bb2bd4eab87120cb344a5283cdafb3c2a059352ad429e41bd1184c",
+    "data/releases/2026.10.1/regions/gw-chuncheon.json": "2ed65bd0f5f0452f4cf45520e2eaeae75cb03736fd2a26dd8f7cc9169b623446",
     "data/releases/2026.10.1/regions/daejeon-yuseong.json": "1ca088b39f7881dbdf75e23519f23840e94512bb5b0195758882b62e60b6757b",
     "data/releases/2026.10.1/regions/cn-gongju.json": "f272d23f98022ad876db52e8a26af8487a8d2258fb6da78fbca734e4dbecf03e",
     "data/releases/2026.10.1/regions/daegu-junggu.json": "11531056e6f76a0ad4a507de5ac9bc6d8824751b6689605825e13016b4d78147",
@@ -371,7 +371,7 @@
     "data/releases/2026.10.1/regions/busan-etc.json": "6017365d936ed9be604b235343f05951f9b4a3cf7982b54d131eef677ffed43c",
     "data/releases/2026.10.1/regions/ulsan.json": "a12e2d6410faa3765f7c58103a73bd15594611ddb290614718addae53e1e66b3",
     "data/releases/2026.10.1/regions.json": "309228b8b1956d418ef5ce887aee5c434792df737affa276e8705ce77f24f83c",
-    "data/releases/2026.10.1/search-index.json": "2b41044fe4e60fd82c526ea5385944df6551a4e7bfb7919539cbd306e6a54750",
+    "data/releases/2026.10.1/search-index.json": "95a66cbf2c87291ca8d8e839a1154de26fb781e742f81e31768a9e464ccf26ef",
     "data/releases/2026.10.1/id-index.json": "206386ecd399389cec3e81a312293b332baa1d9123f06b6ad3d2ecb8544bc008",
     "data/releases/2026.10.1/legacy-aliases.json": "51eb46a982437618ff0cb96766e6f54b815ed152cc49deeaec32a6e179fae5d3"
   },
