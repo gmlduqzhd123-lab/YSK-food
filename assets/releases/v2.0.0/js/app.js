@@ -360,12 +360,11 @@ export class YskFoodApp {
     }
 
     // 5) 홈 화면 또는 일반 지도 화면
-    const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
-    if (loadRes?.stale) return;
-    this.applyFilters(true);
-    this.renderHomeStats();
-
-    if (route.showHome && !this.userDismissedHome) {
+    // 기본 조건의 지도 주소는 홈 주소와 같으므로, 앞으로·뒤로 가기에서는 기록된 화면(yskView)을 따른다
+    const historyWantsMap = fromPopstate && history.state?.yskView === 'map';
+    if (route.showHome && !this.userDismissedHome && !historyWantsMap) {
+      // 홈은 권역 요약(regions.json)만으로 그린다. 식당 자료는 지도를 열 때 고른 지역만 받는다(첫 화면 속도).
+      this.renderHomeStats();
       if (homeEl) {
         homeEl.hidden = false;
         homeEl.scrollTop = 0;
@@ -375,6 +374,9 @@ export class YskFoodApp {
       }
     } else {
       if (homeEl) homeEl.hidden = true;
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
+      this.applyFilters(true);
       if (isInitialLoad && !fromPopstate) {
         history.replaceState({ yskView: 'map' }, '', window.location.href);
       }
@@ -1756,11 +1758,17 @@ export class YskFoodApp {
       leadEl.textContent = `전국 초등학교 현장체험학습·수학여행·선수단 식사 준비를 한 곳에서. (전국 ${regions.length}개 지역 총 ${totalAllCount}곳 · 카카오맵 영업 확인${groupText})`;
     }
 
-    const openCount = this.currentRestaurants.filter(p => getOpenStatus(p) === true).length;
+    // 식당 자료를 아직 받지 않은 첫 화면에서는 수 없이 버튼만 보여 준다
     const liveBtn = document.getElementById('home-live');
     const liveText = document.getElementById('home-live-text');
-    if (liveText) liveText.textContent = `지금 영업 중 ${openCount}곳`;
-    if (liveBtn) liveBtn.hidden = openCount === 0;
+    if (this.currentRestaurants.length) {
+      const openCount = this.currentRestaurants.filter(p => getOpenStatus(p) === true).length;
+      if (liveText) liveText.textContent = `지금 영업 중 ${openCount}곳`;
+      if (liveBtn) liveBtn.hidden = openCount === 0;
+    } else {
+      if (liveText) liveText.textContent = '지금 영업 중인 곳';
+      if (liveBtn) liveBtn.hidden = false;
+    }
 
     const catsBox = document.getElementById('home-cats');
     if (catsBox) {
