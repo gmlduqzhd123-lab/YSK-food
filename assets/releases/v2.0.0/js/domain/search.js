@@ -951,6 +951,12 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       const cb = b.groupProfile?.checkedAt || '';
       if (ca !== cb) return cb.localeCompare(ca);
     }
+    // 기본 정렬에서는 영업시간을 모르는 식당(카카오맵에도 없음)을 뒤로 보낸다
+    if (sortBy === 'default') {
+      const ua = a.openingHours?.status === 'unknown';
+      const ub = b.openingHours?.status === 'unknown';
+      if (ua !== ub) return ua ? 1 : -1;
+    }
     // 기본 정렬 시 모드별 초등학생·교사·선수단 추천 적합도 점수 우선 적용
     if (sortBy === 'default' && a.modeScore !== b.modeScore) {
       return b.modeScore - a.modeScore;

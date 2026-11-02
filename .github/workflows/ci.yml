@@ -1,0 +1,40 @@
+# PR과 main 반영 때마다 자료가 빌드 도구 결과와 같은지, 검증과 테스트를 통과하는지 확인한다.
+name: 자료 검증·테스트
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # 빌드 도구가 기존 166곳 원본을 예전 커밋에서 읽으므로 전체 이력을 받는다
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 자료를 다시 만들어 커밋된 자료와 같은지 확인
+        run: |
+          node tools/build-dataset.mjs
+          if ! git diff --quiet -- data; then
+            echo "::error::커밋된 data/ 파일이 빌드 도구 결과와 다릅니다. node tools/build-dataset.mjs를 실행해 다시 커밋해 주세요."
+            git diff --stat -- data
+            exit 1
+          fi
+
+      - name: 자료 검증
+        run: node tools/validate-dataset.mjs
+
+      - name: 테스트
+        run: node --test tests/prd-ac.test.mjs
