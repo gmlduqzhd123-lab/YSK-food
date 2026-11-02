@@ -1872,13 +1872,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
       "status": "active"
     },
-    "restaurant:ysk-r-f0589": {
-      "kind": "restaurant",
-      "id": "ysk-r-f0589",
-      "regionCode": "jn-suncheon",
-      "datasetPath": "data/releases/2026.10.1/regions/jn-suncheon.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-f0590": {
       "kind": "restaurant",
       "id": "ysk-r-f0590",
@@ -6555,13 +6548,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
       "status": "active"
     },
-    "restaurant:ysk-r-f0086": {
-      "kind": "restaurant",
-      "id": "ysk-r-f0086",
-      "regionCode": "gb-gyeongju",
-      "datasetPath": "data/releases/2026.10.1/regions/gb-gyeongju.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-f0087": {
       "kind": "restaurant",
       "id": "ysk-r-f0087",
@@ -8560,13 +8546,6 @@
     "restaurant:ysk-r-c1569": {
       "kind": "restaurant",
       "id": "ysk-r-c1569",
-      "regionCode": "gyeonggi-suwon",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-c1570": {
-      "kind": "restaurant",
-      "id": "ysk-r-c1570",
       "regionCode": "gyeonggi-suwon",
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-suwon.json",
       "status": "active"
@@ -15277,13 +15256,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
       "status": "active"
     },
-    "restaurant:ysk-r-c0033": {
-      "kind": "restaurant",
-      "id": "ysk-r-c0033",
-      "regionCode": "seoul-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-c0034": {
       "kind": "restaurant",
       "id": "ysk-r-c0034",
@@ -15364,13 +15336,6 @@
     "restaurant:ysk-r-c0045": {
       "kind": "restaurant",
       "id": "ysk-r-c0045",
-      "regionCode": "seoul-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-c0046": {
-      "kind": "restaurant",
-      "id": "ysk-r-c0046",
       "regionCode": "seoul-etc",
       "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
       "status": "active"
@@ -20775,13 +20740,6 @@
     "restaurant:ysk-r-c1608": {
       "kind": "restaurant",
       "id": "ysk-r-c1608",
-      "regionCode": "gyeonggi-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-c1609": {
-      "kind": "restaurant",
-      "id": "ysk-r-c1609",
       "regionCode": "gyeonggi-etc",
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
       "status": "active"
@@ -29200,13 +29158,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
       "status": "active"
     },
-    "restaurant:ysk-r-g0380": {
-      "kind": "restaurant",
-      "id": "ysk-r-g0380",
-      "regionCode": "daejeon-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-g0381": {
       "kind": "restaurant",
       "id": "ysk-r-g0381",
@@ -30257,13 +30208,6 @@
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
       "status": "active"
     },
-    "restaurant:ysk-r-e0542": {
-      "kind": "restaurant",
-      "id": "ysk-r-e0542",
-      "regionCode": "daejeon-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
-      "status": "active"
-    },
     "restaurant:ysk-r-e0613": {
       "kind": "restaurant",
       "id": "ysk-r-e0613",
@@ -30288,13 +30232,6 @@
     "restaurant:ysk-r-e0660": {
       "kind": "restaurant",
       "id": "ysk-r-e0660",
-      "regionCode": "daejeon-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-e0718": {
-      "kind": "restaurant",
-      "id": "ysk-r-e0718",
       "regionCode": "daejeon-etc",
       "datasetPath": "data/releases/2026.10.1/regions/daejeon-etc.json",
       "status": "active"
@@ -38996,13 +38933,6 @@
     "restaurant:ysk-r-f0170": {
       "kind": "restaurant",
       "id": "ysk-r-f0170",
-      "regionCode": "gn-etc",
-      "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
-      "status": "active"
-    },
-    "restaurant:ysk-r-f0202": {
-      "kind": "restaurant",
-      "id": "ysk-r-f0202",
       "regionCode": "gn-etc",
       "datasetPath": "data/releases/2026.10.1/regions/gn-etc.json",
       "status": "active"
