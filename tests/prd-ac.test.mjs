@@ -116,13 +116,14 @@ const KOFOOD_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kofood-gui
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodprice-3000.json'), 'utf8'));
 const ELEM_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-1000.json'), 'utf8'));
 const ELEM_2000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-2000.json'), 'utf8'));
+const REGION_BOOST = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/region-boost-20261103.json'), 'utf8'));
 // 2026-11-02 카카오맵 재수집에서 장소 페이지가 사라진 식당은 공개 자료에서 빠진다
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kakao-refresh-20261102.json'), 'utf8'));
 // 매달 정기 재확인(tools/kakao-recheck.mjs)에서 장소 페이지가 사라진 식당도 빠진다
 const RECHECK_PATH = path.join(ROOT, 'tools/kakao-recheck-latest.json');
 const KAKAO_RECHECK = fs.existsSync(RECHECK_PATH) ? JSON.parse(fs.readFileSync(RECHECK_PATH, 'utf8')) : { missing: {} };
 const KAKAO_VERIFIED = {
-  restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants, ...ELEM_2000.restaurants]
+  restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants, ...ELEM_2000.restaurants, ...REGION_BOOST.restaurants]
     .filter(r => !KAKAO_REFRESH.places[r.id]?.notFound && !KAKAO_RECHECK.missing?.[r.id])
 };
 

@@ -34,7 +34,7 @@ jobs:
         run: |
           node tools/build-dataset.mjs
           node tools/validate-dataset.mjs
-          node --test tests/prd-ac.test.mjs
+          node --test tests/*.test.mjs
 
       - name: 바뀐 점이 있으면 PR 열기
         env:

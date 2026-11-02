@@ -18,6 +18,7 @@ import {
   NATIONWIDE_EXTRA_REGIONS,
   NATIONWIDE_VENUES_BY_REGION
 } from './nationwide-elementary-data.mjs';
+import { classifyMenuPriceBasis } from './menu-price-basis.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -79,6 +80,13 @@ function applyKakaoFacilities(rest) {
 
 // 카카오맵 장소 상세 재수집(2026-11-02): 영업시간·메뉴판 가격·편의시설·좌석 옵션
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-refresh-20261102.json'), 'utf8'));
+// 식당 100곳 미만 지역 보강(2026-11-03): 카카오맵 지역 검색 후 영업 표시·영업시간·최근 6개월 리뷰·전화번호·메뉴 가격을 확인한 식당
+const REGION_BOOST = JSON.parse(fs.readFileSync(path.join(__dirname, 'region-boost-20261103.json'), 'utf8'));
+Object.assign(KAKAO_REFRESH.places, REGION_BOOST.places);
+// 메뉴판 가격의 1인/세트 기준은 메뉴 이름·금액 규칙(tools/menu-price-basis.mjs)으로 다시 판정한다
+for (const place of Object.values(KAKAO_REFRESH.places)) {
+  for (const m of place.menus || []) m.priceBasis = classifyMenuPriceBasis(m.name, m.priceKRW);
+}
 const REFRESH_SOURCE_ID = 'src-kakao-refresh-20261102';
 // 매달 정기 재확인 결과(tools/kakao-recheck.mjs, GitHub Actions) — 장소 페이지가 사라진 식당 목록
 const KAKAO_RECHECK_PATH = path.join(__dirname, 'kakao-recheck-latest.json');
@@ -188,6 +196,11 @@ const LIST_SOURCES = {
     id: 'src-kofood-guide',
     url: 'https://www.kofood.net',
     attribution: '전국맛집가이드 음식별 목록 (연락처 있는 전국 식당 1,000곳, 2026-10-20 조회)'
+  },
+  카카오맵지역보강: {
+    id: 'src-kakao-region-boost-20261103',
+    url: 'https://map.kakao.com',
+    attribution: '카카오맵 지역 검색 보강 (식당 100곳 미만 지역, 영업·영업시간·최근 6개월 리뷰·연락처 확인, 2026-11-03)'
   },
   '초등·교사선정맛집': {
     id: 'src-elem-teacher-1000',
@@ -548,7 +561,8 @@ function buildDataset() {
     ...KOFOOD_GUIDE_1000.restaurants,
     ...GOODPRICE_3000.restaurants,
     ...ELEM_TEACHER_1000.restaurants,
-    ...ELEM_TEACHER_2000.restaurants
+    ...ELEM_TEACHER_2000.restaurants,
+    ...REGION_BOOST.restaurants
   ].map(item => {
     const refinedItem = { ...item, category: refineElementaryCategory(item) };
     const rest = normalizeLegacyPlaceToRestaurant(refinedItem);
