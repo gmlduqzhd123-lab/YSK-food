@@ -118,7 +118,7 @@ const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodpri
 const ELEM_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-1000.json'), 'utf8'));
 const ELEM_2000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-2000.json'), 'utf8'));
 const REGION_BOOST = {
-  restaurants: ['tools/region-boost-20261103.json', 'tools/region-boost-2-20261103.json', 'tools/region-boost-3-20261103.json']
+  restaurants: ['tools/region-boost-20261103.json', 'tools/region-boost-2-20261103.json', 'tools/region-boost-3-20261103.json', 'tools/region-boost-4-20261103.json']
     .flatMap(file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8')).restaurants)
 };
 // 2026-11-02 카카오맵 재수집에서 장소 페이지가 사라진 식당은 공개 자료에서 빠진다
