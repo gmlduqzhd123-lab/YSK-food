@@ -84,8 +84,8 @@ function applyKakaoFacilities(rest) {
 // 카카오맵 장소 상세 재수집(2026-11-02): 영업시간·메뉴판 가격·편의시설·좌석 옵션
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-refresh-20261102.json'), 'utf8'));
 // 식당 100곳 미만 지역 보강(2026-11-03): 카카오맵 지역 검색 후 영업 표시·영업시간·최근 6개월 리뷰·전화번호·메뉴 가격을 확인한 식당
-// 1차: 100곳 미만 지역, 2차: 시·군·구 150곳·도/광역시 기타 250곳 목표, 3차: 수학여행·체험학습 인기 지역과 서울·경기·부산, 4차: 도·광역시 기타 지역과 대도시 확대, 5차: 수학여행·체험학습 지역과 시·구 단위 지역 확대
-const REGION_BOOST_FILES = ['region-boost-20261103.json', 'region-boost-2-20261103.json', 'region-boost-3-20261103.json', 'region-boost-4-20261103.json', 'region-boost-5-20261103.json'];
+// 1차: 100곳 미만 지역, 2차: 시·군·구 150곳·도/광역시 기타 250곳 목표, 3차: 수학여행·체험학습 인기 지역과 서울·경기·부산, 4차: 도·광역시 기타 지역과 대도시 확대, 5차: 수학여행·체험학습 지역과 시·구 단위 지역 확대, 6차: 서울 구·경기 시·군
+const REGION_BOOST_FILES = ['region-boost-20261103.json', 'region-boost-2-20261103.json', 'region-boost-3-20261103.json', 'region-boost-4-20261103.json', 'region-boost-5-20261103.json', 'region-boost-6-20261104.json'];
 const REGION_BOOST = { restaurants: [], places: {} };
 for (const file of REGION_BOOST_FILES) {
   const batch = JSON.parse(fs.readFileSync(path.join(__dirname, file), 'utf8'));

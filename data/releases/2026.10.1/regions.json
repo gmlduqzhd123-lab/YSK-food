@@ -786,24 +786,24 @@
         "서울특별시 서초구"
       ],
       "center": {
-        "lat": 37.474,
-        "lng": 127.027,
+        "lat": 37.48,
+        "lng": 127.02,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.42,
+          "lat": 37.436,
           "lng": 126.973
         },
         "ne": {
-          "lat": 37.527,
-          "lng": 127.081
+          "lat": 37.525,
+          "lng": 127.067
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-seocho.json",
       "stats": {
-        "totalRestaurants": 49,
-        "groupVerifiedCount": 43,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 74,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -823,13 +823,13 @@
       ],
       "center": {
         "lat": 37.504,
-        "lng": 127.119,
+        "lng": 127.117,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.468,
-          "lng": 127.073
+          "lng": 127.07
         },
         "ne": {
           "lat": 37.539,
@@ -838,8 +838,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-songpa.json",
       "stats": {
-        "totalRestaurants": 65,
-        "groupVerifiedCount": 47,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 62,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -864,7 +864,7 @@
       },
       "bounds": {
         "sw": {
-          "lat": 37.512,
+          "lat": 37.513,
           "lng": 127.112
         },
         "ne": {
@@ -874,8 +874,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-gangdong.json",
       "stats": {
-        "totalRestaurants": 29,
-        "groupVerifiedCount": 18,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 69,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -910,8 +910,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-mapo.json",
       "stats": {
-        "totalRestaurants": 78,
-        "groupVerifiedCount": 55,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 57,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -941,13 +941,13 @@
         },
         "ne": {
           "lat": 37.562,
-          "lng": 127.012
+          "lng": 127.013
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-yongsan.json",
       "stats": {
-        "totalRestaurants": 68,
-        "groupVerifiedCount": 46,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 58,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -981,8 +981,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-junggu.json",
       "stats": {
-        "totalRestaurants": 76,
-        "groupVerifiedCount": 60,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 64,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1001,24 +1001,24 @@
         "서울특별시 성동구"
       ],
       "center": {
-        "lat": 37.552,
+        "lat": 37.555,
         "lng": 127.043,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.527,
+          "lat": 37.529,
           "lng": 127.012
         },
         "ne": {
-          "lat": 37.577,
+          "lat": 37.58,
           "lng": 127.075
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-seongdong.json",
       "stats": {
-        "totalRestaurants": 41,
-        "groupVerifiedCount": 36,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 75,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1037,24 +1037,24 @@
         "서울특별시 광진구"
       ],
       "center": {
-        "lat": 37.552,
-        "lng": 127.085,
+        "lat": 37.55,
+        "lng": 127.087,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.524,
-          "lng": 127.053
+          "lat": 37.525,
+          "lng": 127.054
         },
         "ne": {
-          "lat": 37.58,
-          "lng": 127.117
+          "lat": 37.575,
+          "lng": 127.119
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-gwangjin.json",
       "stats": {
-        "totalRestaurants": 45,
-        "groupVerifiedCount": 34,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 69,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1089,8 +1089,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-dongdaemun.json",
       "stats": {
-        "totalRestaurants": 39,
-        "groupVerifiedCount": 25,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 66,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1109,13 +1109,13 @@
         "서울특별시 중랑구"
       ],
       "center": {
-        "lat": 37.595,
+        "lat": 37.596,
         "lng": 127.088,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.563,
+          "lat": 37.567,
           "lng": 127.064
         },
         "ne": {
@@ -1125,8 +1125,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-jungnang.json",
       "stats": {
-        "totalRestaurants": 29,
-        "groupVerifiedCount": 15,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 66,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1145,13 +1145,13 @@
         "서울특별시 성북구"
       ],
       "center": {
-        "lat": 37.599,
+        "lat": 37.597,
         "lng": 127.03,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.574,
+          "lat": 37.569,
           "lng": 126.984
         },
         "ne": {
@@ -1161,8 +1161,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-seongbuk.json",
       "stats": {
-        "totalRestaurants": 28,
-        "groupVerifiedCount": 20,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 72,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1181,24 +1181,24 @@
         "서울특별시 강북구"
       ],
       "center": {
-        "lat": 37.63,
-        "lng": 127.022,
-        "zoomLevel": 6
+        "lat": 37.642,
+        "lng": 127.02,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.603,
-          "lng": 127
+          "lat": 37.602,
+          "lng": 126.995
         },
         "ne": {
-          "lat": 37.657,
+          "lat": 37.682,
           "lng": 127.044
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-gangbuk.json",
       "stats": {
-        "totalRestaurants": 13,
-        "groupVerifiedCount": 8,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 75,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1217,24 +1217,24 @@
         "서울특별시 도봉구"
       ],
       "center": {
-        "lat": 37.661,
+        "lat": 37.664,
         "lng": 127.032,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.624,
-          "lng": 127.008
+          "lat": 37.629,
+          "lng": 127.004
         },
         "ne": {
-          "lat": 37.698,
-          "lng": 127.056
+          "lat": 37.699,
+          "lng": 127.06
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-dobong.json",
       "stats": {
-        "totalRestaurants": 27,
-        "groupVerifiedCount": 9,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 62,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1254,23 +1254,23 @@
       ],
       "center": {
         "lat": 37.646,
-        "lng": 127.068,
-        "zoomLevel": 7
+        "lng": 127.069,
+        "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.606,
-          "lng": 127.043
+          "lat": 37.608,
+          "lng": 127.046
         },
         "ne": {
-          "lat": 37.687,
-          "lng": 127.093
+          "lat": 37.684,
+          "lng": 127.091
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-nowon.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 22,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 64,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1289,13 +1289,13 @@
         "서울특별시 은평구"
       ],
       "center": {
-        "lat": 37.621,
+        "lat": 37.622,
         "lng": 126.931,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.576,
+          "lat": 37.578,
           "lng": 126.903
         },
         "ne": {
@@ -1305,8 +1305,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-eunpyeong.json",
       "stats": {
-        "totalRestaurants": 42,
-        "groupVerifiedCount": 27,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 65,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1331,7 +1331,7 @@
       },
       "bounds": {
         "sw": {
-          "lat": 37.547,
+          "lat": 37.546,
           "lng": 126.904
         },
         "ne": {
@@ -1341,8 +1341,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-seodaemun.json",
       "stats": {
-        "totalRestaurants": 55,
-        "groupVerifiedCount": 30,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 55,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1361,24 +1361,24 @@
         "서울특별시 영등포구"
       ],
       "center": {
-        "lat": 37.519,
-        "lng": 126.912,
+        "lat": 37.518,
+        "lng": 126.91,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.482,
-          "lng": 126.875
+          "lat": 37.489,
+          "lng": 126.879
         },
         "ne": {
-          "lat": 37.555,
-          "lng": 126.949
+          "lat": 37.546,
+          "lng": 126.942
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-yeongdeungpo.json",
       "stats": {
-        "totalRestaurants": 46,
-        "groupVerifiedCount": 40,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 74,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1397,13 +1397,13 @@
         "서울특별시 동작구"
       ],
       "center": {
-        "lat": 37.497,
+        "lat": 37.495,
         "lng": 126.946,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.47,
+          "lat": 37.467,
           "lng": 126.9
         },
         "ne": {
@@ -1413,8 +1413,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-dongjak.json",
       "stats": {
-        "totalRestaurants": 24,
-        "groupVerifiedCount": 15,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 71,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1434,23 +1434,23 @@
       ],
       "center": {
         "lat": 37.48,
-        "lng": 126.946,
+        "lng": 126.942,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.459,
-          "lng": 126.901
+          "lng": 126.892
         },
         "ne": {
           "lat": 37.5,
-          "lng": 126.99
+          "lng": 126.991
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-gwanak.json",
       "stats": {
-        "totalRestaurants": 59,
-        "groupVerifiedCount": 34,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 55,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1469,24 +1469,24 @@
         "서울특별시 구로구"
       ],
       "center": {
-        "lat": 37.496,
-        "lng": 126.871,
+        "lat": 37.495,
+        "lng": 126.862,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.47,
-          "lng": 126.831
+          "lng": 126.812
         },
         "ne": {
-          "lat": 37.522,
-          "lng": 126.912
+          "lat": 37.52,
+          "lng": 126.911
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-guro.json",
       "stats": {
-        "totalRestaurants": 41,
-        "groupVerifiedCount": 22,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 61,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1512,17 +1512,17 @@
       "bounds": {
         "sw": {
           "lat": 37.432,
-          "lng": 126.867
+          "lng": 126.868
         },
         "ne": {
           "lat": 37.495,
-          "lng": 126.918
+          "lng": 126.919
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-geumcheon.json",
       "stats": {
-        "totalRestaurants": 27,
-        "groupVerifiedCount": 16,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 69,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1541,24 +1541,24 @@
         "서울특별시 양천구"
       ],
       "center": {
-        "lat": 37.529,
-        "lng": 126.855,
+        "lat": 37.531,
+        "lng": 126.856,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.5,
+          "lat": 37.503,
           "lng": 126.824
         },
         "ne": {
-          "lat": 37.559,
-          "lng": 126.886
+          "lat": 37.56,
+          "lng": 126.887
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-yangcheon.json",
       "stats": {
-        "totalRestaurants": 25,
-        "groupVerifiedCount": 14,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 69,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1579,22 +1579,22 @@
       "center": {
         "lat": 37.554,
         "lng": 126.838,
-        "zoomLevel": 7
+        "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.519,
-          "lng": 126.793
+          "lat": 37.521,
+          "lng": 126.798
         },
         "ne": {
-          "lat": 37.589,
-          "lng": 126.882
+          "lat": 37.587,
+          "lng": 126.878
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/seoul-gangseo.json",
       "stats": {
-        "totalRestaurants": 44,
-        "groupVerifiedCount": 27,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 63,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1613,24 +1613,24 @@
         "경기도 성남시"
       ],
       "center": {
-        "lat": 37.411,
-        "lng": 127.114,
-        "zoomLevel": 8
+        "lat": 37.409,
+        "lng": 127.117,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.339,
-          "lng": 127.05
+          "lng": 127.055
         },
         "ne": {
-          "lat": 37.483,
+          "lat": 37.479,
           "lng": 127.178
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-seongnam.json",
       "stats": {
-        "totalRestaurants": 46,
-        "groupVerifiedCount": 34,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 68,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1650,7 +1650,7 @@
       ],
       "center": {
         "lat": 37.664,
-        "lng": 126.807,
+        "lng": 126.81,
         "zoomLevel": 8
       },
       "bounds": {
@@ -1660,13 +1660,13 @@
         },
         "ne": {
           "lat": 37.719,
-          "lng": 126.907
+          "lng": 126.912
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-goyang.json",
       "stats": {
-        "totalRestaurants": 67,
-        "groupVerifiedCount": 47,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 60,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1685,24 +1685,24 @@
         "경기도 부천시"
       ],
       "center": {
-        "lat": 37.507,
-        "lng": 126.787,
+        "lat": 37.5,
+        "lng": 126.785,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.461,
-          "lng": 126.741
+          "lng": 126.74
         },
         "ne": {
-          "lat": 37.552,
-          "lng": 126.834
+          "lat": 37.539,
+          "lng": 126.83
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-bucheon.json",
       "stats": {
-        "totalRestaurants": 44,
-        "groupVerifiedCount": 27,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 63,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1721,24 +1721,24 @@
         "경기도 안양시"
       ],
       "center": {
-        "lat": 37.397,
-        "lng": 126.932,
+        "lat": 37.404,
+        "lng": 126.941,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.359,
-          "lng": 126.874
+          "lat": 37.372,
+          "lng": 126.896
         },
         "ne": {
-          "lat": 37.435,
-          "lng": 126.989
+          "lat": 37.436,
+          "lng": 126.986
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-anyang.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 29,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 71,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1757,13 +1757,13 @@
         "경기도 안산시"
       ],
       "center": {
-        "lat": 37.293,
+        "lat": 37.292,
         "lng": 126.721,
         "zoomLevel": 9
       },
       "bounds": {
         "sw": {
-          "lat": 37.234,
+          "lat": 37.232,
           "lng": 126.559
         },
         "ne": {
@@ -1773,8 +1773,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-ansan.json",
       "stats": {
-        "totalRestaurants": 67,
-        "groupVerifiedCount": 47,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 60,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1793,24 +1793,24 @@
         "경기도 화성시"
       ],
       "center": {
-        "lat": 37.131,
-        "lng": 126.906,
+        "lat": 37.167,
+        "lng": 126.9,
         "zoomLevel": 9
       },
       "bounds": {
         "sw": {
-          "lat": 37.017,
+          "lat": 37.088,
           "lng": 126.663
         },
         "ne": {
-          "lat": 37.244,
-          "lng": 127.149
+          "lat": 37.247,
+          "lng": 127.136
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-hwaseong.json",
       "stats": {
-        "totalRestaurants": 43,
-        "groupVerifiedCount": 25,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 62,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1829,13 +1829,13 @@
         "경기도 평택시"
       ],
       "center": {
-        "lat": 37.012,
+        "lat": 37.031,
         "lng": 127.02,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
-          "lat": 36.916,
+          "lat": 36.953,
           "lng": 126.895
         },
         "ne": {
@@ -1845,8 +1845,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-pyeongtaek.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 25,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 67,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1866,23 +1866,23 @@
       ],
       "center": {
         "lat": 37.391,
-        "lng": 126.759,
+        "lng": 126.764,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
-          "lat": 37.311,
-          "lng": 126.667
+          "lat": 37.315,
+          "lng": 126.668
         },
         "ne": {
-          "lat": 37.472,
-          "lng": 126.85
+          "lat": 37.467,
+          "lng": 126.861
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-siheung.json",
       "stats": {
-        "totalRestaurants": 49,
-        "groupVerifiedCount": 39,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 70,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1901,24 +1901,24 @@
         "경기도 파주시"
       ],
       "center": {
-        "lat": 37.801,
-        "lng": 126.787,
+        "lat": 37.788,
+        "lng": 126.788,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
           "lat": 37.696,
-          "lng": 126.674
+          "lng": 126.676
         },
         "ne": {
-          "lat": 37.907,
+          "lat": 37.88,
           "lng": 126.9
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-paju.json",
       "stats": {
-        "totalRestaurants": 50,
-        "groupVerifiedCount": 34,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 64,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1937,24 +1937,24 @@
         "경기도 김포시"
       ],
       "center": {
-        "lat": 37.658,
-        "lng": 126.671,
+        "lat": 37.65,
+        "lng": 126.682,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
-          "lat": 37.587,
-          "lng": 126.562
+          "lat": 37.589,
+          "lng": 126.568
         },
         "ne": {
-          "lat": 37.729,
-          "lng": 126.78
+          "lat": 37.711,
+          "lng": 126.796
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gimpo.json",
       "stats": {
-        "totalRestaurants": 38,
-        "groupVerifiedCount": 28,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 70,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -1973,24 +1973,24 @@
         "경기도 의정부시"
       ],
       "center": {
-        "lat": 37.735,
-        "lng": 127.069,
+        "lat": 37.732,
+        "lng": 127.068,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.694,
+          "lat": 37.689,
           "lng": 127.016
         },
         "ne": {
-          "lat": 37.775,
-          "lng": 127.122
+          "lat": 37.774,
+          "lng": 127.119
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-uijeongbu.json",
       "stats": {
-        "totalRestaurants": 39,
-        "groupVerifiedCount": 21,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 62,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2009,24 +2009,24 @@
         "경기도 남양주시"
       ],
       "center": {
-        "lat": 37.644,
-        "lng": 127.221,
-        "zoomLevel": 8
+        "lat": 37.643,
+        "lng": 127.239,
+        "zoomLevel": 9
       },
       "bounds": {
         "sw": {
-          "lat": 37.527,
-          "lng": 127.092
+          "lat": 37.531,
+          "lng": 127.098
         },
         "ne": {
-          "lat": 37.76,
-          "lng": 127.351
+          "lat": 37.755,
+          "lng": 127.381
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-namyangju.json",
       "stats": {
-        "totalRestaurants": 48,
-        "groupVerifiedCount": 36,
+        "totalRestaurants": 80,
+        "groupVerifiedCount": 68,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2045,24 +2045,24 @@
         "경기도 광주시"
       ],
       "center": {
-        "lat": 37.386,
-        "lng": 127.255,
-        "zoomLevel": 7
+        "lat": 37.407,
+        "lng": 127.265,
+        "zoomLevel": 8
       },
       "bounds": {
         "sw": {
           "lat": 37.326,
-          "lng": 127.207
+          "lng": 127.14
         },
         "ne": {
-          "lat": 37.445,
-          "lng": 127.304
+          "lat": 37.487,
+          "lng": 127.39
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwangju.json",
       "stats": {
-        "totalRestaurants": 11,
-        "groupVerifiedCount": 4,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 53,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2081,24 +2081,24 @@
         "경기도 하남시"
       ],
       "center": {
-        "lat": 37.546,
-        "lng": 127.214,
-        "zoomLevel": 6
+        "lat": 37.54,
+        "lng": 127.192,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.512,
-          "lng": 127.18
+          "lat": 37.494,
+          "lng": 127.137
         },
         "ne": {
-          "lat": 37.581,
+          "lat": 37.585,
           "lng": 127.248
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-hanam.json",
       "stats": {
-        "totalRestaurants": 22,
-        "groupVerifiedCount": 21,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 59,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2118,13 +2118,13 @@
       ],
       "center": {
         "lat": 37.45,
-        "lng": 126.868,
+        "lng": 126.869,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
           "lat": 37.408,
-          "lng": 126.84
+          "lng": 126.841
         },
         "ne": {
           "lat": 37.491,
@@ -2133,8 +2133,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwangmyeong.json",
       "stats": {
-        "totalRestaurants": 21,
-        "groupVerifiedCount": 14,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 53,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2153,24 +2153,24 @@
         "경기도 군포시"
       ],
       "center": {
-        "lat": 37.347,
-        "lng": 126.92,
-        "zoomLevel": 6
+        "lat": 37.349,
+        "lng": 126.923,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.313,
+          "lat": 37.315,
           "lng": 126.883
         },
         "ne": {
-          "lat": 37.381,
-          "lng": 126.957
+          "lat": 37.382,
+          "lng": 126.963
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gunpo.json",
       "stats": {
-        "totalRestaurants": 17,
-        "groupVerifiedCount": 8,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 51,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2189,24 +2189,24 @@
         "경기도 양주시"
       ],
       "center": {
-        "lat": 37.84,
-        "lng": 127.047,
+        "lat": 37.806,
+        "lng": 127.026,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
-          "lat": 37.766,
-          "lng": 126.98
+          "lat": 37.707,
+          "lng": 126.939
         },
         "ne": {
-          "lat": 37.914,
-          "lng": 127.115
+          "lat": 37.906,
+          "lng": 127.114
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yangju.json",
       "stats": {
-        "totalRestaurants": 14,
-        "groupVerifiedCount": 5,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 51,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2225,24 +2225,24 @@
         "경기도 오산시"
       ],
       "center": {
-        "lat": 37.163,
-        "lng": 127.051,
+        "lat": 37.164,
+        "lng": 127.055,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.118,
-          "lng": 127.013
+          "lat": 37.119,
+          "lng": 127.014
         },
         "ne": {
-          "lat": 37.209,
-          "lng": 127.09
+          "lat": 37.208,
+          "lng": 127.096
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-osan.json",
       "stats": {
-        "totalRestaurants": 19,
-        "groupVerifiedCount": 14,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 55,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2261,24 +2261,24 @@
         "경기도 이천시"
       ],
       "center": {
-        "lat": 37.226,
+        "lat": 37.222,
         "lng": 127.444,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
           "lat": 37.122,
-          "lng": 127.358
+          "lng": 127.355
         },
         "ne": {
-          "lat": 37.331,
-          "lng": 127.531
+          "lat": 37.323,
+          "lng": 127.532
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-icheon.json",
       "stats": {
-        "totalRestaurants": 26,
-        "groupVerifiedCount": 15,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 49,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2297,24 +2297,24 @@
         "경기도 안성시"
       ],
       "center": {
-        "lat": 37.036,
-        "lng": 127.259,
+        "lat": 37.039,
+        "lng": 127.268,
         "zoomLevel": 9
       },
       "bounds": {
         "sw": {
-          "lat": 36.995,
+          "lat": 36.973,
           "lng": 127.118
         },
         "ne": {
-          "lat": 37.077,
-          "lng": 127.401
+          "lat": 37.106,
+          "lng": 127.417
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-anseong.json",
       "stats": {
-        "totalRestaurants": 17,
-        "groupVerifiedCount": 10,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 53,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2333,24 +2333,24 @@
         "경기도 구리시"
       ],
       "center": {
-        "lat": 37.597,
-        "lng": 127.131,
+        "lat": 37.599,
+        "lng": 127.132,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.553,
-          "lng": 127.104
+          "lat": 37.554,
+          "lng": 127.105
         },
         "ne": {
-          "lat": 37.641,
+          "lat": 37.644,
           "lng": 127.158
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-guri.json",
       "stats": {
-        "totalRestaurants": 15,
-        "groupVerifiedCount": 9,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 54,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2370,23 +2370,23 @@
       ],
       "center": {
         "lat": 37.357,
-        "lng": 126.98,
+        "lng": 126.984,
         "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.306,
+          "lat": 37.301,
           "lng": 126.941
         },
         "ne": {
-          "lat": 37.408,
-          "lng": 127.019
+          "lat": 37.413,
+          "lng": 127.026
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-uiwang.json",
       "stats": {
-        "totalRestaurants": 12,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 54,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2405,24 +2405,24 @@
         "경기도 포천시"
       ],
       "center": {
-        "lat": 37.902,
-        "lng": 127.26,
+        "lat": 37.915,
+        "lng": 127.257,
         "zoomLevel": 9
       },
       "bounds": {
         "sw": {
           "lat": 37.749,
-          "lng": 127.136
+          "lng": 127.124
         },
         "ne": {
-          "lat": 38.054,
-          "lng": 127.383
+          "lat": 38.081,
+          "lng": 127.391
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-pocheon.json",
       "stats": {
-        "totalRestaurants": 30,
-        "groupVerifiedCount": 27,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 57,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2441,24 +2441,24 @@
         "경기도 양평군"
       ],
       "center": {
-        "lat": 37.529,
-        "lng": 127.537,
+        "lat": 37.534,
+        "lng": 127.477,
         "zoomLevel": 9
       },
       "bounds": {
         "sw": {
-          "lat": 37.406,
-          "lng": 127.31
+          "lat": 37.416,
+          "lng": 127.311
         },
         "ne": {
           "lat": 37.652,
-          "lng": 127.764
+          "lng": 127.643
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yangpyeong.json",
       "stats": {
-        "totalRestaurants": 32,
-        "groupVerifiedCount": 22,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 50,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2477,24 +2477,24 @@
         "경기도 여주시"
       ],
       "center": {
-        "lat": 37.313,
-        "lng": 127.615,
+        "lat": 37.305,
+        "lng": 127.634,
         "zoomLevel": 8
       },
       "bounds": {
         "sw": {
-          "lat": 37.213,
-          "lng": 127.537
+          "lat": 37.196,
+          "lng": 127.519
         },
         "ne": {
           "lat": 37.413,
-          "lng": 127.694
+          "lng": 127.748
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yeoju.json",
       "stats": {
-        "totalRestaurants": 20,
-        "groupVerifiedCount": 15,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 55,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2513,24 +2513,24 @@
         "경기도 동두천시"
       ],
       "center": {
-        "lat": 37.903,
-        "lng": 127.054,
-        "zoomLevel": 6
+        "lat": 37.909,
+        "lng": 127.077,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.882,
-          "lng": 127.038
+          "lat": 37.871,
+          "lng": 127.034
         },
         "ne": {
-          "lat": 37.923,
-          "lng": 127.07
+          "lat": 37.947,
+          "lng": 127.119
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-dongducheon.json",
       "stats": {
-        "totalRestaurants": 14,
-        "groupVerifiedCount": 6,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 52,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2549,14 +2549,14 @@
         "경기도 과천시"
       ],
       "center": {
-        "lat": 37.435,
+        "lat": 37.432,
         "lng": 126.999,
         "zoomLevel": 6
       },
       "bounds": {
         "sw": {
-          "lat": 37.404,
-          "lng": 126.969
+          "lat": 37.397,
+          "lng": 126.968
         },
         "ne": {
           "lat": 37.466,
@@ -2565,8 +2565,8 @@
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwacheon.json",
       "stats": {
-        "totalRestaurants": 22,
-        "groupVerifiedCount": 16,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 54,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2585,24 +2585,24 @@
         "경기도 가평군"
       ],
       "center": {
-        "lat": 37.732,
-        "lng": 127.435,
-        "zoomLevel": 9
+        "lat": 37.718,
+        "lng": 127.436,
+        "zoomLevel": 8
       },
       "bounds": {
         "sw": {
           "lat": 37.587,
-          "lng": 127.335
+          "lng": 127.337
         },
         "ne": {
-          "lat": 37.876,
+          "lat": 37.848,
           "lng": 127.535
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gapyeong.json",
       "stats": {
-        "totalRestaurants": 31,
-        "groupVerifiedCount": 27,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 56,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
@@ -2622,23 +2622,23 @@
       ],
       "center": {
         "lat": 38.045,
-        "lng": 127.072,
-        "zoomLevel": 7
+        "lng": 127.017,
+        "zoomLevel": 8
       },
       "bounds": {
         "sw": {
           "lat": 37.978,
-          "lng": 127.056
+          "lng": 126.91
         },
         "ne": {
           "lat": 38.113,
-          "lng": 127.089
+          "lng": 127.124
         }
       },
       "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yeoncheon.json",
       "stats": {
-        "totalRestaurants": 10,
-        "groupVerifiedCount": 3,
+        "totalRestaurants": 60,
+        "groupVerifiedCount": 53,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
