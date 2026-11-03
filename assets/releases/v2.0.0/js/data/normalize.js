@@ -726,18 +726,74 @@ function fillDefaults(value, template) {
   return out;
 }
 
+// 키 순서와 상관없이 두 JSON 값이 같은지 비교한다
+function sameValue(a, b) {
+  if (Array.isArray(a) || Array.isArray(b)) {
+    return Array.isArray(a) && Array.isArray(b) && a.length === b.length && a.every((x, i) => sameValue(x, b[i]));
+  }
+  if (isPlainObject(a) && isPlainObject(b)) {
+    const ka = Object.keys(a);
+    return ka.length === Object.keys(b).length && ka.every(k => k in b && sameValue(a[k], b[k]));
+  }
+  return a === b;
+}
+
+// 같은 영업시간 원문이 많아(예: '매일 11:00-21:00') 해석 결과를 재사용한다
+const parsedHoursCache = new Map();
+
+/** 영업시간 원문(rawLegacyText·rawClosedText)과 라스트오더만으로 영업시간 객체를 다시 만든다 */
+function rebuildOpeningHoursFromText(stored) {
+  const key = `${stored.rawLegacyText}\u0000${stored.rawClosedText}`;
+  let parsed = parsedHoursCache.get(key);
+  if (!parsed) {
+    parsed = buildOpeningHoursFromLegacy(stored.rawLegacyText, stored.rawClosedText);
+    parsedHoursCache.set(key, parsed);
+  }
+  const oh = cloneDefault(parsed);
+  oh.evidenceRefs = stored.evidenceRefs || [];
+  for (const iv of oh.weeklyIntervals) {
+    const lo = stored.lastOrders?.[`${iv.day}-${iv.startTime}`];
+    if (lo) [iv.lastOrderTime, iv.lastOrderDayOffset] = lo;
+  }
+  return oh;
+}
+
+/**
+ * 영업시간이 원문으로 다시 만들어지면 요일별 구간(weeklyIntervals) 대신 원문과 라스트오더만 저장한다
+ * (영업시간 객체가 지역 자료의 절반 가까이를 차지해 파일 크기를 줄이기 위함)
+ */
+function compactOpeningHours(oh) {
+  if (!isPlainObject(oh) || oh.status !== 'legacy_parsed' || !Array.isArray(oh.weeklyIntervals)) return null;
+  const lastOrders = {};
+  for (const iv of oh.weeklyIntervals) {
+    if (iv.lastOrderTime) lastOrders[`${iv.day}-${iv.startTime}`] = [iv.lastOrderTime, iv.lastOrderDayOffset];
+  }
+  const stored = {
+    fromText: true,
+    rawLegacyText: oh.rawLegacyText,
+    rawClosedText: oh.rawClosedText,
+    evidenceRefs: oh.evidenceRefs || [],
+    ...(Object.keys(lastOrders).length ? { lastOrders } : {})
+  };
+  return sameValue(rebuildOpeningHoursFromText(stored), oh) ? stored : null;
+}
+
 /** 저장용: 기본값과 같은 항목을 뺀 식당 객체 */
 export function compactRestaurantForStorage(rest) {
   const { restaurant, menu } = getRestaurantDefaults();
   const out = omitDefaults(rest, restaurant);
   if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => omitDefaults(m, menu));
+  const compactHours = compactOpeningHours(rest.openingHours);
+  if (compactHours) out.openingHours = compactHours;
   return out;
 }
 
 /** 읽기용: 빠진 기본값을 다시 채운 식당 객체 */
 export function expandStoredRestaurant(rest) {
   const { restaurant, menu } = getRestaurantDefaults();
-  const out = fillDefaults(rest, restaurant);
+  const fromText = rest.openingHours?.fromText ? rest.openingHours : null;
+  const out = fillDefaults(fromText ? { ...rest, openingHours: undefined } : rest, restaurant);
+  if (fromText) out.openingHours = rebuildOpeningHoursFromText(fromText);
   if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => fillDefaults(m, menu));
   return out;
 }
