@@ -81,7 +81,14 @@ function applyKakaoFacilities(rest) {
 // 카카오맵 장소 상세 재수집(2026-11-02): 영업시간·메뉴판 가격·편의시설·좌석 옵션
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(__dirname, 'kakao-refresh-20261102.json'), 'utf8'));
 // 식당 100곳 미만 지역 보강(2026-11-03): 카카오맵 지역 검색 후 영업 표시·영업시간·최근 6개월 리뷰·전화번호·메뉴 가격을 확인한 식당
-const REGION_BOOST = JSON.parse(fs.readFileSync(path.join(__dirname, 'region-boost-20261103.json'), 'utf8'));
+// 1차: 100곳 미만 지역, 2차: 시·군·구 150곳·도/광역시 기타 250곳 목표
+const REGION_BOOST_FILES = ['region-boost-20261103.json', 'region-boost-2-20261103.json'];
+const REGION_BOOST = { restaurants: [], places: {} };
+for (const file of REGION_BOOST_FILES) {
+  const batch = JSON.parse(fs.readFileSync(path.join(__dirname, file), 'utf8'));
+  REGION_BOOST.restaurants.push(...batch.restaurants);
+  Object.assign(REGION_BOOST.places, batch.places);
+}
 Object.assign(KAKAO_REFRESH.places, REGION_BOOST.places);
 // 메뉴판 가격의 1인/세트 기준은 메뉴 이름·금액 규칙(tools/menu-price-basis.mjs)으로 다시 판정한다
 for (const place of Object.values(KAKAO_REFRESH.places)) {
@@ -200,7 +207,7 @@ const LIST_SOURCES = {
   카카오맵지역보강: {
     id: 'src-kakao-region-boost-20261103',
     url: 'https://map.kakao.com',
-    attribution: '카카오맵 지역 검색 보강 (식당 100곳 미만 지역, 영업·영업시간·최근 6개월 리뷰·연락처 확인, 2026-11-03)'
+    attribution: '카카오맵 지역 검색 보강 (식당 적은 지역, 영업·영업시간·최근 6개월 리뷰·연락처·메뉴 가격 확인, 2026-11-03)'
   },
   '초등·교사선정맛집': {
     id: 'src-elem-teacher-1000',

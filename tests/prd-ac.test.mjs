@@ -3,6 +3,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -116,7 +117,10 @@ const KOFOOD_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kofood-gui
 const GOODPRICE_3000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/goodprice-3000.json'), 'utf8'));
 const ELEM_1000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-1000.json'), 'utf8'));
 const ELEM_2000 = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/elem-teacher-2000.json'), 'utf8'));
-const REGION_BOOST = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/region-boost-20261103.json'), 'utf8'));
+const REGION_BOOST = {
+  restaurants: ['tools/region-boost-20261103.json', 'tools/region-boost-2-20261103.json']
+    .flatMap(file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8')).restaurants)
+};
 // 2026-11-02 카카오맵 재수집에서 장소 페이지가 사라진 식당은 공개 자료에서 빠진다
 const KAKAO_REFRESH = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/kakao-refresh-20261102.json'), 'utf8'));
 // 매달 정기 재확인(tools/kakao-recheck.mjs)에서 장소 페이지가 사라진 식당도 빠진다
@@ -126,6 +130,24 @@ const KAKAO_VERIFIED = {
   restaurants: [...CENTURY_1000.restaurants, ...KOFOOD_1000.restaurants, ...GOODPRICE_3000.restaurants, ...ELEM_1000.restaurants, ...ELEM_2000.restaurants, ...REGION_BOOST.restaurants]
     .filter(r => !KAKAO_REFRESH.places[r.id]?.notFound && !KAKAO_RECHECK.missing?.[r.id])
 };
+
+// 지정한 지역 파일의 식당을 비우고, 매니페스트 체크섬도 그 내용에 맞춰 바꿔 주는 fetch (0곳 지역 테스트용)
+function createEmptyRegionFetch(baseFetch, regionCode) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/manifest.json'), 'utf8'));
+  const relPath = manifest.regionFiles[regionCode].path;
+  const region = JSON.parse(fs.readFileSync(path.join(ROOT, relPath), 'utf8'));
+  const emptyText = JSON.stringify({ ...region, restaurants: [] }) + '\n';
+  const emptyHash = crypto.createHash('sha256').update(emptyText, 'utf8').digest('hex');
+  manifest.checksums[relPath] = emptyHash;
+  manifest.regionFiles[regionCode].checksum = emptyHash;
+  const json = text => new Response(text, { status: 200, headers: { 'content-type': 'application/json; charset=utf-8' } });
+  return async (urlStr) => {
+    const s = String(urlStr);
+    if (s.includes(relPath)) return json(emptyText);
+    if (s.includes('data/manifest.json')) return json(JSON.stringify(manifest));
+    return baseFetch(urlStr);
+  };
+}
 
 function createLocalFileFetch(rootDir = ROOT) {
   return async (urlStr) => {
@@ -279,7 +301,8 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
   });
 
   test('AC07 & AC08: 빠른 연속 지역 전환 시 이전 지연 응답 폐기(stale) 및 0곳 등록 지역·손상 지역 격리 처리', async () => {
-    const baseFetch = createLocalFileFetch();
+    // 보성군(jn-boseong)은 2026-11-03 지역 보강으로 식당이 생겼으므로, 0곳 지역 처리는 식당을 비운 복사본으로 확인한다
+    const baseFetch = createEmptyRegionFetch(createLocalFileFetch(), 'jn-boseong');
     const slowFetch = async (urlStr) => {
       if (String(urlStr).includes('jn-yeosu.json')) {
         await new Promise(r => setTimeout(r, 60));
@@ -1143,10 +1166,10 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.ok(regionSet.has('busan-haeundae'));
     assert.ok(regionSet.has('jb-jeonju'));
     assert.ok(regionSet.has('jj-jeju'));
-    // 식당이 있는 지역 = 여수·순천·광양 + 카카오맵 확인 식당이 들어간 지역 (보성군은 0곳 테스트용으로 비어 있음)
+    // 식당이 있는 지역 = 여수·순천·광양 + 카카오맵 확인 식당이 들어간 지역 (보성군도 2026-11-03 지역 보강으로 식당이 생김)
     const expectedRegions = new Set(['jn-yeosu', 'jn-suncheon', 'jn-gwangyang', ...KAKAO_VERIFIED.restaurants.map(r => r.regionCode)]);
     assert.equal(regionSet.size, expectedRegions.size);
-    assert.equal(regionSet.has('jn-boseong'), false);
+    assert.equal(regionSet.has('jn-boseong'), true);
 
     // 2. 학교·선수단 모드 카테고리 목록에서 '포차·술집', '카페·디저트' 배제 확인
     const schoolCats = getCategoriesForMode(nwRes.restaurants, 'school');

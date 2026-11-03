@@ -150,7 +150,7 @@ export const REGION_GROUPS = {
     code: 'honam-west',
     label: '광주·전북·전남 (여수·순천·광양 외)',
     shortLabel: '전북·광주·전남',
-    regionCodes: ['jb-jeonju', 'gj-donggu', 'jn-mokpo', 'jn-goheung', 'jb-etc', 'gj-etc', 'jn-etc'],
+    regionCodes: ['jb-jeonju', 'gj-donggu', 'jn-mokpo', 'jn-goheung', 'jn-boseong', 'jb-etc', 'gj-etc', 'jn-etc'],
     center: { lat: 35.23, lng: 127.00, zoomLevel: 11 },
     bounds: { sw: { lat: 34.40, lng: 126.33 }, ne: { lat: 36.06, lng: 127.66 } }
   },
