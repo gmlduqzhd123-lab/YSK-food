@@ -596,7 +596,7 @@ export function getCategoriesForMode(restaurantsOrMode = [], mode = 'general') {
     if (ia !== -1 && ib !== -1) return ia - ib;
     if (ia !== -1) return -1;
     if (ib !== -1) return 1;
-    return a.localeCompare(b, 'ko');
+    return KO_COLLATOR.compare(a, b);
   });
 }
 
@@ -792,6 +792,9 @@ export function computeModeRecommendationScore(place, mode = 'general') {
  * - 단체 조건이 입력된 경우 결과를 '확인된 조건 충족(confirmedMetList)'과 '추가 확인 필요(needsCheckList)'로 분리한다.
  * - 확인된 필수 조건 불충족(unmet)은 기본 결과에서 제외하되 제외 건수를 반환한다.
  */
+// 한글 이름 정렬용 비교기 (localeCompare를 수천 번 부르는 것보다 훨씬 빠르고 결과는 같다)
+const KO_COLLATOR = new Intl.Collator('ko');
+
 export function filterAndClassifyRestaurants(restaurants = [], filterState = {}, visitRecords = []) {
   const {
     mode = 'general',
@@ -835,6 +838,8 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
   const needsCheckList = [];
   const excludedUnmetList = [];
 
+  // 오늘 날짜(한국 시간)는 식당마다 다시 구하지 않고 한 번만 구한다
+  const todayStr = referenceDateStr || getKoreaDateTimeParts(new Date())?.dateStr || null;
   for (const place of restaurants) {
     // 지역 필터
     if (allowedRegionSet && !allowedRegionSet.has(place.regionCode)) continue;
@@ -893,9 +898,9 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       if (!literalMatch && !landmarkRadiusMatch) continue;
     }
 
-    const groupMatch = evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr });
-    const visitSummary = aggregateVisitRecordsForRestaurant(visitRecords, place.id, referenceDateStr);
-    const designationSummary = evaluateOfficialDesignations(place, referenceDateStr);
+    const groupMatch = evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr: todayStr });
+    const visitSummary = aggregateVisitRecordsForRestaurant(visitRecords, place.id, todayStr);
+    const designationSummary = evaluateOfficialDesignations(place, todayStr);
     const kidFriendlySummary = evaluateElementaryMenuFriendliness(place);
     const modeScore = computeModeRecommendationScore(place, mode);
 
@@ -961,7 +966,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     if (sortBy === 'default' && a.modeScore !== b.modeScore) {
       return b.modeScore - a.modeScore;
     }
-    return a.name.localeCompare(b.name, 'ko');
+    return KO_COLLATOR.compare(a.name, b.name);
   };
 
   confirmedMetList.sort(sortFn);

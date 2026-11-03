@@ -28,6 +28,14 @@ export async function computeSha256Hex(text) {
   return nodeCrypto.createHash('sha256').update(str, 'utf8').digest('hex');
 }
 
+/** 받은 바이트 그대로의 SHA-256 hex (문자열로 풀었다가 다시 인코딩하는 비용을 줄인다) */
+async function computeSha256HexOfBytes(bytes) {
+  const hashBuffer = await globalThis.crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
 export class DatasetRepository {
   constructor(options = {}) {
     this.appBase = options.appBase || APP_BASE;
@@ -87,7 +95,10 @@ export class DatasetRepository {
     }
 
     const contentType = response.headers?.get?.('content-type') || '';
-    const rawText = await response.text();
+    // 체크섬은 받은 바이트로 바로 계산하고, 글자로는 한 번만 푼다
+    const canHashBytes = Boolean(expectedChecksum && globalThis.crypto?.subtle && typeof response.arrayBuffer === 'function');
+    const rawBytes = canHashBytes ? await response.arrayBuffer() : null;
+    const rawText = rawBytes ? new TextDecoder().decode(rawBytes) : await response.text();
 
     // HTML 대체 응답이 JSON 대신 반환된 경우(AC26) 즉시 차단
     if (contentType.includes('text/html') || rawText.trim().startsWith('<!DOCTYPE') || rawText.trim().startsWith('<html')) {
@@ -97,7 +108,7 @@ export class DatasetRepository {
     }
 
     if (expectedChecksum) {
-      const actualChecksum = await computeSha256Hex(rawText);
+      const actualChecksum = rawBytes ? await computeSha256HexOfBytes(rawBytes) : await computeSha256Hex(rawText);
       if (actualChecksum !== expectedChecksum) {
         const error = new Error(`체크섬 불일치: ${relativePath} (기대: ${expectedChecksum.slice(0, 12)}…, 실제: ${actualChecksum.slice(0, 12)}…)`);
         error.code = 'CHECKSUM_MISMATCH';
@@ -326,10 +337,10 @@ export class DatasetRepository {
       targetCodes = [regionCode];
     }
 
-    // 여러 지역 파일을 받는 경우(전국·권역) 4분의 1이 도착하면 그때까지의 식당을 한 번 먼저 넘겨 화면을 일찍 그린다
+    // 여러 지역 파일을 받는 경우(전국·권역) 8분의 1이 도착하면 그때까지의 식당을 한 번 먼저 넘겨 화면을 일찍 그린다
     const arrived = [];
     let partialSent = false;
-    const partialThreshold = Math.ceil(targetCodes.length / 4);
+    const partialThreshold = Math.ceil(targetCodes.length / 8);
     const notifyPartial = () => {
       if (!onPartial || partialSent || targetCodes.length < 4) return;
       if (arrived.length < partialThreshold || arrived.length >= targetCodes.length) return;
