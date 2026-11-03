@@ -129,6 +129,7 @@ export class YskFoodApp {
     this.lastFocusedElement = null;
     this.waitingServiceWorker = null;
     this.userDismissedHome = false;
+    this.loadingProgress = null;
 
     this.mapController = new MapController({
       onSelectPlace: (placeId, fromList) => this.selectPlace(placeId, fromList),
@@ -390,7 +391,18 @@ export class YskFoodApp {
    * 선택 지역 데이터 로드 및 상태 반영(AC07, AC08, AC39)
    */
   async loadSelectedRegionData(regionCode) {
-    const res = await this.repository.selectRegion(regionCode);
+    // 전국·권역처럼 파일이 많으면 일부가 도착했을 때 지도·목록을 먼저 그리고, 다 받으면 다시 그린다
+    const res = await this.repository.selectRegion(regionCode, {
+      onPartial: partial => {
+        this.loadingProgress = `${partial.loadedRegionCount}/${partial.totalRegionCount}`;
+        this.currentRestaurants = partial.restaurants;
+        this.currentVenues = partial.venues;
+        this.currentVisitRecords = partial.visitRecords;
+        this.currentSources = partial.sources;
+        this.applyFilters(true);
+      }
+    });
+    this.loadingProgress = null;
     if (res.stale) return res; // 경합으로 폐기된 이전 요청 무시(AC07)
 
     this.currentRestaurants = res.restaurants || [];
@@ -530,6 +542,7 @@ export class YskFoodApp {
       countEl.textContent = hasGroupCriteria
         ? `후보 ${counts.totalMatched}곳 (충족 ${counts.confirmedMet} · 확인필요 ${counts.needsCheck})`
         : `맛집 ${counts.totalMatched}곳 (표시 ${pageSlice.shownCount}곳)`;
+      if (this.loadingProgress) countEl.textContent += ' · 나머지 지역 불러오는 중…';
     }
     if (sortNoteEl) {
       sortNoteEl.textContent = activeRefPoint

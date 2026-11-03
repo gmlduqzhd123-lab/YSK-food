@@ -296,7 +296,7 @@ export class DatasetRepository {
    * - 선택 지역 JSON 실패 시 다른 지역 캐시를 현재 지역으로 표시하지 않는다(AC08).
    * - 새 묶음의 지역 파일이 실패했을 때 같은 지역을 포함한 이전 완전한 묶음이 있으면 묶음 전체를 이전 버전으로 일관되게 전환한다(AC39).
    */
-  async selectRegion(regionCode) {
+  async selectRegion(regionCode, { onPartial = null } = {}) {
     const requestSeq = ++this.activeRegionSeq;
     let bundle = this.getActiveBundle();
     if (!bundle) {
@@ -326,9 +326,38 @@ export class DatasetRepository {
       targetCodes = [regionCode];
     }
 
+    // 여러 지역 파일을 받는 경우(전국·권역) 4분의 1이 도착하면 그때까지의 식당을 한 번 먼저 넘겨 화면을 일찍 그린다
+    const arrived = [];
+    let partialSent = false;
+    const partialThreshold = Math.ceil(targetCodes.length / 4);
+    const notifyPartial = () => {
+      if (!onPartial || partialSent || targetCodes.length < 4) return;
+      if (arrived.length < partialThreshold || arrived.length >= targetCodes.length) return;
+      if (requestSeq !== this.activeRegionSeq) return;
+      partialSent = true;
+      const restaurants = [];
+      for (const rData of arrived) {
+        const regMeta = bundle.regionsFile.regions.find(rg => rg.regionCode === rData.regionCode);
+        for (const rest of rData.restaurants) restaurants.push(hydrateRestaurantForUi(rest, regMeta));
+      }
+      onPartial({
+        regionCode,
+        loadedRegionCount: arrived.length,
+        totalRegionCount: targetCodes.length,
+        restaurants,
+        venues: arrived.flatMap(r => r.venues || []),
+        visitRecords: arrived.flatMap(r => r.visitRecords || []),
+        sources: arrived.flatMap(r => r.sources || [])
+      });
+    };
+
     try {
       const loadedResults = await Promise.all(
-        targetCodes.map(code => this.fetchRegionDatasetForBundle(bundle, code))
+        targetCodes.map(code => this.fetchRegionDatasetForBundle(bundle, code).then(res => {
+          arrived.push(res.regionData);
+          notifyPartial();
+          return res;
+        }))
       );
       const loadedRegions = loadedResults.map(res => res.regionData);
 
