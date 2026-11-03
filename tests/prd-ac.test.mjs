@@ -13,7 +13,11 @@ import {
   EVENT_PRESETS,
   PAGE_SIZE,
   resolveAppBase,
-  resolveAppUrl
+  resolveAppUrl,
+  REGION_GROUPS,
+  SEOUL_GU_REGIONS,
+  GYEONGGI_CITY_REGIONS,
+  splitMetroRegionCode
 } from '../assets/releases/v2.0.0/js/config.js';
 
 import {
@@ -1167,7 +1171,8 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     assert.ok(regionSet.has('jb-jeonju'));
     assert.ok(regionSet.has('jj-jeju'));
     // 식당이 있는 지역 = 여수·순천·광양 + 카카오맵 확인 식당이 들어간 지역 (보성군도 2026-11-03 지역 보강으로 식당이 생김)
-    const expectedRegions = new Set(['jn-yeosu', 'jn-suncheon', 'jn-gwangyang', ...KAKAO_VERIFIED.restaurants.map(r => r.regionCode)]);
+    // 서울(종로 외)·경기(수원·용인 외) 식당은 주소의 구·시·군 지역으로 나뉜다
+    const expectedRegions = new Set(['jn-yeosu', 'jn-suncheon', 'jn-gwangyang', ...KAKAO_VERIFIED.restaurants.map(r => splitMetroRegionCode(r.regionCode, r.address))]);
     assert.equal(regionSet.size, expectedRegions.size);
     assert.equal(regionSet.has('jn-boseong'), true);
 
@@ -1358,3 +1363,45 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
   });
 });
 
+
+describe('서울·경기 구·시·군 지역 나누기 (2026-11-04)', () => {
+  test('서울(종로 외)·경기(수원·용인 외) 식당이 주소의 구·시·군 지역에 담기고, 예전 주소는 서울·경기 전체 묶음으로 열린다', async () => {
+    const repo = new DatasetRepository({
+      appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
+      fetchFn: createLocalFileFetch()
+    });
+    await repo.loadCoreBundle();
+    const regionCodes = new Set(repo.getRegionsList().map(r => r.regionCode));
+
+    // 나누기 전의 넓은 지역은 더 이상 개별 지역 파일이 아니다
+    assert.equal(regionCodes.has('seoul-etc'), false);
+    assert.equal(regionCodes.has('gyeonggi-etc'), false);
+    for (const reg of [...SEOUL_GU_REGIONS, ...GYEONGGI_CITY_REGIONS]) {
+      assert.ok(regionCodes.has(reg.regionCode), `${reg.regionCode} 지역이 있어야 함`);
+      assert.ok(REGION_GROUPS['seoul-metro'].regionCodes.includes(reg.regionCode), `${reg.regionCode}는 서울·수도권 권역에 포함`);
+    }
+
+    // 각 구·시·군 지역의 식당 주소는 그 구·시·군이다
+    for (const reg of [SEOUL_GU_REGIONS[0], GYEONGGI_CITY_REGIONS[0]]) {
+      const res = await repo.selectRegion(reg.regionCode);
+      assert.equal(res.status, 'ok');
+      assert.ok(res.restaurants.length > 0);
+      assert.ok(res.restaurants.every(r => r.address.includes(reg.name)), `${reg.name} 주소만 있어야 함`);
+    }
+
+    // 예전 공유 주소(?region=seoul-etc)는 서울 전체 묶음(종로 포함)으로 열린다
+    const seoulAll = await repo.selectRegion('seoul-etc');
+    assert.equal(seoulAll.status, 'ok');
+    const seoulCodes = new Set(seoulAll.restaurants.map(r => r.regionCode));
+    assert.ok(seoulCodes.has('seoul-jongno') && seoulCodes.has('seoul-gangnam'));
+    const gyeonggiAll = await repo.selectRegion('gyeonggi-etc');
+    assert.equal(gyeonggiAll.status, 'ok');
+    assert.ok(new Set(gyeonggiAll.restaurants.map(r => r.regionCode)).has('gyeonggi-suwon'));
+
+    // 주소로 나누는 규칙
+    assert.equal(splitMetroRegionCode('seoul-etc', '서울특별시 마포구 와우산로 1'), 'seoul-mapo');
+    assert.equal(splitMetroRegionCode('gyeonggi-etc', '경기 광주시 오포읍 1'), 'gyeonggi-gwangju');
+    assert.equal(splitMetroRegionCode('gyeonggi-etc', '경기도 남양주시 1'), 'gyeonggi-namyangju');
+    assert.equal(splitMetroRegionCode('jn-yeosu', '서울 강남구 1'), 'jn-yeosu');
+  });
+});

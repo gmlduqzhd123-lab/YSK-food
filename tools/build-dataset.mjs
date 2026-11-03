@@ -12,7 +12,10 @@ import {
 } from '../assets/releases/v2.0.0/js/data/normalize.js';
 import {
   DEFAULT_DATASET_VERSION,
-  PUBLIC_SCHEMA_VERSION
+  PUBLIC_SCHEMA_VERSION,
+  SEOUL_GU_REGIONS,
+  GYEONGGI_CITY_REGIONS,
+  splitMetroRegionCode
 } from '../assets/releases/v2.0.0/js/config.js';
 import {
   NATIONWIDE_EXTRA_REGIONS,
@@ -405,6 +408,41 @@ const REGIONS_DEF = [
 for (const reg of KAKAO_VERIFIED_1000.regions) {
   if (!REGIONS_DEF.some(r => r.regionCode === reg.regionCode)) REGIONS_DEF.push(reg);
 }
+// 서울(종로 외)·경기(수원·용인 외)는 구·시·군 단위 지역으로 나눈다 (지도 범위는 식당 좌표로 나중에 계산)
+for (const [parentCode, children, sidoShort] of [['seoul-etc', SEOUL_GU_REGIONS, '서울'], ['gyeonggi-etc', GYEONGGI_CITY_REGIONS, '경기']]) {
+  const at = REGIONS_DEF.findIndex(r => r.regionCode === parentCode);
+  const parent = REGIONS_DEF[at];
+  const defs = children.map(child => ({
+    regionCode: child.regionCode,
+    parentCode: parent.parentCode,
+    sidoName: parent.sidoName,
+    level: 'sigungu',
+    name: child.name,
+    shortName: child.shortName,
+    aliases: [...new Set([child.name, child.shortName, `${sidoShort} ${child.name}`, `${parent.sidoName} ${child.name}`])],
+    center: parent.center,
+    bounds: parent.bounds
+  }));
+  REGIONS_DEF.splice(at, 1, ...defs);
+}
+const SPLIT_REGION_CODES = new Set([...SEOUL_GU_REGIONS, ...GYEONGGI_CITY_REGIONS].map(r => r.regionCode));
+
+// 식당 좌표로 지역의 지도 중심·범위를 정한다 (좌표가 한 곳뿐이어도 보이도록 여유를 둔다)
+function fitRegionToRestaurants(reg, restaurants) {
+  const pts = restaurants.filter(r => r.location?.lat && r.location?.lng).map(r => [r.location.lat, r.location.lng]);
+  if (!pts.length) return;
+  const lats = pts.map(p => p[0]).sort((a, b) => a - b);
+  const lngs = pts.map(p => p[1]).sort((a, b) => a - b);
+  // 멀리 떨어진 한두 곳 때문에 범위가 커지지 않게 양 끝 2%는 뺀다
+  const cut = arr => [arr[Math.floor((arr.length - 1) * 0.02)], arr[Math.ceil((arr.length - 1) * 0.98)]];
+  const [s, n] = cut(lats);
+  const [w, e] = cut(lngs);
+  const pad = 0.01;
+  const round = v => Math.round(v * 1000) / 1000;
+  reg.bounds = { sw: { lat: round(s - pad), lng: round(w - pad) }, ne: { lat: round(n + pad), lng: round(e + pad) } };
+  const span = Math.max(n - s, e - w);
+  reg.center = { lat: round((s + n) / 2), lng: round((w + e) / 2), zoomLevel: span < 0.06 ? 6 : span < 0.12 ? 7 : span < 0.25 ? 8 : 9 };
+}
 
 const BASE_VENUES_BY_REGION = {
   'jn-yeosu': [
@@ -600,10 +638,14 @@ function buildDataset() {
     if (KAKAO_REFRESH.places[r.id]?.notFound || KAKAO_RECHECK.missing?.[r.id]) continue;
     applyKakaoRefresh(r);
     applyKakaoFacilities(r);
+    r.regionCode = splitMetroRegionCode(r.regionCode, r.address);
     if (!restaurantsByRegion[r.regionCode]) {
       restaurantsByRegion[r.regionCode] = [];
     }
     restaurantsByRegion[r.regionCode].push(r);
+  }
+  for (const reg of REGIONS_DEF) {
+    if (SPLIT_REGION_CODES.has(reg.regionCode)) fitRegionToRestaurants(reg, restaurantsByRegion[reg.regionCode] || []);
   }
 
   const favoriteKeys = {};
