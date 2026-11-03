@@ -737,69 +737,1908 @@
       }
     },
     {
-      "regionCode": "seoul-etc",
+      "regionCode": "seoul-gangnam",
       "parentCode": "seoul",
       "sidoName": "서울특별시",
-      "level": "sido",
-      "name": "서울 (종로 외)",
-      "shortName": "서울",
+      "level": "sigungu",
+      "name": "강남구",
+      "shortName": "강남",
       "aliases": [
-        "서울",
-        "서울특별시"
+        "강남구",
+        "강남",
+        "서울 강남구",
+        "서울특별시 강남구"
       ],
       "center": {
-        "lat": 37.5585,
-        "lng": 126.9755,
-        "zoomLevel": 11
+        "lat": 37.503,
+        "lng": 127.058,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 37.393,
-          "lng": 126.758
+          "lat": 37.469,
+          "lng": 127.011
         },
         "ne": {
-          "lat": 37.724,
-          "lng": 127.193
+          "lat": 37.537,
+          "lng": 127.104
         }
       },
-      "datasetPath": "data/releases/2026.10.1/regions/seoul-etc.json",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gangnam.json",
       "stats": {
-        "totalRestaurants": 1100,
-        "groupVerifiedCount": 742,
+        "totalRestaurants": 112,
+        "groupVerifiedCount": 79,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }
     },
     {
-      "regionCode": "gyeonggi-etc",
-      "parentCode": "gyeonggi",
-      "sidoName": "경기도",
-      "level": "sido",
-      "name": "경기 (수원·용인 외)",
-      "shortName": "경기",
+      "regionCode": "seoul-seocho",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "서초구",
+      "shortName": "서초",
       "aliases": [
-        "경기",
-        "경기도"
+        "서초구",
+        "서초",
+        "서울 서초구",
+        "서울특별시 서초구"
       ],
       "center": {
-        "lat": 37.4551,
-        "lng": 127.0858,
-        "zoomLevel": 11
+        "lat": 37.474,
+        "lng": 127.027,
+        "zoomLevel": 7
       },
       "bounds": {
         "sw": {
-          "lat": 36.947,
-          "lng": 126.536
+          "lat": 37.42,
+          "lng": 126.973
         },
         "ne": {
-          "lat": 37.963,
-          "lng": 127.636
+          "lat": 37.527,
+          "lng": 127.081
         }
       },
-      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-etc.json",
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-seocho.json",
       "stats": {
-        "totalRestaurants": 900,
-        "groupVerifiedCount": 614,
+        "totalRestaurants": 49,
+        "groupVerifiedCount": 43,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-songpa",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "송파구",
+      "shortName": "송파",
+      "aliases": [
+        "송파구",
+        "송파",
+        "서울 송파구",
+        "서울특별시 송파구"
+      ],
+      "center": {
+        "lat": 37.504,
+        "lng": 127.119,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.468,
+          "lng": 127.073
+        },
+        "ne": {
+          "lat": 37.539,
+          "lng": 127.164
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-songpa.json",
+      "stats": {
+        "totalRestaurants": 65,
+        "groupVerifiedCount": 47,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-gangdong",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "강동구",
+      "shortName": "강동",
+      "aliases": [
+        "강동구",
+        "강동",
+        "서울 강동구",
+        "서울특별시 강동구"
+      ],
+      "center": {
+        "lat": 37.542,
+        "lng": 127.148,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.512,
+          "lng": 127.112
+        },
+        "ne": {
+          "lat": 37.571,
+          "lng": 127.184
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gangdong.json",
+      "stats": {
+        "totalRestaurants": 29,
+        "groupVerifiedCount": 18,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-mapo",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "마포구",
+      "shortName": "마포",
+      "aliases": [
+        "마포구",
+        "마포",
+        "서울 마포구",
+        "서울특별시 마포구"
+      ],
+      "center": {
+        "lat": 37.559,
+        "lng": 126.923,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.53,
+          "lng": 126.881
+        },
+        "ne": {
+          "lat": 37.589,
+          "lng": 126.965
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-mapo.json",
+      "stats": {
+        "totalRestaurants": 78,
+        "groupVerifiedCount": 55,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-yongsan",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "용산구",
+      "shortName": "용산",
+      "aliases": [
+        "용산구",
+        "용산",
+        "서울 용산구",
+        "서울특별시 용산구"
+      ],
+      "center": {
+        "lat": 37.535,
+        "lng": 126.981,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.508,
+          "lng": 126.949
+        },
+        "ne": {
+          "lat": 37.562,
+          "lng": 127.012
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-yongsan.json",
+      "stats": {
+        "totalRestaurants": 68,
+        "groupVerifiedCount": 46,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-junggu",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "중구",
+      "shortName": "서울 중구",
+      "aliases": [
+        "중구",
+        "서울 중구",
+        "서울특별시 중구"
+      ],
+      "center": {
+        "lat": 37.561,
+        "lng": 126.992,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.543,
+          "lng": 126.958
+        },
+        "ne": {
+          "lat": 37.579,
+          "lng": 127.027
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-junggu.json",
+      "stats": {
+        "totalRestaurants": 76,
+        "groupVerifiedCount": 60,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-seongdong",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "성동구",
+      "shortName": "성동",
+      "aliases": [
+        "성동구",
+        "성동",
+        "서울 성동구",
+        "서울특별시 성동구"
+      ],
+      "center": {
+        "lat": 37.552,
+        "lng": 127.043,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.527,
+          "lng": 127.012
+        },
+        "ne": {
+          "lat": 37.577,
+          "lng": 127.075
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-seongdong.json",
+      "stats": {
+        "totalRestaurants": 41,
+        "groupVerifiedCount": 36,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-gwangjin",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "광진구",
+      "shortName": "광진",
+      "aliases": [
+        "광진구",
+        "광진",
+        "서울 광진구",
+        "서울특별시 광진구"
+      ],
+      "center": {
+        "lat": 37.552,
+        "lng": 127.085,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.524,
+          "lng": 127.053
+        },
+        "ne": {
+          "lat": 37.58,
+          "lng": 127.117
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gwangjin.json",
+      "stats": {
+        "totalRestaurants": 45,
+        "groupVerifiedCount": 34,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-dongdaemun",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "동대문구",
+      "shortName": "동대문",
+      "aliases": [
+        "동대문구",
+        "동대문",
+        "서울 동대문구",
+        "서울특별시 동대문구"
+      ],
+      "center": {
+        "lat": 37.582,
+        "lng": 127.049,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.553,
+          "lng": 127.016
+        },
+        "ne": {
+          "lat": 37.611,
+          "lng": 127.083
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-dongdaemun.json",
+      "stats": {
+        "totalRestaurants": 39,
+        "groupVerifiedCount": 25,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-jungnang",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "중랑구",
+      "shortName": "중랑",
+      "aliases": [
+        "중랑구",
+        "중랑",
+        "서울 중랑구",
+        "서울특별시 중랑구"
+      ],
+      "center": {
+        "lat": 37.595,
+        "lng": 127.088,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.563,
+          "lng": 127.064
+        },
+        "ne": {
+          "lat": 37.626,
+          "lng": 127.111
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-jungnang.json",
+      "stats": {
+        "totalRestaurants": 29,
+        "groupVerifiedCount": 15,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-seongbuk",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "성북구",
+      "shortName": "성북",
+      "aliases": [
+        "성북구",
+        "성북",
+        "서울 성북구",
+        "서울특별시 성북구"
+      ],
+      "center": {
+        "lat": 37.599,
+        "lng": 127.03,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.574,
+          "lng": 126.984
+        },
+        "ne": {
+          "lat": 37.624,
+          "lng": 127.075
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-seongbuk.json",
+      "stats": {
+        "totalRestaurants": 28,
+        "groupVerifiedCount": 20,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-gangbuk",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "강북구",
+      "shortName": "강북",
+      "aliases": [
+        "강북구",
+        "강북",
+        "서울 강북구",
+        "서울특별시 강북구"
+      ],
+      "center": {
+        "lat": 37.63,
+        "lng": 127.022,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.603,
+          "lng": 127
+        },
+        "ne": {
+          "lat": 37.657,
+          "lng": 127.044
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gangbuk.json",
+      "stats": {
+        "totalRestaurants": 13,
+        "groupVerifiedCount": 8,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-dobong",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "도봉구",
+      "shortName": "도봉",
+      "aliases": [
+        "도봉구",
+        "도봉",
+        "서울 도봉구",
+        "서울특별시 도봉구"
+      ],
+      "center": {
+        "lat": 37.661,
+        "lng": 127.032,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.624,
+          "lng": 127.008
+        },
+        "ne": {
+          "lat": 37.698,
+          "lng": 127.056
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-dobong.json",
+      "stats": {
+        "totalRestaurants": 27,
+        "groupVerifiedCount": 9,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-nowon",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "노원구",
+      "shortName": "노원",
+      "aliases": [
+        "노원구",
+        "노원",
+        "서울 노원구",
+        "서울특별시 노원구"
+      ],
+      "center": {
+        "lat": 37.646,
+        "lng": 127.068,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.606,
+          "lng": 127.043
+        },
+        "ne": {
+          "lat": 37.687,
+          "lng": 127.093
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-nowon.json",
+      "stats": {
+        "totalRestaurants": 38,
+        "groupVerifiedCount": 22,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-eunpyeong",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "은평구",
+      "shortName": "은평",
+      "aliases": [
+        "은평구",
+        "은평",
+        "서울 은평구",
+        "서울특별시 은평구"
+      ],
+      "center": {
+        "lat": 37.621,
+        "lng": 126.931,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.576,
+          "lng": 126.903
+        },
+        "ne": {
+          "lat": 37.666,
+          "lng": 126.959
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-eunpyeong.json",
+      "stats": {
+        "totalRestaurants": 42,
+        "groupVerifiedCount": 27,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-seodaemun",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "서대문구",
+      "shortName": "서대문",
+      "aliases": [
+        "서대문구",
+        "서대문",
+        "서울 서대문구",
+        "서울특별시 서대문구"
+      ],
+      "center": {
+        "lat": 37.578,
+        "lng": 126.941,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.547,
+          "lng": 126.904
+        },
+        "ne": {
+          "lat": 37.609,
+          "lng": 126.977
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-seodaemun.json",
+      "stats": {
+        "totalRestaurants": 55,
+        "groupVerifiedCount": 30,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-yeongdeungpo",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "영등포구",
+      "shortName": "영등포",
+      "aliases": [
+        "영등포구",
+        "영등포",
+        "서울 영등포구",
+        "서울특별시 영등포구"
+      ],
+      "center": {
+        "lat": 37.519,
+        "lng": 126.912,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.482,
+          "lng": 126.875
+        },
+        "ne": {
+          "lat": 37.555,
+          "lng": 126.949
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-yeongdeungpo.json",
+      "stats": {
+        "totalRestaurants": 46,
+        "groupVerifiedCount": 40,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-dongjak",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "동작구",
+      "shortName": "동작",
+      "aliases": [
+        "동작구",
+        "동작",
+        "서울 동작구",
+        "서울특별시 동작구"
+      ],
+      "center": {
+        "lat": 37.497,
+        "lng": 126.946,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.47,
+          "lng": 126.9
+        },
+        "ne": {
+          "lat": 37.523,
+          "lng": 126.992
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-dongjak.json",
+      "stats": {
+        "totalRestaurants": 24,
+        "groupVerifiedCount": 15,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-gwanak",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "관악구",
+      "shortName": "관악",
+      "aliases": [
+        "관악구",
+        "관악",
+        "서울 관악구",
+        "서울특별시 관악구"
+      ],
+      "center": {
+        "lat": 37.48,
+        "lng": 126.946,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.459,
+          "lng": 126.901
+        },
+        "ne": {
+          "lat": 37.5,
+          "lng": 126.99
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gwanak.json",
+      "stats": {
+        "totalRestaurants": 59,
+        "groupVerifiedCount": 34,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-guro",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "구로구",
+      "shortName": "구로",
+      "aliases": [
+        "구로구",
+        "구로",
+        "서울 구로구",
+        "서울특별시 구로구"
+      ],
+      "center": {
+        "lat": 37.496,
+        "lng": 126.871,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.47,
+          "lng": 126.831
+        },
+        "ne": {
+          "lat": 37.522,
+          "lng": 126.912
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-guro.json",
+      "stats": {
+        "totalRestaurants": 41,
+        "groupVerifiedCount": 22,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-geumcheon",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "금천구",
+      "shortName": "금천",
+      "aliases": [
+        "금천구",
+        "금천",
+        "서울 금천구",
+        "서울특별시 금천구"
+      ],
+      "center": {
+        "lat": 37.464,
+        "lng": 126.893,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.432,
+          "lng": 126.867
+        },
+        "ne": {
+          "lat": 37.495,
+          "lng": 126.918
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-geumcheon.json",
+      "stats": {
+        "totalRestaurants": 27,
+        "groupVerifiedCount": 16,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-yangcheon",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "양천구",
+      "shortName": "양천",
+      "aliases": [
+        "양천구",
+        "양천",
+        "서울 양천구",
+        "서울특별시 양천구"
+      ],
+      "center": {
+        "lat": 37.529,
+        "lng": 126.855,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.5,
+          "lng": 126.824
+        },
+        "ne": {
+          "lat": 37.559,
+          "lng": 126.886
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-yangcheon.json",
+      "stats": {
+        "totalRestaurants": 25,
+        "groupVerifiedCount": 14,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "seoul-gangseo",
+      "parentCode": "seoul",
+      "sidoName": "서울특별시",
+      "level": "sigungu",
+      "name": "강서구",
+      "shortName": "서울 강서",
+      "aliases": [
+        "강서구",
+        "서울 강서",
+        "서울 강서구",
+        "서울특별시 강서구"
+      ],
+      "center": {
+        "lat": 37.554,
+        "lng": 126.838,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.519,
+          "lng": 126.793
+        },
+        "ne": {
+          "lat": 37.589,
+          "lng": 126.882
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/seoul-gangseo.json",
+      "stats": {
+        "totalRestaurants": 44,
+        "groupVerifiedCount": 27,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-seongnam",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "성남시",
+      "shortName": "성남",
+      "aliases": [
+        "성남시",
+        "성남",
+        "경기 성남시",
+        "경기도 성남시"
+      ],
+      "center": {
+        "lat": 37.411,
+        "lng": 127.114,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.339,
+          "lng": 127.05
+        },
+        "ne": {
+          "lat": 37.483,
+          "lng": 127.178
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-seongnam.json",
+      "stats": {
+        "totalRestaurants": 46,
+        "groupVerifiedCount": 34,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-goyang",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "고양시",
+      "shortName": "고양",
+      "aliases": [
+        "고양시",
+        "고양",
+        "경기 고양시",
+        "경기도 고양시"
+      ],
+      "center": {
+        "lat": 37.664,
+        "lng": 126.807,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.609,
+          "lng": 126.707
+        },
+        "ne": {
+          "lat": 37.719,
+          "lng": 126.907
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-goyang.json",
+      "stats": {
+        "totalRestaurants": 67,
+        "groupVerifiedCount": 47,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-bucheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "부천시",
+      "shortName": "부천",
+      "aliases": [
+        "부천시",
+        "부천",
+        "경기 부천시",
+        "경기도 부천시"
+      ],
+      "center": {
+        "lat": 37.507,
+        "lng": 126.787,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.461,
+          "lng": 126.741
+        },
+        "ne": {
+          "lat": 37.552,
+          "lng": 126.834
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-bucheon.json",
+      "stats": {
+        "totalRestaurants": 44,
+        "groupVerifiedCount": 27,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-anyang",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "안양시",
+      "shortName": "안양",
+      "aliases": [
+        "안양시",
+        "안양",
+        "경기 안양시",
+        "경기도 안양시"
+      ],
+      "center": {
+        "lat": 37.397,
+        "lng": 126.932,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.359,
+          "lng": 126.874
+        },
+        "ne": {
+          "lat": 37.435,
+          "lng": 126.989
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-anyang.json",
+      "stats": {
+        "totalRestaurants": 38,
+        "groupVerifiedCount": 29,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-ansan",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "안산시",
+      "shortName": "안산",
+      "aliases": [
+        "안산시",
+        "안산",
+        "경기 안산시",
+        "경기도 안산시"
+      ],
+      "center": {
+        "lat": 37.293,
+        "lng": 126.721,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.234,
+          "lng": 126.559
+        },
+        "ne": {
+          "lat": 37.353,
+          "lng": 126.882
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-ansan.json",
+      "stats": {
+        "totalRestaurants": 67,
+        "groupVerifiedCount": 47,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-hwaseong",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "화성시",
+      "shortName": "화성",
+      "aliases": [
+        "화성시",
+        "화성",
+        "경기 화성시",
+        "경기도 화성시"
+      ],
+      "center": {
+        "lat": 37.131,
+        "lng": 126.906,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.017,
+          "lng": 126.663
+        },
+        "ne": {
+          "lat": 37.244,
+          "lng": 127.149
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-hwaseong.json",
+      "stats": {
+        "totalRestaurants": 43,
+        "groupVerifiedCount": 25,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-pyeongtaek",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "평택시",
+      "shortName": "평택",
+      "aliases": [
+        "평택시",
+        "평택",
+        "경기 평택시",
+        "경기도 평택시"
+      ],
+      "center": {
+        "lat": 37.012,
+        "lng": 127.02,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 36.916,
+          "lng": 126.895
+        },
+        "ne": {
+          "lat": 37.108,
+          "lng": 127.146
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-pyeongtaek.json",
+      "stats": {
+        "totalRestaurants": 38,
+        "groupVerifiedCount": 25,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-siheung",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "시흥시",
+      "shortName": "시흥",
+      "aliases": [
+        "시흥시",
+        "시흥",
+        "경기 시흥시",
+        "경기도 시흥시"
+      ],
+      "center": {
+        "lat": 37.391,
+        "lng": 126.759,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.311,
+          "lng": 126.667
+        },
+        "ne": {
+          "lat": 37.472,
+          "lng": 126.85
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-siheung.json",
+      "stats": {
+        "totalRestaurants": 49,
+        "groupVerifiedCount": 39,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-paju",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "파주시",
+      "shortName": "파주",
+      "aliases": [
+        "파주시",
+        "파주",
+        "경기 파주시",
+        "경기도 파주시"
+      ],
+      "center": {
+        "lat": 37.801,
+        "lng": 126.787,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.696,
+          "lng": 126.674
+        },
+        "ne": {
+          "lat": 37.907,
+          "lng": 126.9
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-paju.json",
+      "stats": {
+        "totalRestaurants": 50,
+        "groupVerifiedCount": 34,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gimpo",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "김포시",
+      "shortName": "김포",
+      "aliases": [
+        "김포시",
+        "김포",
+        "경기 김포시",
+        "경기도 김포시"
+      ],
+      "center": {
+        "lat": 37.658,
+        "lng": 126.671,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.587,
+          "lng": 126.562
+        },
+        "ne": {
+          "lat": 37.729,
+          "lng": 126.78
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gimpo.json",
+      "stats": {
+        "totalRestaurants": 38,
+        "groupVerifiedCount": 28,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-uijeongbu",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "의정부시",
+      "shortName": "의정부",
+      "aliases": [
+        "의정부시",
+        "의정부",
+        "경기 의정부시",
+        "경기도 의정부시"
+      ],
+      "center": {
+        "lat": 37.735,
+        "lng": 127.069,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.694,
+          "lng": 127.016
+        },
+        "ne": {
+          "lat": 37.775,
+          "lng": 127.122
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-uijeongbu.json",
+      "stats": {
+        "totalRestaurants": 39,
+        "groupVerifiedCount": 21,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-namyangju",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "남양주시",
+      "shortName": "남양주",
+      "aliases": [
+        "남양주시",
+        "남양주",
+        "경기 남양주시",
+        "경기도 남양주시"
+      ],
+      "center": {
+        "lat": 37.644,
+        "lng": 127.221,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.527,
+          "lng": 127.092
+        },
+        "ne": {
+          "lat": 37.76,
+          "lng": 127.351
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-namyangju.json",
+      "stats": {
+        "totalRestaurants": 48,
+        "groupVerifiedCount": 36,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gwangju",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "광주시",
+      "shortName": "경기 광주",
+      "aliases": [
+        "광주시",
+        "경기 광주",
+        "경기 광주시",
+        "경기도 광주시"
+      ],
+      "center": {
+        "lat": 37.386,
+        "lng": 127.255,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.326,
+          "lng": 127.207
+        },
+        "ne": {
+          "lat": 37.445,
+          "lng": 127.304
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwangju.json",
+      "stats": {
+        "totalRestaurants": 11,
+        "groupVerifiedCount": 4,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-hanam",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "하남시",
+      "shortName": "하남",
+      "aliases": [
+        "하남시",
+        "하남",
+        "경기 하남시",
+        "경기도 하남시"
+      ],
+      "center": {
+        "lat": 37.546,
+        "lng": 127.214,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.512,
+          "lng": 127.18
+        },
+        "ne": {
+          "lat": 37.581,
+          "lng": 127.248
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-hanam.json",
+      "stats": {
+        "totalRestaurants": 22,
+        "groupVerifiedCount": 21,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gwangmyeong",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "광명시",
+      "shortName": "광명",
+      "aliases": [
+        "광명시",
+        "광명",
+        "경기 광명시",
+        "경기도 광명시"
+      ],
+      "center": {
+        "lat": 37.45,
+        "lng": 126.868,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.408,
+          "lng": 126.84
+        },
+        "ne": {
+          "lat": 37.491,
+          "lng": 126.897
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwangmyeong.json",
+      "stats": {
+        "totalRestaurants": 21,
+        "groupVerifiedCount": 14,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gunpo",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "군포시",
+      "shortName": "군포",
+      "aliases": [
+        "군포시",
+        "군포",
+        "경기 군포시",
+        "경기도 군포시"
+      ],
+      "center": {
+        "lat": 37.347,
+        "lng": 126.92,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.313,
+          "lng": 126.883
+        },
+        "ne": {
+          "lat": 37.381,
+          "lng": 126.957
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gunpo.json",
+      "stats": {
+        "totalRestaurants": 17,
+        "groupVerifiedCount": 8,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-yangju",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "양주시",
+      "shortName": "양주",
+      "aliases": [
+        "양주시",
+        "양주",
+        "경기 양주시",
+        "경기도 양주시"
+      ],
+      "center": {
+        "lat": 37.84,
+        "lng": 127.047,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.766,
+          "lng": 126.98
+        },
+        "ne": {
+          "lat": 37.914,
+          "lng": 127.115
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yangju.json",
+      "stats": {
+        "totalRestaurants": 14,
+        "groupVerifiedCount": 5,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-osan",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "오산시",
+      "shortName": "오산",
+      "aliases": [
+        "오산시",
+        "오산",
+        "경기 오산시",
+        "경기도 오산시"
+      ],
+      "center": {
+        "lat": 37.163,
+        "lng": 127.051,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.118,
+          "lng": 127.013
+        },
+        "ne": {
+          "lat": 37.209,
+          "lng": 127.09
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-osan.json",
+      "stats": {
+        "totalRestaurants": 19,
+        "groupVerifiedCount": 14,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-icheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "이천시",
+      "shortName": "이천",
+      "aliases": [
+        "이천시",
+        "이천",
+        "경기 이천시",
+        "경기도 이천시"
+      ],
+      "center": {
+        "lat": 37.226,
+        "lng": 127.444,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.122,
+          "lng": 127.358
+        },
+        "ne": {
+          "lat": 37.331,
+          "lng": 127.531
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-icheon.json",
+      "stats": {
+        "totalRestaurants": 26,
+        "groupVerifiedCount": 15,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-anseong",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "안성시",
+      "shortName": "안성",
+      "aliases": [
+        "안성시",
+        "안성",
+        "경기 안성시",
+        "경기도 안성시"
+      ],
+      "center": {
+        "lat": 37.036,
+        "lng": 127.259,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 36.995,
+          "lng": 127.118
+        },
+        "ne": {
+          "lat": 37.077,
+          "lng": 127.401
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-anseong.json",
+      "stats": {
+        "totalRestaurants": 17,
+        "groupVerifiedCount": 10,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-guri",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "구리시",
+      "shortName": "구리",
+      "aliases": [
+        "구리시",
+        "구리",
+        "경기 구리시",
+        "경기도 구리시"
+      ],
+      "center": {
+        "lat": 37.597,
+        "lng": 127.131,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.553,
+          "lng": 127.104
+        },
+        "ne": {
+          "lat": 37.641,
+          "lng": 127.158
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-guri.json",
+      "stats": {
+        "totalRestaurants": 15,
+        "groupVerifiedCount": 9,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-uiwang",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "의왕시",
+      "shortName": "의왕",
+      "aliases": [
+        "의왕시",
+        "의왕",
+        "경기 의왕시",
+        "경기도 의왕시"
+      ],
+      "center": {
+        "lat": 37.357,
+        "lng": 126.98,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.306,
+          "lng": 126.941
+        },
+        "ne": {
+          "lat": 37.408,
+          "lng": 127.019
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-uiwang.json",
+      "stats": {
+        "totalRestaurants": 12,
+        "groupVerifiedCount": 6,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-pocheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "포천시",
+      "shortName": "포천",
+      "aliases": [
+        "포천시",
+        "포천",
+        "경기 포천시",
+        "경기도 포천시"
+      ],
+      "center": {
+        "lat": 37.902,
+        "lng": 127.26,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.749,
+          "lng": 127.136
+        },
+        "ne": {
+          "lat": 38.054,
+          "lng": 127.383
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-pocheon.json",
+      "stats": {
+        "totalRestaurants": 30,
+        "groupVerifiedCount": 27,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-yangpyeong",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "양평군",
+      "shortName": "양평",
+      "aliases": [
+        "양평군",
+        "양평",
+        "경기 양평군",
+        "경기도 양평군"
+      ],
+      "center": {
+        "lat": 37.529,
+        "lng": 127.537,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.406,
+          "lng": 127.31
+        },
+        "ne": {
+          "lat": 37.652,
+          "lng": 127.764
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yangpyeong.json",
+      "stats": {
+        "totalRestaurants": 32,
+        "groupVerifiedCount": 22,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-yeoju",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "여주시",
+      "shortName": "여주",
+      "aliases": [
+        "여주시",
+        "여주",
+        "경기 여주시",
+        "경기도 여주시"
+      ],
+      "center": {
+        "lat": 37.313,
+        "lng": 127.615,
+        "zoomLevel": 8
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.213,
+          "lng": 127.537
+        },
+        "ne": {
+          "lat": 37.413,
+          "lng": 127.694
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yeoju.json",
+      "stats": {
+        "totalRestaurants": 20,
+        "groupVerifiedCount": 15,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-dongducheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "동두천시",
+      "shortName": "동두천",
+      "aliases": [
+        "동두천시",
+        "동두천",
+        "경기 동두천시",
+        "경기도 동두천시"
+      ],
+      "center": {
+        "lat": 37.903,
+        "lng": 127.054,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.882,
+          "lng": 127.038
+        },
+        "ne": {
+          "lat": 37.923,
+          "lng": 127.07
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-dongducheon.json",
+      "stats": {
+        "totalRestaurants": 14,
+        "groupVerifiedCount": 6,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gwacheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "과천시",
+      "shortName": "과천",
+      "aliases": [
+        "과천시",
+        "과천",
+        "경기 과천시",
+        "경기도 과천시"
+      ],
+      "center": {
+        "lat": 37.435,
+        "lng": 126.999,
+        "zoomLevel": 6
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.404,
+          "lng": 126.969
+        },
+        "ne": {
+          "lat": 37.466,
+          "lng": 127.03
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gwacheon.json",
+      "stats": {
+        "totalRestaurants": 22,
+        "groupVerifiedCount": 16,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-gapyeong",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "가평군",
+      "shortName": "가평",
+      "aliases": [
+        "가평군",
+        "가평",
+        "경기 가평군",
+        "경기도 가평군"
+      ],
+      "center": {
+        "lat": 37.732,
+        "lng": 127.435,
+        "zoomLevel": 9
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.587,
+          "lng": 127.335
+        },
+        "ne": {
+          "lat": 37.876,
+          "lng": 127.535
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-gapyeong.json",
+      "stats": {
+        "totalRestaurants": 31,
+        "groupVerifiedCount": 27,
+        "unverifiedCoordCount": 0,
+        "updatedAt": "2026-10-19"
+      }
+    },
+    {
+      "regionCode": "gyeonggi-yeoncheon",
+      "parentCode": "gyeonggi",
+      "sidoName": "경기도",
+      "level": "sigungu",
+      "name": "연천군",
+      "shortName": "연천",
+      "aliases": [
+        "연천군",
+        "연천",
+        "경기 연천군",
+        "경기도 연천군"
+      ],
+      "center": {
+        "lat": 38.045,
+        "lng": 127.072,
+        "zoomLevel": 7
+      },
+      "bounds": {
+        "sw": {
+          "lat": 37.978,
+          "lng": 127.056
+        },
+        "ne": {
+          "lat": 38.113,
+          "lng": 127.089
+        }
+      },
+      "datasetPath": "data/releases/2026.10.1/regions/gyeonggi-yeoncheon.json",
+      "stats": {
+        "totalRestaurants": 10,
+        "groupVerifiedCount": 3,
         "unverifiedCoordCount": 0,
         "updatedAt": "2026-10-19"
       }

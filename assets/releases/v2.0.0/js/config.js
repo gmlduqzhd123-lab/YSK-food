@@ -38,6 +38,82 @@ export const SOUTH_KOREA_MASK_HOLE = [
   [34.88, 129.2], [34.5, 128.95], [33.8, 128.55], [32.8, 127.9], [32.8, 124.4]
 ];
 
+// 서울(종로 외)·경기(수원·용인 외)를 구·시·군 단위 지역으로 나눈 목록 (2026-11-04)
+// 빌드 도구는 'seoul-etc'·'gyeonggi-etc'로 들어온 식당을 주소의 구·시·군으로 이 지역들에 나눠 담는다.
+export const SEOUL_GU_REGIONS = [
+  { regionCode: 'seoul-gangnam', name: '강남구', shortName: '강남' },
+  { regionCode: 'seoul-seocho', name: '서초구', shortName: '서초' },
+  { regionCode: 'seoul-songpa', name: '송파구', shortName: '송파' },
+  { regionCode: 'seoul-gangdong', name: '강동구', shortName: '강동' },
+  { regionCode: 'seoul-mapo', name: '마포구', shortName: '마포' },
+  { regionCode: 'seoul-yongsan', name: '용산구', shortName: '용산' },
+  { regionCode: 'seoul-junggu', name: '중구', shortName: '서울 중구' },
+  { regionCode: 'seoul-seongdong', name: '성동구', shortName: '성동' },
+  { regionCode: 'seoul-gwangjin', name: '광진구', shortName: '광진' },
+  { regionCode: 'seoul-dongdaemun', name: '동대문구', shortName: '동대문' },
+  { regionCode: 'seoul-jungnang', name: '중랑구', shortName: '중랑' },
+  { regionCode: 'seoul-seongbuk', name: '성북구', shortName: '성북' },
+  { regionCode: 'seoul-gangbuk', name: '강북구', shortName: '강북' },
+  { regionCode: 'seoul-dobong', name: '도봉구', shortName: '도봉' },
+  { regionCode: 'seoul-nowon', name: '노원구', shortName: '노원' },
+  { regionCode: 'seoul-eunpyeong', name: '은평구', shortName: '은평' },
+  { regionCode: 'seoul-seodaemun', name: '서대문구', shortName: '서대문' },
+  { regionCode: 'seoul-yeongdeungpo', name: '영등포구', shortName: '영등포' },
+  { regionCode: 'seoul-dongjak', name: '동작구', shortName: '동작' },
+  { regionCode: 'seoul-gwanak', name: '관악구', shortName: '관악' },
+  { regionCode: 'seoul-guro', name: '구로구', shortName: '구로' },
+  { regionCode: 'seoul-geumcheon', name: '금천구', shortName: '금천' },
+  { regionCode: 'seoul-yangcheon', name: '양천구', shortName: '양천' },
+  { regionCode: 'seoul-gangseo', name: '강서구', shortName: '서울 강서' },
+];
+export const GYEONGGI_CITY_REGIONS = [
+  { regionCode: 'gyeonggi-seongnam', name: '성남시', shortName: '성남' },
+  { regionCode: 'gyeonggi-goyang', name: '고양시', shortName: '고양' },
+  { regionCode: 'gyeonggi-bucheon', name: '부천시', shortName: '부천' },
+  { regionCode: 'gyeonggi-anyang', name: '안양시', shortName: '안양' },
+  { regionCode: 'gyeonggi-ansan', name: '안산시', shortName: '안산' },
+  { regionCode: 'gyeonggi-hwaseong', name: '화성시', shortName: '화성' },
+  { regionCode: 'gyeonggi-pyeongtaek', name: '평택시', shortName: '평택' },
+  { regionCode: 'gyeonggi-siheung', name: '시흥시', shortName: '시흥' },
+  { regionCode: 'gyeonggi-paju', name: '파주시', shortName: '파주' },
+  { regionCode: 'gyeonggi-gimpo', name: '김포시', shortName: '김포' },
+  { regionCode: 'gyeonggi-uijeongbu', name: '의정부시', shortName: '의정부' },
+  { regionCode: 'gyeonggi-namyangju', name: '남양주시', shortName: '남양주' },
+  { regionCode: 'gyeonggi-gwangju', name: '광주시', shortName: '경기 광주' },
+  { regionCode: 'gyeonggi-hanam', name: '하남시', shortName: '하남' },
+  { regionCode: 'gyeonggi-gwangmyeong', name: '광명시', shortName: '광명' },
+  { regionCode: 'gyeonggi-gunpo', name: '군포시', shortName: '군포' },
+  { regionCode: 'gyeonggi-yangju', name: '양주시', shortName: '양주' },
+  { regionCode: 'gyeonggi-osan', name: '오산시', shortName: '오산' },
+  { regionCode: 'gyeonggi-icheon', name: '이천시', shortName: '이천' },
+  { regionCode: 'gyeonggi-anseong', name: '안성시', shortName: '안성' },
+  { regionCode: 'gyeonggi-guri', name: '구리시', shortName: '구리' },
+  { regionCode: 'gyeonggi-uiwang', name: '의왕시', shortName: '의왕' },
+  { regionCode: 'gyeonggi-pocheon', name: '포천시', shortName: '포천' },
+  { regionCode: 'gyeonggi-yangpyeong', name: '양평군', shortName: '양평' },
+  { regionCode: 'gyeonggi-yeoju', name: '여주시', shortName: '여주' },
+  { regionCode: 'gyeonggi-dongducheon', name: '동두천시', shortName: '동두천' },
+  { regionCode: 'gyeonggi-gwacheon', name: '과천시', shortName: '과천' },
+  { regionCode: 'gyeonggi-gapyeong', name: '가평군', shortName: '가평' },
+  { regionCode: 'gyeonggi-yeoncheon', name: '연천군', shortName: '연천' },
+];
+
+/** 'seoul-etc'·'gyeonggi-etc' 식당을 주소의 구·시·군 지역 코드로 바꾼다 (해당 없으면 원래 코드) */
+export function splitMetroRegionCode(regionCode, address) {
+  const addr = String(address || '');
+  if (regionCode === 'seoul-etc') {
+    const m = /^서울(?:특별시)?\s+(\S+구)/.exec(addr);
+    const hit = m && SEOUL_GU_REGIONS.find(r => r.name === m[1]);
+    if (hit) return hit.regionCode;
+  }
+  if (regionCode === 'gyeonggi-etc') {
+    const m = /^경기(?:도)?\s+(\S+?(?:시|군))(?=\s|$)/.exec(addr);
+    const hit = m && GYEONGGI_CITY_REGIONS.find(r => r.name === m[1]);
+    if (hit) return hit.regionCode;
+  }
+  return regionCode;
+}
+
 export const REGION_COLORS = {
   'seoul-jongno': '#2563eb',
   'gyeonggi-suwon': '#3b82f6',
@@ -61,6 +137,8 @@ export const REGION_COLORS = {
   'jn-gwangyang': '#fb8c00',
   'seoul-etc': '#2563eb',
   'gyeonggi-etc': '#3b82f6',
+  ...Object.fromEntries(SEOUL_GU_REGIONS.map(r => [r.regionCode, '#2563eb'])),
+  ...Object.fromEntries(GYEONGGI_CITY_REGIONS.map(r => [r.regionCode, '#3b82f6'])),
   'incheon-etc': '#0284c7',
   'gw-etc': '#0d9488',
   'cb-all': '#7c3aed',
@@ -110,9 +188,30 @@ export const REGION_GROUPS = {
     code: 'seoul-metro',
     label: '서울·수도권 (서울·경기·인천)',
     shortLabel: '서울·수도권',
-    regionCodes: ['seoul-jongno', 'gyeonggi-suwon', 'incheon-junggu', 'seoul-etc', 'gyeonggi-etc', 'incheon-etc'],
+    regionCodes: [
+      'seoul-jongno', ...SEOUL_GU_REGIONS.map(r => r.regionCode),
+      'gyeonggi-suwon', ...GYEONGGI_CITY_REGIONS.map(r => r.regionCode),
+      'incheon-junggu', 'incheon-etc'
+    ],
     center: { lat: 37.45, lng: 127.02, zoomLevel: 11 },
     bounds: { sw: { lat: 36.96, lng: 126.43 }, ne: { lat: 37.95, lng: 127.60 } }
+  },
+  // 예전 주소(?region=seoul-etc·gyeonggi-etc) 호환: 서울 전체·경기 전체 묶음으로 연다
+  'seoul-etc': {
+    code: 'seoul-etc',
+    label: '서울 전체 (25개 구)',
+    shortLabel: '서울',
+    regionCodes: ['seoul-jongno', ...SEOUL_GU_REGIONS.map(r => r.regionCode)],
+    center: { lat: 37.5585, lng: 126.9755, zoomLevel: 9 },
+    bounds: { sw: { lat: 37.413, lng: 126.764 }, ne: { lat: 37.715, lng: 127.184 } }
+  },
+  'gyeonggi-etc': {
+    code: 'gyeonggi-etc',
+    label: '경기 전체 (시·군)',
+    shortLabel: '경기',
+    regionCodes: ['gyeonggi-suwon', ...GYEONGGI_CITY_REGIONS.map(r => r.regionCode)],
+    center: { lat: 37.4551, lng: 127.0858, zoomLevel: 11 },
+    bounds: { sw: { lat: 36.947, lng: 126.536 }, ne: { lat: 38.27, lng: 127.636 } }
   },
   'gw-all': {
     code: 'gw-all',
