@@ -20,17 +20,38 @@ function formatDays(chars) {
  * 7일 정보가 다 없거나 24시간 등 해석할 수 없는 형식이면 null
  */
 export function parseKakaoOpenHours(openHours) {
-  const days = [];
+  const entries = [];
   for (const wp of openHours?.week_from_today?.week_periods || []) {
-    for (const d of wp.days || []) days.push(d);
+    for (const d of wp.days || []) entries.push({ ch: String(d.day_of_the_week_desc || ' ')[0], od: d.on_days || null });
   }
+  return parseDayEntries(entries);
+}
+
+/**
+ * 카카오맵 '기본 영업시간'(open_hours.all)으로 정기 영업시간을 읽는다.
+ * 오늘부터 7일 정보(week_from_today)와 달리 이번 주 임시휴무가 섞이지 않는다.
+ * 기본 영업시간 목록에 없는 요일은 정기 휴무로 본다. 정보가 없거나 해석할 수 없으면 null
+ */
+export function parseKakaoRegularHours(openHours) {
+  const periods = openHours?.all?.periods || [];
+  const basic = periods.find(p => p.period_title === '기본 영업시간');
+  if (!basic || !(basic.days || []).length) return null;
+  const byDay = new Map();
+  for (const d of basic.days) {
+    const label = String(d.day_of_the_week || '').trim();
+    const chars = label === '매일' ? [...DAYS] : DAYS.includes(label) && label.length === 1 ? [label] : null;
+    if (!chars || !d.on_days) return null;
+    for (const ch of chars) byDay.set(ch, d.on_days);
+  }
+  return parseDayEntries([...DAYS].map(ch => ({ ch, od: byDay.get(ch) || null })));
+}
+
+function parseDayEntries(entries) {
   const byTime = new Map();
   const closed = [];
   const lastOrder = {};
-  for (const d of days) {
-    const ch = String(d.day_of_the_week_desc || ' ')[0];
+  for (const { ch, od } of entries) {
     if (!DAYS.includes(ch)) continue;
-    const od = d.on_days;
     if (!od) {
       closed.push(ch);
       continue;

@@ -1,7 +1,7 @@
 // 카카오맵 장소 상세 해석 규칙 검증 (정기 재확인·지역 보강 도구 공용)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compactFacilities, parseKakaoFacilities, parseKakaoOpenHours } from '../tools/kakao-place-parse.mjs';
+import { compactFacilities, parseKakaoFacilities, parseKakaoOpenHours, parseKakaoRegularHours } from '../tools/kakao-place-parse.mjs';
 
 const day = (label, on) => (on ? { day_of_the_week_desc: `${label}(11/2)`, on_days: on } : { day_of_the_week_desc: `${label}(11/2)`, off_days_desc: '휴무일' });
 const week = days => ({ week_from_today: { week_periods: [{ days }] } });
@@ -53,4 +53,19 @@ test('정기 재확인 사람 확인 결과 파일 형식', async () => {
     assert.match(String(d.checkedAt || ''), /^\d{4}-\d{2}-\d{2}$/, `${id}: checkedAt 날짜`);
     assert.ok(String(d.reason || '').trim(), `${id}: reason 필요`);
   }
+});
+
+test('카카오맵 기본 영업시간(정기 일정) 해석: 목록에 없는 요일은 정기 휴무', () => {
+  const basic = days => ({ all: { periods: [{ period_title: '기본 영업시간', days }, { period_title: '공휴일', days: [{ on_days: { start_end_time_desc: '10:00 ~ 20:00' } }] }] } });
+  const on = (d, t, extra = {}) => ({ day_of_the_week: d, on_days: { start_end_time_desc: t, ...extra } });
+  assert.deepEqual(
+    parseKakaoRegularHours(basic(['월', '수', '목', '금', '토', '일'].map(d => on(d, '10:00 ~ 20:00')))),
+    { hours: '월수목금토일 10:00-20:00', closed: '화', lastOrder: {} }
+  );
+  assert.deepEqual(
+    parseKakaoRegularHours(basic([on('매일', '11:00 ~ 21:00', { break_times_desc: ['15:00 ~ 17:00 브레이크타임'], last_order_times_desc: ['20:30 라스트오더'] })])),
+    { hours: '매일 11:00-15:00 17:00-21:00', closed: '연중무휴', lastOrder: { 월: '20:30', 화: '20:30', 수: '20:30', 목: '20:30', 금: '20:30', 토: '20:30', 일: '20:30' } }
+  );
+  assert.equal(parseKakaoRegularHours({}), null);
+  assert.equal(parseKakaoRegularHours(basic([on('평일', '10:00 ~ 20:00')])), null);
 });
