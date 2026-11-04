@@ -1405,3 +1405,30 @@ describe('서울·경기 구·시·군 지역 나누기 (2026-11-04)', () => {
     assert.equal(splitMetroRegionCode('jn-yeosu', '서울 강남구 1'), 'jn-yeosu');
   });
 });
+
+describe('첫 화면 색인 지연 받기 (2026-11-04)', () => {
+  test('첫 묶음에는 검색·ID 색인을 받지 않고, 식당 공유 링크를 열 때 한 번만 받는다', async () => {
+    const requested = [];
+    const baseFetch = createLocalFileFetch();
+    const repo = new DatasetRepository({
+      appBase: 'https://gmlduqzhd123-lab.github.io/YSK-food/',
+      fetchFn: async (url, opts) => {
+        requested.push(String(url));
+        return baseFetch(url, opts);
+      }
+    });
+    const core = await repo.loadCoreBundle();
+    assert.equal(core.status, 'ok');
+    assert.equal(requested.some(u => u.includes('search-index.json') || u.includes('id-index.json')), false);
+    assert.ok(repo.getRegionsList().length > 0);
+
+    const [r1, r2] = await Promise.all([repo.resolveRestaurantById('ysk-r-1'), repo.resolveRestaurantById('ysk-r-4')]);
+    assert.equal(r1.status, 'found');
+    assert.equal(r2.status, 'found');
+    assert.equal(requested.filter(u => u.includes('id-index.json')).length, 1);
+    assert.equal(requested.filter(u => u.includes('search-index.json')).length, 1);
+
+    const missing = await repo.resolveRestaurantById('ysk-r-999999');
+    assert.equal(missing.status, 'unregistered');
+  });
+});

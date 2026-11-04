@@ -881,7 +881,8 @@ function buildDataset() {
     generatedAt: GENERATED_AT,
     entries: idIndexEntries
   };
-  const idIndexJson = JSON.stringify(idIndex, null, 2) + '\n';
+  // 식당이 많아져 들여쓰기 없이 저장한다
+  const idIndexJson = JSON.stringify(idIndex) + '\n';
   fs.writeFileSync(path.join(ROOT_DIR, idIndexPath), idIndexJson, 'utf8');
   checksums[idIndexPath] = sha256Hex(idIndexJson);
 

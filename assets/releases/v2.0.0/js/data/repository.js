@@ -189,17 +189,15 @@ export class DatasetRepository {
       const dsVersion = manifest.datasetVersion;
       const checksums = manifest.checksums || {};
 
-      const [regionsFile, searchIndex, idIndex, legacyAliases] = await Promise.all([
+      // 첫 화면에는 지역 요약과 구형 이름 별칭(작음)만 받는다.
+      // 검색·ID 색인(수 MB)은 식당 공유 링크처럼 실제로 필요할 때 ensureIndexes()로 받는다.
+      const [regionsFile, legacyAliases] = await Promise.all([
         this.fetchJsonVerified(manifest.regionsPath, checksums[manifest.regionsPath]),
-        this.fetchJsonVerified(manifest.searchIndexPath, checksums[manifest.searchIndexPath]),
-        this.fetchJsonVerified(manifest.idIndexPath, checksums[manifest.idIndexPath]),
         this.fetchJsonVerified(manifest.legacyAliasesPath, checksums[manifest.legacyAliasesPath])
       ]);
 
       const checks = [
         ['regions', validateRegionsFile(regionsFile, dsVersion)],
-        ['search-index', validateSearchIndexFile(searchIndex, dsVersion)],
-        ['id-index', validateIdIndexFile(idIndex, dsVersion)],
         ['legacy-aliases', validateLegacyAliasesFile(legacyAliases, dsVersion)]
       ];
 
@@ -212,11 +210,12 @@ export class DatasetRepository {
       }
 
       const existing = this.bundles.get(dsVersion);
+      const sameFiles = existing?.manifest && JSON.stringify(existing.manifest.checksums) === JSON.stringify(manifest.checksums);
       const bundle = {
         manifest,
         regionsFile,
-        searchIndex,
-        idIndex,
+        searchIndex: sameFiles ? existing.searchIndex || null : null,
+        idIndex: sameFiles ? existing.idIndex || null : null,
         legacyAliases,
         regions: existing?.regions || new Map()
       };
@@ -255,9 +254,45 @@ export class DatasetRepository {
     }
   }
 
+  /**
+   * 검색·ID 색인을 아직 받지 않았으면 받아서 검증한다 (같은 묶음은 한 번만 받는다).
+   * 실패하면 오류를 던진다.
+   */
+  async ensureIndexes(bundle = this.getActiveBundle()) {
+    if (!bundle) throw new Error('활성 데이터 묶음이 없습니다.');
+    if (bundle.searchIndex && bundle.idIndex) return bundle;
+    if (!bundle.indexPromise) {
+      const { manifest } = bundle;
+      const checksums = manifest.checksums || {};
+      const dsVersion = manifest.datasetVersion;
+      bundle.indexPromise = Promise.all([
+        this.fetchJsonVerified(manifest.searchIndexPath, checksums[manifest.searchIndexPath]),
+        this.fetchJsonVerified(manifest.idIndexPath, checksums[manifest.idIndexPath])
+      ]).then(([searchIndex, idIndex]) => {
+        for (const [name, check] of [
+          ['search-index', validateSearchIndexFile(searchIndex, dsVersion)],
+          ['id-index', validateIdIndexFile(idIndex, dsVersion)]
+        ]) {
+          if (!check.valid) {
+            const err = new Error(`${name} 버전·스키마 검증 실패: ${check.errors.join('; ')}`);
+            err.code = 'VERSION_OR_SCHEMA_MISMATCH';
+            throw err;
+          }
+        }
+        bundle.searchIndex = searchIndex;
+        bundle.idIndex = idIndex;
+        return bundle;
+      }).catch(err => {
+        bundle.indexPromise = null; // 다음에 다시 시도할 수 있게 한다
+        throw err;
+      });
+    }
+    return bundle.indexPromise;
+  }
+
   getFallbackBundle(requiredRegionCode = null) {
     for (const [, b] of this.bundles.entries()) {
-      if (!b.manifest || !b.regionsFile || !b.searchIndex || !b.idIndex || !b.legacyAliases) continue;
+      if (!b.manifest || !b.regionsFile || !b.legacyAliases) continue;
       if (requiredRegionCode && !b.regions.has(requiredRegionCode)) continue;
       return b;
     }
@@ -548,6 +583,19 @@ export class DatasetRepository {
       bundle = coreRes.bundle;
     }
 
+    try {
+      await this.ensureIndexes(bundle);
+    } catch (err) {
+      const offline = this.isOfflineFn() || err.code === 'OFFLINE_UNSAVED';
+      return {
+        status: offline ? 'offline_unsaved' : 'index_error',
+        id: restaurantId,
+        message: offline
+          ? '오프라인 상태여서 전역 식당 색인을 확인할 수 없습니다.'
+          : '전역 식당 색인을 불러오지 못했습니다. (폐업·삭제로 단정하지 않습니다.)'
+      };
+    }
+
     const idxKey = `restaurant:${restaurantId}`;
     const idxEntry = bundle.idIndex.entries?.[idxKey];
 
@@ -643,6 +691,11 @@ export class DatasetRepository {
       if (!coreRes.bundle) return { status: 'index_error', id: eventRefId };
       bundle = coreRes.bundle;
     }
+    try {
+      await this.ensureIndexes(bundle);
+    } catch {
+      return { status: 'index_error', id: eventRefId };
+    }
     const idxEntry = bundle.idIndex.entries?.[`eventRef:${eventRefId}`];
     if (!idxEntry) {
       return { status: 'unregistered', id: eventRefId };
@@ -676,6 +729,7 @@ export class DatasetRepository {
 
   /**
    * 전국 경량 검색 색인(search-index.json)에서 이름·지점명·메뉴·주소·지역·메모 키워드를 검색한다.
+   * (색인은 ensureIndexes()로 먼저 받아 두어야 한다. 받기 전에는 빈 목록)
    */
   searchNationwideIndex(query, regionCode = 'all') {
     const bundle = this.getActiveBundle();

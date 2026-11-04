@@ -882,7 +882,7 @@
     "data/releases/2026.10.1/regions/ulsan.json": "f4fbd0d58076b7b2c1c0576464e82046fe4249c22e90d2539a494e0049295264",
     "data/releases/2026.10.1/regions.json": "85aa20ef015b47cc805cde783235107ca6d39225cf8c1678c59be1a73a244b14",
     "data/releases/2026.10.1/search-index.json": "3a726773e81de80244f9eb24d0e1c5734ef382f896908498f24b616b9095ce53",
-    "data/releases/2026.10.1/id-index.json": "742709d03fcd24ec14d94737feeaafb4d991273c065f155f78f20984059e68cc",
+    "data/releases/2026.10.1/id-index.json": "a0b904044a6c9e415a34e20638b8c621fa944b3f6c6a8f8c5840452351b2fa80",
     "data/releases/2026.10.1/legacy-aliases.json": "51eb46a982437618ff0cb96766e6f54b815ed152cc49deeaec32a6e179fae5d3"
   },
   "changeSummary": "기존 여수(70)·순천(75)·광양(21) 총 166개 식당을 영구 ID(ysk-r-*) 및 schemaVersion 2 지역 분할 구조로 이전"
