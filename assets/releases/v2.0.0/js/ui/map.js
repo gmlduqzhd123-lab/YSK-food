@@ -14,6 +14,14 @@ import {
 } from '../config.js';
 import { getPlaceCoords, isMappablePlace, isValidCoordinate } from '../data/normalize.js';
 
+// 식당이 많을 때(전국·권역) 마커 1만여 개를 한꺼번에 만들면 지도 SDK가 수 초간 화면을 멈추게 한다.
+// 그래서 이 수보다 많으면, 넓게 볼 때는 '개수 말풍선'만 보이고 가까이 볼 때는 화면 안 식당만 마커로 만든다.
+const MARKER_DIRECT_LIMIT = 1000;
+// 이 레벨 이하(더 가까이)에서만 화면 안 식당을 마커로 그린다
+const DETAIL_MARKER_LEVEL = 8;
+// 개수 말풍선 한 칸의 화면 크기(px)
+const BUBBLE_CELL_PX = 64;
+
 /**
  * 전달된 장소 배열에서 위치가 검증되었고 위도·경도가 유효 범위 내 유한 숫자인 항목만 추출한다(Section 9, AC37).
  * null, undefined, '', 0, NaN, status='unverified'는 모두 제외된다.
@@ -172,6 +180,10 @@ export class MapController {
     this.map = null;
     this.clusterer = null;
     this.entries = new Map(); // stringId -> { place, marker, overlay, content }
+    this.allMappable = []; // 지금 표시해야 할 식당 전체 (좌표 확인된 곳)
+    this.shownMarkerKey = '';
+    this.bubbleOverlays = [];
+    this.viewRenderTimer = null;
     this.currentOverlay = null;
     this.referenceOverlay = null;
     this.markerImageCache = new Map();
@@ -312,6 +324,12 @@ export class MapController {
         this.viewLimitBound = true;
       }
 
+      if (!this.viewListenerBound) {
+        // 지도를 옮기거나 확대·축소한 뒤 화면 안 식당을 다시 그린다 (식당이 많을 때만 실제로 다시 그림)
+        kakao.maps.event.addListener(this.map, 'idle', () => this.scheduleViewRender());
+        this.viewListenerBound = true;
+      }
+
       if (!this.mapClickListenerBound) {
         kakao.maps.event.addListener(this.map, 'click', () => {
           this.closeOverlay();
@@ -353,18 +371,64 @@ export class MapController {
     const markerKey = mappable.map(p => String(p.id)).join('|');
     if (markerKey === this.lastMarkerKey) return { markerCount: this.lastMarkerCount, skipped: true };
 
-    // 기존 마커 정리
+    this.allMappable = mappable;
+    this.lastMarkerKey = markerKey;
+    this.lastMarkerCount = mappable.length;
+    this.renderView();
+    return { markerCount: mappable.length };
+  }
+
+  scheduleViewRender() {
+    if (this.allMappable.length <= MARKER_DIRECT_LIMIT) return;
+    clearTimeout(this.viewRenderTimer);
+    this.viewRenderTimer = setTimeout(() => this.renderView(), 120);
+  }
+
+  /** 식당 수와 지도 확대 수준에 맞춰 마커 또는 개수 말풍선을 그린다 */
+  renderView() {
+    if (!this.isReady()) return;
+    const all = this.allMappable;
+    if (all.length <= MARKER_DIRECT_LIMIT) {
+      this.clearBubbles();
+      this.showMarkers(all);
+      return;
+    }
+    const bounds = this.map.getBounds?.();
+    const level = this.map.getLevel();
+    if (bounds && level <= DETAIL_MARKER_LEVEL) {
+      const sw = bounds.getSouthWest();
+      const ne = bounds.getNorthEast();
+      // 화면보다 조금 넓게 잡아 지도를 살짝 옮겨도 마커가 바로 보이게 한다
+      const padLat = (ne.getLat() - sw.getLat()) * 0.2;
+      const padLng = (ne.getLng() - sw.getLng()) * 0.2;
+      const inView = all.filter(p => {
+        const c = getPlaceCoords(p);
+        return c && c.lat >= sw.getLat() - padLat && c.lat <= ne.getLat() + padLat && c.lng >= sw.getLng() - padLng && c.lng <= ne.getLng() + padLng;
+      });
+      if (inView.length <= MARKER_DIRECT_LIMIT * 2) {
+        this.clearBubbles();
+        this.showMarkers(inView);
+        return;
+      }
+    }
+    this.showMarkers([]);
+    this.showBubbles(all, bounds);
+  }
+
+  /** 주어진 식당만 마커로 보여 준다 (이미 만든 마커는 다시 쓴다) */
+  showMarkers(list) {
+    const key = list.map(p => String(p.id)).join('|');
+    if (key === this.shownMarkerKey) return;
+    this.shownMarkerKey = key;
+
     if (this.clusterer) {
       this.clusterer.clear();
     } else {
-      for (const entry of this.entries.values()) {
-        entry.marker.setMap(null);
-      }
+      for (const entry of this.entries.values()) entry.marker.setMap(null);
     }
 
     const activeMarkers = [];
-
-    for (const place of mappable) {
+    for (const place of list) {
       const strId = String(place.id);
       const coords = getPlaceCoords(place);
       if (!coords) continue;
@@ -395,10 +459,102 @@ export class MapController {
     } else {
       activeMarkers.forEach(m => m.setMap(this.map));
     }
+  }
 
-    this.lastMarkerKey = markerKey;
-    this.lastMarkerCount = activeMarkers.length;
-    return { markerCount: activeMarkers.length };
+  clearBubbles() {
+    for (const ov of this.bubbleOverlays) ov.setMap(null);
+    this.bubbleOverlays = [];
+  }
+
+  /** 넓게 볼 때: 화면을 칸으로 나눠 칸마다 식당 수 말풍선을 하나씩 그린다 (누르면 그 칸으로 확대) */
+  showBubbles(all, bounds) {
+    this.clearBubbles();
+    if (!bounds) return;
+    const sw = bounds.getSouthWest();
+    const ne = bounds.getNorthEast();
+    const widthPx = this.container?.clientWidth || 400;
+    const cell = Math.max((ne.getLng() - sw.getLng()) / Math.max(1, widthPx / BUBBLE_CELL_PX), 0.002);
+    // 화면(과 그 둘레 한 칸) 안의 식당만 센다 (화면 밖 말풍선은 만들지 않는다)
+    const minLat = sw.getLat() - cell;
+    const maxLat = ne.getLat() + cell;
+    const minLng = sw.getLng() - cell;
+    const maxLng = ne.getLng() + cell;
+    const cells = new Map();
+    for (const p of all) {
+      const c = getPlaceCoords(p);
+      if (!c || c.lat < minLat || c.lat > maxLat || c.lng < minLng || c.lng > maxLng) continue;
+      const key = `${Math.floor(c.lat / cell)}:${Math.floor(c.lng / cell)}`;
+      let g = cells.get(key);
+      if (!g) {
+        g = { n: 0, lat: 0, lng: 0, s: 90, w: 180, nn: -90, e: -180, pts: [] };
+        cells.set(key, g);
+      }
+      g.pts.push(c);
+      g.n += 1;
+      g.lat += c.lat;
+      g.lng += c.lng;
+      g.s = Math.min(g.s, c.lat);
+      g.nn = Math.max(g.nn, c.lat);
+      g.w = Math.min(g.w, c.lng);
+      g.e = Math.max(g.e, c.lng);
+    }
+    // 평균 위치가 바다 위에 찍히지 않도록, 평균에 가장 가까운 실제 식당 위치에 말풍선을 놓는다
+    const groups = [...cells.values()].map(g => {
+      const avgLat = g.lat / g.n;
+      const avgLng = g.lng / g.n;
+      let anchor = g.pts[0];
+      let best = Infinity;
+      for (const pt of g.pts) {
+        const d = (pt.lat - avgLat) ** 2 + (pt.lng - avgLng) ** 2;
+        if (d < best) {
+          best = d;
+          anchor = pt;
+        }
+      }
+      return { ...g, anchor };
+    }).sort((a, b) => b.n - a.n);
+    // 서로 너무 가까운 말풍선은 큰 쪽으로 합친다 (겹쳐 보이지 않게)
+    const kept = [];
+    const minDist = cell * 0.9;
+    for (const g of groups) {
+      const near = kept.find(k => Math.abs(k.anchor.lat - g.anchor.lat) < minDist && Math.abs(k.anchor.lng - g.anchor.lng) < minDist);
+      if (near) {
+        near.n += g.n;
+        near.s = Math.min(near.s, g.s);
+        near.nn = Math.max(near.nn, g.nn);
+        near.w = Math.min(near.w, g.w);
+        near.e = Math.max(near.e, g.e);
+      } else {
+        kept.push(g);
+      }
+    }
+    for (const g of kept) {
+      const anchor = g.anchor;
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.className = 'map-bubble';
+      const size = g.n >= 1000 ? 'xl' : g.n >= 200 ? 'lg' : g.n >= 30 ? 'md' : 'sm';
+      el.classList.add(`map-bubble-${size}`);
+      el.textContent = g.n.toLocaleString();
+      el.setAttribute('aria-label', `식당 ${g.n}곳, 눌러서 확대`);
+      el.addEventListener('click', ev => {
+        ev.stopPropagation();
+        const b = new kakao.maps.LatLngBounds(new kakao.maps.LatLng(g.s, g.w), new kakao.maps.LatLng(g.nn, g.e));
+        if (g.nn - g.s < 0.005 && g.e - g.w < 0.005) {
+          this.map.setLevel(Math.min(this.map.getLevel() - 3, DETAIL_MARKER_LEVEL), { anchor: new kakao.maps.LatLng(anchor.lat, anchor.lng) });
+        } else {
+          this.map.setBounds(b, 40, 40, 40, 40);
+        }
+      });
+      const ov = new kakao.maps.CustomOverlay({
+        content: el,
+        position: new kakao.maps.LatLng(anchor.lat, anchor.lng),
+        clickable: true,
+        zIndex: 2
+      });
+      ov.setMap(this.map);
+      this.bubbleOverlays.push(ov);
+    }
   }
 
   /**
