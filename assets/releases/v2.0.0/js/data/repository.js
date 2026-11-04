@@ -90,11 +90,13 @@ export class DatasetRepository {
   }
 
   /**
-   * 서비스 워커가 아직 없을 때도 다음 방문에 쓰도록 검증된 내용을 저장한다.
+   * 다음 방문에 쓰도록 검증된 내용을 저장한다.
+   * 서비스 워커는 첫 방문 도중에 연결되어, 그 전에 받은 파일은 저장하지 못하므로 앱이 직접 저장한다
+   * (서비스 워커가 같은 파일을 저장해도 덮어쓸 뿐이다).
    * 화면을 그리는 동안 방해하지 않도록 모아 두었다가 브라우저가 한가할 때 저장한다.
    */
   storeVerifiedInCache(url, bytes) {
-    if (!this.useVerifiedCache || globalThis.navigator?.serviceWorker?.controller) return;
+    if (!this.useVerifiedCache) return;
     this.pendingCacheWrites = this.pendingCacheWrites || [];
     this.pendingCacheWrites.push([url, bytes]);
     if (this.cacheFlushScheduled) return;
