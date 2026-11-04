@@ -794,6 +794,21 @@ export function computeModeRecommendationScore(place, mode = 'general') {
  */
 // 한글 이름 정렬용 비교기 (localeCompare를 수천 번 부르는 것보다 훨씬 빠르고 결과는 같다)
 const KO_COLLATOR = new Intl.Collator('ko');
+// 식당별 판정 결과 저장 (식당 객체가 사라지면 함께 사라진다)
+const EVALUATION_CACHE = new WeakMap();
+// 식당 이름의 한글 정렬 순위 (한 번 정해 두면 정렬할 때 숫자만 비교한다)
+const NAME_RANK = new WeakMap();
+
+function ensureNameRanks(places) {
+  if (places.every(p => NAME_RANK.has(p))) return;
+  const sorted = [...places].sort((a, b) => KO_COLLATOR.compare(a.name || '', b.name || ''));
+  let rank = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    // 이름이 같으면 같은 순위 (원래 정렬과 같은 결과)
+    if (i > 0 && KO_COLLATOR.compare(sorted[i - 1].name || '', sorted[i].name || '') !== 0) rank = i;
+    NAME_RANK.set(sorted[i], rank);
+  }
+}
 
 export function filterAndClassifyRestaurants(restaurants = [], filterState = {}, visitRecords = []) {
   const {
@@ -840,6 +855,9 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
 
   // 오늘 날짜(한국 시간)는 식당마다 다시 구하지 않고 한 번만 구한다
   const todayStr = referenceDateStr || getKoreaDateTimeParts(new Date())?.dateStr || null;
+  const favSet = favoriteIds instanceof Set ? favoriteIds : new Set(favoriteIds);
+  // 식당마다 판정 조건(날짜·단체 조건·모드·이용 기록)이 같으면 지난 판정 결과를 다시 쓴다
+  const evalKey = `${todayStr}|${mode}|${JSON.stringify(normalizedCriteria)}`;
   for (const place of restaurants) {
     // 지역 필터
     if (allowedRegionSet && !allowedRegionSet.has(place.regionCode)) continue;
@@ -853,7 +871,6 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     if (category !== 'all' && !placeCategories.includes(category)) continue;
 
     // 즐겨찾기 필터 (문자열 영구 ID 기준)
-    const favSet = favoriteIds instanceof Set ? favoriteIds : new Set(favoriteIds);
     if (favOnly && !favSet.has(place.id)) continue;
 
     // 영업 중 필터
@@ -898,23 +915,45 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       if (!literalMatch && !landmarkRadiusMatch) continue;
     }
 
-    const groupMatch = evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr: todayStr });
-    const visitSummary = aggregateVisitRecordsForRestaurant(visitRecords, place.id, todayStr);
-    const designationSummary = evaluateOfficialDesignations(place, todayStr);
-    const kidFriendlySummary = evaluateElementaryMenuFriendliness(place);
-    const modeScore = computeModeRecommendationScore(place, mode);
+    // 식당마다 최근 판정 조건 몇 가지(예: 일반·학교 모드)의 결과를 함께 보관한다
+    let evalsByKey = EVALUATION_CACHE.get(place);
+    if (!evalsByKey) {
+      evalsByKey = new Map();
+      if (place && typeof place === 'object') EVALUATION_CACHE.set(place, evalsByKey);
+    }
+    let cachedEval = evalsByKey.get(evalKey);
+    if (!cachedEval || cachedEval.visitRecords !== visitRecords) {
+      if (evalsByKey.size >= 4) evalsByKey.clear();
+      cachedEval = {
+        key: evalKey,
+        visitRecords,
+        groupMatch: evaluateRestaurantGroupMatch(place, normalizedCriteria, { referenceDateStr: todayStr }),
+        visitSummary: aggregateVisitRecordsForRestaurant(visitRecords, place.id, todayStr),
+        designationSummary: evaluateOfficialDesignations(place, todayStr),
+        kidFriendlySummary: evaluateElementaryMenuFriendliness(place),
+        modeScore: computeModeRecommendationScore(place, mode)
+      };
+      evalsByKey.set(evalKey, cachedEval);
+    }
+    const { groupMatch, visitSummary, designationSummary, kidFriendlySummary, modeScore } = cachedEval;
 
-    const enriched = {
-      ...place,
-      distance: straightDistanceKm !== null ? straightDistanceKm : Infinity,
-      straightDistanceKm,
-      straightDistanceLabel: formatStraightDistance(straightDistanceKm),
-      groupMatch,
-      visitSummary,
-      designationSummary,
-      kidFriendlySummary,
-      modeScore
-    };
+    // 기준점(거리)이 같으면 지난번 결과 객체를 다시 쓴다
+    let enriched = cachedEval.enriched;
+    if (!enriched || cachedEval.distanceKm !== straightDistanceKm) {
+      enriched = {
+        ...place,
+        distance: straightDistanceKm !== null ? straightDistanceKm : Infinity,
+        straightDistanceKm,
+        straightDistanceLabel: formatStraightDistance(straightDistanceKm),
+        groupMatch,
+        visitSummary,
+        designationSummary,
+        kidFriendlySummary,
+        modeScore
+      };
+      cachedEval.enriched = enriched;
+      cachedEval.distanceKm = straightDistanceKm;
+    }
 
     if (groupMatch.status === 'unmet') {
       excludedUnmetList.push(enriched);
@@ -966,9 +1005,13 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     if (sortBy === 'default' && a.modeScore !== b.modeScore) {
       return b.modeScore - a.modeScore;
     }
+    const ra = NAME_RANK.get(a);
+    const rb = NAME_RANK.get(b);
+    if (ra !== undefined && rb !== undefined) return ra - rb;
     return KO_COLLATOR.compare(a.name, b.name);
   };
 
+  ensureNameRanks(needsCheckList.length ? [...confirmedMetList, ...needsCheckList] : confirmedMetList);
   confirmedMetList.sort(sortFn);
   needsCheckList.sort(sortFn);
   allEvaluated.sort(sortFn);

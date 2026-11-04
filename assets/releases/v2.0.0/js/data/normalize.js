@@ -818,33 +818,132 @@ function compactOpeningHours(oh) {
   return sameValue(rebuildOpeningHoursFromText(stored), oh) ? stored : null;
 }
 
-/** 저장용: 기본값과 같은 항목을 뺀 식당 객체 */
-export function compactRestaurantForStorage(rest) {
+// 지역 파일 안에서 여러 식당이 똑같이 갖는 값(출처 목록, 단체 정보 중 같은 문구의 항목)은
+// 파일의 공유 값 표(sharedValues)에 한 번만 적고, 식당에는 표의 번호만 적는다.
+const SHARED_GROUP_KEYS = ['lunchbox', 'preOrder', 'room', 'accessibility', 'mealWaves', 'earlyBreakfast'];
+
+/** 저장용 공유 값 표를 만든다 (같은 값은 같은 번호) */
+export function createSharedValueTable() {
+  const refs = [];
+  const objects = [];
+  const refIndex = new Map();
+  const objectIndex = new Map();
+  const add = (list, index, value) => {
+    const key = JSON.stringify(value);
+    if (!index.has(key)) {
+      index.set(key, list.length);
+      list.push(value);
+    }
+    return index.get(key);
+  };
+  return {
+    ref: value => add(refs, refIndex, value),
+    object: value => add(objects, objectIndex, value),
+    toJSON: () => ({ refs, objects }),
+    isEmpty: () => refs.length === 0 && objects.length === 0
+  };
+}
+
+/** 저장용: 기본값과 같은 항목을 뺀 식당 객체 (shared가 있으면 반복되는 값은 번호로 바꾼다) */
+export function compactRestaurantForStorage(rest, shared = null) {
   const { restaurant, menu } = getRestaurantDefaults();
   const out = omitDefaults(rest, restaurant);
-  if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => omitDefaults(m, menu));
+  if (Array.isArray(rest.menus)) {
+    out.menus = rest.menus.map((m, i) => {
+      const o = omitDefaults(m, menu);
+      // 메뉴 ID는 대부분 '식당ID-menu-순번'이라 다시 만들 수 있다
+      if (m.id === `${rest.id}-menu-${i + 1}`) delete o.id;
+      else if (typeof m.id === 'string' && m.id.startsWith(`${rest.id}-`)) o.id = `~${m.id.slice(rest.id.length + 1)}`;
+      if (shared && Array.isArray(o.evidenceRefs)) o.evidenceRefs = shared.ref(o.evidenceRefs);
+      return o;
+    });
+  }
   const compactHours = compactOpeningHours(rest.openingHours);
   if (compactHours) out.openingHours = compactHours;
+  // 카카오맵 링크는 장소 번호로 다시 만들 수 있다
+  const ml = rest.mapLinks;
+  if (ml?.kakaoPlaceId && ml.kakaoPlaceUrl === `https://place.map.kakao.com/${ml.kakaoPlaceId}`) {
+    out.mapLinks = { kakaoPlaceId: ml.kakaoPlaceId };
+  } else if (ml?.kakaoPlaceId && ml.kakaoPlaceUrl === null) {
+    out.mapLinks = { kakaoPlaceId: ml.kakaoPlaceId, kakaoPlaceUrl: null };
+  }
+  if (shared) {
+    if (out.groupProfile) {
+      const gp = { ...out.groupProfile };
+      if (Array.isArray(gp.evidenceRefs)) gp.evidenceRefs = shared.ref(gp.evidenceRefs);
+      for (const key of SHARED_GROUP_KEYS) {
+        if (isPlainObject(gp[key])) gp[key] = shared.object(gp[key]);
+      }
+      out.groupProfile = gp;
+    }
+    if (out.openingHours && Array.isArray(out.openingHours.evidenceRefs)) {
+      out.openingHours = { ...out.openingHours, evidenceRefs: shared.ref(out.openingHours.evidenceRefs) };
+    }
+  }
   return out;
 }
 
-/** 읽기용: 빠진 기본값을 다시 채운 식당 객체 */
-export function expandStoredRestaurant(rest) {
+/** 공유 값 표의 번호를 실제 값으로 되돌린다 (값은 여러 식당이 함께 쓰므로 얼려 둔다) */
+function resolveSharedValues(rest, shared) {
+  if (!shared) return rest;
+  const r = { ...rest };
+  if (isPlainObject(r.groupProfile)) {
+    const gp = { ...r.groupProfile };
+    if (typeof gp.evidenceRefs === 'number') gp.evidenceRefs = shared.refs[gp.evidenceRefs];
+    for (const key of SHARED_GROUP_KEYS) {
+      if (typeof gp[key] === 'number') gp[key] = shared.objects[gp[key]];
+    }
+    r.groupProfile = gp;
+  }
+  if (isPlainObject(r.openingHours) && typeof r.openingHours.evidenceRefs === 'number') {
+    r.openingHours = { ...r.openingHours, evidenceRefs: shared.refs[r.openingHours.evidenceRefs] };
+  }
+  if (Array.isArray(r.menus)) {
+    r.menus = r.menus.map(m => (typeof m.evidenceRefs === 'number' ? { ...m, evidenceRefs: shared.refs[m.evidenceRefs] } : m));
+  }
+  return r;
+}
+
+/** 읽기용: 빠진 기본값을 다시 채운 식당 객체 (shared: 지역 파일의 공유 값 표) */
+export function expandStoredRestaurant(stored, shared = null) {
   const { restaurant, menu } = getSharedDefaults();
+  const rest = resolveSharedValues(stored, shared);
   const fromText = rest.openingHours?.fromText ? rest.openingHours : null;
   const out = fillDefaults(rest, restaurant);
   if (fromText) out.openingHours = rebuildOpeningHoursFromText(fromText);
-  if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => fillDefaults(m, menu));
+  if (Array.isArray(rest.menus)) {
+    out.menus = rest.menus.map((m, i) => {
+      const filled = fillDefaults(m, menu);
+      if (m.id === undefined) return { id: `${rest.id}-menu-${i + 1}`, ...filled };
+      if (typeof m.id === 'string' && m.id.startsWith('~')) return { ...filled, id: `${rest.id}-${m.id.slice(1)}` };
+      return filled;
+    });
+  }
+  // 저장 때 뺀 카카오맵 링크를 장소 번호로 다시 만든다
+  if (stored.mapLinks?.kakaoPlaceId && !('kakaoPlaceUrl' in stored.mapLinks)) {
+    out.mapLinks = { ...out.mapLinks, kakaoPlaceUrl: `https://place.map.kakao.com/${stored.mapLinks.kakaoPlaceId}` };
+  }
   return out;
 }
 
-/** 지역 자료 파일의 식당 목록에 기본값을 다시 채운다 */
+/** 지역 자료 파일의 식당 목록에 기본값·공유 값을 다시 채운다 */
 export function expandStoredRegionDataset(data) {
   if (!isPlainObject(data) || !Array.isArray(data.restaurants)) return data;
-  return { ...data, restaurants: data.restaurants.map(r => (isPlainObject(r) ? expandStoredRestaurant(r) : r)) };
+  const { sharedValues, ...rest } = data;
+  const shared = isPlainObject(sharedValues)
+    ? { refs: deepFreeze(sharedValues.refs || []), objects: deepFreeze(sharedValues.objects || []) }
+    : null;
+  return { ...rest, restaurants: data.restaurants.map(r => (isPlainObject(r) ? expandStoredRestaurant(r, shared) : r)) };
 }
 
+// 같은 식당 자료는 같은 화면용 객체를 돌려준다 (먼저 그리기와 전체 그리기가 판정 결과를 함께 쓰도록)
+const hydratedCache = new WeakMap();
+
 export function hydrateRestaurantForUi(rest, regionMeta = null) {
+  if (rest && typeof rest === 'object') {
+    const cached = hydratedCache.get(rest);
+    if (cached) return cached;
+  }
   // 화면용 필드만 위쪽에 덧붙이므로 얕은 복사로 충분하다 (6천여 곳 깊은 복사 비용 절감)
   const r = { ...rest };
   if (!r.categoryIds || !Array.isArray(r.categoryIds)) {
@@ -867,6 +966,7 @@ export function hydrateRestaurantForUi(rest, regionMeta = null) {
     r.lat = null;
     r.lng = null;
   }
+  if (rest && typeof rest === 'object') hydratedCache.set(rest, r);
   return r;
 }
 
