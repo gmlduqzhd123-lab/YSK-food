@@ -224,7 +224,7 @@ describe('PRD v1.1 Acceptance Criteria (AC01 ~ AC60)', () => {
     // AC05: 단체 항목은 근거(카카오맵 편의시설 정보)가 있을 때만 'yes'이고, 그 밖에는 'unknown' 또는 null로 보존됨
     for (const r of res.restaurants) {
       assert.ok(r.id.startsWith('ysk-r-'));
-      const hasFacilityEvidence = ['src-kakao-facility-20261019', 'src-kakao-refresh-20261102'].some(ref => r.groupProfile.evidenceRefs.includes(ref));
+      const hasFacilityEvidence = ['src-kakao-facility-20261019', 'src-kakao-refresh-20261102', 'src-kakao-recheck'].some(ref => r.groupProfile.evidenceRefs.includes(ref));
       assert.equal(r.groupProfile.availability, hasFacilityEvidence && r.groupProfile.seatTypes?.includes('단체석') ? 'yes' : 'unknown');
       assert.equal(r.groupProfile.totalSeats, null);
       assert.equal(r.groupProfile.simultaneousCapacity, null);
