@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import {
   buildOpeningHoursFromLegacy,
   compactRestaurantForStorage,
+  createSharedValueTable,
   expandStoredRestaurant,
   normalizeLegacyPlaceToRestaurant,
   validateDatasetBundleCrossReferences
@@ -763,13 +764,16 @@ function buildDataset() {
     regionDatasets[code] = regionData;
 
     // 식당이 많아져 들여쓰기 없이, 기본값(미확인·null)과 같은 항목은 빼고 저장한다 (전국 보기 로딩 크기 줄이기)
-    const storedRestaurants = restaurants.map(compactRestaurantForStorage);
+    // 여러 식당이 똑같이 갖는 출처 목록·단체 정보 항목은 파일의 공유 값 표에 한 번만 적는다
+    const sharedTable = createSharedValueTable();
+    const storedRestaurants = restaurants.map(r => compactRestaurantForStorage(r, sharedTable));
+    const sharedValues = sharedTable.toJSON();
     storedRestaurants.forEach((stored, i) => {
-      if (!sameShape(expandStoredRestaurant(stored), restaurants[i])) {
+      if (!sameShape(expandStoredRestaurant(stored, sharedValues), restaurants[i])) {
         throw new Error(`기본값 생략 저장 후 복원 결과가 원본과 다릅니다: ${restaurants[i].id}`);
       }
     });
-    const jsonText = JSON.stringify({ ...regionData, restaurants: storedRestaurants }) + '\n';
+    const jsonText = JSON.stringify({ ...regionData, restaurants: storedRestaurants, ...(sharedTable.isEmpty() ? {} : { sharedValues }) }) + '\n';
     fs.writeFileSync(path.join(ROOT_DIR, relPath), jsonText, 'utf8');
     const hash = sha256Hex(jsonText);
     checksums[relPath] = hash;
