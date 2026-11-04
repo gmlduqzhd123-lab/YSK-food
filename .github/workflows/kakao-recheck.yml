@@ -21,14 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # 빌드 도구가 예전 커밋(95f28ea)의 기본 목록을 읽으므로 전체 기록을 받는다
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: 카카오맵 재확인
         run: node tools/kakao-recheck.mjs --out tools/kakao-recheck-latest.json --summary "$RUNNER_TEMP/summary.md"

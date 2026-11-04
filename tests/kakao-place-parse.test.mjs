@@ -42,3 +42,15 @@ test('편의시설·좌석 옵션 표시에서 단체석·룸·주차 등을 읽
   // AI 요약의 좌석 옵션(하위 목록)도 읽는다
   assert.equal(parseKakaoFacilities({ ai_mate: { bottom_sheet: { sheets: [{ title: '제공 서비스', list: [{ title: '좌석 옵션', keywords: ['단체석'] }] }] } } }).group, true);
 });
+
+test('정기 재확인 사람 확인 결과 파일 형식', async () => {
+  const fs = await import('node:fs');
+  const review = JSON.parse(fs.readFileSync(new URL('../tools/kakao-recheck-review.json', import.meta.url), 'utf8'));
+  assert.equal(typeof review.decisions, 'object');
+  for (const [id, d] of Object.entries(review.decisions)) {
+    assert.match(id, /^ysk-r-/, `${id}: 식당 ID 형식`);
+    assert.ok(['remove', 'keep'].includes(d.action), `${id}: action은 remove 또는 keep`);
+    assert.match(String(d.checkedAt || ''), /^\d{4}-\d{2}-\d{2}$/, `${id}: checkedAt 날짜`);
+    assert.ok(String(d.reason || '').trim(), `${id}: reason 필요`);
+  }
+});
