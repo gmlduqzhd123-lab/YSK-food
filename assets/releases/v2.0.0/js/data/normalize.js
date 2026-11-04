@@ -715,13 +715,51 @@ function cloneDefault(v) {
   return v;
 }
 
+// 읽기용 기본값 틀: 식당마다 복사하지 않고 같은 객체를 함께 쓴다.
+// 화면 코드는 식당 객체 안쪽을 고치지 않으므로 공유해도 되며, 실수로 고치면 바로 오류가 나도록 얼려 둔다.
+function deepFreeze(v) {
+  if (v && typeof v === 'object' && !Object.isFrozen(v)) {
+    Object.freeze(v);
+    for (const key of Object.keys(v)) deepFreeze(v[key]);
+  }
+  return v;
+}
+
+let sharedDefaultsCache = null;
+function getSharedDefaults() {
+  if (!sharedDefaultsCache) {
+    const { restaurant, menu } = getRestaurantDefaults();
+    sharedDefaultsCache = { restaurant: deepFreeze(cloneDefault(restaurant)), menu: deepFreeze(cloneDefault(menu)) };
+  }
+  return sharedDefaultsCache;
+}
+
+// 기본값 틀마다 키 목록을 한 번만 만든다
+const templateKeysCache = new WeakMap();
+function templateKeys(template) {
+  let keys = templateKeysCache.get(template);
+  if (!keys) {
+    keys = Object.keys(template);
+    templateKeysCache.set(template, keys);
+  }
+  return keys;
+}
+
 function fillDefaults(value, template) {
-  if (value === undefined) return cloneDefault(template);
+  // 빠진 항목은 얼려 둔 기본값 틀을 그대로 쓴다 (복사 비용 절감)
+  if (value === undefined) return template;
   if (!isPlainObject(value) || !isPlainObject(template)) return value;
   const out = {};
-  for (const key of Object.keys(template)) out[key] = fillDefaults(value[key], template[key]);
-  for (const [key, v] of Object.entries(value)) {
-    if (!(key in template)) out[key] = v;
+  const keys = templateKeys(template);
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const v = value[key];
+    const t = template[key];
+    // 값이 객체가 아니면(문자·숫자·null·배열) 그대로 쓰거나 기본값을 쓴다
+    out[key] = v === undefined ? t : (isPlainObject(v) && isPlainObject(t) ? fillDefaults(v, t) : v);
+  }
+  for (const key in value) {
+    if (!(key in template)) out[key] = value[key];
   }
   return out;
 }
@@ -746,14 +784,16 @@ function rebuildOpeningHoursFromText(stored) {
   const key = `${stored.rawLegacyText}\u0000${stored.rawClosedText}`;
   let parsed = parsedHoursCache.get(key);
   if (!parsed) {
-    parsed = buildOpeningHoursFromLegacy(stored.rawLegacyText, stored.rawClosedText);
+    parsed = deepFreeze(buildOpeningHoursFromLegacy(stored.rawLegacyText, stored.rawClosedText));
     parsedHoursCache.set(key, parsed);
   }
-  const oh = cloneDefault(parsed);
-  oh.evidenceRefs = stored.evidenceRefs || [];
-  for (const iv of oh.weeklyIntervals) {
-    const lo = stored.lastOrders?.[`${iv.day}-${iv.startTime}`];
-    if (lo) [iv.lastOrderTime, iv.lastOrderDayOffset] = lo;
+  // 같은 원문의 해석 결과는 함께 쓰고, 라스트오더가 있는 구간만 새로 만든다
+  const oh = { ...parsed, evidenceRefs: stored.evidenceRefs || [] };
+  if (stored.lastOrders) {
+    oh.weeklyIntervals = parsed.weeklyIntervals.map(iv => {
+      const lo = stored.lastOrders[`${iv.day}-${iv.startTime}`];
+      return lo ? { ...iv, lastOrderTime: lo[0], lastOrderDayOffset: lo[1] } : iv;
+    });
   }
   return oh;
 }
@@ -790,9 +830,9 @@ export function compactRestaurantForStorage(rest) {
 
 /** 읽기용: 빠진 기본값을 다시 채운 식당 객체 */
 export function expandStoredRestaurant(rest) {
-  const { restaurant, menu } = getRestaurantDefaults();
+  const { restaurant, menu } = getSharedDefaults();
   const fromText = rest.openingHours?.fromText ? rest.openingHours : null;
-  const out = fillDefaults(fromText ? { ...rest, openingHours: undefined } : rest, restaurant);
+  const out = fillDefaults(rest, restaurant);
   if (fromText) out.openingHours = rebuildOpeningHoursFromText(fromText);
   if (Array.isArray(rest.menus)) out.menus = rest.menus.map(m => fillDefaults(m, menu));
   return out;

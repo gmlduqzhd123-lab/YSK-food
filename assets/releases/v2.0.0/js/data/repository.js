@@ -1,5 +1,5 @@
 // 지역·색인 로드, 버전·체크섬 묶음 검증, 경합 방지(AC07), 구버전 폴백(AC39), ID 상태 구분(AC40)
-import { APP_BASE, REGION_GROUPS, resolveAppUrl } from '../config.js';
+import { APP_BASE, DEFAULT_DATASET_VERSION, REGION_GROUPS, resolveAppUrl } from '../config.js';
 import {
   validateManifest,
   validateRegionsFile,
@@ -40,6 +40,8 @@ export class DatasetRepository {
   constructor(options = {}) {
     this.appBase = options.appBase || APP_BASE;
     this.fetchFn = options.fetchFn || globalThis.fetch?.bind(globalThis);
+    // 브라우저 기본 fetch를 쓸 때만, 체크섬이 맞는 저장본(서비스 워커 캐시)을 먼저 쓴다 (다시 방문할 때 내려받기 생략)
+    this.useVerifiedCache = options.useVerifiedCache ?? (!options.fetchFn && typeof globalThis.caches?.match === 'function');
     this.isOfflineFn = options.isOfflineFn || (() => typeof navigator !== 'undefined' && navigator.onLine === false);
 
     // 버전별 검증 완료된 묶음 캐시: datasetVersion -> { manifest, regionsFile, searchIndex, idIndex, legacyAliases, regions: Map<regionCode, regionData> }
@@ -73,8 +75,52 @@ export class DatasetRepository {
     }
   }
 
+  /** 체크섬이 맞는 저장본이 있으면 그 내용을 돌려준다 (없거나 다르면 null) */
+  async readVerifiedFromCache(url, expectedChecksum) {
+    if (!this.useVerifiedCache || !expectedChecksum) return null;
+    try {
+      const cached = await globalThis.caches.match(url);
+      if (!cached) return null;
+      const bytes = await cached.arrayBuffer();
+      if (await computeSha256HexOfBytes(bytes) !== expectedChecksum) return null;
+      return JSON.parse(new TextDecoder().decode(bytes));
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * 서비스 워커가 아직 없을 때도 다음 방문에 쓰도록 검증된 내용을 저장한다.
+   * 화면을 그리는 동안 방해하지 않도록 모아 두었다가 브라우저가 한가할 때 저장한다.
+   */
+  storeVerifiedInCache(url, bytes) {
+    if (!this.useVerifiedCache || globalThis.navigator?.serviceWorker?.controller) return;
+    this.pendingCacheWrites = this.pendingCacheWrites || [];
+    this.pendingCacheWrites.push([url, bytes]);
+    if (this.cacheFlushScheduled) return;
+    this.cacheFlushScheduled = true;
+    const idle = globalThis.requestIdleCallback || (cb => setTimeout(cb, 2000));
+    idle(() => this.flushCacheWrites(), { timeout: 5000 });
+  }
+
+  async flushCacheWrites() {
+    const writes = this.pendingCacheWrites || [];
+    this.pendingCacheWrites = [];
+    this.cacheFlushScheduled = false;
+    try {
+      const cache = await globalThis.caches.open(`ysk-food-data-${DEFAULT_DATASET_VERSION}`);
+      for (const [url, bytes] of writes) {
+        await cache.put(url, new Response(bytes, { headers: { 'content-type': 'application/json; charset=utf-8' } }));
+      }
+    } catch {
+      // 저장 공간 부족 등은 무시한다 (다음에 다시 내려받으면 된다)
+    }
+  }
+
   async fetchJsonVerified(relativePath, expectedChecksum = null) {
     const url = resolveAppUrl(relativePath, this.appBase);
+    const fromCache = await this.readVerifiedFromCache(url, expectedChecksum);
+    if (fromCache) return fromCache;
     let response;
     try {
       response = await this.fetchFn(url, { credentials: 'same-origin' });
@@ -114,6 +160,7 @@ export class DatasetRepository {
         error.code = 'CHECKSUM_MISMATCH';
         throw error;
       }
+      if (rawBytes) this.storeVerifiedInCache(url, rawBytes);
     }
 
     try {

@@ -2122,3 +2122,41 @@ html.op-mode #open-op-tool-btn {
     grid-row: 1 / span 2;
   }
 }
+
+/* 식당이 많을 때 넓게 보면 나오는 개수 말풍선 (누르면 그 칸으로 확대) */
+.map-bubble {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: rgba(255, 87, 34, 0.88);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+.map-bubble-md {
+  width: 38px;
+  height: 38px;
+  font-size: 12px;
+}
+.map-bubble-lg {
+  width: 46px;
+  height: 46px;
+  font-size: 13px;
+  background: rgba(234, 88, 12, 0.9);
+}
+.map-bubble-xl {
+  width: 54px;
+  height: 54px;
+  font-size: 14px;
+  background: rgba(194, 65, 12, 0.92);
+}
+.map-bubble:focus-visible {
+  outline: 3px solid #1d2330;
+}
