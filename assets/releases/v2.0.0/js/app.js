@@ -28,6 +28,7 @@ import {
 } from './domain/schedule.js';
 import {
   filterAndClassifyRestaurants,
+  warmRestaurantEvaluations,
   getCategoriesForMode,
   matchVenueFromQuery
 } from './domain/search.js';
@@ -468,10 +469,8 @@ export class YskFoodApp {
     banner.textContent = message;
   }
 
-  /**
-   * 필터·단체 조건 적용 및 목록·지도 갱신
-   */
-  applyFilters(fitMap = false) {
+  /** 지금 화면 조건으로 목록 판정에 넘길 값 (modeOverride: 미리 계산할 다른 모드) */
+  buildFilterState(modeOverride = null) {
     const gc = this.state.groupCriteria;
     let mealWindow = null;
     if (gc.visitDate && gc.startTime && gc.endTime) {
@@ -484,10 +483,8 @@ export class YskFoodApp {
       if (mw.valid) mealWindow = mw;
     }
 
-    const result = filterAndClassifyRestaurants(
-      this.currentRestaurants,
-      {
-        mode: this.state.mode,
+    return {
+        mode: modeOverride || this.state.mode,
         regionCode: this.state.regionCode,
         city: 'all',
         category: this.state.category,
@@ -503,11 +500,51 @@ export class YskFoodApp {
           ...gc,
           mealWindow
         }
-      },
+      };
+  }
+
+  /**
+   * 다른 이용 모드(일반·학교·선수단)의 판정 결과를 한가한 시간에 조금씩 미리 계산해 둔다.
+   * (처음 모드를 바꿀 때도 바로 바뀌도록. 화면을 멈추지 않게 쉬는 시간마다 300곳씩)
+   */
+  scheduleEvaluationWarmup() {
+    this.warmupToken = (this.warmupToken || 0) + 1;
+    const token = this.warmupToken;
+    const places = this.currentRestaurants;
+    const visitRecords = this.currentVisitRecords;
+    const modes = ['general', 'school', 'athlete'].filter(m => m !== this.state.mode);
+    const idle = globalThis.requestIdleCallback || (cb => setTimeout(() => cb({ timeRemaining: () => 8 }), 50));
+    let modeIndex = 0;
+    let next = 0;
+    const step = deadline => {
+      if (token !== this.warmupToken || modeIndex >= modes.length) return;
+      const filterState = this.buildFilterState(modes[modeIndex]);
+      while (deadline.timeRemaining() > 4 && modeIndex < modes.length) {
+        next = warmRestaurantEvaluations(places, filterState, visitRecords, next, 300);
+        if (next >= places.length) {
+          modeIndex += 1;
+          next = 0;
+          break;
+        }
+      }
+      if (modeIndex < modes.length) idle(step, { timeout: 2000 });
+    };
+    idle(step, { timeout: 2000 });
+  }
+
+  /**
+   * 필터·단체 조건 적용 및 목록·지도 갱신
+   */
+  applyFilters(fitMap = false) {
+    const result = filterAndClassifyRestaurants(
+      this.currentRestaurants,
+      this.buildFilterState(),
       this.currentVisitRecords
     );
 
     this.lastFilterResult = result;
+    // 첫 판정이 끝난 뒤 다른 모드도 미리 계산해 둔다 (자료가 다 도착한 뒤에만)
+    if (!this.loadingProgress) this.scheduleEvaluationWarmup();
 
     if (this.mapController.isReady()) {
       const activeRef = result.effectiveReferencePoint || this.state.referencePoint;
@@ -620,7 +657,7 @@ export class YskFoodApp {
       const coordTag = isMappablePlace(place) ? '' : ' · 📍좌표 미확인';
       const metaRow = document.createElement('div');
       metaRow.className = 'place-meta';
-      metaRow.textContent = `${place.city || place.regionCode} · ${place.category || '기타'}${place.price ? ` · 💰 ${place.price}` : ''}${coordTag}`;
+      metaRow.textContent = `${place.city || place.regionCode} · ${place.category || '기타'} · 💰 ${place.price || '가격 미확인'}${coordTag}`;
       mainBtn.appendChild(metaRow);
 
       const hSummary = formatHoursSummary(place);

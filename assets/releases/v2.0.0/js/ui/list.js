@@ -188,7 +188,7 @@ export function createMapOverlayDom(place, onClose, handlers = {}, state = {}) {
     : place.name;
   info.appendChild(el('div', 'title', titleText));
 
-  const metaParts = [place.city, place.category, place.price ? `💰 ${place.price}` : null].filter(Boolean);
+  const metaParts = [place.city, place.category, `💰 ${place.price || '가격 미확인'}`].filter(Boolean);
   info.appendChild(el('div', 'meta', metaParts.join(' · ')));
 
   if (place.menu) {
