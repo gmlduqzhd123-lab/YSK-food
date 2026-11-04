@@ -102,6 +102,15 @@ const REFRESH_SOURCE_ID = 'src-kakao-refresh-20261102';
 // 매달 정기 재확인 결과(tools/kakao-recheck.mjs, GitHub Actions) — 장소 페이지가 사라진 식당 목록
 const KAKAO_RECHECK_PATH = path.join(__dirname, 'kakao-recheck-latest.json');
 const KAKAO_RECHECK = fs.existsSync(KAKAO_RECHECK_PATH) ? JSON.parse(fs.readFileSync(KAKAO_RECHECK_PATH, 'utf8')) : { missing: {} };
+// 정기 재확인에서 사람이 확인한 결과 (remove: 공개 자료에서 뺌, keep: 카카오맵에서 사라졌어도 남김)
+const RECHECK_REVIEW_PATH = path.join(__dirname, 'kakao-recheck-review.json');
+const RECHECK_REVIEW = fs.existsSync(RECHECK_REVIEW_PATH) ? JSON.parse(fs.readFileSync(RECHECK_REVIEW_PATH, 'utf8')).decisions || {} : {};
+const isRemovedByRecheck = id => {
+  const action = RECHECK_REVIEW[id]?.action;
+  if (action === 'remove') return true;
+  if (action === 'keep') return false;
+  return Boolean(KAKAO_RECHECK.missing?.[id]);
+};
 const normMenuName = s => String(s || '').replace(/\s+|\(.*?\)/g, '');
 
 /** 카카오맵 영업시간(원문·휴무·요일별 라스트오더)으로 영업시간 객체를 만든다 (해석할 수 없으면 null) */
@@ -677,8 +686,8 @@ function buildDataset() {
   // 연락처(phone) 정보가 없는 업소는 전면 제외한다.
   for (const r of [...normalizedRestaurants, ...verifiedRestaurants]) {
     if (!r.phone || !String(r.phone).trim()) continue;
-    // 카카오맵 장소 페이지가 사라진 식당(폐업·삭제 추정)은 뺀다: 2026-11-02 재수집 + 매달 정기 재확인 결과
-    if (KAKAO_REFRESH.places[r.id]?.notFound || KAKAO_RECHECK.missing?.[r.id]) continue;
+    // 카카오맵 장소 페이지가 사라진 식당(폐업·삭제 추정)은 뺀다: 2026-11-02 재수집 + 매달 정기 재확인 결과 + 사람 확인 결과
+    if (KAKAO_REFRESH.places[r.id]?.notFound || isRemovedByRecheck(r.id)) continue;
     applyKakaoRefresh(r);
     applyKakaoFacilities(r);
     applyKakaoRecheck(r);

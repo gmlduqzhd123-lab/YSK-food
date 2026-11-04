@@ -9,6 +9,8 @@
 // - 빌드 도구는 missing 식당을 공개 자료에서 빼고, 바뀐 영업시간·단체석 표시를 반영하며,
 //   confirmed 식당의 단체정보 확인일을 재확인 날짜로 바꾼다 (6개월이 지나 '재확인 권장'이 한꺼번에 붙지 않도록).
 // - 처음부터 있던 여수·순천·광양 166곳은 자동으로 빼지 않고 legacyMissing에만 적는다(사람이 확인).
+// - 사람이 확인한 결과는 tools/kakao-recheck-review.json에 적는다(remove: 뺌, keep: 남김).
+//   이미 확인한 식당은 요약의 '확인 필요' 목록에 다시 나오지 않는다.
 // - 응답 실패가 20%를 넘거나, 바뀐 곳이 지나치게 많으면(20% 초과: 카카오맵 형식 변경 의심)
 //   결과 파일을 바꾸지 않고 실패로 끝낸다.
 // - GitHub Actions(.github/workflows/kakao-recheck.yml)가 한 달에 한 번 실행해 PR을 만든다.
@@ -33,6 +35,8 @@ const CONCURRENCY = 6;
 const MAX_ERROR_RATE = 0.2;
 const MAX_CHANGE_RATE = 0.2;
 
+const REVIEW_PATH = path.join(ROOT_DIR, 'tools/kakao-recheck-review.json');
+const REVIEWED = fs.existsSync(REVIEW_PATH) ? JSON.parse(fs.readFileSync(REVIEW_PATH, 'utf8')).decisions || {} : {};
 const isLegacyId = id => /^ysk-r-\d+$/.test(String(id));
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const todayKst = () => new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
@@ -165,6 +169,9 @@ async function main() {
     const name = id => targets.find(t => t.id === id)?.name || id;
     const groupOn = Object.entries(facilityUpdates).filter(([, f]) => f.group);
     const groupOff = Object.entries(facilityUpdates).filter(([, f]) => !f.group);
+    const unreviewed = obj => Object.entries(obj).filter(([id]) => !REVIEWED[id]);
+    const legacyTodo = unreviewed(report.legacyMissing);
+    const notOpenTodo = unreviewed(report.notOpen);
     const lines = [
       `## 카카오맵 정기 재확인 (${report.checkedAt})`,
       '',
@@ -174,10 +181,12 @@ async function main() {
       `- 단체석 표시가 새로 생긴 곳: ${groupOn.length}곳, 없어진 곳(단체 수용 '미확인'으로 바꿈): ${groupOff.length}곳`,
       `- 공개 자료에서 빼는 곳(장소 페이지 없음): ${Object.keys(report.missing).length}곳`,
       ...Object.entries(report.missing).map(([id, t]) => `  - ${t.name} (${t.regionCode}, ${id})`),
-      `- 사람이 확인할 여수·순천·광양 식당: ${Object.keys(report.legacyMissing).length}곳`,
-      ...Object.entries(report.legacyMissing).map(([id, t]) => `  - ${t.name} (${id})`),
-      `- 영업 표시가 아닌 곳(휴업 등, 확인 필요): ${Object.keys(report.notOpen).length}곳`,
-      ...Object.entries(report.notOpen).slice(0, 30).map(([id, t]) => `  - ${t.name} (${t.regionCode}, ${id}, 상태 ${t.kakaoStatus})`),
+      `- 사람이 확인할 여수·순천·광양 식당: ${legacyTodo.length}곳 (이미 확인 ${Object.keys(report.legacyMissing).length - legacyTodo.length}곳)`,
+      ...legacyTodo.map(([id, t]) => `  - ${t.name} (${id})`),
+      `- 영업 표시가 아닌 곳(휴업 등, 확인 필요): ${notOpenTodo.length}곳 (이미 확인 ${Object.keys(report.notOpen).length - notOpenTodo.length}곳)`,
+      ...notOpenTodo.slice(0, 30).map(([id, t]) => `  - ${t.name} (${t.regionCode}, ${id}, 상태 ${t.kakaoStatus})`),
+      '',
+      '확인한 결과는 `tools/kakao-recheck-review.json`의 `decisions`에 적고(`remove`: 공개 자료에서 뺌, `keep`: 남김) `node tools/build-dataset.mjs`로 자료를 다시 만듭니다.',
       '',
       '<details><summary>영업시간이 바뀐 곳 (최대 30곳)</summary>',
       '',

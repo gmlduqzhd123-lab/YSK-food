@@ -1,0 +1,4 @@
+{
+  "description": "카카오맵 정기 재확인에서 사람이 확인한 결과. action: remove(공개 자료에서 뺌) | keep(카카오맵에서 사라졌어도 남김). 예: \"ysk-r-12\": { \"name\": \"식당 이름\", \"action\": \"remove\", \"reason\": \"전화 확인 결과 폐업\", \"checkedAt\": \"2026-11-04\" }",
+  "decisions": {}
+}
