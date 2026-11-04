@@ -334,6 +334,8 @@ export class YskFoodApp {
       if (homeEl) homeEl.hidden = true;
       const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
       if (loadRes?.stale) return;
+      // 이름이 같은 식당이 여럿일 때 후보 설명(주소·지역)을 검색 색인에서 가져오므로 먼저 받아 둔다
+      await this.repository.ensureIndexes().catch(() => {});
       const aliasRes = this.repository.resolveLegacyPlaceName(route.legacyPlaceName);
 
       if (aliasRes.status === 'resolved' && aliasRes.restaurantId) {
