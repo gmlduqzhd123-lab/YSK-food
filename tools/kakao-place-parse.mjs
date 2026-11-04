@@ -88,11 +88,28 @@ export function parseKakaoFacilities(panel) {
       if (String(l.title || '').includes('좌석')) for (const k of l.keywords || []) words.add(k);
     }
   }
+  const all = [...words];
+  const parking = (words.has('주차가능') || words.has('주차 가능') || words.has('무료주차')) && !words.has('주차장없음');
+  const parkingNote = (pai.ai_mate?.store_infos || []).find(i => i.title === '주차' && i.summary)?.summary;
   return {
     group: words.has('단체석'),
     room: words.has('프라이빗룸') || words.has('룸'),
-    parking: (words.has('주차가능') || words.has('주차 가능') || words.has('무료주차')) && !words.has('주차장없음'),
+    parking,
+    freeParking: words.has('무료주차') || all.some(w => w.includes('주차') && w.includes('무료')),
     reserve: words.has('예약가능') || words.has('예약 가능'),
-    takeout: words.has('포장가능') || words.has('포장 가능')
+    takeout: words.has('포장가능') || words.has('포장 가능'),
+    kidChair: words.has('유아의자') || words.has('유아의자 있음'),
+    wheelchair: words.has('장애인 시설') || all.some(w => w.includes('휠체어')),
+    parkingNote: parking && parkingNote ? String(parkingNote).slice(0, 120) : null
   };
+}
+
+/** 빌드 도구용 편의시설 기록: 있는 항목만 남긴다 (예: { group: true, parking: true, parkingNote: '…' }) */
+export function compactFacilities(fac) {
+  const out = {};
+  for (const key of ['group', 'room', 'parking', 'freeParking', 'reserve', 'takeout', 'kidChair', 'wheelchair']) {
+    if (fac[key]) out[key] = true;
+  }
+  if (fac.parkingNote) out.parkingNote = fac.parkingNote;
+  return out;
 }
