@@ -1,5 +1,5 @@
 // 지역·색인 로드, 버전·체크섬 묶음 검증, 경합 방지(AC07), 구버전 폴백(AC39), ID 상태 구분(AC40)
-import { APP_BASE, DEFAULT_DATASET_VERSION, REGION_GROUPS, resolveAppUrl } from '../config.js';
+import { APP_BASE, DEFAULT_DATASET_VERSION, NEARBY_GROUP_PREFIX, REGION_GROUPS, registerNearbyRegionGroup, resolveAppUrl } from '../config.js';
 import {
   validateManifest,
   validateRegionsFile,
@@ -423,13 +423,19 @@ export class DatasetRepository {
       bundle = coreRes.bundle;
     }
 
+    // '주변 함께 보기' 묶음(nearby-<지역 코드>)은 지역 목록으로 그때 만든다 (공유 링크로 바로 열어도 동작)
+    if (String(regionCode).startsWith(NEARBY_GROUP_PREFIX) && !REGION_GROUPS[regionCode]) {
+      registerNearbyRegionGroup(String(regionCode).slice(NEARBY_GROUP_PREFIX.length), bundle.regionsFile.regions || []);
+    }
+
     let targetCodes;
     if (regionCode === 'nationwide') {
       targetCodes = (bundle.regionsFile.regions || []).map(r => r.regionCode);
     } else if (REGION_GROUPS[regionCode]?.regionCodes) {
       targetCodes = REGION_GROUPS[regionCode].regionCodes;
     } else {
-      targetCodes = [regionCode];
+      // 이웃이 없어 묶음을 못 만든 '주변' 코드는 그 지역 하나만 연다
+      targetCodes = [String(regionCode).startsWith(NEARBY_GROUP_PREFIX) ? String(regionCode).slice(NEARBY_GROUP_PREFIX.length) : regionCode];
     }
 
     // 여러 지역 파일을 받는 경우(전국·권역) 8분의 1이 도착하면 그때까지의 식당을 한 번 먼저 넘겨 화면을 일찍 그린다

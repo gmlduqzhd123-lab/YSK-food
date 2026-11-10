@@ -77,6 +77,14 @@ textarea:focus-visible {
   background: #f8fafc;
   color: #475569;
 }
+.nearby-bar {
+  padding-top: 4px;
+  padding-bottom: 6px;
+}
+.nearby-bar .link {
+  min-height: 28px;
+  padding: 4px 10px;
+}
 .status-banner.warn {
   background: #fffbeb;
   color: #b45309;
@@ -1631,6 +1639,10 @@ html.op-mode #open-op-tool-btn {
   }
   .status-banner.info.expanded {
     white-space: normal;
+  }
+  .status-banner.info.nearby-bar {
+    padding: 0 12px 6px;
+    cursor: default;
   }
 
   /* 검색줄: [이용 목적 ▾] [검색창] [필터] */

@@ -98,6 +98,50 @@ export const GYEONGGI_CITY_REGIONS = [
   { regionCode: 'gyeonggi-yeoncheon', name: '연천군', shortName: '연천' },
 ];
 
+export const NEARBY_GROUP_PREFIX = 'nearby-';
+
+/**
+ * 한 시·군·구와 가까운 시·군·구(중심점 기준 최대 4곳, 45km 이내)를 함께 보는 묶음을 REGION_GROUPS에 등록한다.
+ * 식당이 적은 군 지역이나 경계 근처 현장체험학습에 쓴다. 등록한 묶음 코드('nearby-<지역 코드>')를 돌려주고, 이웃이 없으면 null
+ */
+export function registerNearbyRegionGroup(baseCode, regions = [], { maxNeighbors = 4, maxKm = 45 } = {}) {
+  const code = `${NEARBY_GROUP_PREFIX}${baseCode}`;
+  if (REGION_GROUPS[code]) return code;
+  const base = regions.find(r => r.regionCode === baseCode);
+  if (!base?.center) return null;
+  const rad = d => (d * Math.PI) / 180;
+  const km = (a, b) => {
+    const h = Math.sin(rad(b.lat - a.lat) / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lng - a.lng) / 2) ** 2;
+    return 12742 * Math.asin(Math.sqrt(h));
+  };
+  const neighbors = regions
+    .filter(r => r.regionCode !== baseCode && r.center && !REGION_GROUPS[r.regionCode])
+    .map(r => ({ r, d: km(base.center, r.center) }))
+    .filter(x => x.d <= maxKm)
+    .sort((a, b) => a.d - b.d)
+    .slice(0, maxNeighbors)
+    .map(x => x.r);
+  if (!neighbors.length) return null;
+  const all = [base, ...neighbors];
+  const lats = all.flatMap(r => (r.bounds ? [r.bounds.sw.lat, r.bounds.ne.lat] : [r.center.lat]));
+  const lngs = all.flatMap(r => (r.bounds ? [r.bounds.sw.lng, r.bounds.ne.lng] : [r.center.lng]));
+  // 도·광역시 '기타' 묶음은 '전남 기타'처럼 적는다
+  const names = neighbors.map(r => (/-etc$/.test(r.regionCode) ? `${r.shortName} 기타` : r.shortName || r.name));
+  const baseName = base.shortName || base.name;
+  REGION_GROUPS[code] = {
+    code,
+    dynamic: true,
+    baseRegionCode: baseCode,
+    label: `${baseName}·주변 (${names.join('·')})`,
+    shortLabel: `${baseName}·주변`,
+    neighborNames: names,
+    regionCodes: all.map(r => r.regionCode),
+    center: { lat: base.center.lat, lng: base.center.lng, zoomLevel: Math.min(13, (base.center.zoomLevel || 8) + 2) },
+    bounds: { sw: { lat: Math.min(...lats), lng: Math.min(...lngs) }, ne: { lat: Math.max(...lats), lng: Math.max(...lngs) } }
+  };
+  return code;
+}
+
 /** 'seoul-etc'·'gyeonggi-etc' 식당을 주소의 구·시·군 지역 코드로 바꾼다 (해당 없으면 원래 코드) */
 export function splitMetroRegionCode(regionCode, address) {
   const addr = String(address || '');
