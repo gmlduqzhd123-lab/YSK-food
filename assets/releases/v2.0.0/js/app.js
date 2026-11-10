@@ -7,7 +7,9 @@ import {
   MAX_COMPARE_COUNT,
   PAGE_SIZE,
   REGION_COLORS,
+  NEARBY_GROUP_PREFIX,
   REGION_GROUPS,
+  registerNearbyRegionGroup,
   resolveAppUrl
 } from './config.js';
 import {
@@ -439,6 +441,8 @@ export class YskFoodApp {
     const unverifiedCoordCount = this.currentRestaurants.filter(p => !isMappablePlace(p)).length;
     const groupVerifiedCount = this.currentRestaurants.filter(p => p.groupProfile?.availability === 'yes').length;
 
+    const nearbyBar = document.getElementById('nearby-region-bar');
+    if (nearbyBar) nearbyBar.hidden = true;
     if (regionRes.status === 'region_error' || regionRes.status === 'offline_unsaved') {
       banner.hidden = false;
       banner.className = 'status-banner error';
@@ -459,7 +463,60 @@ export class YskFoodApp {
     const modeFilterText = this.state.mode !== 'general'
       ? ' · 🏫 초등·선수단 맞춤 추천 (술집·포차·카페 자동 제외)'
       : '';
-    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 단체석 있음 ${groupVerifiedCount}곳${modeFilterText} · 최근 갱신 2026-10-19`;
+    // 자료 확인일: 지금 보이는 식당의 단체정보 확인일 중 가장 최근 날짜
+    let latestChecked = '';
+    for (const p of this.currentRestaurants) {
+      const c = p.groupProfile?.checkedAt;
+      if (c && c > latestChecked) latestChecked = c;
+    }
+    banner.textContent = `📍 ${regTitle}: 등록 ${totalCount}곳 · 지도 위치 확인 ${totalCount - unverifiedCoordCount}곳 (좌표 미확인 ${unverifiedCoordCount}곳) · 단체석 있음 ${groupVerifiedCount}곳${modeFilterText}${latestChecked ? ` · 최근 확인 ${latestChecked}` : ''}`;
+    this.appendNearbyRegionButton(banner);
+  }
+
+  /** 시·군·구 하나를 볼 때 '주변 시·군 함께 보기', 주변 묶음을 볼 때 '○○만 보기' 버튼 */
+  appendNearbyRegionButton(banner) {
+    // 안내 한 줄은 접혀 있으므로 버튼은 바로 아래 줄에 따로 둔다
+    let bar = document.getElementById('nearby-region-bar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'nearby-region-bar';
+      bar.className = 'status-banner info nearby-bar';
+      banner.insertAdjacentElement('afterend', bar);
+    }
+    bar.innerHTML = '';
+    bar.hidden = true;
+    const code = this.state.regionCode;
+    const group = REGION_GROUPS[code];
+    let targetCode = null;
+    let label = '';
+    if (group?.dynamic) {
+      // 공유 링크로 바로 연 경우 지역 목록에 이 묶음을 넣어 선택 상태를 맞춘다
+      const sel = document.getElementById('region-select');
+      if (sel && sel.value !== code) this.syncFilterControlsFromState();
+      targetCode = group.baseRegionCode;
+      const base = this.repository.getRegionMeta(targetCode);
+      label = `↩ ${base?.shortName || base?.name || '처음 지역'}만 보기`;
+    } else if (!group && code && code !== 'all') {
+      const nearbyCode = registerNearbyRegionGroup(code, this.repository.getRegionsList());
+      if (!nearbyCode) return;
+      targetCode = nearbyCode;
+      label = `🧭 주변 함께 보기 (${REGION_GROUPS[nearbyCode].neighborNames.join('·')})`;
+    }
+    if (!targetCode) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'link sub nearby-region-btn';
+    btn.textContent = label;
+    btn.addEventListener('click', async () => {
+      this.state.regionCode = targetCode;
+      this.state.visibleLimit = PAGE_SIZE;
+      this.syncFilterControlsFromState();
+      const loadRes = await this.loadSelectedRegionData(this.state.regionCode);
+      if (loadRes?.stale) return;
+      this.applyFilters(true);
+    });
+    bar.appendChild(btn);
+    bar.hidden = false;
   }
 
   showBannerAlert(message, level = 'warn') {
@@ -1825,7 +1882,7 @@ export class YskFoodApp {
     const groupOptGroup = document.createElement('optgroup');
     groupOptGroup.label = '권역별 묶음 보기';
     for (const [groupKey, groupDef] of Object.entries(REGION_GROUPS)) {
-      if (groupKey === 'nationwide') continue;
+      if (groupKey === 'nationwide' || groupDef.dynamic) continue;
       const gCount = (groupDef.regionCodes || []).reduce((s, rc) => {
         const found = regions.find(r => r.regionCode === rc);
         return s + (found?.stats?.totalRestaurants ?? 0);
@@ -1848,7 +1905,8 @@ export class YskFoodApp {
     }
     selectEl.appendChild(indivOptGroup);
 
-    selectEl.value = this.state.regionCode;
+    // '주변 함께 보기' 묶음 선택이 있으면 그 항목도 넣어 값을 맞춘다
+    this.syncFilterControlsFromState();
   }
 
   renderReferencePointSelector() {
@@ -2119,7 +2177,17 @@ export class YskFoodApp {
     if (searchInput) searchInput.value = this.state.query;
 
     const regionSelect = document.getElementById('region-select');
-    if (regionSelect) regionSelect.value = this.state.regionCode;
+    if (regionSelect) {
+      // '주변 함께 보기' 묶음은 목록에 없으면 그때 넣는다
+      const nearbyGroup = REGION_GROUPS[this.state.regionCode];
+      if (nearbyGroup?.dynamic && ![...regionSelect.options].some(o => o.value === this.state.regionCode)) {
+        const opt = document.createElement('option');
+        opt.value = this.state.regionCode;
+        opt.textContent = `🧭 ${nearbyGroup.label}`;
+        regionSelect.insertBefore(opt, regionSelect.children[1] || null);
+      }
+      regionSelect.value = this.state.regionCode;
+    }
 
     const presetSelect = document.getElementById('event-preset-select');
     if (presetSelect) presetSelect.value = this.state.presetId || '';

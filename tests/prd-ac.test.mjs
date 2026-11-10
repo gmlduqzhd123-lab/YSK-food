@@ -1486,3 +1486,19 @@ describe('비교 후보 내보내기·문의 문구 일괄 생성', () => {
     assert.match(empty, /인원 구성: 미정/);
   });
 });
+
+describe('주변 시·군 함께 보기 묶음', () => {
+  test('중심점이 가까운 지역을 최대 4곳 묶고, 도 기타 묶음은 "기타"로 적는다', async () => {
+    const { registerNearbyRegionGroup, REGION_GROUPS } = await import('../assets/releases/v2.0.0/js/config.js');
+    const regions = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/releases/2026.10.1/regions.json'), 'utf8')).regions;
+    const code = registerNearbyRegionGroup('jn-boseong', regions);
+    assert.equal(code, 'nearby-jn-boseong');
+    const g = REGION_GROUPS[code];
+    assert.equal(g.dynamic, true);
+    assert.equal(g.regionCodes[0], 'jn-boseong');
+    assert.ok(g.regionCodes.length >= 2 && g.regionCodes.length <= 5);
+    assert.ok(g.neighborNames.includes('전남 기타'));
+    assert.equal(registerNearbyRegionGroup('jn-boseong', regions), code);
+    assert.equal(registerNearbyRegionGroup('no-such-region', regions), null);
+  });
+});
