@@ -21,6 +21,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { expandStoredRegionDataset } from '../assets/releases/v2.0.0/js/data/normalize.js';
 import { compactFacilities, parseKakaoFacilities, parseKakaoOpenHours } from './kakao-place-parse.mjs';
+import { classifyMenuPriceBasis } from './menu-price-basis.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
@@ -235,7 +236,7 @@ function stepSelect() {
       const facilities = compactFacilities(d.facilities);
       places[id] = {
         kakaoPlaceId: c.kid, ...d.hours,
-        menus: menus.slice(0, 12).map(m => ({ name: m.name, priceKRW: m.price, priceBasis: 'per_person' })),
+        menus: menus.slice(0, 12).map(m => ({ name: m.name, priceKRW: m.price, priceBasis: classifyMenuPriceBasis(m.name, m.price) })),
         ...(Object.keys(facilities).length ? { facilities } : {})
       };
     }
