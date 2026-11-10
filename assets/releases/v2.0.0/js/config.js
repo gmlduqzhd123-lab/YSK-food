@@ -354,9 +354,12 @@ export const EVENT_PRESETS = {
 };
 
 export const SUBMISSION_CONFIG = {
-  configured: false,
-  deliveryChannel: null,
-  guideMessage: '현재 온라인 자동 제출 경로가 설정되지 않았습니다. 작성한 제보·이용 기록 초안은 브라우저에 저장되며, JSON 파일로 내보내어 운영자에게 전달해 주세요. (내보내기 완료가 공용 지도 즉시 반영을 뜻하지 않습니다.)'
+  // 제보는 GitHub 이슈 양식(.github/ISSUE_TEMPLATE/restaurant-report.yml)으로 받는다 (GitHub 계정 필요, 공개 게시)
+  configured: true,
+  deliveryChannel: 'github_issue',
+  issueNewUrl: 'https://github.com/gmlduqzhd123-lab/YSK-food/issues/new',
+  issueTemplate: 'restaurant-report.yml',
+  guideMessage: '제보는 GitHub 이슈 양식으로 보냅니다(GitHub 계정 필요, 누구나 볼 수 있게 공개). 운영자가 확인한 뒤 지도에 반영하며, 바로 반영되지는 않습니다.'
 };
 
 export const ALLOWED_SHARE_PARAMS = [

@@ -1,0 +1,67 @@
+name: 식당 정보 제보
+description: 폐업·영업시간·전화번호·위치 오류나 단체 수용(좌석 수·버스 주차) 정보를 알려 주세요.
+title: "[제보] "
+labels: ["제보"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        지도에서 '🚩 정보 오류·폐업 제보'를 누르면 식당 ID와 이름이 미리 채워집니다.
+        **학생 이름·얼굴·연락처·개별 건강정보는 적지 마세요.** 이 제보는 누구나 볼 수 있게 공개됩니다.
+  - type: input
+    id: restaurant_id
+    attributes:
+      label: 식당 ID
+      description: 지도에서 제보 버튼을 누르면 자동으로 채워집니다. 모르면 비워 두세요.
+      placeholder: ysk-r-1
+  - type: input
+    id: restaurant_name
+    attributes:
+      label: 식당 이름·지역
+      placeholder: 이순신수제버거 (전남 여수)
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 제보 종류
+      multiple: true
+      options:
+        - 폐업·이전
+        - 영업시간·휴무일이 다름
+        - 전화번호가 다름
+        - 지도 위치가 다름
+        - 단체 수용 정보 (좌석 수·룸·동시 착석)
+        - 대형버스 주차·승하차
+        - 메뉴·가격이 다름
+        - 단체 이용 후기
+        - 기타
+    validations:
+      required: true
+  - type: input
+    id: seats
+    attributes:
+      label: 단체 좌석 수 (아는 경우)
+      placeholder: "예: 80석, 룸 2개(각 20명)"
+  - type: dropdown
+    id: bus_parking
+    attributes:
+      label: 대형버스 주차 (아는 경우)
+      options:
+        - 모름
+        - 식당 앞 주차 가능
+        - 근처 공영주차장 이용
+        - 승하차만 가능
+        - 불가
+  - type: textarea
+    id: details
+    attributes:
+      label: 자세한 내용
+      description: 확인한 날짜와 방법(전화·방문·카카오맵 등)을 함께 적어 주세요.
+    validations:
+      required: true
+  - type: input
+    id: evidence_url
+    attributes:
+      label: 참고 링크 (선택)
+      placeholder: https://place.map.kakao.com/...

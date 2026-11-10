@@ -326,11 +326,38 @@ export function buildVerifiedReportDraft(rawInput = {}) {
     isSubmittedToPublicServer: false,
     deliveryChannelConfigured: SUBMISSION_CONFIG.configured,
     statusLabel: SUBMISSION_CONFIG.configured
-      ? '초안 저장됨 (전달 안내 확인)'
+      ? '초안 저장됨 · GitHub 제보 양식 창을 열었습니다 (보내기를 눌러야 운영자에게 전달됩니다. 자동 게시되지 않습니다.)'
       : '브라우저 초안 저장됨 · 전달 경로 미설정 (제보 파일을 내려받아 운영자에게 전달해 주세요. 자동 게시되지 않습니다.)',
     publicPreview,
     serializedJson: JSON.stringify(publicPreview, null, 2)
   };
+}
+
+const REPORT_FIELD_LIMIT = 1500;
+const clip = (v, n = REPORT_FIELD_LIMIT) => String(v ?? '').trim().slice(0, n);
+
+/**
+ * 식당 정보 제보용 GitHub 이슈 양식 주소 (식당 ID·이름·내용을 미리 채운다)
+ * - 이슈 양식의 input/textarea 항목 id와 같은 이름의 주소 값으로 미리 채운다.
+ * - 개인 휴대전화번호가 들어 있으면 만들지 않는다.
+ */
+export function buildRestaurantReportIssueUrl(input = {}) {
+  const name = clip(input.restaurantName, 120);
+  const region = clip(input.regionName, 40);
+  const details = clip(input.details);
+  if (/01[016789]-?\d{3,4}-?\d{4}/.test(`${details} ${input.seats || ''}`)) {
+    return { valid: false, url: null, message: '제보 내용에는 개인 휴대전화번호를 적을 수 없습니다.' };
+  }
+  const params = new URLSearchParams();
+  params.set('template', SUBMISSION_CONFIG.issueTemplate || 'restaurant-report.yml');
+  params.set('title', `[제보] ${name || '식당'}${input.restaurantId ? ` (${clip(input.restaurantId, 40)})` : ''}`);
+  if (input.restaurantId) params.set('restaurant_id', clip(input.restaurantId, 40));
+  params.set('restaurant_name', region ? `${name} (${region})` : name);
+  if (input.seats) params.set('seats', clip(input.seats, 120));
+  if (details) params.set('details', details);
+  const evidence = input.evidenceUrl ? sanitizeHttpUrl(input.evidenceUrl) : null;
+  if (evidence) params.set('evidence_url', evidence);
+  return { valid: true, url: `${SUBMISSION_CONFIG.issueNewUrl}?${params.toString()}`, message: '' };
 }
 
 /**

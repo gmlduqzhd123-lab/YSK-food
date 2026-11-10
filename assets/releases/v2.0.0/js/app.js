@@ -18,7 +18,7 @@ import {
   validateRegionDataset
 } from './data/normalize.js';
 import { DatasetRepository } from './data/repository.js';
-import { addDaysToKoreaDateStr, buildPlannedMealWindow, formatHoursSummary, getOpenStatus } from './domain/hours.js';
+import { addDaysToKoreaDateStr, buildPlannedMealWindow, formatHoursSummary, getKoreaDateTimeParts, getOpenStatus } from './domain/hours.js';
 import { evaluateMealPlanCost } from './domain/budget.js';
 import {
   copyMealPlanToDate,
@@ -67,6 +67,7 @@ import {
   buildPublicQrSvg,
   buildPublicShareUrl,
   buildVerifiedReportDraft,
+  buildRestaurantReportIssueUrl,
   parseRouteFromUrl
 } from './ui/share.js';
 
@@ -1024,7 +1025,13 @@ export class YskFoodApp {
       this.handleAddPlaceToActiveEvent(place);
     });
 
-    this.openModal(`${place.name} — 단체·상세 정보`, body, [copyDocBtn, qrBtn, addEventBtn]);
+    const reportBtn = document.createElement('button');
+    reportBtn.type = 'button';
+    reportBtn.className = 'link sub';
+    reportBtn.textContent = '🚩 정보 오류·폐업 제보';
+    reportBtn.addEventListener('click', () => this.openReportDraftModal(place));
+
+    this.openModal(`${place.name} — 단체·상세 정보`, body, [copyDocBtn, qrBtn, addEventBtn, reportBtn]);
   }
 
   async openCandidateCompareModal(placesOverride = null) {
@@ -1495,16 +1502,24 @@ export class YskFoodApp {
   /**
    * 이용 기록 · 식당 제보 초안 작성 및 내보내기 모달(FR05, FR10, AC19, AC32)
    */
-  openReportDraftModal() {
+  openReportDraftModal(place = null) {
+    const today = getKoreaDateTimeParts(new Date())?.dateStr || '';
     const form = document.createElement('form');
     form.className = 'report-draft-form';
     form.innerHTML = `
-      <p class="detail-sub-note">⚠️ 작성한 내용은 현재 브라우저에만 초안으로 저장되며, 공개 이용 건수에 즉시 합산되지 않습니다. 학생 이름·얼굴·연락처·개별 건강정보는 절대 입력하지 마세요.</p>
+      <p class="detail-sub-note">⚠️ 제보는 GitHub 이슈 양식으로 보내며 누구나 볼 수 있게 공개됩니다(GitHub 계정 필요). 운영자가 확인한 뒤 지도에 반영합니다. 학생 이름·얼굴·연락처·개별 건강정보는 절대 입력하지 마세요.</p>
       <div class="form-row">
         <label>식당 이름 <input type="text" name="restaurantName" required placeholder="예: 이순신수제버거"></label>
       </div>
       <div class="form-row">
-        <label>방문일 <input type="date" name="visitDate" value="2026-10-18"></label>
+        <label>제보 내용 (폐업·영업시간·전화번호·위치 오류 등, 확인한 날짜와 방법) <textarea name="correctionNote" rows="3" placeholder="예: 11/8 전화 확인 결과 화요일 정기 휴무"></textarea></label>
+      </div>
+      <div class="form-row">
+        <label>단체 좌석 수 (아는 경우) <input type="text" name="seats" placeholder="예: 80석, 룸 2개(각 20명)"></label>
+      </div>
+      <p class="detail-sub-note">아래는 단체 이용 후기를 남길 때만 적어 주세요.</p>
+      <div class="form-row">
+        <label>방문일 <input type="date" name="visitDate" value="${today}"></label>
         <label>끼니 구분
           <select name="mealSlot">
             <option value="breakfast">조식</option>
@@ -1529,15 +1544,60 @@ export class YskFoodApp {
       <div id="report-draft-status" class="detail-notice" hidden></div>
     `;
 
+    if (place) {
+      form.elements.restaurantName.value = place.name || '';
+    }
+    const restaurantId = place?.id || this.state.selectedId || null;
+    const readForm = () => {
+      const fd = new FormData(form);
+      return Object.fromEntries([...fd.entries()].map(([k, v]) => [k, typeof v === 'string' ? v.trim() : v]));
+    };
+
+    const issueBtn = document.createElement('button');
+    issueBtn.type = 'button';
+    issueBtn.className = 'link';
+    issueBtn.textContent = '🚩 GitHub로 제보 보내기';
+    issueBtn.addEventListener('click', async () => {
+      const f = readForm();
+      const statusBox = form.querySelector('#report-draft-status');
+      statusBox.hidden = false;
+      if (!f.restaurantName) {
+        statusBox.textContent = '❌ 식당 이름을 적어 주세요.';
+        return;
+      }
+      const mealLabel = { breakfast: '조식', lunch: '중식', dinner: '석식' }[f.mealSlot] || '';
+      const visitLine = f.groupSize || f.unitPriceKRW || f.menuSummary
+        ? `[단체 이용 후기] ${f.visitDate || ''} ${mealLabel} · ${f.groupSize ? `${f.groupSize}명` : '인원 미입력'} · ${f.unitPriceKRW ? `1인 ${Number(f.unitPriceKRW).toLocaleString('ko-KR')}원` : '단가 미입력'}${f.menuSummary ? ` · ${f.menuSummary}` : ''}`
+        : '';
+      const res = buildRestaurantReportIssueUrl({
+        restaurantId,
+        restaurantName: f.restaurantName,
+        regionName: place?.city || '',
+        seats: f.seats,
+        details: [f.correctionNote, visitLine].filter(Boolean).join('\n\n'),
+        evidenceUrl: f.evidenceUrl
+      });
+      if (!res.valid) {
+        statusBox.textContent = `❌ ${res.message}`;
+        return;
+      }
+      await this.storageManager.saveDraft({ type: 'place_correction', payload: { restaurantId, ...f, createdAt: new Date().toISOString() } });
+      const win = window.open(res.url, '_blank');
+      if (win) win.opener = null;
+      statusBox.textContent = win
+        ? '✅ GitHub 제보 양식을 새 창에 열었습니다. 내용을 확인하고 [Submit new issue]를 눌러야 전달됩니다.'
+        : `✅ 새 창이 막혔습니다. 이 주소를 열어 주세요: ${res.url}`;
+    });
+
     const exportBtn = document.createElement('button');
     exportBtn.type = 'button';
-    exportBtn.className = 'link';
-    exportBtn.textContent = '📥 초안 저장 및 제보 JSON 파일 내보내기';
+    exportBtn.className = 'link sub';
+    exportBtn.textContent = '📥 이용 기록 JSON 파일로 저장';
     exportBtn.addEventListener('click', async () => {
       const fd = new FormData(form);
       const draftRes = buildVerifiedReportDraft({
         type: 'visit_record',
-        restaurantId: this.state.selectedId || 'unlinked-place',
+        restaurantId: restaurantId || 'unlinked-place',
         restaurantName: fd.get('restaurantName'),
         visitDate: fd.get('visitDate'),
         mealSlot: fd.get('mealSlot'),
@@ -1563,7 +1623,7 @@ export class YskFoodApp {
       this.downloadJsonFile(`ysk-food-report-draft-${Date.now()}.json`, draftRes.serializedJson);
     });
 
-    this.openModal('✍️ 단체 이용 기록 · 식당 수정 제보 작성', form, [exportBtn]);
+    this.openModal('✍️ 식당 정보 제보 · 단체 이용 기록', form, [issueBtn, exportBtn]);
   }
 
   /**
