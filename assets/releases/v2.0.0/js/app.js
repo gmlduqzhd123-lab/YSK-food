@@ -68,6 +68,9 @@ import {
   buildPublicShareUrl,
   buildVerifiedReportDraft,
   buildRestaurantReportIssueUrl,
+  buildCandidateCsv,
+  buildCandidateExportRows,
+  buildCandidateInquiryText,
   parseRouteFromUrl
 } from './ui/share.js';
 
@@ -1117,7 +1120,103 @@ export class YskFoodApp {
       }
     });
 
-    this.openModal('⚖️ 후보 식당 비교 (최대 3곳)', body, [voteTextBtn, shareCompareBtn, qrCompareBtn]);
+    const hasPlaces = () => {
+      if (places && places.length) return true;
+      this.showToast('먼저 식당을 비교함에 담아 주세요.');
+      return false;
+    };
+    const criteria = this.lastFilterResult?.criteria || {};
+
+    const inquiryAllBtn = document.createElement('button');
+    inquiryAllBtn.type = 'button';
+    inquiryAllBtn.className = 'link';
+    inquiryAllBtn.textContent = '📞 후보 전체 문의 문구 복사';
+    inquiryAllBtn.addEventListener('click', async () => {
+      if (!hasPlaces()) return;
+      const text = buildCandidateInquiryText(places, criteria);
+      try {
+        await navigator.clipboard.writeText(text);
+        this.showToast(`후보 ${places.length}곳의 전화번호와 단체식사 문의 문구를 복사했어요.`);
+      } catch {
+        prompt('후보 전체 문의 문구:', text);
+      }
+    });
+
+    const csvBtn = document.createElement('button');
+    csvBtn.type = 'button';
+    csvBtn.className = 'link sub';
+    csvBtn.textContent = '📊 엑셀(CSV)로 저장';
+    csvBtn.addEventListener('click', () => {
+      if (!hasPlaces()) return;
+      const today = getKoreaDateTimeParts(new Date())?.dateStr || 'today';
+      this.downloadTextFile(`식당후보비교-${today}.csv`, buildCandidateCsv(places), 'text/csv;charset=utf-8');
+      this.showToast('비교 후보를 엑셀에서 열 수 있는 CSV 파일로 저장했어요.');
+    });
+
+    const printCompareBtn = document.createElement('button');
+    printCompareBtn.type = 'button';
+    printCompareBtn.className = 'link sub';
+    printCompareBtn.textContent = '🖨️ 비교표 인쇄 / PDF 저장';
+    printCompareBtn.addEventListener('click', () => {
+      if (!hasPlaces()) return;
+      this.printCandidateComparison(places, criteria);
+    });
+
+    this.openModal('⚖️ 후보 식당 비교 (최대 3곳)', body, [inquiryAllBtn, voteTextBtn, csvBtn, printCompareBtn, shareCompareBtn, qrCompareBtn]);
+  }
+
+  /** 비교 후보를 한 장짜리 표로 인쇄 (항목이 행, 식당이 열) */
+  printCandidateComparison(places, criteria = {}) {
+    const rows = buildCandidateExportRows(places);
+    const sheet = document.createElement('div');
+    sheet.className = 'teacher-print-sheet';
+    const h2 = document.createElement('h2');
+    h2.textContent = '단체 식사 후보 식당 비교표';
+    sheet.appendChild(h2);
+    const meta = document.createElement('p');
+    meta.className = 'teacher-print-meta';
+    const mw = criteria.mealWindow;
+    meta.textContent = [
+      `출력일 ${getKoreaDateTimeParts(new Date())?.dateStr || ''}`,
+      criteria.totalHeadcount ? `인원 ${criteria.totalHeadcount}명` : null,
+      criteria.budgetPerPersonKRW ? `1인 예산 ${criteria.budgetPerPersonKRW.toLocaleString('ko-KR')}원` : null,
+      mw ? `방문 ${mw.date} ${mw.startTime}~${mw.endTime}` : null,
+      criteria.busCount ? `버스 ${criteria.busCount}대` : null
+    ].filter(Boolean).join(' · ');
+    sheet.appendChild(meta);
+    const table = document.createElement('table');
+    table.className = 'teacher-print-table';
+    const headRow = table.createTHead().insertRow();
+    for (const t of ['항목', ...rows.map(r => r.이름)]) {
+      const th = document.createElement('th');
+      th.textContent = t;
+      headRow.appendChild(th);
+    }
+    const tbody = table.createTBody();
+    for (const key of Object.keys(rows[0]).filter(k => k !== '이름')) {
+      const tr = tbody.insertRow();
+      tr.className = 'teacher-print-row';
+      const th = document.createElement('th');
+      th.textContent = key;
+      tr.appendChild(th);
+      for (const r of rows) tr.insertCell().textContent = r[key];
+    }
+    sheet.appendChild(table);
+    const foot = document.createElement('p');
+    foot.className = 'teacher-print-footer';
+    foot.textContent = "'미확인' 항목은 방문 전 식당에 전화로 확인해 주세요. 자료: 전국 맛집 지도 (카카오맵 장소 정보 기준)";
+    sheet.appendChild(foot);
+
+    let printRoot = document.getElementById('teacher-print-root');
+    if (!printRoot) {
+      printRoot = document.createElement('section');
+      printRoot.id = 'teacher-print-root';
+      printRoot.className = 'print-only-section';
+      document.body.appendChild(printRoot);
+    }
+    printRoot.innerHTML = '';
+    printRoot.appendChild(sheet);
+    window.print();
   }
 
   openAmbiguousLegacyPlaceModal(placeName, candidates = []) {
@@ -1671,6 +1770,17 @@ export class YskFoodApp {
     });
 
     this.openModal('🛠️ 데이터 관리 · 스키마 검증 도구', wrap, [validateBtn]);
+  }
+
+  downloadTextFile(filename, content, type = 'text/plain;charset=utf-8') {
+    const blob = new Blob([content], { type });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
   downloadJsonFile(filename, content) {
