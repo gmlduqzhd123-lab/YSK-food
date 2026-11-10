@@ -1432,3 +1432,24 @@ describe('첫 화면 색인 지연 받기 (2026-11-04)', () => {
     assert.equal(missing.status, 'unregistered');
   });
 });
+
+describe('식당 정보 제보 (GitHub 이슈 양식)', () => {
+  test('식당 ID·이름·내용을 미리 채운 이슈 양식 주소를 만들고, 휴대전화번호가 있으면 거절한다', async () => {
+    const { buildRestaurantReportIssueUrl } = await import('../assets/releases/v2.0.0/js/ui/share.js');
+    const res = buildRestaurantReportIssueUrl({ restaurantId: 'ysk-r-1', restaurantName: '이순신수제버거', regionName: '여수', seats: '80석', details: '화요일 정기 휴무', evidenceUrl: 'javascript:alert(1)' });
+    assert.equal(res.valid, true);
+    const u = new URL(res.url);
+    assert.equal(u.origin + u.pathname, 'https://github.com/gmlduqzhd123-lab/YSK-food/issues/new');
+    assert.equal(u.searchParams.get('template'), 'restaurant-report.yml');
+    assert.equal(u.searchParams.get('restaurant_id'), 'ysk-r-1');
+    assert.equal(u.searchParams.get('restaurant_name'), '이순신수제버거 (여수)');
+    assert.equal(u.searchParams.get('details'), '화요일 정기 휴무');
+    assert.equal(u.searchParams.get('evidence_url'), null);
+    assert.equal(buildRestaurantReportIssueUrl({ restaurantName: 'x', details: '사장님 010-1234-5678' }).valid, false);
+  });
+  test('이슈 양식 파일의 미리 채우는 항목 id가 주소 값과 맞다', async () => {
+    const fs = await import('node:fs');
+    const yml = fs.readFileSync(new URL('../.github/ISSUE_TEMPLATE/restaurant-report.yml', import.meta.url), 'utf8');
+    for (const id of ['restaurant_id', 'restaurant_name', 'seats', 'details', 'evidence_url']) assert.match(yml, new RegExp(`id: ${id}\\n`));
+  });
+});
