@@ -36,6 +36,17 @@ async function computeSha256HexOfBytes(bytes) {
     .join('');
 }
 
+// 먼저 그린 일부 식당(전국 8분의 1)과 다 받은 뒤의 식당이 같은 객체가 되게 해서, 판정 결과를 다시 계산하지 않는다
+const HYDRATED = new WeakMap();
+function hydrateOnce(rest, regMeta) {
+  let h = HYDRATED.get(rest);
+  if (!h) {
+    h = hydrateRestaurantForUi(rest, regMeta);
+    HYDRATED.set(rest, h);
+  }
+  return h;
+}
+
 export class DatasetRepository {
   constructor(options = {}) {
     this.appBase = options.appBase || APP_BASE;
@@ -433,7 +444,7 @@ export class DatasetRepository {
       const restaurants = [];
       for (const rData of arrived) {
         const regMeta = bundle.regionsFile.regions.find(rg => rg.regionCode === rData.regionCode);
-        for (const rest of rData.restaurants) restaurants.push(hydrateRestaurantForUi(rest, regMeta));
+        for (const rest of rData.restaurants) restaurants.push(hydrateOnce(rest, regMeta));
       }
       onPartial({
         regionCode,
@@ -468,7 +479,7 @@ export class DatasetRepository {
       for (const rData of loadedRegions) {
         const regMeta = bundle.regionsFile.regions.find(rg => rg.regionCode === rData.regionCode);
         for (const rest of rData.restaurants) {
-          combinedRestaurants.push(hydrateRestaurantForUi(rest, regMeta));
+          combinedRestaurants.push(hydrateOnce(rest, regMeta));
         }
         combinedVenues.push(...(rData.venues || []));
         combinedVisitRecords.push(...(rData.visitRecords || []));

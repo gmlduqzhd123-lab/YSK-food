@@ -820,10 +820,8 @@ function getCachedEvaluation(place, ctx, visitRecords) {
     cachedEval = {
       key: ctx.evalKey,
       visitRecords,
+      todayStr: ctx.todayStr,
       groupMatch: evaluateRestaurantGroupMatch(place, ctx.normalizedCriteria, { referenceDateStr: ctx.todayStr }),
-      visitSummary: aggregateVisitRecordsForRestaurant(visitRecords, place.id, ctx.todayStr),
-      designationSummary: evaluateOfficialDesignations(place, ctx.todayStr),
-      kidFriendlySummary: evaluateElementaryMenuFriendliness(place),
       modeScore: computeModeRecommendationScore(place, ctx.mode),
       hasPerPersonPrice: (place.menus || []).some(m => m.priceKRW !== null && m.priceKRW !== undefined && m.priceBasis === 'per_person')
     };
@@ -849,22 +847,42 @@ export function warmRestaurantEvaluations(places = [], filterState = {}, visitRe
   return end;
 }
 
+// 목록·상세 화면에서만 쓰는 판정은 처음 읽을 때 계산한다 (전국 1만여 곳을 처음 거를 때 시간을 줄인다)
+const LAZY_SUMMARIES = {
+  visitSummary: (place, ev) => aggregateVisitRecordsForRestaurant(ev.visitRecords, place.id, ev.todayStr),
+  designationSummary: (place, ev) => evaluateOfficialDesignations(place, ev.todayStr),
+  kidFriendlySummary: place => evaluateElementaryMenuFriendliness(place)
+};
+function lazySummary(place, cachedEval, key) {
+  if (!(key in cachedEval)) cachedEval[key] = LAZY_SUMMARIES[key](place, cachedEval);
+  return cachedEval[key];
+}
+const EVAL_REF = Symbol('evaluation');
+const PLACE_REF = Symbol('place');
+// 결과 객체의 원형: 위 판정들을 읽을 때 계산한다 (객체마다 속성을 정의하는 것보다 빠르다)
+const ENRICHED_PROTO = {};
+for (const key of Object.keys(LAZY_SUMMARIES)) {
+  Object.defineProperty(ENRICHED_PROTO, key, {
+    get() { return lazySummary(this[PLACE_REF], this[EVAL_REF], key); },
+    set(value) { Object.defineProperty(this, key, { value, enumerable: true, configurable: true, writable: true }); },
+    enumerable: false,
+    configurable: false
+  });
+}
+
 /** 목록·지도에 넘길 결과 객체 (기준점 거리가 같으면 지난번 객체를 다시 쓴다) */
 function getEnriched(place, cachedEval, straightDistanceKm) {
   if (cachedEval.enriched && cachedEval.distanceKm === straightDistanceKm) return cachedEval.enriched;
-  const { groupMatch, visitSummary, designationSummary, kidFriendlySummary, modeScore, hasPerPersonPrice } = cachedEval;
-  cachedEval.enriched = {
-    ...place,
-    distance: straightDistanceKm !== null ? straightDistanceKm : Infinity,
-    straightDistanceKm,
-    straightDistanceLabel: formatStraightDistance(straightDistanceKm),
-    groupMatch,
-    visitSummary,
-    designationSummary,
-    kidFriendlySummary,
-    modeScore,
-    hasPerPersonPrice
-  };
+  const enriched = Object.assign(Object.create(ENRICHED_PROTO), place);
+  enriched.distance = straightDistanceKm !== null ? straightDistanceKm : Infinity;
+  enriched.straightDistanceKm = straightDistanceKm;
+  enriched.straightDistanceLabel = formatStraightDistance(straightDistanceKm);
+  enriched.groupMatch = cachedEval.groupMatch;
+  enriched.modeScore = cachedEval.modeScore;
+  enriched.hasPerPersonPrice = cachedEval.hasPerPersonPrice;
+  enriched[PLACE_REF] = place;
+  enriched[EVAL_REF] = cachedEval;
+  cachedEval.enriched = enriched;
   cachedEval.distanceKm = straightDistanceKm;
   return cachedEval.enriched;
 }
@@ -888,6 +906,27 @@ export function warmNameRanks(places = []) {
     if (i > 0 && KO_COLLATOR.compare(sorted[i - 1].name || '', sorted[i].name || '') !== 0) rank = i;
     NAME_RANK.set(sorted[i].id, { rank, name: sorted[i].name });
   }
+}
+
+const SORT_KEY = Symbol('defaultSortKey');
+const SCORE_OFFSET = 8192; // 모드 점수(정수)를 0~16383 범위로 옮긴다
+/**
+ * 기본 정렬 순서(단체 조건 충족 먼저 → 영업시간 확인 → 1인 가격 확인(학교·선수단) → 모드 점수 높은 순 → 이름)를
+ * 정수 하나로 만들어 붙인다. 점수가 정수가 아니거나 범위를 넘거나 이름 순위가 없으면 false (원래 비교 함수로 정렬)
+ */
+function attachDefaultSortKeys(lists, mode, hasCriteria) {
+  for (const list of lists) {
+    for (const p of list) {
+      const rank = nameRankOf(p);
+      const score = p.modeScore;
+      if (rank === undefined || rank >= 2 ** 22 || !Number.isInteger(score) || score <= -SCORE_OFFSET || score >= SCORE_OFFSET) return false;
+      const notMet = hasCriteria && p.groupMatch?.status !== 'met' ? 1 : 0;
+      const unknownHours = p.openingHours?.status === 'unknown' ? 1 : 0;
+      const noPrice = mode !== 'general' && !p.hasPerPersonPrice ? 1 : 0;
+      p[SORT_KEY] = (((notMet * 2 + unknownHours) * 2 + noPrice) * 16384 + (SCORE_OFFSET - score)) * 2 ** 22 + rank;
+    }
+  }
+  return true;
 }
 
 const nameRankOf = p => {
@@ -1061,9 +1100,17 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
   };
 
   warmNameRanks(restaurants);
-  confirmedMetList.sort(sortFn);
-  needsCheckList.sort(sortFn);
-  allEvaluated.sort(sortFn);
+  // 기본 정렬(기준점 없음)은 비교 순서를 숫자 하나로 미리 묶어 정렬한다 (sortFn과 같은 순서, 1만 곳 이상에서 훨씬 빠르다)
+  if (sortBy === 'default' && !effectiveRefPoint && attachDefaultSortKeys([allEvaluated, needsCheckList], mode, normalizedCriteria.hasAnyCriterion)) {
+    const byKey = (a, b) => a[SORT_KEY] - b[SORT_KEY];
+    confirmedMetList.sort(byKey);
+    needsCheckList.sort(byKey);
+    allEvaluated.sort(byKey);
+  } else {
+    confirmedMetList.sort(sortFn);
+    needsCheckList.sort(sortFn);
+    allEvaluated.sort(sortFn);
+  }
 
   return {
     hasGroupCriteria: normalizedCriteria.hasAnyCriterion,
