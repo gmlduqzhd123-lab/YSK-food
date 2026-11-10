@@ -9,6 +9,8 @@ import {
   SUBMISSION_CONFIG
 } from '../config.js';
 import { isValidEntityId, sanitizeHttpUrl } from '../data/normalize.js';
+import { formatHoursSummary } from '../domain/hours.js';
+import { generateRestaurantInquiryText } from '../domain/schedule.js';
 
 /**
  * URL(또는 location.search)을 해석하여 화면·모드·필터·식당 선택 상태를 단일 규칙으로 반환한다(Section 9, FR01, AC36).
@@ -474,4 +476,77 @@ export function buildOfficialDocDraftText(place, options = {}) {
     `5. 수용여건: ${seatNote} / ${parkingNote}`,
     `6. 행정사항: ${designations} · 사전 예약 및 학교법인카드(또는 계좌이체) 결제 가능 여부 사전 확인`
   ].join('\n');
+}
+
+/**
+ * 비교 후보를 표(엑셀·인쇄)로 내보낼 때 쓰는 행 목록
+ * - 확인되지 않은 정보는 '미확인'으로 적는다 (추정하지 않는다)
+ */
+export function buildCandidateExportRows(places = []) {
+  const tri = v => (v === 'yes' ? '있음' : v === 'no' ? '없음' : '미확인');
+  return places.map(p => {
+    const gp = p.groupProfile || {};
+    const perPerson = (p.menus || []).filter(m => Number.isFinite(m.priceKRW) && m.priceBasis === 'per_person').map(m => m.priceKRW);
+    const seatTypes = gp.seatTypes || [];
+    return {
+      이름: p.name || '',
+      지역: p.city || p.regionCode || '',
+      종류: p.category || '',
+      주소: p.address || '',
+      전화: p.phone || '',
+      영업시간: String(formatHoursSummary(p) || '미확인').replace(/^🕒\s*/, ''),
+      '1인 가격(최저)': perPerson.length ? `${Math.min(...perPerson).toLocaleString('ko-KR')}원` : '가격 미확인',
+      대표메뉴: p.menu || (p.menus || []).slice(0, 3).map(m => m.name).join(', ') || '미확인',
+      단체석: gp.availability === 'yes' ? (seatTypes.includes('단체석') ? '있음' : '단체 수용') : '미확인',
+      '룸(별도 공간)': tri(gp.room?.privateRoom),
+      '동시 수용 인원': Number.isFinite(gp.simultaneousCapacity) ? `${gp.simultaneousCapacity}명` : '미확인',
+      '대형버스 주차': Number.isFinite(gp.parking?.busParkingSpaces) ? `${gp.parking.busParkingSpaces}대` : gp.parking?.dropoff === 'yes' ? '승하차 가능' : '미확인',
+      '단체 조건 판정': { met: '확인된 조건 충족', needs_check: `추가 확인 필요 (${(p.groupMatch?.unverifiedReasons || []).join(', ')})`, unmet: '필수 조건 불충족' }[p.groupMatch?.status] || '단체 조건 미설정',
+      '자료 확인일': gp.checkedAt || '미상',
+      카카오맵: sanitizeHttpUrl(p.link || p.mapLinks?.kakaoPlaceUrl) || ''
+    };
+  });
+}
+
+/** 엑셀에서 한글이 깨지지 않는 CSV (UTF-8 BOM, CRLF) */
+export function buildCandidateCsv(places = []) {
+  const rows = buildCandidateExportRows(places);
+  if (!rows.length) return '';
+  const headers = Object.keys(rows[0]);
+  const cell = v => {
+    let t = String(v ?? '');
+    // 엑셀 수식으로 실행되지 않게 막는다 (=, +, -, @로 시작하는 값)
+    if (/^[=+\-@]/.test(t)) t = `'${t}`;
+    return /[",\r\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t;
+  };
+  return '\uFEFF' + [headers, ...rows.map(r => headers.map(h => r[h]))].map(line => line.map(cell).join(',')).join('\r\n') + '\r\n';
+}
+
+/**
+ * 후보 식당 전체에 보낼 단체식사 문의 문구 (식당마다 이름·전화번호를 붙여 한 번에 복사)
+ * - 단체 조건(인원·날짜·시간·버스 대수)이 입력돼 있으면 문구에 넣는다
+ */
+export function buildCandidateInquiryText(places = [], criteria = {}, options = {}) {
+  const mw = criteria.mealWindow || null;
+  const diners = [];
+  if (criteria.studentCount) diners.push({ groupId: 'students', label: '학생', count: criteria.studentCount });
+  if (criteria.staffCount) diners.push({ groupId: 'staff', label: '인솔·지도자', count: criteria.staffCount });
+  if (criteria.otherCount) diners.push({ groupId: 'other', label: '기타', count: criteria.otherCount });
+  if (!diners.length && criteria.totalHeadcount) diners.push({ groupId: 'all', label: '전체', count: criteria.totalHeadcount });
+  const special = [];
+  if (criteria.budgetPerPersonKRW) special.push(`1인 예산 ${criteria.budgetPerPersonKRW.toLocaleString('ko-KR')}원 이내`);
+  if (criteria.privateRoomRequired) special.push('별도 공간(룸·홀)');
+  if (criteria.seatingPolicy === 'simultaneous_required' && criteria.totalHeadcount) special.push('전원 동시 착석');
+  const body = generateRestaurantInquiryText({
+    eventTitle: options.eventTitle,
+    date: mw?.date,
+    startTime: mw?.startTime,
+    endTime: mw?.endTime,
+    diners,
+    busCount: criteria.busCount || null,
+    specialRequests: special
+  });
+  return places
+    .map((p, i) => `${i + 1}) ${p.name}${p.city ? ` (${p.city})` : ''} — ☎ ${p.phone || '전화번호 미확인'}\n${body}`)
+    .join('\n\n────────\n\n');
 }

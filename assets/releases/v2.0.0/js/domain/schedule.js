@@ -600,9 +600,9 @@ export function generateRestaurantInquiryText({
   const modeLabel = serviceMode === 'takeout_lunchbox' ? '도시락·포장 수령' : '매장 단체 식사';
   const lines = [
     `[단체식사 문의 - ${eventTitle || '학교·선수단 행사'}]`,
-    `• 방문 일시: ${date || '미정'} ${startTime || ''}~${endTime || ''}`,
+    `• 방문 일시: ${date ? `${date} ${startTime || ''}~${endTime || ''}`.trim() : '미정 (협의)'}`,
     `• 이용 형태: ${modeLabel}`,
-    `• 인원 구성: 총 ${dinersSummary.totalDiners}명 (${groupText || '인원 미입력'})`,
+    dinersSummary.totalDiners > 0 ? `• 인원 구성: 총 ${dinersSummary.totalDiners}명 (${groupText})` : '• 인원 구성: 미정 (확정 후 다시 연락드리겠습니다)',
     `• 희망 메뉴: ${menuText || '식당 협의 희망'}`,
     busCount ? `• 차량 조건: 대형버스 ${busCount}대 (진입·주차 또는 승하차 위치 확인 요청)` : null,
     specialRequests.length ? `• 확인 요청: ${specialRequests.join(', ')}` : null,

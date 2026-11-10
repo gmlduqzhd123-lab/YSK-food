@@ -1453,3 +1453,36 @@ describe('식당 정보 제보 (GitHub 이슈 양식)', () => {
     for (const id of ['restaurant_id', 'restaurant_name', 'seats', 'details', 'evidence_url']) assert.match(yml, new RegExp(`id: ${id}\\n`));
   });
 });
+
+describe('비교 후보 내보내기·문의 문구 일괄 생성', () => {
+  const place = {
+    name: '가게', city: '여수', phone: '061-000-0000', address: '=HYPERLINK("x")',
+    menus: [{ name: '정식', priceKRW: 9000, priceBasis: 'per_person' }, { name: '전골(대)', priceKRW: 40000, priceBasis: 'set' }],
+    groupProfile: { availability: 'yes', seatTypes: ['단체석'], room: { privateRoom: 'unknown' }, parking: {}, checkedAt: '2026-11-04' },
+    openingHours: { status: 'unknown' }
+  };
+  test('CSV는 BOM·CRLF로 만들고 1인 가격만 쓰며 수식으로 시작하는 값을 막는다', async () => {
+    const { buildCandidateCsv } = await import('../assets/releases/v2.0.0/js/ui/share.js');
+    const csv = buildCandidateCsv([place]);
+    assert.ok(csv.startsWith('﻿이름,'));
+    const line = csv.split('\r\n')[1];
+    assert.match(line, /"9,000원"/);
+    assert.match(line, /"'=HYPERLINK\(""x""\)"/);
+    assert.match(line, /미확인/);
+  });
+  test('문의 문구는 식당마다 이름·전화번호를 붙이고 단체 조건을 넣는다', async () => {
+    const { buildCandidateInquiryText } = await import('../assets/releases/v2.0.0/js/ui/share.js');
+    const text = buildCandidateInquiryText([place, { ...place, name: '둘째' }], {
+      studentCount: 80, staffCount: 5, totalHeadcount: 85, busCount: 2,
+      mealWindow: { date: '2026-11-20', startTime: '12:00', endTime: '13:00' }, seatingPolicy: 'simultaneous_required'
+    });
+    assert.match(text, /^1\) 가게 \(여수\) — ☎ 061-000-0000/);
+    assert.match(text, /2\) 둘째/);
+    assert.match(text, /2026-11-20 12:00~13:00/);
+    assert.match(text, /총 85명 \(학생 80명, 인솔·지도자 5명\)/);
+    assert.match(text, /대형버스 2대/);
+    const empty = buildCandidateInquiryText([place], {});
+    assert.match(empty, /방문 일시: 미정/);
+    assert.match(empty, /인원 구성: 미정/);
+  });
+});
