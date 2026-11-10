@@ -14,7 +14,11 @@ const BUNDLE = /한\s*마리|반\s*마리|\d\s*마리|kg|\d\s*근|접시|\d\s*�
 // 여럿이 나눠 먹는 요리 (1인 표시가 없으면 접시 기준)
 const SHARE_DISH = /모듬|모둠|탕수육|깐풍|유산슬|라조|팔보채|양장피|난자완스|고추잡채|유린기|칠리새우|크림새우|깐쇼|보쌈|족발|수육|머리고기|편육|삼합|아구찜|아귀찜|해물찜|갈비찜(?!.*정식)|닭볶음탕|닭도리탕|찜닭|백숙|감자탕|파전|해물전|모둠전|모듬전|전\s*\(|치킨|통닭|후라이드|양념반|반반|강정|회\s*\(|모둠회|모듬회|생선회|활어|물회\s*\(대|코스|오마카세|한상|상차림|세트메뉴|전골\s*\(|샤브샤브\s*\(/;
 // 한 그릇 음식: 크기 표시가 있어도 1인 기준으로 본다 (칼국수(소) 등)
-const SINGLE_BOWL = /칼국수|수제비|국수|냉면|밀면|쫄면|우동|라면|라멘|소바|짜장|자장|짬뽕|쌀국수|국밥|해장국|곰탕|설렁탕|육개장|순대국|순댓국|뼈해장|덮밥|비빔밥|볶음밥|김밥|백반|정식|돈가스|돈까스|카츠|오므라이스|카레|버거|찌개|뚝배기/;
+const SINGLE_BOWL = /칼국수|수제비|국수|냉면|밀면|쫄면|우동|라면|라멘|소바|짜장|자장|짬뽕|쌀국수|국밥|해장국|곰탕|설렁탕|갈비탕|삼계탕|육개장|순대국|순댓국|뼈해장|덮밥|비빔밥|볶음밥|김밥|백반|정식|돈가스|돈까스|카츠|오므라이스|카레|버거|찌개|뚝배기|파스타|스파게티|리조또|샐러드|런치|점심|밥상/;
+// 'N인~M인'처럼 먹는 인원 범위를 적은 메뉴 → 여럿이 나눠 먹는 접시
+const PERSON_RANGE = /\d\s*(인|人)\s*[~\-]\s*\d\s*(인|人)/;
+// 곁들이·안주로 나눠 먹는 요리 (1인 가격 비교에 쓰지 않는다): 전·빈대떡·묵·무침·순대·만두·날개·피자 등
+const SIDE_DISH = /[가-힣]전$|[가-힣]전\s*\(|빈대떡|동그랑땡|(도토리|메밀|청포)묵(?!사발|밥)|무침|(^|[^가-힣국])순대(\s*\(|$)|(^|[^가-힣국])[가-힣]{0,3}만두(\s*\(|$)|닭날개|(^|[^가-힣])날개|윙$|피자|오코노미야끼|숙회|탕탕이|계란말이|두부김치|어묵탕|감자튀김|튀김$/;
 // 단품에 붙는 세트(음료·감자 포함 1인 세트)
 const SINGLE_SET = /세트/;
 // 고기 1인분 무게(100~300g)
@@ -24,6 +28,8 @@ export function classifyMenuPriceBasis(name, priceKRW) {
   const n = String(name || '');
   const price = Number(priceKRW) || 0;
 
+  // 'N인~M인'(먹는 인원 범위)은 최소 주문 안내('2인~')보다 먼저 본다
+  if (PERSON_RANGE.test(n) && !/1\s*(인|人)\s*(가격|기준)/.test(n)) return 'per_set';
   if (MIN_ORDER_NOTE.test(n)) return 'per_person';
   if (ONE_PERSON.test(n)) return 'per_person';
   if (MULTI_PERSON.test(n)) return 'per_set';
@@ -36,6 +42,7 @@ export function classifyMenuPriceBasis(name, priceKRW) {
   }
 
   if (BUNDLE.test(n)) return 'per_set';
+  if (SIDE_DISH.test(n) && !SINGLE_BOWL.test(n)) return 'per_set';
   if (SIZE_MARK.test(n)) return SINGLE_BOWL.test(n) && !SHARE_DISH.test(n) && price < 20000 ? 'per_person' : 'per_set';
   // 나눠 먹는 요리 이름이 들어가도 덮밥·정식·돈가스처럼 한 그릇 음식이면 1인 기준 (치킨마요덮밥, 보쌈 정식 등)
   if (SHARE_DISH.test(n)) return SINGLE_BOWL.test(n) && price < 20000 ? 'per_person' : 'per_set';
