@@ -57,100 +57,185 @@ export function createKidFriendlyBadge(place) {
 }
 
 /**
+ * 실제 확인된 단체·편의시설 강점 배지 목록 생성(#3)
+ * - 미확인/미설정 항목은 표시하지 않고, 확인된 강점만 한눈에 스캔되도록 표시한다.
+ */
+export function createConfirmedFacilityBadges(place, { maxCount = 4 } = {}) {
+  const gp = place?.groupProfile || {};
+  const badges = [];
+  if (gp.availability === 'yes') {
+    badges.push(el('span', 'badge fac-group', '👥 단체석'));
+  }
+  if (gp.room?.privateRoom === 'yes') {
+    badges.push(el('span', 'badge fac-room', '🚪 룸'));
+  }
+  if (gp.parking?.walkingNotes || gp.parking?.busEntry === 'yes') {
+    const label = gp.parking?.busEntry === 'yes'
+      ? '🚌 버스주차'
+      : String(gp.parking?.walkingNotes || '').includes('무료') ? '🅿️ 무료주차' : '🅿️ 주차';
+    badges.push(el('span', 'badge fac-parking', label));
+  }
+  if (gp.preOrder?.leadTimeNote) {
+    badges.push(el('span', 'badge fac-reserve', '📅 예약'));
+  }
+  if (gp.lunchbox?.availability === 'yes') {
+    badges.push(el('span', 'badge fac-takeout', '🥡 포장'));
+  }
+  return badges.slice(0, maxCount);
+}
+
+/**
  * 식당 카드 및 오버레이 공통 액션 버튼 묶음 생성 (길찾기, 상세보기, 전화, 즐겨찾기, 비교 담기, 행사 담기, 공유)
- * URL과 전화번호는 모두 허용 형식 검증을 거친다(AC32, AC37).
+ * - compact: true 일 때는 카드 표면의 버튼 과밀을 줄이기 위해 핵심 4개 + '⋯ 더보기' 접이식 보조 메뉴로 정리한다(#2).
+ * - URL과 전화번호는 모두 허용 형식 검증을 거친다(AC32, AC37).
  */
 export function createPlaceActionButtons(place, handlers = {}, state = {}) {
-  const box = el('div', handlers.containerClass || 'place-links');
+  const isCompact = Boolean(handlers.compact);
+  const box = el('div', `${handlers.containerClass || 'place-links'}${isCompact ? ' is-compact' : ''}`);
   const strId = String(place.id);
   const favSet = state.favoriteIds instanceof Set ? state.favoriteIds : new Set(state.favoriteIds || []);
   const compareList = Array.isArray(state.compareIds) ? state.compareIds : [];
 
-  // 1) 길찾기 / 카카오맵 검색 (mappablePlaces 기준)
   const mappable = isMappablePlace(place);
   const routeHref = sanitizeHttpUrl(buildKakaoRouteUrl(place));
-  if (routeHref) {
-    const routeLink = el('a', 'link', mappable ? '길찾기' : '카카오맵에서 찾기');
+  const safePlaceLink = sanitizeHttpUrl(place.link || place.mapLinks?.kakaoPlaceUrl);
+  const safeTel = sanitizeTelHref(place.phone);
+  const isFav = favSet.has(strId);
+  const inCompare = compareList.includes(strId);
+
+  const makeRouteLink = (primary = true) => {
+    if (!routeHref) return null;
+    const routeLink = el('a', primary ? 'link' : 'link sub', mappable ? '🧭 길찾기' : '카카오맵에서 찾기');
     routeLink.href = routeHref;
     routeLink.target = '_blank';
     routeLink.rel = 'noopener noreferrer';
-    box.appendChild(routeLink);
-  }
-
-  // 2) 상세보기 링크
-  const safePlaceLink = sanitizeHttpUrl(place.link || place.mapLinks?.kakaoPlaceUrl);
-  if (safePlaceLink) {
+    routeLink.addEventListener('click', e => e.stopPropagation());
+    return routeLink;
+  };
+  const makeDetailLink = () => {
+    if (!safePlaceLink) return null;
     const detailLink = el('a', 'link sub', '카카오 상세');
     detailLink.href = safePlaceLink;
     detailLink.target = '_blank';
     detailLink.rel = 'noopener noreferrer';
-    box.appendChild(detailLink);
-  }
-
-  // 3) 전화번호 링크
-  const safeTel = sanitizeTelHref(place.phone);
-  if (safeTel) {
-    const telLink = el('a', 'link sub', '📞 전화');
+    detailLink.addEventListener('click', e => e.stopPropagation());
+    return detailLink;
+  };
+  const makeTelLink = (primary = false) => {
+    if (!safeTel) return null;
+    const telLink = el('a', primary ? 'link' : 'link sub', '📞 전화');
     telLink.href = safeTel;
-    box.appendChild(telLink);
-  }
-
-  // 4) 즐겨찾기 (문자열 영구 ID)
-  const isFav = favSet.has(strId);
-  const favBtn = el('button', `link sub fav${isFav ? ' on' : ''}`, isFav ? '★ 저장됨' : '☆ 저장');
-  favBtn.type = 'button';
-  favBtn.dataset.favId = strId;
-  favBtn.setAttribute('aria-pressed', String(isFav));
-  favBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    handlers.onToggleFavorite?.(place);
-  });
-  box.appendChild(favBtn);
-
-  // 5) 후보 비교 담기 (최대 3곳)
-  const inCompare = compareList.includes(strId);
-  const cmpBtn = el('button', `link sub compare-btn${inCompare ? ' on' : ''}`, inCompare ? '✓ 비교함' : '+ 비교');
-  cmpBtn.type = 'button';
-  cmpBtn.dataset.compareId = strId;
-  cmpBtn.setAttribute('aria-pressed', String(inCompare));
-  cmpBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    handlers.onToggleCompare?.(place);
-  });
-  box.appendChild(cmpBtn);
-
-  // 6) 내 행사에 담기
-  if (handlers.onAddToEvent) {
+    telLink.addEventListener('click', e => e.stopPropagation());
+    return telLink;
+  };
+  const makeFavBtn = (iconOnly = false) => {
+    const favBtn = el('button', `link sub fav${isFav ? ' on' : ''}${iconOnly ? ' icon-btn' : ''}`, iconOnly ? (isFav ? '★' : '☆') : (isFav ? '★ 저장됨' : '☆ 저장'));
+    favBtn.type = 'button';
+    favBtn.dataset.favId = strId;
+    favBtn.setAttribute('aria-pressed', String(isFav));
+    favBtn.setAttribute('aria-label', isFav ? `${place.name} 즐겨찾기 해제` : `${place.name} 즐겨찾기 저장`);
+    favBtn.title = isFav ? '저장됨 (누르면 해제)' : '즐겨찾기 저장';
+    favBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      handlers.onToggleFavorite?.(place);
+    });
+    return favBtn;
+  };
+  const makeCompareBtn = () => {
+    const cmpBtn = el('button', `link sub compare-btn${inCompare ? ' on' : ''}`, inCompare ? '✓ 비교함' : '+ 비교');
+    cmpBtn.type = 'button';
+    cmpBtn.dataset.compareId = strId;
+    cmpBtn.setAttribute('aria-pressed', String(inCompare));
+    cmpBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      handlers.onToggleCompare?.(place);
+    });
+    return cmpBtn;
+  };
+  const makeAddEvBtn = () => {
+    if (!handlers.onAddToEvent) return null;
     const addEvBtn = el('button', 'link sub event-add-btn', '📋 행사에 담기');
     addEvBtn.type = 'button';
     addEvBtn.addEventListener('click', e => {
       e.stopPropagation();
       handlers.onAddToEvent(place);
     });
-    box.appendChild(addEvBtn);
-  }
-
-  // 7) 식당 상세 모달 열기
-  if (handlers.onOpenDetailModal) {
-    const infoBtn = el('button', 'link sub detail-btn', '단체·상세정보');
+    return addEvBtn;
+  };
+  const makeInfoBtn = () => {
+    if (!handlers.onOpenDetailModal) return null;
+    const infoBtn = el('button', 'link sub detail-btn', '단체·상세');
     infoBtn.type = 'button';
     infoBtn.addEventListener('click', e => {
       e.stopPropagation();
       handlers.onOpenDetailModal(place);
     });
-    box.appendChild(infoBtn);
-  }
-
-  // 8) 공유
-  if (handlers.onSharePlace) {
+    return infoBtn;
+  };
+  const makeShareBtn = () => {
+    if (!handlers.onSharePlace) return null;
     const shareBtn = el('button', 'link sub share', '공유');
     shareBtn.type = 'button';
     shareBtn.addEventListener('click', e => {
       e.stopPropagation();
       handlers.onSharePlace(place);
     });
-    box.appendChild(shareBtn);
+    return shareBtn;
+  };
+
+  if (isCompact) {
+    // 1줄 핵심 액션: 전화(없으면 길찾기) · + 비교 · 단체·상세 · ☆ 저장 · ⋯ 더보기
+    const primaryRow = el('div', 'place-links-primary');
+    const primaryAct = makeTelLink(true) || makeRouteLink(true);
+    if (primaryAct) primaryRow.appendChild(primaryAct);
+    primaryRow.appendChild(makeCompareBtn());
+    const infoBtn = makeInfoBtn();
+    if (infoBtn) primaryRow.appendChild(infoBtn);
+    primaryRow.appendChild(makeFavBtn(true));
+
+    const extraItems = [
+      safeTel ? makeRouteLink(false) : null,
+      makeDetailLink(),
+      makeAddEvBtn(),
+      makeShareBtn()
+    ].filter(Boolean);
+
+    if (extraItems.length > 0) {
+      const moreRow = el('div', 'place-links-more');
+      moreRow.hidden = true;
+      for (const node of extraItems) moreRow.appendChild(node);
+
+      const moreToggle = el('button', 'link sub more-actions-btn icon-btn', '⋯');
+      moreToggle.type = 'button';
+      moreToggle.setAttribute('aria-expanded', 'false');
+      moreToggle.setAttribute('aria-label', `${place.name} 추가 작업 열기`);
+      moreToggle.title = '길찾기·카카오 상세·행사에 담기·공유';
+      moreToggle.addEventListener('click', e => {
+        e.stopPropagation();
+        const nextOpen = moreRow.hidden;
+        moreRow.hidden = !nextOpen;
+        moreToggle.setAttribute('aria-expanded', String(nextOpen));
+        moreToggle.classList.toggle('on', nextOpen);
+      });
+      primaryRow.appendChild(moreToggle);
+      box.append(primaryRow, moreRow);
+    } else {
+      box.appendChild(primaryRow);
+    }
+    return box;
   }
+
+  // 전체 액션(지도 오버레이·상세 모달)
+  [
+    makeRouteLink(true),
+    makeDetailLink(),
+    makeTelLink(false),
+    makeFavBtn(false),
+    makeCompareBtn(),
+    makeAddEvBtn(),
+    makeInfoBtn(),
+    makeShareBtn()
+  ].filter(Boolean).forEach(node => box.appendChild(node));
 
   return box;
 }
@@ -250,6 +335,8 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
   const header = el('div', 'detail-head');
   const title = el('h3', 'detail-title', place.name);
   header.appendChild(title);
+
+  const addrRow = el('div', 'detail-addr-row');
   const subMeta = el(
     'p',
     'detail-sub',
@@ -257,12 +344,36 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
       isMappablePlace(place) ? '지도 위치 확인됨' : '지도 좌표 미확인 (목록·전화·행사 담기 가능)'
     }`
   );
-  header.appendChild(subMeta);
+  addrRow.appendChild(subMeta);
+  if (place.address && !String(place.address).includes('미확인')) {
+    const copyAddrBtn = el('button', 'link sub copy-addr-btn', '📋 주소 복사');
+    copyAddrBtn.type = 'button';
+    copyAddrBtn.addEventListener('click', async () => {
+      if (handlers.onCopyAddress) {
+        handlers.onCopyAddress(place);
+      } else {
+        try {
+          await navigator.clipboard.writeText(place.address);
+        } catch {
+          // 클립보드 권한 없을 때는 무시
+        }
+      }
+      copyAddrBtn.textContent = '✓ 복사됨';
+      setTimeout(() => {
+        copyAddrBtn.textContent = '📋 주소 복사';
+      }, 1600);
+    });
+    addrRow.appendChild(copyAddrBtn);
+  }
+  header.appendChild(addrRow);
 
   const badgeRow = el('div', 'detail-badges');
   badgeRow.appendChild(createGroupMatchBadge(place.groupMatch));
   const kidBadge = createKidFriendlyBadge(place);
   if (kidBadge) badgeRow.appendChild(kidBadge);
+  for (const fb of createConfirmedFacilityBadges(place, { maxCount: 5 })) {
+    badgeRow.appendChild(fb);
+  }
   const freshBadge = el(
     'span',
     `badge ${freshness.isStale ? 'stale-warn' : 'fresh-info'}`,
@@ -277,6 +388,22 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
   );
   badgeRow.appendChild(visitBadge);
   header.appendChild(badgeRow);
+
+  // 상세 모달 상단 빠른 액션 (길찾기·카카오 상세·전화·저장·비교·공유)
+  const detailQuickActions = createPlaceActionButtons(
+    place,
+    {
+      ...handlers,
+      onOpenDetailModal: null,
+      onAddToEvent: null,
+      compact: false,
+      containerClass: 'detail-quick-actions'
+    },
+    handlers.actionState || {}
+  );
+  if (detailQuickActions.childElementCount > 0) {
+    header.appendChild(detailQuickActions);
+  }
   container.appendChild(header);
 
   // 예약 확정 아님 주의 문구(FR03, AC10)
@@ -287,13 +414,12 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
   );
   container.appendChild(disclaimer);
 
-  // 1) 단체 수용·버스·시설 조건 표(FR03)
+  // 1) 단체 수용·버스·시설 조건 표(FR03, #4: 확인된 항목 우선 표시 + 미확인 항목 접기)
   const groupSec = el('section', 'detail-section');
   groupSec.appendChild(el('h4', '', '🚌 단체 식사 및 버스·시설 조건'));
   const triText = v => (v === 'yes' ? '가능' : v === 'no' ? '불가' : '미확인');
   const numText = (v, unit) => (v !== null && v !== undefined ? `${v}${unit}` : '미확인');
 
-  const grid = el('div', 'detail-grid');
   const rows = [
     ['단체 수용 여부', gp.availability === 'yes' && (gp.seatTypes || []).includes('단체석')
       ? `단체석 있음${(gp.seatTypes || []).includes('룸') ? ' · 룸' : ''} (인원은 전화 확인)`
@@ -315,13 +441,36 @@ export function renderPlaceDetailContent(place, sources = [], handlers = {}) {
     ['단체정보 확인일', freshness.label]
   ];
 
-  for (const [k, v] of rows) {
-    const item = el('div', 'detail-kv');
-    item.appendChild(el('span', 'kv-k', k));
-    item.appendChild(el('strong', 'kv-v', v));
-    grid.appendChild(item);
+  const isUnverifiedVal = val => val === '미확인' || val === '확인일 미등록';
+  const confirmedRows = rows.filter(([, v]) => !isUnverifiedVal(v));
+  const unverifiedRows = rows.filter(([, v]) => isUnverifiedVal(v));
+
+  if (confirmedRows.length > 0) {
+    const grid = el('div', 'detail-grid');
+    for (const [k, v] of confirmedRows) {
+      const item = el('div', 'detail-kv is-confirmed');
+      item.appendChild(el('span', 'kv-k', k));
+      item.appendChild(el('strong', 'kv-v', v));
+      grid.appendChild(item);
+    }
+    groupSec.appendChild(grid);
+  } else {
+    groupSec.appendChild(el('p', 'detail-empty', '아직 확인된 단체·편의시설 항목이 없습니다. 방문 전 식당에 전화로 확인해 주세요.'));
   }
-  groupSec.appendChild(grid);
+
+  if (unverifiedRows.length > 0) {
+    const fold = el('details', 'detail-unverified-fold');
+    fold.appendChild(el('summary', '', `📞 방문 전 전화로 확인할 미확인 항목 (${unverifiedRows.length}개 펼쳐보기)`));
+    const uGrid = el('div', 'detail-grid is-unverified-grid');
+    for (const [k, v] of unverifiedRows) {
+      const item = el('div', 'detail-kv');
+      item.appendChild(el('span', 'kv-k', k));
+      item.appendChild(el('strong', 'kv-v', v));
+      uGrid.appendChild(item);
+    }
+    fold.appendChild(uGrid);
+    groupSec.appendChild(fold);
+  }
   container.appendChild(groupSec);
 
   // 2) 학생 메뉴 및 원재료·맵기·양 조절 정보(FR06, AC17)

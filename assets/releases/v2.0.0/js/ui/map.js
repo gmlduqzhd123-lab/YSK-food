@@ -173,6 +173,7 @@ export class MapController {
     this.container = options.container || null;
     this.onSelectPlace = options.onSelectPlace || (() => {});
     this.onCloseOverlay = options.onCloseOverlay || (() => {});
+    this.onUserMapMove = options.onUserMapMove || (() => {});
     this.createOverlayDom = options.createOverlayDom || (() => document.createElement('div'));
     this.sdkUrl = options.sdkUrl || KAKAO_SDK_URL;
     this.sdkTimeoutMs = options.sdkTimeoutMs || KAKAO_SDK_TIMEOUT_MS;
@@ -184,6 +185,7 @@ export class MapController {
     this.shownMarkerKey = '';
     this.bubbleOverlays = [];
     this.viewRenderTimer = null;
+    this.programmaticMoveUntil = 0;
     this.currentOverlay = null;
     this.referenceOverlay = null;
     this.markerImageCache = new Map();
@@ -191,6 +193,31 @@ export class MapController {
     this.sdkState = 'idle'; // 'idle' | 'loading' | 'ready' | 'error'
     this.sdkPromise = null;
     this.mapClickListenerBound = false;
+  }
+
+  getBoundsRect() {
+    if (!this.isReady() || !this.map.getBounds) return null;
+    const bounds = this.map.getBounds();
+    if (!bounds) return null;
+    const sw = bounds.getSouthWest();
+    const ne = bounds.getNorthEast();
+    if (!sw || !ne) return null;
+    const swLat = sw.getLat();
+    const swLng = sw.getLng();
+    const neLat = ne.getLat();
+    const neLng = ne.getLng();
+    return {
+      swLat,
+      swLng,
+      neLat,
+      neLng,
+      centerLat: (swLat + neLat) / 2,
+      centerLng: (swLng + neLng) / 2
+    };
+  }
+
+  markProgrammaticMove(ms = 650) {
+    this.programmaticMoveUntil = Date.now() + ms;
   }
 
   isReady() {
@@ -327,6 +354,13 @@ export class MapController {
       if (!this.viewListenerBound) {
         // 지도를 옮기거나 확대·축소한 뒤 화면 안 식당을 다시 그린다 (식당이 많을 때만 실제로 다시 그림)
         kakao.maps.event.addListener(this.map, 'idle', () => this.scheduleViewRender());
+        const notifyUserMove = () => {
+          if (Date.now() < this.programmaticMoveUntil) return;
+          const rect = this.getBoundsRect();
+          if (rect) this.onUserMapMove(rect);
+        };
+        kakao.maps.event.addListener(this.map, 'dragend', notifyUserMove);
+        kakao.maps.event.addListener(this.map, 'zoom_changed', notifyUserMove);
         this.viewListenerBound = true;
       }
 
@@ -562,6 +596,7 @@ export class MapController {
    */
   fitToPlaces(places = [], regionMeta = null) {
     if (!this.isReady()) return { applied: false };
+    this.markProgrammaticMove(750);
     const plan = computeFitBoundsPlan(places, regionMeta);
 
     if (plan.mode === 'region_default' || plan.mode === 'single') {
@@ -636,6 +671,7 @@ export class MapController {
 
     entry.overlay.setMap(this.map);
     this.currentOverlay = entry.overlay;
+    this.markProgrammaticMove(750);
 
     if (this.map.getLevel() > SINGLE_PLACE_LEVEL) {
       this.map.setLevel(SINGLE_PLACE_LEVEL);

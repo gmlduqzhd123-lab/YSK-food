@@ -29,6 +29,7 @@ import {
   generateRestaurantInquiryText
 } from './domain/schedule.js';
 import {
+  buildSearchSuggestions,
   filterAndClassifyRestaurants,
   warmRestaurantEvaluations,
   getCategoriesForMode,
@@ -45,6 +46,7 @@ import {
 import { MapController } from './ui/map.js';
 import {
   computePaginatedSlice,
+  createConfirmedFacilityBadges,
   createGroupMatchBadge,
   createKidFriendlyBadge,
   createMapOverlayDom,
@@ -97,6 +99,7 @@ export class YskFoodApp {
       compareIds: [],   // 최대 3개 문자열 영구 ID
       visibleLimit: PAGE_SIZE,
       referencePoint: null, // { lat, lng, label, type }
+      mapBounds: null,      // { swLat, swLng, neLat, neLng } 현재 지도 영역 내 재검색(#6)
       groupCriteria: {
         studentCount: '',
         staffCount: '',
@@ -137,16 +140,56 @@ export class YskFoodApp {
     this.waitingServiceWorker = null;
     this.userDismissedHome = false;
     this.loadingProgress = null;
+    this.pendingMapBounds = null;
+    this.compareCache = new Map();
+    this.recentQueries = this.loadRecentQueries();
 
     this.mapController = new MapController({
       onSelectPlace: (placeId, fromList) => this.selectPlace(placeId, fromList),
       onCloseOverlay: () => this.clearSelection(),
+      onUserMapMove: rect => this.handleUserMapMove(rect),
       createOverlayDom: (place, onClose) =>
         createMapOverlayDom(place, onClose, this.getPlaceActionHandlers(), {
           favoriteIds: this.favoriteIds,
           compareIds: this.state.compareIds
         })
     });
+  }
+
+  loadRecentQueries() {
+    try {
+      const raw = localStorage.getItem('ysk-recent-searches');
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed.filter(s => typeof s === 'string' && s.trim()).slice(0, 5) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  saveRecentQuery(q) {
+    const clean = String(q || '').trim();
+    if (clean.length < 2) return;
+    this.recentQueries = [clean, ...this.recentQueries.filter(item => item !== clean)].slice(0, 5);
+    try {
+      localStorage.setItem('ysk-recent-searches', JSON.stringify(this.recentQueries));
+    } catch {
+      // 저장소 제한 시 무시
+    }
+  }
+
+  handleUserMapMove(rect) {
+    this.pendingMapBounds = rect;
+    const btn = document.getElementById('map-search-bounds-btn');
+    if (btn && this.currentRestaurants.length > 0) {
+      btn.hidden = false;
+    }
+  }
+
+  clearMapBoundsFilter() {
+    this.state.mapBounds = null;
+    this.pendingMapBounds = null;
+    const btn = document.getElementById('map-search-bounds-btn');
+    if (btn) btn.hidden = true;
   }
 
   async init() {
@@ -400,6 +443,9 @@ export class YskFoodApp {
    * 선택 지역 데이터 로드 및 상태 반영(AC07, AC08, AC39)
    */
   async loadSelectedRegionData(regionCode) {
+    if (this.currentRestaurants.length === 0) {
+      this.renderLoadingSkeleton();
+    }
     // 전국·권역처럼 파일이 많으면 일부가 도착했을 때 지도·목록을 먼저 그리고, 다 받으면 다시 그린다
     const res = await this.repository.selectRegion(regionCode, {
       onPartial: partial => {
@@ -420,6 +466,7 @@ export class YskFoodApp {
     this.currentSources = res.sources || [];
 
     this.renderCategoryButtons();
+    this.renderSubregionBar();
     this.renderReferencePointSelector();
     this.renderLegend();
     this.renderRegionDatasetStatusBanner(res);
@@ -430,6 +477,26 @@ export class YskFoodApp {
     }
 
     return res;
+  }
+
+  renderLoadingSkeleton() {
+    const ul = document.getElementById('place-list');
+    const countEl = document.getElementById('panel-count');
+    if (countEl) countEl.textContent = '맛집 자료 불러오는 중…';
+    if (!ul) return;
+    ul.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+      const li = document.createElement('li');
+      li.className = 'skeleton-card';
+      li.setAttribute('aria-hidden', 'true');
+      li.innerHTML = `
+        <div class="sk-line sk-title"></div>
+        <div class="sk-line sk-meta"></div>
+        <div class="sk-line sk-menu"></div>
+        <div class="sk-pills"><span></span><span></span><span></span></div>
+      `;
+      ul.appendChild(li);
+    }
   }
 
   renderRegionDatasetStatusBanner(regionRes) {
@@ -554,6 +621,7 @@ export class YskFoodApp {
         openOnly: this.state.openOnly,
         favoriteIds: this.favoriteIds,
         referencePoint: this.state.referencePoint,
+        mapBounds: this.state.mapBounds,
         venues: this.currentVenues,
         sortBy: this.state.sortBy,
         includeNeedsCheck: this.state.includeNeedsCheck,
@@ -622,7 +690,209 @@ export class YskFoodApp {
       this.clearSelection();
     }
 
+    this.renderActiveFilterChips(result);
     this.renderPlaceList(result);
+    this.updateCompareTrayUi();
+  }
+
+  /**
+   * 현재 적용 중인 필터·단체 조건을 한눈에 보여주고 원클릭 해제할 수 있는 칩 바(#8)
+   */
+  renderActiveFilterChips(filterResult) {
+    const bar = document.getElementById('active-filters-bar');
+    if (!bar) return;
+    bar.innerHTML = '';
+
+    const chips = [];
+    const gc = this.state.groupCriteria;
+
+    if (this.state.mapBounds) {
+      chips.push({
+        label: '🗺️ 현재 지도 영역',
+        onRemove: () => {
+          this.clearMapBoundsFilter();
+          this.applyFilters(false);
+        }
+      });
+    }
+    if (this.state.query && this.state.query.trim()) {
+      chips.push({
+        label: `🔍 "${this.state.query.trim()}"`,
+        onRemove: () => {
+          this.state.query = '';
+          this.syncFilterControlsFromState();
+          this.applyFilters(true);
+        }
+      });
+    }
+    if (this.state.category && this.state.category !== 'all') {
+      chips.push({
+        label: `🍽️ ${this.state.category}`,
+        onRemove: () => {
+          this.state.category = 'all';
+          this.renderCategoryButtons();
+          this.applyFilters(true);
+        }
+      });
+    }
+    if (this.state.openOnly) {
+      chips.push({
+        label: '🕒 지금 영업 중',
+        onRemove: () => {
+          this.state.openOnly = false;
+          this.syncFilterControlsFromState();
+          this.applyFilters(true);
+        }
+      });
+    }
+    if (this.state.favOnly) {
+      chips.push({
+        label: '⭐ 즐겨찾기만',
+        onRemove: () => {
+          this.state.favOnly = false;
+          this.syncFilterControlsFromState();
+          this.applyFilters(true);
+        }
+      });
+    }
+    if (this.state.referencePoint) {
+      chips.push({
+        label: `📍 ${this.state.referencePoint.label} 기준`,
+        onRemove: () => {
+          this.state.referencePoint = null;
+          const refSel = document.getElementById('ref-point-select');
+          if (refSel) refSel.value = '';
+          this.mapController.setReferencePointMarker(null);
+          this.applyFilters(false);
+        }
+      });
+    }
+    if (this.state.mode !== 'general') {
+      if (gc.studentCount) {
+        chips.push({
+          label: `👥 ${gc.studentCount}명`,
+          onRemove: () => {
+            gc.studentCount = '';
+            const inp = document.getElementById('gc-students');
+            if (inp) inp.value = '';
+            this.applyFilters(false);
+          }
+        });
+      }
+      if (gc.budgetPerPersonKRW) {
+        chips.push({
+          label: `💰 1인 ${Number(gc.budgetPerPersonKRW).toLocaleString()}원 이하`,
+          onRemove: () => {
+            gc.budgetPerPersonKRW = '';
+            const inp = document.getElementById('gc-budget');
+            if (inp) inp.value = '';
+            this.applyFilters(false);
+          }
+        });
+      }
+      if (gc.startTime && gc.endTime) {
+        chips.push({
+          label: `⏰ ${gc.startTime}~${gc.endTime}`,
+          onRemove: () => {
+            gc.startTime = '';
+            gc.endTime = '';
+            gc.visitDate = '';
+            document.querySelectorAll('.gc-chip[data-meal]').forEach(c => c.setAttribute('aria-pressed', 'false'));
+            this.applyFilters(false);
+          }
+        });
+      }
+      const needLabels = {
+        groupSeatRequired: '단체석',
+        parkingRequired: '주차',
+        lunchboxRequired: '포장',
+        reservationRequired: '예약'
+      };
+      for (const [k, label] of Object.entries(needLabels)) {
+        if (gc[k]) {
+          chips.push({
+            label: `✓ ${label}`,
+            onRemove: () => {
+              gc[k] = false;
+              this.syncFilterControlsFromState();
+              this.applyFilters(false);
+            }
+          });
+        }
+      }
+    }
+
+    if (chips.length === 0) {
+      bar.hidden = true;
+      return;
+    }
+
+    for (const c of chips) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'active-filter-chip';
+      btn.innerHTML = '';
+      const txt = document.createElement('span');
+      txt.textContent = c.label;
+      const x = document.createElement('span');
+      x.className = 'chip-x';
+      x.setAttribute('aria-hidden', 'true');
+      x.textContent = '×';
+      btn.append(txt, x);
+      btn.setAttribute('aria-label', `${c.label} 조건 해제`);
+      btn.addEventListener('click', c.onRemove);
+      bar.appendChild(btn);
+    }
+
+    if (chips.length >= 2) {
+      const clearAll = document.createElement('button');
+      clearAll.type = 'button';
+      clearAll.className = 'active-filter-clear';
+      clearAll.textContent = '전체 해제';
+      clearAll.addEventListener('click', () => this.resetAllActiveFilters());
+      bar.appendChild(clearAll);
+    }
+
+    bar.hidden = false;
+  }
+
+  resetAllActiveFilters() {
+    this.state.category = 'all';
+    this.state.query = '';
+    this.state.favOnly = false;
+    this.state.openOnly = false;
+    this.state.referencePoint = null;
+    this.state.sortBy = 'default';
+    this.clearMapBoundsFilter();
+    Object.assign(this.state.groupCriteria, {
+      studentCount: '',
+      staffCount: '',
+      otherCount: '',
+      budgetPerPersonKRW: '',
+      busCount: '',
+      busParkingRequired: false,
+      visitDate: '',
+      startTime: '',
+      endTime: '',
+      endNextDay: false,
+      privateRoomRequired: false,
+      earlyBreakfastRequired: false,
+      lunchboxRequired: false,
+      groupSeatRequired: false,
+      parkingRequired: false,
+      reservationRequired: false
+    });
+    document.querySelectorAll('.gc-chip').forEach(chip => chip.setAttribute('aria-pressed', 'false'));
+    ['gc-students', 'gc-budget'].forEach(id => {
+      const inp = document.getElementById(id);
+      if (inp) inp.value = '';
+    });
+    const refSel = document.getElementById('ref-point-select');
+    if (refSel) refSel.value = '';
+    this.mapController.setReferencePointMarker(null);
+    this.syncFilterControlsFromState();
+    this.renderCategoryButtons();
+    this.applyFilters(true);
   }
 
   /**
@@ -662,14 +932,74 @@ export class YskFoodApp {
 
     if (combinedList.length === 0) {
       const emptyLi = document.createElement('li');
-      emptyLi.className = 'empty';
+      emptyLi.className = 'empty smart-empty';
+      const msg = document.createElement('p');
+      msg.className = 'empty-msg';
       if (this.currentRestaurants.length === 0) {
         const regMeta = this.repository.getRegionMeta(this.state.regionCode);
-        emptyLi.textContent = `${regMeta?.name || '선택한 지역'}에는 아직 등록된 식당이 없습니다 (0곳). 다른 지역을 선택하거나 [기록·제보]에서 식당을 제보해 주세요.`;
+        msg.textContent = `${regMeta?.name || '선택한 지역'}에는 아직 등록된 식당이 없습니다 (0곳). 다른 지역을 선택하거나 [기록·제보]에서 식당을 제보해 주세요.`;
       } else if (this.state.favOnly && this.favoriteIds.size === 0) {
-        emptyLi.textContent = '아직 저장한 맛집이 없어요. 식당의 ☆ 저장 버튼을 눌러 보세요.';
+        msg.textContent = '아직 저장한 맛집이 없어요. 식당의 ☆ 버튼을 눌러 마음에 드는 곳을 저장해 보세요.';
       } else {
-        emptyLi.textContent = `조건에 맞는 식당이 없습니다.${counts.excludedUnmet > 0 ? ` (필수 조건 불충족으로 ${counts.excludedUnmet}곳 제외됨 — 조건을 완화하거나 교대 식사 허용으로 변경해 보세요.)` : ''}`;
+        msg.textContent = `조건에 맞는 식당이 없습니다.${counts.excludedUnmet > 0 ? ` (필수 조건 불충족으로 ${counts.excludedUnmet}곳 제외됨)` : ''}`;
+      }
+      emptyLi.appendChild(msg);
+
+      // 원클릭 복구 제안 버튼 (#10)
+      const actions = document.createElement('div');
+      actions.className = 'empty-recovery-actions';
+      const addRecovery = (label, fn) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'link sub';
+        b.textContent = label;
+        b.addEventListener('click', fn);
+        actions.appendChild(b);
+      };
+
+      if (this.state.mapBounds) {
+        addRecovery('🗺️ 지도 영역 제한 풀기', () => {
+          this.clearMapBoundsFilter();
+          this.applyFilters(false);
+        });
+      }
+      if (this.state.openOnly) {
+        addRecovery('🕒 영업 중 필터 끄기', () => {
+          this.state.openOnly = false;
+          this.syncFilterControlsFromState();
+          this.applyFilters(true);
+        });
+      }
+      const curBudget = Number(this.state.groupCriteria.budgetPerPersonKRW);
+      if (this.state.mode !== 'general' && Number.isFinite(curBudget) && curBudget > 0) {
+        const raised = curBudget + 2000;
+        addRecovery(`💰 1인 예산 ${raised.toLocaleString()}원으로 넓히기`, () => {
+          this.state.groupCriteria.budgetPerPersonKRW = String(raised);
+          const inp = document.getElementById('gc-budget');
+          if (inp) inp.value = String(raised);
+          this.applyFilters(false);
+        });
+      }
+      if (!REGION_GROUPS[this.state.regionCode] && this.state.regionCode && this.state.regionCode !== 'all') {
+        const nearbyCode = registerNearbyRegionGroup(this.state.regionCode, this.repository.getRegionsList());
+        if (nearbyCode) {
+          addRecovery('🧭 주변 시·군까지 넓혀 보기', async () => {
+            this.clearMapBoundsFilter();
+            this.state.regionCode = nearbyCode;
+            this.state.visibleLimit = PAGE_SIZE;
+            this.syncFilterControlsFromState();
+            const loadRes = await this.loadSelectedRegionData(nearbyCode);
+            if (loadRes?.stale) return;
+            this.applyFilters(true);
+          });
+        }
+      }
+      if (this.currentRestaurants.length > 0 && !(this.state.favOnly && this.favoriteIds.size === 0)) {
+        addRecovery('🔄 모든 조건 초기화', () => this.resetAllActiveFilters());
+      }
+
+      if (actions.childElementCount > 0) {
+        emptyLi.appendChild(actions);
       }
       ul.appendChild(emptyLi);
       return;
@@ -738,28 +1068,35 @@ export class YskFoodApp {
         mainBtn.appendChild(menuRow);
       }
 
-      // 학교·선수단 모드이거나 단체 조건이 입력된 경우 단체 배지, 초등 선호(안 매움) 배지(#9) 및 이용 사례 배지 표시
+      // 확인된 강점 배지만 컬러로 표시하고, 무정보('단체 조건 미설정', '이용 사례 미등록') 배지는 카드에서 숨긴다(#3)
+      const badgeNodes = [];
+      if (hasGroupCriteria && place.groupMatch && place.groupMatch.status !== 'unset') {
+        badgeNodes.push(createGroupMatchBadge(place.groupMatch));
+      }
+      for (const fb of createConfirmedFacilityBadges(place, { maxCount: 3 })) {
+        badgeNodes.push(fb);
+      }
       if (this.state.mode !== 'general' || hasGroupCriteria) {
+        const kidBadge = createKidFriendlyBadge(place);
+        if (kidBadge) badgeNodes.push(kidBadge);
+      }
+      if (place.visitSummary?.hasRepeatVisitBadge) {
+        const vBadge = document.createElement('span');
+        vBadge.className = 'badge visit-repeat';
+        vBadge.textContent = place.visitSummary.badgeLabel;
+        badgeNodes.push(vBadge);
+      }
+      if (badgeNodes.length > 0) {
         const groupRow = document.createElement('div');
         groupRow.className = 'place-group-badges';
-        groupRow.appendChild(createGroupMatchBadge(place.groupMatch));
-        const kidBadge = createKidFriendlyBadge(place);
-        if (kidBadge) {
-          groupRow.appendChild(kidBadge);
-        }
-        if (place.visitSummary) {
-          const vBadge = document.createElement('span');
-          vBadge.className = `badge ${place.visitSummary.hasRepeatVisitBadge ? 'visit-repeat' : 'visit-none'}`;
-          vBadge.textContent = place.visitSummary.badgeLabel;
-          groupRow.appendChild(vBadge);
-        }
+        groupRow.append(...badgeNodes);
         mainBtn.appendChild(groupRow);
       }
 
       mainBtn.addEventListener('click', () => this.selectPlace(strId, true));
       li.append(
         mainBtn,
-        createPlaceActionButtons(place, handlers, {
+        createPlaceActionButtons(place, { ...handlers, compact: true }, {
           favoriteIds: this.favoriteIds,
           compareIds: this.state.compareIds
         })
@@ -875,6 +1212,7 @@ export class YskFoodApp {
         return;
       }
       this.state.compareIds.push(strId);
+      this.compareCache.set(strId, place);
       this.showToast(`'${place.name}' 식당을 비교함에 담았어요 (${this.state.compareIds.length}/${MAX_COMPARE_COUNT}).`);
     }
     this.updateCompareBarUi();
@@ -883,10 +1221,86 @@ export class YskFoodApp {
 
   updateCompareBarUi() {
     const btn = document.getElementById('open-compare-btn');
-    if (!btn) return;
-    const count = this.state.compareIds.length;
-    btn.textContent = `⚖️ 후보 비교 (${count}/${MAX_COMPARE_COUNT})`;
-    btn.classList.toggle('active', count > 0);
+    if (btn) {
+      const count = this.state.compareIds.length;
+      btn.textContent = `⚖️ 후보 비교 (${count}/${MAX_COMPARE_COUNT})`;
+      btn.classList.toggle('active', count > 0);
+    }
+    this.updateCompareTrayUi();
+  }
+
+  /**
+   * 비교 후보 하단 플로팅 독(#9: PC·모바일 공통, 1곳 이상 담기면 하단에 노출)
+   */
+  updateCompareTrayUi() {
+    const tray = document.getElementById('compare-tray');
+    if (!tray) return;
+    const ids = this.state.compareIds || [];
+    if (ids.length === 0) {
+      tray.hidden = true;
+      tray.innerHTML = '';
+      document.body.classList.remove('has-compare-tray');
+      return;
+    }
+
+    tray.innerHTML = '';
+    const inner = document.createElement('div');
+    inner.className = 'compare-tray-inner';
+
+    const pills = document.createElement('div');
+    pills.className = 'compare-tray-pills';
+
+    for (const id of ids) {
+      const strId = String(id);
+      const place =
+        this.currentRestaurants.find(p => String(p.id) === strId) ||
+        this.compareCache.get(strId) ||
+        null;
+      if (place) this.compareCache.set(strId, place);
+
+      const pill = document.createElement('span');
+      pill.className = 'compare-tray-pill';
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'tray-pill-name';
+      nameSpan.textContent = place ? place.name : strId;
+      const rm = document.createElement('button');
+      rm.type = 'button';
+      rm.className = 'tray-pill-rm';
+      rm.setAttribute('aria-label', `${place ? place.name : strId} 비교함에서 제외`);
+      rm.textContent = '×';
+      rm.addEventListener('click', () => {
+        this.state.compareIds = this.state.compareIds.filter(cid => String(cid) !== strId);
+        this.updateCompareBarUi();
+        this.applyFilters(false);
+      });
+      pill.append(nameSpan, rm);
+      pills.appendChild(pill);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'compare-tray-actions';
+
+    const clearBtn = document.createElement('button');
+    clearBtn.type = 'button';
+    clearBtn.className = 'tray-clear-btn';
+    clearBtn.textContent = '비우기';
+    clearBtn.addEventListener('click', () => {
+      this.state.compareIds = [];
+      this.updateCompareBarUi();
+      this.applyFilters(false);
+    });
+
+    const openBtn = document.createElement('button');
+    openBtn.type = 'button';
+    openBtn.className = 'tray-open-btn';
+    openBtn.textContent = `⚖️ 비교표 보기 (${ids.length}/${MAX_COMPARE_COUNT})`;
+    openBtn.addEventListener('click', () => this.openCandidateCompareModal());
+
+    actions.append(clearBtn, openBtn);
+    inner.append(pills, actions);
+    tray.appendChild(inner);
+    tray.hidden = false;
+    document.body.classList.add('has-compare-tray');
   }
 
   updatePersonalEventHeaderBadge() {
@@ -998,7 +1412,10 @@ export class YskFoodApp {
     closeBtn.className = 'ysk-modal-close';
     closeBtn.setAttribute('aria-label', '모달 닫기');
     closeBtn.textContent = '✕ 닫기';
-    closeBtn.addEventListener('click', () => this.closeModal());
+    closeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      this.closeModal();
+    });
     head.append(h2, closeBtn);
 
     const content = document.createElement('div');
@@ -1043,7 +1460,22 @@ export class YskFoodApp {
   }
 
   openPlaceDetailModal(place) {
-    const body = renderPlaceDetailContent(place, this.currentSources, this.getPlaceActionHandlers());
+    const body = renderPlaceDetailContent(place, this.currentSources, {
+      ...this.getPlaceActionHandlers(),
+      actionState: {
+        favoriteIds: this.favoriteIds,
+        compareIds: this.state.compareIds
+      },
+      onCopyAddress: async targetPlace => {
+        if (!targetPlace?.address) return;
+        try {
+          await navigator.clipboard.writeText(targetPlace.address);
+          this.showToast(`주소를 복사했어요: ${targetPlace.address}`);
+        } catch {
+          prompt('식당 주소:', targetPlace.address);
+        }
+      }
+    });
 
     const copyDocBtn = document.createElement('button');
     copyDocBtn.type = 'button';
@@ -1894,19 +2326,130 @@ export class YskFoodApp {
     }
     selectEl.appendChild(groupOptGroup);
 
-    const indivOptGroup = document.createElement('optgroup');
-    indivOptGroup.label = '시·군·구 개별 선택';
+    const indivBySido = new Map();
+    const sidoGroupLabel = sido => {
+      const s = String(sido || '').trim();
+      if (s.includes('서울')) return '서울특별시';
+      if (s.includes('경기')) return '경기도';
+      if (s.includes('인천')) return '인천광역시';
+      if (s.includes('강원')) return '강원특별자치도';
+      if (s.includes('대전') || s.includes('세종') || s.includes('충청')) return '대전·세종·충청';
+      if (s.includes('대구') || s.includes('경상북')) return '대구·경북';
+      if (s.includes('부산') || s.includes('울산') || s.includes('경상남')) return '부산·울산·경남';
+      if (s.includes('전북') || s.includes('광주') || s.includes('전라남')) return '전북·광주·전남';
+      if (s.includes('제주')) return '제주특별자치도';
+      return '기타 지역';
+    };
+    const sidoOrder = ['서울특별시', '경기도', '인천광역시', '강원특별자치도', '대전·세종·충청', '대구·경북', '부산·울산·경남', '전북·광주·전남', '제주특별자치도', '기타 지역'];
     for (const reg of regions) {
-      const opt = document.createElement('option');
-      opt.value = reg.regionCode;
-      const count = reg.stats?.totalRestaurants ?? 0;
-      opt.textContent = `${reg.sidoName || ''} ${reg.name} (${count}곳)`.trim();
-      indivOptGroup.appendChild(opt);
+      const grp = sidoGroupLabel(reg.sidoName);
+      if (!indivBySido.has(grp)) indivBySido.set(grp, []);
+      indivBySido.get(grp).push(reg);
     }
-    selectEl.appendChild(indivOptGroup);
+    for (const grpLabel of sidoOrder) {
+      const list = indivBySido.get(grpLabel);
+      if (!list || list.length === 0) continue;
+      const optGroup = document.createElement('optgroup');
+      optGroup.label = `${grpLabel} (${list.length}개 지역)`;
+      for (const reg of list) {
+        const opt = document.createElement('option');
+        opt.value = reg.regionCode;
+        const count = reg.stats?.totalRestaurants ?? 0;
+        opt.textContent = `${reg.name} (${count.toLocaleString()}곳)`;
+        optGroup.appendChild(opt);
+      }
+      selectEl.appendChild(optGroup);
+    }
 
     // '주변 함께 보기' 묶음 선택이 있으면 그 항목도 넣어 값을 맞춘다
     this.syncFilterControlsFromState();
+  }
+
+  /**
+   * 권역 선택 시 하위 시·군·구 1탭 칩 바 렌더링(#5)
+   */
+  renderSubregionBar() {
+    const bar = document.getElementById('subregion-bar');
+    if (!bar) return;
+
+    const code = this.state.regionCode;
+    const regions = this.repository.getRegionsList();
+    if (!regions.length || !code || code === 'nationwide') {
+      bar.hidden = true;
+      bar.innerHTML = '';
+      return;
+    }
+
+    // 현재 선택 코드가 속한 대표 권역 찾기
+    const primaryGroups = ['seoul-metro', 'gb-all', 'pk-all', 'gw-all', 'cc-all', 'honam-west', 'all'];
+    let parentGroupKey = null;
+    if (primaryGroups.includes(code)) {
+      parentGroupKey = code;
+    } else if (REGION_GROUPS[code]?.dynamic && REGION_GROUPS[code]?.baseRegionCode) {
+      const baseCode = REGION_GROUPS[code].baseRegionCode;
+      parentGroupKey = primaryGroups.find(gk => (REGION_GROUPS[gk]?.regionCodes || []).includes(baseCode)) || null;
+    } else {
+      parentGroupKey = primaryGroups.find(gk => (REGION_GROUPS[gk]?.regionCodes || []).includes(code)) || null;
+    }
+
+    if (!parentGroupKey) {
+      bar.hidden = true;
+      bar.innerHTML = '';
+      return;
+    }
+
+    const groupDef = REGION_GROUPS[parentGroupKey];
+    const memberCodes = groupDef?.regionCodes || [];
+    const memberRegs = memberCodes
+      .map(rc => regions.find(r => r.regionCode === rc))
+      .filter(r => r && (r.stats?.totalRestaurants ?? 0) > 0)
+      .sort((a, b) => (b.stats?.totalRestaurants ?? 0) - (a.stats?.totalRestaurants ?? 0));
+
+    if (memberRegs.length <= 1) {
+      bar.hidden = true;
+      bar.innerHTML = '';
+      return;
+    }
+
+    bar.innerHTML = '';
+
+    const makeChip = (targetCode, label, active) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `subregion-chip${active ? ' active' : ''}`;
+      btn.setAttribute('aria-pressed', String(active));
+      btn.textContent = label;
+      btn.addEventListener('click', async () => {
+        if (this.state.regionCode === targetCode) return;
+        this.clearMapBoundsFilter();
+        this.state.regionCode = targetCode;
+        this.state.visibleLimit = PAGE_SIZE;
+        this.syncFilterControlsFromState();
+        const loadRes = await this.loadSelectedRegionData(targetCode);
+        if (loadRes?.stale) return;
+        this.applyFilters(true);
+      });
+      return btn;
+    };
+
+    const groupTotal = memberRegs.reduce((s, r) => s + (r.stats?.totalRestaurants ?? 0), 0);
+    bar.appendChild(makeChip(parentGroupKey, `${groupDef.shortLabel || groupDef.label} 전체 (${groupTotal.toLocaleString()})`, code === parentGroupKey));
+
+    // 같은 권역 내 shortName이 겹치는 지역(예: 인천 중구·송도 vs 인천 기타)은 정식 명칭으로 구분 표시
+    const shortNameFreq = new Map();
+    for (const reg of memberRegs) {
+      const sn = reg.shortName || reg.name;
+      shortNameFreq.set(sn, (shortNameFreq.get(sn) || 0) + 1);
+    }
+
+    for (const reg of memberRegs) {
+      const baseShort = reg.shortName || reg.name;
+      const chipName = (shortNameFreq.get(baseShort) || 0) > 1 ? reg.name : baseShort;
+      const cnt = reg.stats?.totalRestaurants ?? 0;
+      bar.appendChild(makeChip(reg.regionCode, `${chipName} ${cnt}`, code === reg.regionCode));
+    }
+
+    bar.hidden = false;
   }
 
   renderReferencePointSelector() {
@@ -2125,9 +2668,11 @@ export class YskFoodApp {
     const allVenues = this.repository.getAllLoadedVenues();
     const matchedVenue = query ? matchVenueFromQuery(query, allVenues.length ? allVenues : this.currentVenues) : null;
     const nextRegion = regionCode || (city && cityMap[city]) || matchedVenue?.venue?.regionCode || (query ? 'nationwide' : this.state.regionCode) || 'nationwide';
+    this.clearMapBoundsFilter();
     this.state.regionCode = nextRegion;
     this.state.category = category || 'all';
     this.state.query = query || '';
+    if (query) this.saveRecentQuery(query);
     this.state.openOnly = Boolean(openOnly);
     this.state.favOnly = false;
     this.state.visibleLimit = PAGE_SIZE;
@@ -2192,11 +2737,19 @@ export class YskFoodApp {
     const presetSelect = document.getElementById('event-preset-select');
     if (presetSelect) presetSelect.value = this.state.presetId || '';
 
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = this.state.sortBy || 'default';
+
     document.querySelectorAll('.filter-btn[data-region]').forEach(btn => {
-      const active = btn.dataset.region === this.state.regionCode;
+      const btnReg = btn.dataset.region;
+      const active =
+        btnReg === this.state.regionCode ||
+        (btnReg !== 'nationwide' && Array.isArray(REGION_GROUPS[btnReg]?.regionCodes) && REGION_GROUPS[btnReg].regionCodes.includes(this.state.regionCode));
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-pressed', String(active));
     });
+
+    this.renderSubregionBar();
 
     document.querySelectorAll('.mode-tab[data-mode]').forEach(btn => {
       const active = btn.dataset.mode === this.state.mode;
@@ -2292,6 +2845,7 @@ export class YskFoodApp {
       searchInput.addEventListener('input', e => {
         this.state.query = e.target.value;
         this.state.visibleLimit = PAGE_SIZE;
+        if (this.state.mapBounds) this.clearMapBoundsFilter();
         clearTimeout(this.searchDebounceTimer);
         this.searchDebounceTimer = setTimeout(async () => {
           const allVenues = this.repository.getAllLoadedVenues();
@@ -2342,6 +2896,7 @@ export class YskFoodApp {
     const regionSelect = document.getElementById('region-select');
     if (regionSelect) {
       regionSelect.addEventListener('change', async e => {
+        this.clearMapBoundsFilter();
         this.state.regionCode = e.target.value;
         this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
@@ -2353,6 +2908,7 @@ export class YskFoodApp {
 
     document.querySelectorAll('.filter-btn[data-region]').forEach(btn => {
       btn.addEventListener('click', async () => {
+        this.clearMapBoundsFilter();
         this.state.regionCode = btn.dataset.region;
         this.state.visibleLimit = PAGE_SIZE;
         this.syncFilterControlsFromState();
@@ -2361,6 +2917,48 @@ export class YskFoodApp {
         this.applyFilters(true);
       });
     });
+
+    // 4-1) 목록 정렬 선택기(#8)
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', e => {
+        const nextSort = e.target.value || 'default';
+        this.state.sortBy = nextSort;
+        this.state.visibleLimit = PAGE_SIZE;
+        if (nextSort === 'distance' && !this.state.referencePoint) {
+          const rect = this.mapController.getBoundsRect();
+          if (rect) {
+            this.state.referencePoint = {
+              lat: rect.centerLat,
+              lng: rect.centerLng,
+              label: '현재 지도 중심',
+              type: 'map_center'
+            };
+          } else {
+            this.showToast('기준점이나 [📍 내 주변]을 먼저 선택하면 거리순으로 정렬돼요.');
+          }
+        }
+        this.applyFilters(false);
+      });
+    }
+
+    // 4-2) 지도 이동 후 '이 지도 영역에서 다시 찾기' 버튼(#6)
+    const mapBoundsBtn = document.getElementById('map-search-bounds-btn');
+    if (mapBoundsBtn) {
+      mapBoundsBtn.addEventListener('click', () => {
+        const rect = this.pendingMapBounds || this.mapController.getBoundsRect();
+        if (!rect) return;
+        this.state.mapBounds = rect;
+        this.state.visibleLimit = PAGE_SIZE;
+        mapBoundsBtn.hidden = true;
+        this.applyFilters(false);
+        this.showToast('현재 지도 화면 안의 식당만 추려 보여드려요.');
+      });
+    }
+
+    // 4-3) 홈·메인 검색창 자동완성 및 최근 검색 연결(#7)
+    this.bindSearchAutocomplete('home-search-input', 'home-search-suggest', { isHome: true });
+    this.bindSearchAutocomplete('search', 'search-suggest', { isHome: false });
 
     // 5) 단체 조건 입력 바 이벤트 연결(FR03)
     const bindCriteriaInput = (id, key, isCheckbox = false) => {
@@ -2575,6 +3173,140 @@ export class YskFoodApp {
     // 뒤로·앞으로 가기(popstate) 시 새 이력을 추가하지 않고 동일 라우터로 상태 복원(Section 9, AC36)
     window.addEventListener('popstate', () => {
       this.applyRouteFromLocation({ isInitialLoad: false, fromPopstate: true });
+    });
+  }
+
+  /**
+   * 검색창 자동완성(체험처·시군구·인기 메뉴·최근 검색) 바인딩(#7)
+   */
+  bindSearchAutocomplete(inputId, suggestId, { isHome = false } = {}) {
+    const input = document.getElementById(inputId);
+    const box = document.getElementById(suggestId);
+    if (!input || !box) return;
+
+    let activeIdx = -1;
+    let currentItems = [];
+
+    const closeBox = () => {
+      box.hidden = true;
+      activeIdx = -1;
+    };
+
+    const pickItem = async item => {
+      closeBox();
+      if (!item) return;
+      if (item.kind === 'region') {
+        if (isHome) {
+          this.openMapFromHome({ regionCode: item.regionCode });
+        } else {
+          this.clearMapBoundsFilter();
+          this.state.regionCode = item.regionCode;
+          this.state.query = '';
+          this.state.visibleLimit = PAGE_SIZE;
+          this.syncFilterControlsFromState();
+          const loadRes = await this.loadSelectedRegionData(item.regionCode);
+          if (loadRes?.stale) return;
+          this.applyFilters(true);
+        }
+        return;
+      }
+
+      const nextQuery = item.value || item.label;
+      this.saveRecentQuery(nextQuery);
+      if (isHome) {
+        input.value = nextQuery;
+        this.openMapFromHome({ query: nextQuery, regionCode: item.regionCode || undefined });
+      } else {
+        this.clearMapBoundsFilter();
+        this.state.query = nextQuery;
+        this.state.visibleLimit = PAGE_SIZE;
+        if (item.regionCode && this.state.regionCode !== 'nationwide') {
+          const groupCodes = REGION_GROUPS[this.state.regionCode]?.regionCodes || [this.state.regionCode];
+          if (!groupCodes.includes(item.regionCode)) {
+            this.state.regionCode = item.regionCode;
+            this.syncFilterControlsFromState();
+            const loadRes = await this.loadSelectedRegionData(item.regionCode);
+            if (loadRes?.stale) return;
+          }
+        }
+        this.syncFilterControlsFromState();
+        this.applyFilters(true);
+      }
+    };
+
+    const renderSuggestions = () => {
+      const allVenues = this.repository.getAllLoadedVenues();
+      currentItems = buildSearchSuggestions(input.value, {
+        venues: allVenues.length ? allVenues : this.currentVenues,
+        regions: this.repository.getRegionsList(),
+        recentQueries: this.recentQueries
+      });
+      box.innerHTML = '';
+      activeIdx = -1;
+      if (currentItems.length === 0) {
+        box.hidden = true;
+        return;
+      }
+
+      currentItems.forEach((item, idx) => {
+        const opt = document.createElement('button');
+        opt.type = 'button';
+        opt.className = 'suggest-item';
+        opt.setAttribute('role', 'option');
+        opt.setAttribute('aria-selected', 'false');
+        const ic = document.createElement('span');
+        ic.className = 'suggest-ic';
+        ic.setAttribute('aria-hidden', 'true');
+        ic.textContent = item.icon || '🔍';
+        const tx = document.createElement('span');
+        tx.className = 'suggest-tx';
+        const strong = document.createElement('strong');
+        strong.textContent = item.label;
+        const sub = document.createElement('small');
+        sub.textContent = item.sub || '';
+        tx.append(strong, sub);
+        opt.append(ic, tx);
+        opt.addEventListener('pointerdown', e => {
+          e.preventDefault(); // blur보다 먼저 선택되도록 처리
+          pickItem(item);
+        });
+        opt.dataset.idx = String(idx);
+        box.appendChild(opt);
+      });
+      box.hidden = false;
+    };
+
+    input.addEventListener('focus', renderSuggestions);
+    input.addEventListener('input', renderSuggestions);
+    input.addEventListener('blur', () => setTimeout(closeBox, 160));
+    input.addEventListener('keydown', e => {
+      if (box.hidden || currentItems.length === 0) {
+        if (e.key === 'Enter' && !isHome && input.value.trim()) {
+          this.saveRecentQuery(input.value.trim());
+        }
+        return;
+      }
+      const opts = [...box.querySelectorAll('.suggest-item')];
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIdx = (activeIdx + 1) % currentItems.length;
+        opts.forEach((o, i) => {
+          o.classList.toggle('active', i === activeIdx);
+          o.setAttribute('aria-selected', String(i === activeIdx));
+        });
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIdx = (activeIdx - 1 + currentItems.length) % currentItems.length;
+        opts.forEach((o, i) => {
+          o.classList.toggle('active', i === activeIdx);
+          o.setAttribute('aria-selected', String(i === activeIdx));
+        });
+      } else if (e.key === 'Enter' && activeIdx >= 0) {
+        e.preventDefault();
+        pickItem(currentItems[activeIdx]);
+      } else if (e.key === 'Escape') {
+        closeBox();
+      }
     });
   }
 

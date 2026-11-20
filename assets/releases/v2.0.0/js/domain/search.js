@@ -731,6 +731,116 @@ export function matchVenueFromQuery(query = '', venues = []) {
   };
 }
 
+const POPULAR_MENU_SUGGESTIONS = [
+  { label: '돈가스·카레', query: '돈가스', sub: '초등학생 인기 안 매운 메뉴' },
+  { label: '불고기·떡갈비', query: '불고기', sub: '학교·선수단 든든한 고기' },
+  { label: '칼국수·만두', query: '칼국수', sub: '부담 없는 단체 식사' },
+  { label: '설렁탕·갈비탕', query: '갈비탕', sub: '선수단·교사 선호 국밥·탕' },
+  { label: '삼계탕·닭갈비', query: '삼계탕', sub: '보양·단체 인기 메뉴' },
+  { label: '백반·한정식', query: '백반', sub: '교사·단체 정식' },
+  { label: '착한가격업소', query: '착한가격', sub: '가성비 1인 예산 절약' }
+];
+
+/**
+ * 검색창 자동완성 목록 생성(#7: 최근 검색 · 체험처/박물관 · 시군구 지역 · 인기 메뉴)
+ */
+export function buildSearchSuggestions(query = '', { venues = [], regions = [], recentQueries = [] } = {}) {
+  const rawQ = String(query || '').trim();
+  const q = rawQ.toLowerCase();
+  const results = [];
+  const seenKeys = new Set();
+  const pushUnique = (item) => {
+    const key = `${item.kind}:${item.value}`;
+    if (seenKeys.has(key)) return;
+    seenKeys.add(key);
+    results.push(item);
+  };
+
+  if (!q) {
+    for (const rq of (recentQueries || []).slice(0, 4)) {
+      const clean = String(rq || '').trim();
+      if (!clean) continue;
+      pushUnique({ kind: 'recent', icon: '🕘', label: clean, sub: '최근 검색', value: clean });
+    }
+    for (const lm of FALLBACK_SCHOOL_TRIP_LANDMARKS.slice(0, 5)) {
+      pushUnique({
+        kind: 'venue',
+        icon: '📍',
+        label: lm.name,
+        sub: '체험처·박물관 근처 거리순',
+        value: lm.keywords[0] || lm.name,
+        regionCode: lm.regionCode
+      });
+    }
+    for (const m of POPULAR_MENU_SUGGESTIONS.slice(0, 4)) {
+      pushUnique({ kind: 'menu', icon: '🍽️', label: m.label, sub: m.sub, value: m.query });
+    }
+    return results.slice(0, 10);
+  }
+
+  const venuePool = [
+    ...(venues || []).map(v => ({
+      name: v.name,
+      regionCode: v.regionCode || null,
+      keywords: [v.name],
+      sub: v.typeLabel || '체험처·시설'
+    })),
+    ...FALLBACK_SCHOOL_TRIP_LANDMARKS.map(lm => ({
+      name: lm.name,
+      regionCode: lm.regionCode,
+      keywords: [lm.name, ...(lm.keywords || [])],
+      sub: '전국 체험처·박물관'
+    }))
+  ];
+  let venueCount = 0;
+  for (const v of venuePool) {
+    if (venueCount >= 4) break;
+    const hit = v.keywords.some(kw => String(kw || '').toLowerCase().includes(q));
+    if (!hit) continue;
+    pushUnique({
+      kind: 'venue',
+      icon: '📍',
+      label: v.name,
+      sub: v.sub,
+      value: v.keywords[1] || v.name.split('·')[0],
+      regionCode: v.regionCode
+    });
+    venueCount += 1;
+  }
+
+  let regionCount = 0;
+  for (const r of regions || []) {
+    if (regionCount >= 4) break;
+    const hay = [r.name, r.shortName, r.sidoName, ...(r.aliases || [])].filter(Boolean).join(' ').toLowerCase();
+    if (!hay.includes(q)) continue;
+    const count = r.stats?.totalRestaurants ?? 0;
+    pushUnique({
+      kind: 'region',
+      icon: '🏙️',
+      label: `${r.sidoName ? `${r.sidoName} ` : ''}${r.name}`,
+      sub: `등록 ${count.toLocaleString()}곳 · 이 지역으로 이동`,
+      value: r.regionCode,
+      regionCode: r.regionCode
+    });
+    regionCount += 1;
+  }
+
+  for (const m of POPULAR_MENU_SUGGESTIONS) {
+    if (m.label.toLowerCase().includes(q) || m.query.toLowerCase().includes(q) || m.sub.toLowerCase().includes(q)) {
+      pushUnique({ kind: 'menu', icon: '🍽️', label: m.label, sub: m.sub, value: m.query });
+    }
+  }
+
+  for (const rq of recentQueries || []) {
+    const clean = String(rq || '').trim();
+    if (clean && clean.toLowerCase().includes(q)) {
+      pushUnique({ kind: 'recent', icon: '🕘', label: clean, sub: '최근 검색', value: clean });
+    }
+  }
+
+  return results.slice(0, 8);
+}
+
 /**
  * 초등학교 선생님·초등학생 및 선수단 모드별 맞춤 추천 우선순위 점수 계산 (높을수록 상단 추천)
  */
@@ -945,6 +1055,7 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
     openOnly = false,
     favoriteIds = new Set(),
     referencePoint = null, // { lat, lng, label, type }
+    mapBounds = null,      // { swLat, swLng, neLat, neLng } 현재 지도 영역 내 재검색(#6)
     venues = [],           // 검색창에서 체험처·박물관·경기장 이름 검색 시 자동 매칭용(#7)
     sortBy = 'default',    // 'default' | 'distance' | 'price' | 'checkedAt'
     includeNeedsCheck = true,
@@ -997,6 +1108,15 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
 
     // 영업 중 필터
     if (openOnly && getOpenStatus(place, now) !== true) continue;
+
+    // 현재 지도 영역(bounds) 내 필터(#6)
+    if (mapBounds && Number.isFinite(mapBounds.swLat) && Number.isFinite(mapBounds.neLat) && Number.isFinite(mapBounds.swLng) && Number.isFinite(mapBounds.neLng)) {
+      const coords = getPlaceCoords(place);
+      if (!coords) continue;
+      if (coords.lat < mapBounds.swLat || coords.lat > mapBounds.neLat || coords.lng < mapBounds.swLng || coords.lng > mapBounds.neLng) {
+        continue;
+      }
+    }
 
     // 기준점 직선거리 계산(FR04 및 #7 체험처 검색 자동 기준점)
     let straightDistanceKm = null;
@@ -1068,13 +1188,13 @@ export function filterAndClassifyRestaurants(restaurants = [], filterState = {},
       if (a.groupMatch.status === 'met') return -1;
       if (b.groupMatch.status === 'met') return 1;
     }
-    if (sortBy === 'distance' || effectiveRefPoint) {
-      if (a.distance !== b.distance) return a.distance - b.distance;
-    }
     if (sortBy === 'price') {
       const pa = minVerifiedPerPersonPrice(a);
       const pb = minVerifiedPerPersonPrice(b);
       if (pa !== pb) return pa - pb;
+    }
+    if (sortBy === 'distance' || (sortBy === 'default' && effectiveRefPoint)) {
+      if (a.distance !== b.distance) return a.distance - b.distance;
     }
     if (sortBy === 'checkedAt') {
       const ca = a.groupProfile?.checkedAt || '';

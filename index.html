@@ -44,11 +44,14 @@
             <div class="home-layout">
                 <div class="home-intro">
                     <h1>전국 맛집 <span id="home-total">16,021곳</span>,<br>목적에 맞게 찾기</h1>
-                    <form class="home-search" id="home-search" role="search">
-                        <span aria-hidden="true">🔍</span>
-                        <input type="search" id="home-search-input" placeholder="식당·메뉴·체험처 검색 (예: 국립중앙과학관, 경복궁, 돈가스)" aria-label="맛집 검색" autocomplete="off">
-                        <button type="submit">검색</button>
-                    </form>
+                    <div class="search-field-wrap home-search-wrap">
+                        <form class="home-search" id="home-search" role="search">
+                            <span aria-hidden="true">🔍</span>
+                            <input type="search" id="home-search-input" placeholder="식당·메뉴·체험처 검색 (예: 국립중앙과학관, 경복궁, 돈가스)" aria-label="맛집 검색" autocomplete="off" aria-autocomplete="list" aria-controls="home-search-suggest">
+                            <button type="submit">검색</button>
+                        </form>
+                        <div class="search-suggest" id="home-search-suggest" role="listbox" aria-label="검색 추천" hidden></div>
+                    </div>
                     <div class="home-chips" role="group" aria-label="빠른 조건">
                         <button type="button" class="home-chip home-live" id="home-live" hidden><i aria-hidden="true"></i><span id="home-live-text"></span></button>
                         <button type="button" class="home-chip" data-home-need="groupSeatRequired">👥 <span id="home-group-text">단체석 있는 곳</span></button>
@@ -141,6 +144,9 @@
                     <option value="national_sports_festival">전국체육대회</option>
                     <option value="training_camp">전지훈련</option>
                 </select>
+                <select id="ref-point-select" class="mode-select ref-point-select" aria-label="기준점(체험처·경기장·숙소) 선택">
+                    <option value="">📍 기준점 없음 (추천순)</option>
+                </select>
             </div>
             <div class="preset-guide-note" id="preset-guide-note" hidden></div>
         </div>
@@ -163,20 +169,12 @@
                     <button type="button" class="gc-chip" data-need="lunchboxRequired" aria-pressed="false">포장</button>
                     <button type="button" class="gc-chip" data-need="reservationRequired" aria-pressed="false">예약</button>
                 </div>
+                <button type="button" class="gc-reset-btn" id="gc-reset-btn">조건 초기화</button>
                 <p class="gc-hint">좌석 수·대형버스 주차는 자료가 없어 식당 상세에서 '전화 확인'으로 안내합니다.</p>
             </div>
         </div>
 
-        <!-- 기준점(체험처·경기장·숙소)은 필요할 때만 펼침 (FR04) -->
-        <details class="setup-more">
-            <summary>📍 기준점으로 가까운 순 보기 (선택)</summary>
-            <select id="ref-point-select" class="mode-select" aria-label="기준점(체험처·경기장·숙소) 선택">
-                <option value="">📍 기준점 선택 (체험처·경기장·숙소)</option>
-            </select>
-        </details>
-
         <div class="setup-sheet-foot">
-            <button type="button" class="gc-reset-btn" id="gc-reset-btn">조건 초기화</button>
             <button type="button" class="setup-apply" id="setup-apply">적용</button>
         </div>
     </section>
@@ -188,7 +186,10 @@
         <select id="region-select" class="mode-select" aria-label="전국 지역 선택">
             <option value="nationwide">🌏 전국 전체 (초등 체험학습·선수단)</option>
         </select>
-        <input type="search" id="search" placeholder="식당·메뉴·체험처·경기장 검색 (예: 국립중앙과학관, 경복궁, 불국사, 돈가스)" aria-label="맛집 검색" autocomplete="off">
+        <div class="search-field-wrap main-search-wrap">
+            <input type="search" id="search" placeholder="식당·메뉴·체험처·경기장 검색 (예: 국립중앙과학관, 경복궁, 불국사, 돈가스)" aria-label="맛집 검색" autocomplete="off" aria-autocomplete="list" aria-controls="search-suggest">
+            <div class="search-suggest" id="search-suggest" role="listbox" aria-label="검색 추천" hidden></div>
+        </div>
         <button type="button" class="filter-toggle" id="filter-toggle" aria-expanded="false" aria-label="세부 지역·종류·영업 중 필터 열기">⚙️ 필터</button>
     </div>
 
@@ -213,17 +214,29 @@
         <span class="filter-divider" aria-hidden="true"></span>
         <div class="filter-group" id="category-group" role="group" aria-label="종류 선택"></div>
     </div>
+    <!-- 권역 선택 시 하위 시·군·구 1탭 칩 바 (#5) -->
+    <div class="subregion-bar" id="subregion-bar" role="group" aria-label="하위 시·군·구 빠른 선택" hidden></div>
 
     <main>
         <section class="panel" id="panel" aria-label="맛집 및 단체식사 후보 목록">
             <div class="panel-head">
-                <span><span id="panel-count">맛집 불러오는 중…</span><span class="sort-note" id="sort-note"></span></span>
-                <div class="view-switch" role="group" aria-label="화면 보기">
-                    <button type="button" data-mode="map" aria-pressed="false">🗺️ 지도</button>
-                    <button type="button" data-mode="half" aria-pressed="true">반반</button>
-                    <button type="button" data-mode="list" aria-pressed="false">📋 목록</button>
+                <span class="panel-head-info"><span id="panel-count">맛집 불러오는 중…</span><span class="sort-note" id="sort-note"></span></span>
+                <div class="panel-head-controls">
+                    <select id="sort-select" class="sort-select" aria-label="목록 정렬 기준">
+                        <option value="default">추천순</option>
+                        <option value="price">1인 가격 낮은순</option>
+                        <option value="distance">가까운순</option>
+                        <option value="checkedAt">최근 확인순</option>
+                    </select>
+                    <div class="view-switch" role="group" aria-label="화면 보기">
+                        <button type="button" data-mode="map" aria-pressed="false">🗺️ 지도</button>
+                        <button type="button" data-mode="half" aria-pressed="true">반반</button>
+                        <button type="button" data-mode="list" aria-pressed="false">📋 목록</button>
+                    </div>
                 </div>
             </div>
+            <!-- 적용 중인 조건 한눈에 보기 및 원클릭 해제 칩 바 (#8) -->
+            <div class="active-filters-bar" id="active-filters-bar" role="region" aria-label="적용 중인 필터" hidden></div>
             <ul class="place-list" id="place-list"></ul>
             <!-- 휴대폰: 저작권 문구를 목록 맨 끝에 둠 (화면 하단에 고정하면 카드 버튼을 가림) -->
             <div class="panel-foot">
@@ -233,11 +246,15 @@
 
         <div class="map-wrap">
             <div id="map"></div>
+            <button type="button" class="map-bounds-btn" id="map-search-bounds-btn" hidden>🔄 이 지도 영역에서 다시 찾기</button>
             <div class="legend" id="legend" aria-hidden="true"></div>
             <button type="button" class="locate-btn" id="locate-btn">📍 내 주변</button>
             <div class="toast" id="toast" role="status" aria-live="polite"></div>
         </div>
     </main>
+
+    <!-- 비교 후보 플로팅 독 (#9: PC·모바일 공통, 1곳 이상 담기면 하단에 노출) -->
+    <div class="compare-tray" id="compare-tray" role="region" aria-label="선택한 비교 후보" hidden></div>
 
     <footer class="site-footer">
         © 2026 엽쌤. All rights reserved. · <a href="https://gmlduqzhd123-lab.github.io/YScode/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">엽쌤의 다른 앱 보기 →</a><span class="install-btn"> · <button type="button">📲 앱 설치</button></span><span class="qr-btn"> · <button type="button" data-qr>📱 QR로 접속</button></span>

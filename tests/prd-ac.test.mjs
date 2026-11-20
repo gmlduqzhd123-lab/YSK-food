@@ -1502,3 +1502,80 @@ describe('주변 시·군 함께 보기 묶음', () => {
     assert.equal(registerNearbyRegionGroup('no-such-region', regions), null);
   });
 });
+
+describe('UI/UX 10대 고도화 기능 검증', () => {
+  test('(#6) 지도 영역(mapBounds) 필터 및 (#8) 기준점이 있을 때도 1인 가격 낮은순 정렬 우선 적용', () => {
+    const places = [
+      {
+        id: 'p-in-expensive',
+        name: '비싼식당',
+        regionCode: 'seoul-jongno',
+        categoryIds: ['백반·한식'],
+        location: { lat: 37.575, lng: 126.976, status: 'verified' },
+        menus: [{ name: '한정식', priceKRW: 18000, priceBasis: 'per_person' }],
+        groupProfile: { availability: 'yes' }
+      },
+      {
+        id: 'p-in-cheap',
+        name: '착한돈가스',
+        regionCode: 'seoul-jongno',
+        categoryIds: ['양식·일식'],
+        location: { lat: 37.579, lng: 126.978, status: 'verified' },
+        menus: [{ name: '돈가스', priceKRW: 9000, priceBasis: 'per_person' }],
+        groupProfile: { availability: 'yes' }
+      },
+      {
+        id: 'p-outside',
+        name: '멀리있는식당',
+        regionCode: 'seoul-jongno',
+        categoryIds: ['백반·한식'],
+        location: { lat: 35.158, lng: 129.160, status: 'verified' },
+        menus: [{ name: '백반', priceKRW: 7000, priceBasis: 'per_person' }],
+        groupProfile: { availability: 'yes' }
+      }
+    ];
+
+    const res = filterAndClassifyRestaurants(places, {
+      mode: 'school',
+      regionCode: 'seoul-jongno',
+      mapBounds: { swLat: 37.56, swLng: 126.96, neLat: 37.59, neLng: 126.99 },
+      referencePoint: { lat: 37.575, lng: 126.976, label: '광화문' },
+      sortBy: 'price'
+    });
+
+    assert.equal(res.combinedList.length, 2, '지도 영역 밖 식당은 제외되어야 함');
+    assert.equal(res.combinedList[0].id, 'p-in-cheap', '기준점이 있어도 가격 낮은순 정렬이 우선 적용되어야 함');
+    assert.equal(res.combinedList[1].id, 'p-in-expensive');
+  });
+
+  test('(#7) 검색 자동완성(buildSearchSuggestions): 최근 검색·체험처·시군구·인기 메뉴 매칭', async () => {
+    const { buildSearchSuggestions } = await import('../assets/releases/v2.0.0/js/domain/search.js');
+    const regions = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/releases/2026.10.1/regions.json'), 'utf8')).regions;
+
+    const emptySug = buildSearchSuggestions('', { regions, recentQueries: ['경주 불국사', '돈가스'] });
+    assert.ok(emptySug.some(s => s.kind === 'recent' && s.value === '경주 불국사'));
+    assert.ok(emptySug.some(s => s.kind === 'venue'));
+    assert.ok(emptySug.some(s => s.kind === 'menu'));
+
+    const pajuSug = buildSearchSuggestions('파주', { regions });
+    assert.ok(pajuSug.some(s => s.kind === 'region' && s.regionCode === 'gyeonggi-paju'));
+
+    const sciSug = buildSearchSuggestions('과학관', { regions });
+    assert.ok(sciSug.some(s => s.kind === 'venue' && s.regionCode === 'daejeon-yuseong'));
+  });
+
+  test('(#1~#10) index.html 핵심 접근성·UI 컨테이너 구조 검증', () => {
+    const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+    for (const id of [
+      'home-search-suggest',
+      'search-suggest',
+      'subregion-bar',
+      'sort-select',
+      'active-filters-bar',
+      'map-search-bounds-btn',
+      'compare-tray'
+    ]) {
+      assert.ok(html.includes(`id="${id}"`), `index.html에 #${id} 요소가 있어야 함`);
+    }
+  });
+});
